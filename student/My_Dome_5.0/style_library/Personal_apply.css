@@ -1,0 +1,131 @@
+@CHARSET "UTF-8";
+div#letf_user_UserMessage {
+    position:relative;
+    top:105px;
+    text-align: center;
+    margin-left: 5px;
+    width: 230px;
+    height: 400px;
+    background-color: #FFF;
+}
+
+#letf_user_UserMessage a {
+    text-decoration: none;
+    color: #F30;
+}
+
+#letf_user_UserMessage dl dd {
+    position: relative;
+    padding-top:10px;
+    right: 0px;
+}
+
+
+div#new_user_apply {
+    text-align: center;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 5px;
+    top: 100px;
+    left: 245px;
+    width: 1083px;
+    height: 990px;
+    background-color: #99FFCC;
+}
+
+#new_user_apply h2 {
+    background-color: #33FF33;
+    font-size: 40px;
+    font-weight: 900;
+    width: 100%;
+    margin: 0px auto;
+	padding-bottom:10px;
+    text-align: center;
+    color: #FFF;
+}
+
+#new_user_apply table {
+    width: 100%;
+    margin: 0px auto;
+    background-color: #CCFFCC;
+}
+
+#new_user_apply thead {
+    width: 100%;
+    font-weight: 900;
+    font-size: 16px;
+    text-align: center;
+    background-color: #3366CC;
+    color: #FFF;
+}
+
+
+
+#new_user_apply  table td{
+
+    font-weight: 900;
+    font-size: 16px;
+    text-align: center;
+    background-color: #808080;
+    color: #FFF;
+}
+
+
+#new_user_apply input[type=button]{
+	position:relative;
+	top:20px;
+}
+
+
+#new_user_apply ul {
+    list-style-type: none;
+	position:relative;
+	top:30px;
+}
+
+#new_user_apply li {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    display: inline;
+    border: thin soli #000;
+}
+
+img#img{
+	position:relative;
+	top:50px;
+}
+
+/*用户信息展示div*/
+div#user_message{
+	position:absolute;
+	width:400px;
+	height:400px;
+	z-index:9999;
+	text-align:center;
+	
+	display:none;
+	
+	background-color:#E0E0E0;
+}
+
+div#user_message h2 {
+	padding-top:20px;
+}
+
+div#user_message img{
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+
+div#user_message p.text_ip{
+	width:400px;
+	height:50px;
+	word-wrap:break-word;
+}
+
+
+div#user_message p.text_message{
+	word-wrap:break-word;
+}

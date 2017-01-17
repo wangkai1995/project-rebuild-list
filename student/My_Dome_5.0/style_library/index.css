@@ -1,0 +1,222 @@
+@CHARSET "UTF-8";
+
+
+div#home_all{
+	margin-top:100px;
+	padding-left:5px;
+	width:1350px;
+	height:2000px;
+}
+
+
+
+
+div#advertisement{
+	padding-top:120px;
+	padding-bottom:20px;
+	padding-left:5px;
+	width:1350px;
+	height:580px;
+	padding:5px;
+	overflow:hidden;
+	z-index:3;
+}
+
+#advertisement img{
+	/*position:absolute;
+	top:0;
+	left:0;*/
+	margin-top:110px;
+}
+
+#advertisement span#roll_left{
+     position:absolute;
+	 top:320px;
+	 left:10px;
+	 width:50px;
+	 height:55px;
+	 z-index:99;
+	 text-align:center;
+	 background-color:#B0B0B0;
+	 
+	 cursor:pointer;
+	 font-size:40px;
+	 
+	 filter:alpha(opacity=50);  
+      -moz-opacity:0.5;  
+      -khtml-opacity: 0.5;  
+      opacity: 0.5; 
+	  color:#FFF;
+	   z-index:2;
+}
+
+
+#advertisement span#roll_right{
+     position:absolute;
+	 top:320px;
+	 left:1287px;
+	 width:50px;
+	 height:55px;
+	 z-index:99;
+	 text-align:center;
+	 background-color:#B0B0B0;
+	 color:#FFF;
+	 cursor:pointer;
+	 font-size:40px;
+	 
+	 filter:alpha(opacity=50);  
+      -moz-opacity:0.5;  
+      -khtml-opacity: 0.5;  
+      opacity: 0.5; 
+	  color:#FFF;
+	  z-index:2;
+}
+
+
+#div_textdisplay .textdisplay{
+	display:none;
+	position:absolute;
+	left:120px;
+	top:280px;
+	z-index:99;
+	color:#FFF;
+	font-size:20px;
+}
+
+.textdisplay h1{
+	font-size:40px;
+	padding-bottom:50px;
+}
+
+
+
+
+
+
+
+/*产品展示部分*/
+div#product_presentation{
+    margin-top:30px;
+	width:1350px;
+	height:450px;
+	font-weight:700;
+}
+
+
+
+
+
+
+#product_presentation div#parking{
+	float:left;
+	text-align:center;
+	margin-right:25px;
+	margin-top:25px;
+	margin-left:25px;
+	width:620px;
+	height:450px;
+}
+
+
+#product_presentation div#traffic{
+	float:right;
+	text-align:center;
+	margin-top:25px;
+	margin-right:25px;
+	width:620px;
+	height:450px;
+}
+
+
+#product_presentation img{
+	margin-bottom:20px;
+}
+
+#product_presentation h1 {
+	margin-bottom:10px;
+	color:#66FF33;
+}
+
+#product_presentation h2{
+	margin-bottom:10px;
+	color:#0033FF;
+}
+
+#product_presentation p{
+	display:none;
+}
+
+#product_presentation .select_p{
+	text-align:left;
+	display:block;
+	font-weight:900;
+	color:#FF6600;
+}
+
+
+/*
+$product_presentation .product_display{
+{
+    display:block;		
+}
+*/
+
+
+
+
+/*底部联系我们*/
+div#contact_us{
+	margin-left:5px;
+	width:1350px;
+	height:460px;
+}
+
+#contact_us img{
+	margin-top:60px;
+}
+
+
+
+#contact_us div#us_text{
+	position:absolute;
+	top:1180px;
+	left:150px;
+	color:#FFF;
+}
+
+#us_text  h2{
+	position:absolute;
+	top:300px;
+	right:20px;
+}
+#us_text strong{
+	margin-left:10px;
+	margin-right:5px;
+	color:#FFFF33;
+}
+
+
+
+div#message_display{
+	margin-top:20px;
+}
+
+
+#message_display li{
+	margin-left:5px;
+	margin-right:10px;
+	display:inline;
+}
+
+#message_display h1{
+	color:#FFFF33;
+}
+
+#message_display h2{
+	margin-top:20px;
+}
+
+#message_display p{
+	margin-top:10px;
+	font-weight:700;
+}

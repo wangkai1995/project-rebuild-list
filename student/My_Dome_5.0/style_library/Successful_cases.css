@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+div#text_all{
+	text-align:center;
+	padding:100px;
+	width:1150px;
+	height:1400px;
+	overflow:hidden;
+}
+
+#text_all div#Traffic{
+	width:1150px;
+	height:1400px;
+}
+
+#Traffic h1{
+	color:#0000FF;
+	font-weight:900;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+
+#Traffic h2{
+	text-align:left;
+	color:#0099FF;
+	font-weight:900;
+	margin-top:50px;
+	margin-bottom:10px;
+}
+
+#Traffic p{
+	text-align:left;
+	color:#FF9900;
+	font-weight:600;
+}
+
+#Traffic dd{
+	display:inline-block;
+}
+
+
+#text_all div#Parking{
+    display:none;
+	width:1150px;
+	height:1400px;
+}
+
+#Parking h1{
+	color:#00CC00;
+	font-weight:900;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+
+#Parking h2{
+	text-align:left;
+	color:#33FF00;
+	font-weight:900;
+	margin-top:50px;
+	margin-bottom:10px;
+}
+
+#Parking p{
+	text-align:left;
+	color:#FF9900;
+	font-weight:600;
+}
+
+#Parking dd{
+	display:inline-block;
+}
+
+
+#porduct_button span#roll_left{
+     position:absolute;
+	 top:350px;
+	 left:10px;
+	 width:50px;
+	 height:55px;
+	 z-index:99;
+	 text-align:center;
+	 background-color:#B0B0B0;
+	 
+	 cursor:pointer;
+	 font-size:40px;
+	 
+	 filter:alpha(opacity=70);  
+      -moz-opacity:0.7;  
+      -khtml-opacity: 0.7;  
+      opacity: 0.7; 
+	  color:#FFF;
+}
+
+
+#porduct_button span#roll_right{
+     position:absolute;
+	 top:350px;
+	 left:1287px;
+	 width:50px;
+	 height:55px;
+	 z-index:99;
+	 text-align:center;
+	 background-color:#B0B0B0;
+	 color:#FFF;
+	 cursor:pointer;
+	 font-size:40px;
+	 
+	 filter:alpha(opacity=70);  
+      -moz-opacity:0.7;  
+      -khtml-opacity: 0.7;  
+      opacity: 0.7; 
+	  color:#FFF;
+}

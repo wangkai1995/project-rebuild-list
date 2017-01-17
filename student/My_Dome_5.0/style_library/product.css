@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+div#product_head{
+	padding-top:100px;
+}
+
+
+#product_ul ul.left{
+	padding-top:30px;
+	float:left;
+}
+
+
+#product_ul ul.middle{
+	padding-top:30px;
+	float:left;
+	padding-left:100px;
+}
+
+#product_ul ul.right{
+	padding-top:30px;
+	float:right;
+}
+
+
+img#product_buttom{
+	padding-top:50px;
+}

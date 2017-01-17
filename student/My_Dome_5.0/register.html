@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>new user registration</title>
+
+<script type="text/javascript" src="javascript/wk_Base.js"></script>
+
+<link rel="stylesheet" style="text/css" href="style_library/basis.css"/>
+<link rel="stylesheet" style="text/css" href="style_library/module_head.css"/>
+<link rel="stylesheet" style="text/css" href="style_library/module_buttom.css"/>
+<link rel="stylesheet" style="text/css" href="style_library/register.css"/>
+</head>
+  
+<body>
+
+  <!--公共头-->
+  <div id="module_head">
+    <div id="language">
+      <ul>
+      <li><a class='NO_select'  href='login.html'>user login</a></li>
+      <li><a class='NO_select'  href='register.html'>user registration</a></li>
+      <li><a class='NO_select'  href='index.html' title='English_language'><img src='image/us.jpg' alt='luangimg'/>English</a></li>
+      <li><a class='NO_select'  href='#' title='中文'><img src='image/china.jpg' alt='luangimg'/>中文</a></li>
+      </ul>
+    </div>
+     
+  <div id="head">
+  <img id="module_head_logo" src="image/logo.jpg" alt="logo" />
+   
+   <div id="head_title">
+   
+           <dl id="kong">
+           <dd><a href="index.html"></a></dd>
+           <dd><a href='solution.html'></a></dd>
+           <dd><a href='Successful_cases.html'></a></dd>
+           <dd><a href='Technical_support.html'></a></dd>
+           </dl>
+        
+          <dl class="titles">
+             <dd>
+             <a  href="index.html">Home</a>
+             </dd>
+           
+             <dd>
+          <a href='solution.html'>solution</a>
+         </dd>
+           
+             <dd>
+          <a href='Successful_cases.html'>Successful cases</a>
+         </dd>
+        
+             <dd>
+          <a href='Technical_support.html'>Technical support</a>
+         </dd>
+         </dl>
+     
+    <div id="select">
+           <dl class="select_titles">
+             <dd>
+             <a class="color">Home</a>
+             </dd>
+           
+             <dd>
+          <a class="color">solution</a>
+         </dd>
+           
+             <dd>
+         <a class="color">Successful cases</a>
+         </dd>
+        
+             <dd>
+          <a class="color">Technical support</a>
+         </dd>
+         </dl>
+    </div>
+  </div> 
+ </div>
+</div>
+
+
+   <!--正文-->
+   <div id="User_Register">
+   
+   <form id='register_form' >
+       <dl>
+       <dd><br/></dd>
+       <dd >Registration type  ：<select name="usertype" class="flag" title="Please note: visitors more permissions need administrator approval">
+          <option value="tourist">tourist</option>
+          <option value="members">members</option>  
+          <option value="client">client</option>
+          <option value="Administrator">Administrator</option> 
+        </select></dd>  
+       <dd>user name         : <input type="text" class="flag" name="username" title="* required!At least two, length of not more than 20"/></dd>
+       <dd>password          : <input type="password" class="flag" name="password" title="* required! At least four, length of not more than 20" /></dd>
+       <dd>Confirm password  : <input type="password" class="flag" name="confirm_pd"  title="* required! At least four, length of not more than 20"/></dd>
+       <dd>Head portrait：  <input type="hidden" name="head_portrait" id="portrait_value" value="portrait01.jpg"/> 
+                <img title="Click on image to replace" class="flag"  id="portrait" src="head_portrait/portrait01.jpg" alt="head_portrait"/></dd>
+               
+       <dd>Email address verification : <input  class="flag" title="required!" type="text" name="useremail"/></dd>
+       <dd>Note information to administrators can review: (Allow null)<br/>
+             <textarea rows="16" cols = "45" name="product_detail"></textarea></dd>
+             <p id='usermessage'>Also can enter <span id="messageNumber">200</span> characters</p>
+         
+       <dd>verification_code :<input id="verification_code" class="flag"  type="text" name="verification" title="Click on the image to refresh verification code" /> <img id="code" src="code_library/verification_code.php" alt="Verification_code"/></dd>
+
+       <dd> <input name="register" type="button" value='register'/></dd>
+
+      </dl>
+    </form>
+
+  <!--用于提示的部分-->
+  <!--用户名-->
+   <p class='messageName'> <span></span> </p>
+  <!--密码-->
+   <p class='messagePassword'>
+    PassWord intensity:<span class="password_flag"> low</span><br/>
+    <br/>
+
+    <span class="password_1">█</span> 
+    <span class="password_2">█</span>
+    <span class="password_3">█</span><br/>
+    <br/>
+
+    <span class='password_a'>●</span>Letters and Numbers<br/>
+    <span class='password_b'>●</span>Lcase-sensitive<br/>
+    <span class='password_c'>●</span>Length of more than 12<br/>
+
+  </p>
+
+  <p class='messagePassword_error'><span>Password length can not less than 6</span></p>
+  <p class='messagePassword_ok'></p>
+  
+  <!--密码确认-->
+  <p class='messagePassword_VE'><span></span></p>
+   
+  <!--邮箱验证和邮箱补全-->
+  <div class='Emall_add'>
+    <p><span></span>@163.com</p>
+    <p><span></span>@126.com</p>
+    <p><span></span>@qq.com</p>
+    <p><span></span>@yahoo.com</p>
+    <p><span></span>@hotmail.com</p>
+    <p><span></span>@gmail.com</p>
+    <p><span></span>@msn.com</p>
+    <p><span></span>@aim.com</p>
+    
+  </div>
+  
+  <p class='messageEmall'><span></span></p>
+
+  <p class='loading'>正在注册中...</p>
+
+   </div>
+
+
+ <!-- 公共底部-->
+  <div id="module_buttom">
+    
+    <img src="image/buttom_logo.jpg" alt="buttom_logo"/>
+    
+    <div id="introduce">
+    <p>ROSIM specializes in the innovation and production of wireless vehicle detection 
+       solutions for ITS traffic and parking systems.
+    </p>
+    </div>
+    
+    
+    <dl id="solution">
+    <dd><h2>Resource center</h2></dd>
+    <dd><a href='solution.html'>traffic_detection</a></dd>
+    <dd><a href='solution.html'>Park_433-915MHz</a></dd>
+    </dl>
+    
+    
+    <dl id="About_Us">
+    <dd><h2>Contact us</h2></dd>
+    <dd><a href='Technical_support.html'>Technical support</a></dd>
+    <dd><a href='Successful_cases.html'>Successful cases</a></dd>
+    </dl>
+    
+    
+    <dl id="contact_way">
+    <dd>Address: No.88, Kangxiang Road,</dd>
+    <dd>Torch District, Zhongshan City, Guangdong Province</dd>
+    <dd>Tel: +86-760-85313186</dd>
+    <dd>Fax: +86-769-85313186</dd>
+    <dd>E-mail: Rosimits_@163.com</dd>
+    </dl>
+      
+  </div>
+  
+
+<script type="text/javascript" src="javascript/register.js"></script>
+<script type="text/javascript" src="javascript/core_code.js"></script>
+<script type="text/javascript" src="javascript/module_head.js"></script>
+
+</body>
+</html>

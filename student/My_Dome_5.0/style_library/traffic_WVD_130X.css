@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+
+div#WVD-130x{
+	position:relative;
+	padding-top:180px;
+	width:1350px;
+	height:920px;
+	background-image:url("../image/product/background_color.jpg");
+	overflow:hidden;
+}
+
+/* top 220px rigth:60px*/
+
+#WVD-130x img#WVD-130x_image{
+	position:absolute;
+	top:220px;
+    right:100px;
+}
+
+
+#WVD-130x h1{
+	position:relative;
+	left:30px;
+	color:#3399FF;
+	margin-bottom:20px;
+	font-size:58px;
+}
+
+#WVD-130x span{
+	color:#33FFFF;
+	margin-right:15px;
+	font-size:65px;
+}
+
+#WVD-130x h2{
+	position:relative;
+	left:30px;
+	color:#00FF00;
+	font-size:32px;
+	font-weight:900;
+	width:1350px;
+}
+
+#WVD-130x b.font_size{
+	font-size:40px;
+	color:#FFFF33;
+}
+
+#WVD-130x p{
+	position:relative;
+	left:30px;
+	top:20px;
+	color:#00FF00;
+	font-weight:900;
+	font-size:120%;
+}
+
+
+
+#WVD-130x ul{
+    margin-top:100px;	
+}
+
+#WVD-130x li{
+	float:left;
+	margin:30px;
+	color:#3333FF;
+	font-weight:500;
+}
+
+
+

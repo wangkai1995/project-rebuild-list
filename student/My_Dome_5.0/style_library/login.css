@@ -1,0 +1,71 @@
+@CHARSET "UTF-8";
+
+div#User_Login{
+	background-image:url("../image/login_back.jpg");
+	margin-left:5px;
+	padding-top:120px;
+	width:1350px;
+	height:970px;
+}
+
+
+
+
+#User_Login dl{
+	position:relative;
+	padding-top:10px;
+	padding-left:50px;
+	top:200px;
+	left:850px;
+	width:420px;
+  background-color:#CCFF99;
+}
+
+#User_Login dl dd{
+	padding-top:15px;
+    font-family: "宋体", sans-serif;   /*这里要设置宋体 不然空格间距不一样*/
+	white-space:pre;
+    text-align:left;
+}
+
+#User_Login input[type=text]{
+	width:170px;
+	margin-left:20px;
+	margin_right:20px;
+	border:2px solid #C8C8C8;
+	
+}
+
+#User_Login input[type=password]{
+	width:170px;
+	margin-left:20px;
+	margin_right:20px;
+	border:2px solid #C8C8C8;
+	
+}
+
+
+#User_Login input[type=button]{
+	width:100px;
+	font-weight:500;
+	position:relative;
+	left:100px;
+	margin-top:20px;
+	margin-bottom:20px;
+	}
+	
+	
+
+	
+	
+
+#User_Login  input#verification_code{
+	width:60px;
+} 
+
+
+#User_Login  img#code{
+	position:relative;
+	left:10px;
+	top:10px;
+} 

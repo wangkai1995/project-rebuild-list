@@ -1,0 +1,86 @@
+@CHARSET "UTF-8";
+div#letf_user_UserMessage {
+	position:relative;
+	top:105px;
+    text-align: center;
+    margin-left: 5px;
+    width: 230px;
+    height: 400px;
+    background-color: #FFF;
+}
+
+#letf_user_UserMessage a {
+    text-decoration: none;
+    color: #F30;
+}
+
+#letf_user_UserMessage dl dd {
+    position: relative;
+	padding-top:10px;
+    right: 0px;
+}
+
+
+
+div#View_member  {
+    text-align: center;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 5px;
+    top: 100px;
+    left: 245px;
+    width: 1083px;
+    height: 990px;
+    background-color: #99FFCC;
+}
+
+
+#View_member span#type{
+    color: #F30;
+    font-weight: 900;
+}
+
+#View_member h3{
+    margin-bottom: 20px;
+}
+
+#View_member dl{
+	display:inline-block;
+	margin:5px 30px;
+	
+	width:200px;
+	height:270px;
+	/*background-color:#f30*/;
+}
+
+
+#View_member input[type=button]{
+	position:relative;
+	top:20px;
+    width: 70px;
+}
+
+#View_member select{
+	position:relative;
+	top:20px;
+}
+
+#View_member label{
+	position:relative;
+	top:20px;
+}
+
+
+#View_member ul {
+    list-style-type: none;
+	position:relative;
+	top:40px;
+}
+
+#View_member li{
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    display: inline;
+    border: thin soli #000;
+}

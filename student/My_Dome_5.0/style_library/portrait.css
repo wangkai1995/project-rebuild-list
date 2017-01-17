@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+div#portrait{
+	text-align:center;
+	width:500px;
+	height:500px;
+}
+
+
+
+#portrait dl dd{
+	margin-top :5px;
+	margin-left:10px;
+	display :inline;
+}
+
+#portrait img{
+  cursor:pointer;
+}

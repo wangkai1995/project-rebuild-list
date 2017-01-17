@@ -1,0 +1,244 @@
+@CHARSET "UTF-8";
+
+div#User_Register{
+	background-image:url("../image/register_back.jpg");
+	margin-left:5px;
+	padding-top:120px;
+	width:1350px;
+	height:970px;
+}
+
+
+
+#User_Register form{
+	position:relative;
+	top:20px;
+	right:20px;
+}
+
+#User_Register dl{
+	position:relative;
+	margin:0px;
+	left:450px;
+	width:650px;
+  background-color:#FFF;
+}
+
+#User_Register dl dd{
+	margin-top:15px;
+	margin-left:30px;
+	font-family: "宋体", sans-serif;   /*这里要设置宋体 不然空格间距不一样*/
+	white-space:pre;
+    text-align:left;
+}
+
+#User_Register input[type=text]{
+	width:170px;
+	margin-left:20px;
+	margin_right:20px;
+	border:2px solid #C8C8C8;
+	
+}
+
+#User_Register input[type=password]{
+	width:170px;
+	margin-left:20px;
+	margin_right:20px;
+	border:2px solid #C8C8C8;
+	
+}
+
+
+#User_Register input[type=button]{
+	width:100px;
+	font-weight:500;
+	position:relative;;
+	left:160px;
+	margin-top:20px;
+	margin-bottom:20px;
+	}
+	
+
+#User_Register  input#verification_code{
+	width:60px;
+} 
+
+
+#User_Register  img#code{
+	position:relative;
+	left:10px;
+	top:10px;
+} 
+
+#User_Register p#usermessage{
+	position: relative;
+	left:180px;
+}
+
+span#messageNumber{
+	font-weight: 900;
+	color:#F30;
+}
+
+
+/*提示信息*/
+
+
+#User_Register .messageName{
+	position: absolute;
+    
+    left:820px;
+    top:220px;
+
+	width: 240px;
+	height: 50px;
+
+
+}
+
+.messageName span{
+	position: relative;
+	left: 30px;
+	top:5px;
+}
+
+
+/*密码强度提示*/
+
+#User_Register .messagePassword{
+	position: absolute;
+    
+    left:820px;
+    top:260px;
+
+	width: 240px;
+	height: 120px;
+
+	display: none;
+}
+
+.messagePassword span{
+	color:#F30;
+}
+
+/*密码错误提示*/
+
+#User_Register .messagePassword_error{
+	position: absolute;
+    
+    left:820px;
+    top:260px;
+
+	width: 240px;
+	height: 30px;
+
+	background: url('../image/form/error.jpg') no-repeat;
+
+	display: none;
+
+}
+
+.messagePassword_error span{
+	font-weight: 500;
+	color:#f30;
+	position: relative;
+	left: 30px;
+	top:5px;
+}
+
+
+/*密码正确提示*/
+#User_Register .messagePassword_ok{
+	position: absolute;
+    
+    left:820px;
+    top:260px;
+
+	width: 240px;
+	height: 30px;
+
+	background: url('../image/form/ok.jpg') no-repeat;
+
+	display: none;
+
+}
+
+/*密码确认*/
+#User_Register .messagePassword_VE{
+	position: absolute;
+    
+    left:820px;
+    top:295px;
+
+	width: 240px;
+	height: 30px;
+    
+}
+
+.messagePassword_VE span{
+	position: relative;
+	left: 30px;
+	top:5px;
+}
+
+/*邮箱部分*/
+#User_Register .messageEmall{
+	position: absolute;
+    
+    left:890px;
+    top:500px;
+
+	width: 180px;
+	height: 30px;
+
+
+}
+
+.messageEmall span{
+	position: relative;
+	left: 30px;
+	top:5px;
+}
+
+#User_Register .Emall_add{
+	position: absolute;
+    
+    left:717px;
+    top:525px;
+
+	width: 230px;
+	height: 200px;
+
+	border:3px solid #C8C8C8;
+	background-color: #FFF;
+
+	z-index: 5;
+
+	display: none;
+}
+
+.Emall_add p:hover{
+	background-color: #C8C8C8;
+	cursor: pointer;
+}
+
+
+/*注册提示*/
+#User_Register .loading{
+	position: absolute;
+    
+    left:620px;
+    top:700px;
+
+	width: 240px;
+	height: 30px;
+	text-align: center;
+	font-size: 24px;
+
+
+    background: url('../image/form/loading.gif') no-repeat;
+    background-color: #fff;
+    color:#000;
+
+    display: none;
+}

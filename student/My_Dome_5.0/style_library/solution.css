@@ -1,0 +1,156 @@
+@CHARSET "UTF-8";
+
+div#porductALL{
+	width:1350px;
+}
+
+#porduct_button span#roll_left{
+     position:absolute;
+	 top:350px;
+	 left:10px;
+	 width:50px;
+	 height:55px;
+	 z-index:99;
+	 text-align:center;
+	 background-color:#B0B0B0;
+	 
+	 cursor:pointer;
+	 font-size:40px;
+	 
+	 filter:alpha(opacity=50);  
+      -moz-opacity:0.5;  
+      -khtml-opacity: 0.5;  
+      opacity: 0.5; 
+	  color:#FFF;
+}
+
+
+#porduct_button span#roll_right{
+     position:absolute;
+	 top:350px;
+	 left:1287px;
+	 width:50px;
+	 height:55px;
+	 z-index:99;
+	 text-align:center;
+	 background-color:#B0B0B0;
+	 color:#FFF;
+	 cursor:pointer;
+	 font-size:40px;
+	 
+	 filter:alpha(opacity=50);  
+      -moz-opacity:0.5;  
+      -khtml-opacity: 0.5;  
+      opacity: 0.5; 
+	  color:#FFF;
+}
+
+
+
+div#porduct_solution{
+	width:1350px;
+	height:550px;
+	overflow:hidden;
+}
+
+
+div#traffic_detection{
+	padding-top:180px;
+	width:1350px;
+	height:auto;
+	text-align:center;
+}
+
+
+#traffic_detection ul{
+   margin-top:50px;
+}
+
+#traffic_detection  li{
+	cursor:pointer;
+	display:inline;
+	margin-left:25px;
+	margin-right:25px;
+}
+
+#traffic_detection h1{
+	color:#3366FF;
+}
+
+#traffic_detection strong{
+	font-size:70px;
+	margin-right:10px;
+	color:#00FFFF;
+}
+
+
+
+/*停车场433*/
+
+div#Park_433-915MHz{
+	padding-top:180px;
+	width:1350px;
+	height:auto;
+	text-align:center;
+	display:none;
+}
+
+#traffic_detection ul{
+	margin-top:50px;
+}
+
+#Park_433-915MHz  li{
+	cursor:pointer;
+	display:inline;
+	margin-left:25px;
+	margin-right:25px;
+}
+
+#Park_433-915MHz h1{
+	color:#33CC33;
+}
+
+#Park_433-915MHz strong{
+	font-size:70px;
+	margin-right:10px;
+	color:#33FF33;
+}
+
+
+/*停车场zigbee*/
+
+div#Park_zigbee{
+   	padding-top:180px;
+	width:1350px;
+	height:auto;
+	text-align:center;
+    display:none;
+}
+
+#traffic_detection ul{
+	margin-top:50px;
+}
+
+
+#Park_zigbee  li{
+	cursor:pointer;
+	display:inline;
+	margin-top:10px;
+	margin-left:50px;
+}
+
+#Park_zigbee  h1{
+	color:#33CC33;
+}
+
+#Park_zigbee  strong{
+	font-size:70px;
+	margin-right:10px;
+	color:#33FF33;
+}
+
+
+
+img#solution_image{
+	margin-top:80px;
+}

@@ -1,0 +1,101 @@
+@CHARSET "UTF-8";
+
+div#Park_View{
+	position:relative;
+	padding-top:180px;
+	width:1350px;
+	height:920px;
+	background-image:url("../image/product/background_color.jpg");
+	overflow:hidden;
+}
+
+#Park_View  img#Park_View_image{
+	position:absolute;
+	top:180px;
+	right:100px;
+}
+
+
+#Park_View h1{
+	position:relative;
+	left:30px;
+	color:#66CC33;
+	margin-bottom:20px;
+	font-size:58px;
+}
+
+#Park_View span{
+	color:#00FF66;
+	margin-right:15px;
+	font-size:65px;
+}
+
+#Park_View h2{
+	position:relative;
+	left:30px;
+	color:#00FF00;
+	font-size:32px;
+	font-weight:900;
+	width:1350px;
+}
+
+#Park_View h3{
+	position:relative;
+	left:70px;
+	top:50px;
+	color:#00FF00;
+	font-size:24px;
+	font-weight:900;
+	width:600px;
+}
+
+#Park_View b.font_size{
+	font-size:40px;
+	color:#FFFF33;
+}
+
+#Park_View p{
+	position:relative;
+	left:30px;
+	top:20px;
+	color:#00FF00;
+	font-weight:900;
+	font-size:120%;
+}
+
+
+
+#Park_View ul{
+	display:block;
+    margin-top:100px;	
+}
+
+
+
+#Park_View li{
+	float:left;
+	margin:30px;
+	color:#3333FF;
+	font-weight:500;
+}
+
+
+#Park_View .inline{
+	display:inline;
+}
+
+
+#Park_View .relative{
+	position:relative;
+	top:-140px
+}
+
+#Park_View .move_rigth{
+	position:relative;
+	left:80px
+}
+
+#Park_View .big_font{
+	font-size:36px;
+	padding:0px 5px;
+}

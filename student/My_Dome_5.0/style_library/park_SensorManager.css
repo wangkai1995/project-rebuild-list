@@ -1,0 +1,101 @@
+@CHARSET "UTF-8";
+
+div#Park_sensormanager{
+	position:relative;
+	padding-top:180px;
+	width:1350px;
+	height:920px;
+	background-image:url("../image/product/background_color.jpg");
+	overflow:hidden;
+}
+
+#Park_sensormanager  img#Park_sensormanager_image{
+	position:absolute;
+	top:120px;
+	right:100px;
+}
+
+
+#Park_sensormanager h1{
+	position:relative;
+	left:30px;
+	color:#66CC33;
+	margin-bottom:20px;
+	font-size:58px;
+}
+
+#Park_sensormanager span{
+	color:#00FF66;
+	margin-right:15px;
+	font-size:65px;
+}
+
+#Park_sensormanager h2{
+	position:relative;
+	left:30px;
+	color:#00FF00;
+	font-size:32px;
+	font-weight:900;
+	width:1350px;
+}
+
+#Park_sensormanager h3{
+	position:relative;
+	left:70px;
+	top:50px;
+	color:#00FF00;
+	font-size:24px;
+	font-weight:900;
+	width:600px;
+}
+
+#Park_sensormanager b.font_size{
+	font-size:40px;
+	color:#FFFF33;
+}
+
+#Park_sensormanager p{
+	position:relative;
+	left:30px;
+	top:20px;
+	color:#00FF00;
+	font-weight:900;
+	font-size:120%;
+}
+
+
+
+#Park_sensormanager ul{
+	display:block;
+    margin-top:100px;	
+}
+
+
+
+#Park_sensormanager li{
+	float:left;
+	margin:30px;
+	color:#3333FF;
+	font-weight:500;
+}
+
+
+#Park_sensormanager .inline{
+	display:inline;
+}
+
+
+#Park_sensormanager .relative{
+	position:relative;
+	top:-140px
+}
+
+#Park_sensormanager .move_rigth{
+	position:relative;
+	left:80px
+}
+
+#Park_sensormanager .big_font{
+	font-size:36px;
+	padding:0px 5px;
+}

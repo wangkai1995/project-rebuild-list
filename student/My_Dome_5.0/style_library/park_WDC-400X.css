@@ -1,0 +1,116 @@
+
+@CHARSET "UTF-8";
+
+div#WDC-400X{
+	position:relative;
+	padding-top:180px;
+	width:1350px;
+	height:920px;
+	background-image:url("../image/product/background_color.jpg");
+	overflow:hidden;
+}
+
+#WDC-400X img#WDC-400X_image{
+	position:absolute;
+	top:200px;
+	right:30px;
+}
+
+
+#WDC-400X h1{
+	position:relative;
+	left:30px;
+	color:#66CC33;
+	margin-bottom:20px;
+	font-size:58px;
+}
+
+#WDC-400X span{
+	color:#00FF66;
+	margin-right:15px;
+	font-size:65px;
+}
+
+#WDC-400X h2{
+	position:relative;
+	left:30px;
+	color:#00FF00;
+	font-size:30px;
+	font-weight:900;
+	width:1350px;
+}
+
+#WDC-400X h3{
+	position:relative;
+	left:70px;
+	top:50px;
+	color:#00FF00;
+	font-size:20px;
+	font-weight:900;
+	width:750px;
+}
+
+#WDC-400X b.font_size{
+	font-size:40px;
+	color:#FFFF33;
+}
+
+#WDC-400X p{
+	position:relative;
+	left:30px;
+	top:30px;
+	color:#00FF00;
+	font-weight:900;
+	font-size:120%;
+}
+
+#WDC-400X p#left{
+	float:left;
+	position:relative;
+	top:130px;
+	
+	color:#3333FF;
+	font-weight:500;
+	font-size:110%;
+	
+	height:800px;
+}
+
+
+
+#WDC-400X ul{
+	position:relative;
+	display:inline-block;
+	left:50px;
+    margin-top:100px;	
+}
+
+
+
+#WDC-400X li{
+	margin:30px;
+	color:#3333FF;
+	font-weight:500;
+}
+
+
+#WDC-400X .inline{
+	display:inline;
+}
+
+
+#WWDC-400X .relative{
+	position:relative;
+	top:-140px
+}
+
+#WDC-400X .move_rigth{
+	position:relative;
+	left:80px
+}
+
+#WDC-400X .big_font{
+	font-size:36px;
+	color:#FF9900;
+	padding:0px 5px;
+}

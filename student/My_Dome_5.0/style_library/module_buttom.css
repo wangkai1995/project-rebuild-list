@@ -1,0 +1,93 @@
+@CHARSET "UTF-8";
+
+
+div#module_buttom{
+	margin:5px 5px;
+	background-color:#484848;
+	color:#FFF;
+  	position:absolute;
+	top:1100px;
+	padding:0px;
+	width:1350px;
+	height:240px;
+}
+
+div#introduce{
+	position:absolute;
+	left:80px;
+	top:100px;
+	width:300px;
+	height:200px;
+}
+
+#module_buttom img{
+	position:relative;
+	top:20px;
+	left:120px;
+}
+
+#module_buttom a{
+	font-size:18px;
+	color:#FFF;
+}
+
+#module_buttom h2{
+	position:relative;
+	left:0px;
+	top:-20px;
+	font-size:20px;
+}
+
+
+
+#module_buttom img{
+	position:relative;
+	height:auto;
+	width:auto;
+}
+
+
+#module_buttom dl#contact_way{
+	position:absolute;
+	left:1000px;
+	top:50px;
+	font-size:12px;
+	font-weight:100;
+}
+
+#contact_way dd{
+	
+   padding-top:10px;
+}
+
+
+#module_buttom dl#solution{
+	position:absolute;
+	left:450px;
+	top:20px;
+	font-size:12px;
+	font-weight:100;
+}
+	
+	
+#solution dd{
+	
+	 padding-top:10px;
+}
+
+
+
+#module_buttom dl#About_Us{
+	position:absolute;
+	left:700px;
+	top:20px;
+	font-size:12px;
+	font-weight:100;
+}
+	
+	
+#About_Us dd{
+	
+	 padding-top:10px;
+}
+
