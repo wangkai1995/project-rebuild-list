@@ -1,0 +1,268 @@
+/* cloudbuy-detail */
+.cloudbuy-detail-container{
+	.cloudbuy-goods-img{
+		position:relative;
+		a{
+			display: block;
+			img{
+				display: block;
+			    max-width: 100%;
+			    height: auto;
+			}
+		}
+	}
+	.cloudbuy-goods-title{
+	    background-color: #fff;
+	    padding: 20px;
+	    position: relative;
+	    em{
+    	    font-size: 12px;
+			height: 20px;
+			Width: 44px;
+			text-align: center;
+			line-height: 20px;
+    	    margin-top: 0;
+    	    &.color1{color:#2dd67c;border:1px solid #2dd67c;border-radius: 3px;}
+    	    &.color2{color:#b4b4b4;border:1px solid #b4b4b4;border-radius: 3px;}
+    	    &.color3{color:#ff4e4e;border:1px solid #ff4e4e;border-radius: 3px;}
+    	    &.color4{color:#ff8000;border:1px solid #ff8000;border-radius: 3px;}
+	    }
+		span{
+		    color: #000;
+			font-size: 16px;
+			font-weight: 700;
+			margin-left: 10px;
+		}
+	}
+	.cloidbuy-progress-container{
+	    padding: 0 20px 15px;
+		background-color: #fff;
+		.cloidbuy-progress{
+		    height: 6px;
+		    width: 100% !important;
+			margin-bottom: .3rem;
+		}
+		p{
+			font-size: 10px;
+			margin-top: 10px;
+			margin-bottom: 0;
+		}
+	}
+	.cloudbuy-detail-record{
+	    margin-top: .9375rem;
+		background-color: #fff;
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+		a{
+			display: block;
+			padding: .9375rem 1.25rem;
+			color: #000;
+			font-size: .9375rem;
+			text-decoration: none;
+		}
+		a:first-child{
+			border-bottom: 1px solid #f0f0f0;
+		}
+	}
+	.cloudbuy-winning{
+		padding: 15px 20px;
+		position: relative;
+		background-color: #fff;
+		img{
+			border-radius: 50px;
+		    width: 60px;
+				height: 60px;
+		    display: block;
+			max-width: 100%;
+		}
+		p{
+			margin-bottom: 0;
+			font-size: 13px;
+			color: #b4b4b4;
+		    margin: 0 0 10px;
+		    span{
+	    	    color: #000;
+				font-size: 14px;
+		    }
+		}
+		.rn-activitydetail-img3 {
+			position: absolute;
+			left: 20px;
+			top: -1px;
+			width: 33px;
+			height: 33px;
+		}
+		.rn-ad-div4{
+		    position: relative;
+			width: 100%;
+			padding: 8px 10px;
+			margin-top: 9px;
+			background: url(../img/bodian.PNG) repeat-x #fa5e5e;
+			background-size: 10px;
+			p{
+			    color: #fff;
+				font-size: 14px;
+				margin-top: 3px;
+			    margin-bottom: 0;
+			    em{
+			    	font-size: 16px;
+					font-weight: 700;	
+			    }
+			}
+			a{
+			    padding: 0 10px;
+				float: right;
+				border: 2px solid #fff;
+				border-radius: 50px;
+				color: #FFF;
+				font-size: 13px;
+			}
+		}
+	}
+	.lottery-lose{
+		background: #f0f0f0;
+		color: #888;
+		font-size: 14px;
+		margin-top: 15px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+	}
+	.lottery-calculation-view{
+		text-align: right;
+		margin-top: 10px;
+		font-size: 13px;
+		color: #fa4e4e;
+		span{
+			position: relative;
+			top: 2px;
+		}
+	}
+	.lottery-being{
+		margin-top: 10px;
+		text-align: center;
+		background: #fff;
+		font-size: 14px;
+		color: #888;
+		height: 30px;
+		line-height: 30px;
+		span{
+			position: relative;
+			top: 1px;
+		}
+	}
+	.lottery-count-down{
+		width: 100%;
+		margin-top: 15px;
+		height:40px;
+		text-align: center;
+		background-color: #fee5e5;
+		color: #fa5e5e;
+		position: relative;
+		div{
+		    position: absolute;
+		    bottom: 10px;
+		    left:0;
+		    right: 0;
+		    span{
+		        font-size: 1.25rem;
+		    }
+		}
+	}
+}
+.cloudbuy-footer-button{
+	button{
+		position: fixed;
+		bottom: 5px;
+		z-index: 10;
+		right: 10px;
+		border:none;
+		background-color: #b4b4b4;
+		border-radius: 50px 50px 50px 50px;
+		color: #fff;
+		height: 39px;
+		width: 110px;
+		font-size: 16px;
+	}
+
+	.cloudbuy-footer-button-ed{
+		background-color: #ff8000;
+	}
+}
+.cloudbuy-footer-tab{
+    padding-top: 2px;
+    border-top: none!important;
+    border-bottom: none;
+    background-position: top;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: horizontal;
+    -moz-flex-direction: horizontal;
+    -ms-flex-direction: horizontal;
+    flex-direction: horizontal;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    border-color: #f0f0f0;
+    background-color: #f8f8f8;
+    background-image: linear-gradient(0deg,#f0f0f0,#f0f0f0 50%,transparent 50%);
+    color: #444;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    width: 100%;
+    height: 49px;
+    border-style: solid;
+    border-top-width: 1px;
+    background-size: 0;
+    line-height: 49px;
+    .tab-item {
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		-moz-box-flex: 1;
+		-moz-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		display: block;
+		overflow: hidden;
+		max-width: 150px;
+		height: 100%;
+		color: inherit;
+		text-align: center;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-weight: 400;
+		font-size: 14px;
+		font-family: ionicons,"-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
+		opacity: .7;
+		position:relative;
+		P{
+		    position: absolute;
+			font-size: 12px;
+			bottom: -13px;
+			right: 15px;
+		}
+	}
+	.tabs-text{
+	    max-width: 100%;
+		text-align: left;
+		text-indent: 15px;
+		font-size: 16px;
+		color: #ff8000;
+		opacity: 1;
+	}
+}

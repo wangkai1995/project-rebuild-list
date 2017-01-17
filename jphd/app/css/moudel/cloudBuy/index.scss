@@ -1,0 +1,336 @@
+/*cloudbuy-index*/
+.cloudbuy-index-head{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	height:44px;
+	.notice-active{
+		margin: 0;
+	    position: absolute;
+	    top: 0px;
+	    right: 21px;
+	    font-size: 27px;
+	    color: #f30;
+	}
+}
+.cloudbuy-tab-list{
+	position:absolute;
+	top:44px;
+	left:0px;
+	right:0px;
+	height:44px;
+	.tab-list-item{
+		padding:0px 10px;
+		padding-top: 10px;
+		font-weight: 700;
+		font-size: 14px;
+		color:#888;
+		div{
+			height: 90%;
+			&.active{
+				color:#000;
+				border-bottom: 2px solid #ff8000;
+			}
+		}
+	}
+}
+.cloudbuy-index-container{
+	position: absolute;
+	top:88px;
+	left:0px;
+	right:0px;
+	bottom:44px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	-webkit-overflow-scrolling:touch;
+	.index-banner{
+		width: 100%;
+		height: auto;
+		img{
+			width: 100%;
+			background-size: 100%;
+		}
+	}
+	.index-menu{
+		background-color:#fff;
+		padding:15px 15px 10px;
+		overflow: hidden;
+		margin-bottom: 5px;
+		a{
+			width: 25%;
+			display: block;
+			float: left;
+			text-decoration: none;
+			position: relative;
+			text-align: center;
+			h3{
+				color: #000;
+				font-size: 14px;
+				margin-top: 10px;
+				line-height: 100%;
+				font-weight: 400;
+			}
+		}
+	}
+	.index-lottery{
+		position: relative;
+		background-color: #fff;
+		margin-bottom: 0.5rem;
+		height: auto;
+		width: 100%;
+		overflow: hidden;
+		.lottery-head{
+			line-height: 40px;
+			padding:0px 15px;
+			text-align: center;
+			border-bottom: 1px solid #f0f0f0;
+			height: auto;
+			overflow: hidden;
+			p{
+				margin: 0;
+				height: auto;
+				overflow: hidden;
+				span{
+					float: left;
+					color: #000;
+					font-size: 14px;
+				}
+				a{
+					float: right;
+					font-size: 13px;
+					color:#888;
+					i{
+						position: relative;
+						top:1px;
+						margin-left: 1px;
+					}
+				}
+			}
+		}
+		.lottery-list{
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+			.lottery-list-item{
+				width: 35%;
+				border-right:1px solid #f0f0f0;
+				.lottery-item{
+					position: relative;
+					float: left;
+					padding: 6px 6px 10px;
+					img{
+						width: auto;
+						height: auto;
+						max-width: 100%;
+						max-height: 100%;
+					}
+					p{
+						margin-top: 10px;
+						height: 40px;
+						text-overflow: ellipsis;
+						overflow: hidden;
+						white-space: normal;
+						font-size:12px;
+					}
+					em{
+						font-size: 16px;
+						text-align: center;
+						color:#ff4e4e;
+						font-weight: 700;
+					}
+				}
+			}
+		}
+	}
+	.index-goods-item{
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+		.goods-img{
+			position: relative;
+		    display: block;
+		    background: #fff;
+		    padding: .9375rem;
+		    img{
+		    	display: block;
+    			max-width: 100%;
+    			-webkit-user-drag: none;
+    			height: auto;
+		    }
+		}
+		.goods-message{
+			background-color: #fff;
+			.goods-name{
+				padding: 0 .9375rem .9375rem;
+			    word-break: break-all;
+			    span{
+			    	font-size: .875rem;
+				    font-weight: 700;
+				    color: #000;
+				    word-break: break-all;
+			    }
+			}
+		}
+		.goods-footer{
+			height: auto;
+			overflow: hidden;
+			background-color: #fff;
+    		padding: 0 .9375rem .9375rem;
+   	 		border-bottom: 1px solid #f0f0f0;
+   	 		.goods-progress{
+   	 			-webkit-box-flex: 0;
+			    -webkit-flex: 0 0 66.6666%;
+			    -moz-box-flex: 0;
+			    -moz-flex: 0 0 66.6666%;
+			    -ms-flex: 0 0 66.6666%;
+			    flex: 0 0 66.6666%;
+			    max-width: 66.6666%;
+			    p{
+			    	text-align: left;
+				    font-size: .75rem;
+				    margin-bottom: 0;
+				    color: #888;
+				    font-weight: 700;
+				    line-height: .75rem;
+				    span{
+				    	font-size: .75rem;
+    					color: #ff8000;
+				    }
+			    }
+   	 		}
+   	 		.goods-pay{
+   	 			-webkit-box-flex: 0;
+			    -webkit-flex: 0 0 33.3333%;
+			    -moz-box-flex: 0;
+			    -moz-flex: 0 0 33.3333%;
+			    -ms-flex: 0 0 33.3333%;
+			    flex: 0 0 33.3333%;
+			    max-width: 33.3333%;
+			    text-align:center;
+			    a{
+			    	padding: 0 .714rem;
+				    border-radius: 2rem;
+				    background: #ff8000;
+				    color: #fff;
+				    line-height: 2.143rem;
+				    text-align: left;
+				    font-size: 1rem;
+				    display: inline-block;
+				    font-weight: 700;
+				    height: 2.143rem;
+				    text-decoration: none;
+			    }
+   	 		}
+		}
+	}
+}
+.category-list{
+	overflow: hidden;
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	li{
+		width: 50%;
+		box-sizing: border-box;
+    	float: left;
+    	padding: .9375rem .46875rem 0 .9375rem;
+    	overflow: hidden;
+    	.item-goods-img{
+    		padding: .5rem;
+    		background: #fff;
+    		img{
+    			display: block;
+    			max-width: 100%;
+    			height: auto;
+    		}
+    	}
+    	.cloudbuy-item-info{
+    		background-color: #fff;
+    		width: 100%;
+    		overflow: hidden;
+    		.goods-name{
+    			padding: 0 .5rem .9375rem;
+    			background-color: #fff;
+   				word-break: break-all;
+   				span{
+   					display: block;
+    				height: 2.1875rem;
+    				line-height: 1.09375rem;
+    				overflow: hidden;
+    				font-size: .875rem;
+    				font-weight: 700;
+    				color: #000;
+    				word-break: break-all;
+
+   				}
+    		}
+    		.goods-footer{
+    			padding: 0 .5rem .5rem;
+    			border-bottom: 1px solid #f0f0f0;
+    			.goods-progress{
+    				width: 100%;
+    				height: auto;
+    				overflow: hidden;
+    				div{
+    					-webkit-box-flex: 0;
+					    -webkit-flex: 0 0 50%;
+					    -moz-box-flex: 0;
+					    -moz-flex: 0 0 50%;
+					    -ms-flex: 0 0 50%;
+					    flex: 0 0 50%;
+					    max-width: 50%;
+					    .progress-text{
+				    	    position: relative;
+							z-index: 5;
+							color:#fff;
+    						line-height: .625rem;
+					    }
+    				}
+    				div:first-child{
+    					text-align: left;
+					    font-size: .75rem;
+					    margin-bottom: 0;
+					    color: #888;
+					    font-weight: 700;
+					    line-height: .75rem;
+					    text-align: center;
+    				}
+    				div:last-child{
+    					position: relative;
+    					top: 0px !important;
+    					width: 3.75rem;
+    					top: 0;
+    				}
+    			}
+    			.goods-pay{
+    				text-align:center;
+    				a{
+					    background: #ff8000;
+					    color: #fff;
+					    display: inline-block;
+					    font-weight: 700;
+					    text-decoration: none;
+					    line-height: 1.43rem;
+						height: 1.43rem;
+						font-size: 1rem;
+						width: 100%;
+						border-radius: 0;
+						text-align: center;
+						margin-top: 5px;
+    				}
+    			}
+    		}
+    	}
+	}
+}
+.cloudbuy-index-footer{
+	position:absolute;
+	height:44px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	border-top:1px solid #e0e0e0;
+}
+/* cloudbuy-index  End*/
+

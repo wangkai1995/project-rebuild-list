@@ -1,0 +1,107 @@
+<div class="war-header">
+	<head-title title="我的" ></head-title>
+</div>
+
+<div class="war-container-infooter bgGrey">
+	<swipe-scroll>
+		<!--用户头像-->
+		<div class="user-index-banner clearfix">
+			<img   ng-if="vm.userInfo"
+				   ng-src="{{vm.userInfo.avatar}}" alt="user-avatar" 
+			/>
+			<p ng-fi="vm.userInfo">{{::vm.userInfo.name}}</p>
+			<img 	ng-if="!vm.userInfo" 
+					ng-click="vm.goLogin()"  
+					src="../img/default-people-small.PNG" alt="user-defulat"
+			/>
+			<p ng-if="!vm.userInfo" ng-click="vm.goLogin()"  >请登录</p>
+		</div>
+		<!--列表-->
+		<div class="user-list-first bgWhite clearfix">
+			<div class="fl">
+				<i class="user-list-icon cicon remain-icon"></i>
+			</div>
+			<div class="fl user-list-item">
+				<p class="item-name fl">余额</p>
+				<p class="item-icon fr" ng-if="!vm.userInfo">无</p>
+				<p class="item-icon fr" ng-if="vm.userInfo">&yen;&nbsp;{{::vm.userInfo.money}}</p>
+			</div>
+		</div>
+		<div class="user-list bgWhite clearfix mt15">
+			<div class="fl">
+				<i class="user-list-icon cicon list-record"></i>
+			</div>
+			<div class="fl user-list-item">
+				<p class="item-name fl">购买记录</p>
+				<i class="item-icon fr item-icon-i cicon go-to"></i>
+			</div>
+		</div>
+		<div class="user-list bgWhite clearfix">
+			<div class="fl">
+				<i class="user-list-icon cicon my-prize"></i>
+			</div>
+			<div class="fl user-list-item">
+				<p class="item-name fl">中奖记录</p>
+				<i class="item-icon fr item-icon-i cicon go-to"></i>
+			</div>
+		</div>
+		<div class="user-list bgWhite clearfix">
+			<div class="fl">
+				<i class="user-list-icon cicon voucher-icon"></i>
+			</div>
+			<div class="fl user-list-item">
+				<p class="item-name fl">代金券</p>
+				<i class="item-icon fr item-icon-i cicon go-to"></i>
+			</div>
+		</div>
+		<div class="user-list bgWhite clearfix">
+			<div class="fl">
+				<i class="user-list-icon cicon icon-invitation"></i>
+			</div>
+			<div class="fl user-list-item">
+				<p class="item-name fl">邀请有奖</p>
+				<i class="item-icon fr item-icon-i cicon go-to"></i>
+			</div>
+		</div>
+		<div class="user-list bgWhite clearfix">
+			<div class="fl">
+				<i class="user-list-icon cicon redPocket"></i>
+			</div>
+			<div class="fl user-list-item">
+				<p class="item-name fl">我的红包</p>
+				<i class="item-icon fr item-icon-i cicon go-to"></i>
+			</div>
+		</div>
+		<div class="user-list bgWhite clearfix">
+			<div class="fl">
+				<i class="user-list-icon cicon icon-intowechat"></i>
+			</div>
+			<div class="fl user-list-item">
+				<p class="item-name fl">微信提现</p>
+				<i class="item-icon fr item-icon-i cicon go-to"></i>
+			</div>
+		</div>
+		<div class="user-list bgWhite clearfix mt15">
+			<div class="fl">
+				<i class="user-list-icon cicon rn-set"></i>
+			</div>
+			<div class="fl user-list-item">
+				<p class="item-name fl">设置</p>
+				<i class="item-icon fr item-icon-i cicon go-to"></i>
+			</div>
+		</div>
+		<div class="user-list bgWhite clearfix">
+			<div class="fl">
+				<i class="user-list-icon cicon my-service"></i>
+			</div>
+			<div class="fl user-list-item">
+				<p class="item-name fl">客服中心</p>
+				<i class="item-icon fr item-icon-i cicon go-to"></i>
+			</div>
+		</div>
+	</swipe-scroll>	
+</div>
+
+<div class="war-footer">
+	<footer-tab type="mine"></footer-tab>
+</div>

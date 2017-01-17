@@ -1,0 +1,59 @@
+.user-index-banner{
+    background: url(../img/my-background.PNG);
+    background-size: 100% 100%;
+    color: #fff;
+    height: 175px;
+    width: 100%;
+    img{
+    	width: 75px;
+		height: 75px;
+		margin: 40px auto 10px;
+		border: 3px solid #fff;
+		border-radius: 50px;
+	    display: block;
+    	max-width: 100%;
+    }
+    p{
+	    text-align: center;
+		font-weight: 700;
+		margin-top: 10px;
+		margin-bottom: 0;
+		font-size: 16px;
+		color: #fff;
+    }
+}
+.user-list-first{
+	border-bottom: 1px solid #f0f0f0;
+    height: 3.175rem;
+    line-height: 3.175rem;
+}
+.user-list{
+	width:100%;
+	display:block;
+	height:auto;
+	overflow:hidden;
+
+}
+.user-list-icon{
+    margin: 15px 20px
+}
+.user-list-item{
+	width: 75%;
+    border-bottom: 1px solid #f0f0f0;
+    height: 3.175rem;
+    line-height: 3.175rem;
+    .item-name{
+	    font-size: 16px;
+    	margin: 0;
+    }
+    .item-icon{
+	    font-size: 14px;
+    	color: #fa5e5e;
+	    margin: 0 0 10px;
+    }
+    .item-icon-i{
+	    width: 7px;
+    	height: 12px;
+    	margin-top: 1.25rem;
+    }
+}

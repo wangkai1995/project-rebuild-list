@@ -1,0 +1,118 @@
+.go-back{
+	@include sprite($bar-back);
+}
+.go-home{
+	@include sprite($bar-home-on);
+}
+.go-notice{
+	@include sprite($bar-message);
+}
+.icon-menu-mainactivitf{
+	@include sprite($menu-mainactivity);
+}
+.icon-menu-redpacket{
+	@include sprite($menu-redpacket);
+}
+.icon-menu-comingsoon{
+	@include sprite($menu-comingsoon);
+}
+.icon-menu-invite{
+	@include sprite($menu-invite);
+}
+.icon-go-right{
+	@include sprite($go-to);
+}
+.icon-pay-right{
+	@include sprite($icon-right);
+}
+.icon-dropdown{
+	@include sprite($icon-dropdown);
+}
+.bar-home-on{
+	@include sprite($bar-home-on);
+}
+.bar-home{
+	@include sprite($bar-home);
+}
+.bar-friends-on{
+	@include sprite($bar-friends-on);
+}
+.bar-friends{
+	@include sprite($bar-friends);
+}
+.bar-mine-on{
+	@include sprite($bar-mine-on);
+}
+.bar-mine{
+	@include sprite($bar-mine);
+}
+.bar-activity-on{
+	@include sprite($bar-activity-on);
+}
+.bar-activity{
+	@include sprite($bar-activity);
+}
+.icon-right-arrows{
+	@include sprite($icon-right-arrows);
+}
+.sign-prize{
+	@include sprite($sign-prize);
+}
+.invite-on{
+	@include sprite($invite-on);
+}
+
+.icon-invite{
+	@include sprite($invite);
+}
+.share-on{
+	@include sprite($share-on);
+}
+
+.icon-share{
+	@include sprite($share);
+}
+.go-to{
+    @include sprite($go-to);
+}
+.remain-icon{
+    @include sprite($my-remain);
+}
+.list-record{
+    @include sprite($list-record);
+}
+.my-prize{
+    @include sprite($my-prize);
+}
+.voucher-icon{
+    @include sprite($voucher-icon);
+}
+.icon-invitation{
+	@include sprite($icon-invitation);
+}
+.redPocket{
+	@include sprite($my-redpocket);
+}
+.icon-intowechat{
+	@include sprite($icon-intowechat);
+}
+.rn-set{
+    @include sprite($my-setting);
+}
+.my-service{
+    @include sprite($my-service);
+}
+.icon-clear{
+	@include sprite($clear);
+}
+.icon-radio{
+	@include sprite($radio);
+}
+.icon-radio-ed{
+	@include sprite($radio-ed);
+}
+.icon-winning{
+	@include sprite($sign-prize);
+}
+
+

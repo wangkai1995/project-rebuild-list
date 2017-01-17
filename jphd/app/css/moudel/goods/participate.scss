@@ -1,0 +1,43 @@
+.cloudbuy-participate-item{
+    height: auto;
+    overflow: hidden;
+    .item-portrait{
+    	width: 13%;
+    	padding: 10px 0 10px 5px;
+    	padding-top: 15px !important;
+    	img{
+    		display: block;
+    		height: 2.5rem;
+   			width: 2.5rem;
+    		border-radius: 50px;
+    	}
+    }
+    .item-container{
+    	width: 80%;
+    	padding: 15px 0 10px 15px;
+    	border-bottom: 1px solid #f0f0f0;
+    	.message{
+    		width: 70%;
+    		clear: both;
+	        display: block;
+	        color: #888;
+	        span{
+	        	display:block;
+	        	white-space:nowrap;
+        	 	overflow:hidden; 
+        	 	text-overflow:ellipsis;
+	        	strong{
+	        	    color: #000;
+	    			font-weight: 400;
+		        }
+	        }
+	        
+    	}
+    }
+    .luck-number{
+    	width: 30%;
+    	a{
+    		color:#ff8000;
+    	}
+    }
+}

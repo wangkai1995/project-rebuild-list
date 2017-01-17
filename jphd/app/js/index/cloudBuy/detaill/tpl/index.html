@@ -1,0 +1,155 @@
+ <div class="cloudbuy-index-head">
+		<head-title title="活动详情"  left-icon="go-back" left-click="vm.goBack()">
+		</head-title>
+  </div>
+
+
+ <div class="war-container-infooter cloudbuy-detail-container bgGrey">
+ 		<swipe-scroll refresh='vm.doRefresh()'>
+ 			<div class="cloudbuy-goods-img">
+ 				<a href="javascript:">
+ 					<img ng-src="{{vm.detail.goodsCover}}" alt="goods-img"/>
+ 				</a>
+ 			</div>
+			<!--状态-->
+ 			<div class="cloudbuy-goods-title">
+ 				<em ng-if="vm.detail.status === 0" class="fl color4">未开始</em>
+	            <em ng-if="vm.detail.status === 1" class="fl color3">进行中</em>
+	            <em ng-if="vm.detail.status === 2" class="fl color3">待揭晓</em>
+	            <em ng-if="vm.detail.status === 3" class="fl color2">已开奖</em>
+	            <em ng-if="vm.detail.status === 4" class="fl color2">已失效</em>
+	            <span>{{::vm.detail.goodsTitle}}</span>
+	            <i class="cicon fr icon-right-arrows"></i>
+ 			</div>
+			<!--进度条-->
+ 			<div class="cloidbuy-progress-container" ng-if="vm.detail.status !== 0">
+				<div class="cloidbuy-progress progress">
+					<div class="index-process-in" ng-style="{width: (vm.detail.totalParts - vm.detail.remainParts)/vm.detail.totalParts*100 + '%'}"></div>
+				</div>
+				<p>
+					<span class="fr">活动号：{{vm.detail.activityId}}</span>
+					<span class="fl">总需：{{vm.detail.totalParts}}份</span>
+					<span class="ml15">剩余：{{vm.detail.remainParts}}份</span>
+				</p>
+ 			</div>
+ 			<!--开奖和购买信息-->
+ 			<div ng-if="vm.detail.status === 1 && vm.detail.buyParts === 0" class="lottery-lose">	
+ 				想要这样的好运气？快来参与夺宝吧！
+ 			</div>
+            <div ng-if="vm.detail.status === 3 && vm.detail.buyParts === 0" class="lottery-lose">
+            	您错过了本期夺宝，快去参加最新一期吧！
+        	</div>
+            <div ng-if="vm.detail.status === 2" class="lottery-count-down">
+                <div>
+                    <!-- 开奖倒计时:<span>{{time.hours}}:{{time.minutes}}:{{time.seconds}}</span> -->
+                </div>
+            </div>
+            <div class="lottery-calculation-view" ng-if="vm.detail.status === 2">
+            	<a>
+            		查看计算详情 
+            		<span class="cicon icon-right-arrows-red"></span>
+        		</a>
+    		</div>
+    		<!--获奖者-->
+	        <div class="cloudbuy-winning" ng-if="vm.detail.status == '3'">
+	            <div class="clearfix">
+	                <div class="col-25 fl">
+	                    <img ng-src="{{vm.tmp.avatar}}" class="img-responsive rn-img rn-activitydetail-img2" />
+	                </div>
+	                <div class="col-75 fl">
+	                    <p>获奖者：<span>{{::vm.tmp.name}}</span></p>
+	                    <p>购买份数：<span>{{::vm.tmp.buyParts}}份</span></p>
+	                    <p>开奖时间：<span>{{::vm.winTime}}</span></p>
+	                </div>
+	                <span class="rn-activitydetail-img3 cicon sign-prize"><span/>
+	            </div>
+	            <div class="rn-ad-div4 clearfix">
+	                <div class="col-60 fl">
+	                    <p>幸运号码：<em>{{::vm.tmp.winNumber}}</em></p>
+	                </div>
+	                <div class="col-40 fr">
+	                    <a class="rn-a" href="#calculationDetails/{{vm.activityId}}/1">计算详情</a>
+	                </div>
+	            </div>
+	        </div>
+	        <!--本期购买-->
+	        <div class="lottery-being" ng-if="vm.detail.status === 2 && vm.detail.buyParts !== null">
+	            <div class="tabs-text" ng-if="vm.detail.buyParts === 0">
+	            	您错过了本期夺宝，快去参加最新一期吧！
+            	</div>
+	            <div ng-if="vm.detail.buyParts > 0">
+	            	本期已购买{{vm.detail.buyParts}}份，查看号码 <span class="cicon icon-right-arrows"></span>
+	            </div>
+	        </div>
+	        <div class="lottery-being" ng-if="vm.detail.status === 1 && vm.detail.buyParts !== null && vm.detail.buyParts > 0">
+	            <div ng-if="vm.detail.buyParts > 0" >
+	            	本期已购买{{vm.detail.buyParts}}份，查看号码 <span class="cicon icon-right-arrows"></span>
+            	</div>
+	        </div>
+	        <div class="lottery-being" ng-if="vm.detail.status === 3 && vm.detail.buyParts !== null && vm.detail.buyParts > 0">
+	            <div ng-if="vm.detail.buyParts > 0" >
+	            	本期已购买{{vm.detail.buyParts}}份，查看号码 <span class="cicon icon-right-arrows"></span>
+            	</div>
+	        </div>
+
+ 			<!--往期揭晓-->
+ 			<div class="cloudbuy-detail-record">
+ 				<a ui-sref="goods.participate({activityId:vm.activityId})">
+ 					本期所有参与记录<i class="cicon fr icon-right-arrows"></i>
+				</a>
+ 				<a ui-sref="goods.towards({goodsId:vm.detail.goodsId})">
+ 					往期揭晓<i class="cicon fr icon-right-arrows">
+ 				</a>
+ 			</div>
+ 		</swipe-scroll>
+ </div>
+
+
+ <div class="war-footer">	
+	<div 	class="cloudbuy-footer-tab" 
+			ng-if="vm.detail.status == '0'|| vm.detail.status =='1' || vm.detail.status =='4'"
+	>
+        <a 	class="tab-item " 
+        	ng-if="vm.detail.status == '0' || vm.detail.status =='1'">
+            <span class="icon invite-on cicon"></span>
+            <p>邀请好友</p>
+        </a>
+        <a 	class="tab-item " 
+        	ng-if="vm.detail.status == '4' || vm.detail.status == '3' || vm.detail.status == '2'">
+            <span class="icon icon-invite cicon"></span>
+            <p>邀请好友</p>
+        </a>
+        <a  class="tab-item " 
+        	ng-if="vm.detail.status == '0' || vm.detail.status =='1'">
+            <span class="cicon share-on"></span>
+            <p style="right: 30px;">分享</p>
+        </a>
+        <a 	class="tab-item " 
+        	ng-if="vm.detail.status == '4' || vm.detail.status == '3' || vm.detail.status == '2'">
+            <span class="cicon icon-share"></span>
+            <p style="right: 30px;">分享</p>
+        </a>
+        <a class="tab-item"></a>
+        <a class="tab-item"></a>
+    </div>
+    <div 	class="rn-activitydetail-button" 
+    		ng-if="vm.detail.status == '0' || vm.detail.status =='4'">
+        <button>购买</button>
+    </div>
+    <div 	class="cloudbuy-footer-button" 
+    		ng-if="vm.detail.status =='1'">
+        <button class="cloudbuy-footer-button-ed">购买</button>
+    </div>
+
+    <div 	class="tabs cloudbuy-footer-tab" 
+    		ng-if="vm.detail.status =='2' || vm.detail.status =='3'">
+        <div class="tabs-text tab-item">新一期火爆进行中...</div>
+    </div>
+    <div 	class="cloudbuy-footer-button" 
+			ng-if="vm.detail.status =='2' || vm.detail.status =='3'">
+        <button class="cloudbuy-footer-button-ed">立即参与</button>
+    </div>
+ </div>
+
+	
+

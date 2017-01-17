@@ -1,0 +1,44 @@
+ <div class="war-header">
+		<head-title title="本期所有参与记录"  
+					left-icon="go-back" 
+					left-click="vm.goBack()" 
+					right-icon="go-home" 
+					right-click="vm.goHome()">
+		</head-title>
+  </div>
+
+  <div class="war-container bgGrey">
+  		<swipe-scroll refresh='vm.doRefresh()' loadmore='vm.loadMore()' ismore='vm.isMore'>	
+  			 <div class="clearfix pt15">
+  			 	<div 	class="cloudbuy-participate-item bgWhite" 
+  			 			ng-repeat="(key, item) in vm.buyList"
+	 			>
+  			 		<div class="clearfix bgWhite">
+  			 			<div class="col-20 fl pt15 item-portrait">
+  			 				<img 	ng-if="item.avatar" 
+  			 						ng-src="{{item.avatar}}" 
+  			 						alt="user-portrait" 
+	 						/>
+  			 				<img 	ng-if="!item.avatar" 
+  			 					 	src="../img/default-people-small.PNG" 
+  			 					 	alt="user-portrait" 
+	 					 	/>
+  			 			</div>
+						<div class="col-80 fl item-container">
+							<div class="col-70 message fl">
+								<span>
+									{{::item.name}}<strong>购买了{{::item.buyParts}}份</strong>
+								</span>
+								<span>{{::item.buyTime | date : 'yyyy-MM-dd HH:mm:ss' }}</span>
+							</div>
+							<div class="col-30 luck-number fl">
+								<a class="" href="javascipte:">幸运号码</a>
+							</div>
+						</div>
+  			 		</div>
+  			 	</div>
+  			 </div>
+  		</swipe-scroll>
+  </div>
+
+

@@ -1,0 +1,136 @@
+  
+  <div class="cloudbuy-index-head">
+  		<div class='head-title-container '>
+			<div class="title"><span>精品活动</span></div>
+			<div class="right" ng-click="vm.goNotice()">
+				<i ng-if="vm.notice > 0" class="notice-active">&bull;</i>
+				<i class="cicon go-notice"></i>
+			</div>
+		</div>
+  </div>
+
+  <div class="cloudbuy-tab-list  swipe-war">
+	  	<div class="swipe-container">
+	  		<div  class="swipe-item tab-list-item" 
+	  			  ng-click="vm.tabChange(item)" 
+	  			  ng-repeat="item in vm.tabList"
+	  		>
+	  		 	 <div ng-class="{'active':item.id === vm.activeList.id}">{{item.name}}</div>
+	  		 </div>
+	  	</div>
+  </div>	
+ 
+
+ <div class="cloudbuy-index-container bgGrey">
+ 		<swipe-scroll refresh='vm.doRefresh()' loadmore='vm.loadMore()' ismore='vm.isMore'>	
+			<!--精选分类-->
+	 		<div ng-if="vm.activeList.id === 0">
+				<div class="index-banner">
+		 			<a href="javascript:">
+		 				<img src="img/banner.png" alt="banner-img"/>
+		 			</a>
+				</div>
+				<div class="index-menu">
+					<a href="javascript:">
+						<i class="cicon icon-menu-mainactivitf"></i>
+						<h3>私人订制</h3>
+					</a>
+					<a href="javascript:">
+						<i class="cicon icon-menu-redpacket"></i>
+						<h3>幸运红包</h3>
+					</a>
+					<a href="javascript:">
+						<i class="cicon icon-menu-comingsoon"></i>
+						<h3>即将揭晓</h3>
+					</a>
+					<a href="javascript:">
+						<i class="cicon icon-menu-invite"></i>
+						<h3>活动邀请</h3>
+					</a>
+				</div>
+				<div class="index-lottery">
+					<div class="lottery-head">
+						<p>
+							<span>即将揭晓</span>
+							<a href="javascript:">查看更多<i class="cicon icon-go-right"></i></a>
+						</p>
+					</div>
+					<div class="lottery-list swipe-war">
+						<div class="swipe-container">
+								<div class="swipe-item lottery-list-item" ng-repeat=" item in vm.LotteryList.objects">
+									<div class="lottery-item">
+										<img src="{{item.goodsCover}}" alt="">
+										<p>{{item.goodsTitle}}</p>
+										<div>
+											<center><em>还没做</em></center>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div 	class="index-goods-item" 
+						ng-repeat="item in vm.DataList.objects" 
+						ng-click="vm.goCloundBuyDetail(item)">
+					<div class="goods-img">
+						<img ng-src="{{item.goodsCover}}" alt="goods">
+					</div>
+					<div class="goods-message">
+						<div class="goods-name">
+							<span>{{item.goodsTitle}}</span>
+						</div>
+						<div class="goods-footer">
+							<div class="goods-progress mt0 fl">
+								<p>进度揭晓<span>{{(item.totalParts - item.remainParts)/item.totalParts*100 | number: 0}}%</span></p>
+								<div class="progress">
+									<div class="index-process-in" ng-style="{width: (item.totalParts - item.remainParts)/item.totalParts*100 + '%'}"></div>
+								</div>
+							</div>
+							<div class="goods-pay fr">
+								<a href="javascript">一元购<i class="cicon icon-pay-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+	 		</div>
+			
+			<!--其他分类-->
+	 		<div ng-if="vm.activeList.id !== 0">
+	 			<ul class="category-list">
+	 				<li ng-repeat="item in vm.DataList.objects">
+	 					<div class="item-goods-img">
+	 						<img ng-src="{{item.goodsCover}}" alt="goods-img" class="img-responsive">
+	 					</div>
+	 					<div class="cloudbuy-item-info">
+	 						<div class="goods-name">
+	 							<span>{{item.goodsTitle}}</span>
+	 						</div>
+	 						<div class="goods-footer">
+	 							<div class="goods-progress">
+	 								<div class="fl">进度揭晓</div>
+	 								<div class="fr progress">
+										<div class="index-process-in" ng-style="{width: (item.totalParts - item.remainParts)/item.totalParts*100 + '%'}"></div>
+										<span class="progress-text">
+											{{(item.totalParts - item.remainParts)/item.totalParts*100 | number: 0}}%
+										</span>
+									</div>
+	 							</div>
+	 							<div class="goods-pay">
+	 								<a href="javascript:">一元购</a>
+	 							</div>
+	 						</div>
+	 					</div>
+	 				</li>
+	 			</ul>
+	 		</div>
+	 		
+			<div class="text-center mt10 mb10" ng-if="!vm.isMore || vm.DataList.objects.length === 0">
+            	暂无更多商品
+     		</div>
+     	</swipe-scroll>	
+	 </div>
+ </div>
+
+ <div class="cloudbuy-index-footer">
+ 		<footer-tab type="home"></footer-tab>
+ </div>

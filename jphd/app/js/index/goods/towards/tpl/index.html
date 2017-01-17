@@ -1,0 +1,48 @@
+ <div class="war-header">
+		<head-title title="往期中奖记录"  
+					left-icon="go-back" 
+					left-click="vm.goBack()" 
+		>
+		</head-title>
+  </div>
+
+  <div class="war-container bgGrey">
+  		<swipe-scroll refresh='vm.doRefresh()' loadmore='vm.loadMore()' ismore='vm.isMore'>	
+  			 <ul class="toward-list pt15">
+             <li ng-repeat="(key, item) in vm.buyList">
+                 <a ui-sref="cloudbuy.detaill({activityId:item.activityId})">
+                    <div class="toward-item-head">
+                        <div class="fl">活动号:{{::item.activityId}}</div>
+                        <div class="fr">{{::item.lotteryTime| date:'yyyy-MM-dd HH:MM:ss'}}揭晓</div>
+                    </div>
+                    <div class="toward-item-cont">
+                        <i class="cicon icon-winning"></i>
+                        <div class="toward-img">
+                            <img  ng-if="item.winnerCover" 
+                                  ng-src="{{item.winnerCover}}" 
+                                  alt="user-portrait" 
+                            />
+                              <img  ng-if="!item.winnerCover" 
+                                  src="../img/default-people-small.PNG" 
+                                  alt="user-portrait" 
+                            />
+                        </div>
+                        <div class="toward-info">
+                           <p>
+                              <span>获奖者:</span>{{::item.winnerName}}
+                           </p>
+                           <p>
+                              <span>购买份数:</span>{{::item.buyParts}}
+                           </p>
+                           <p>
+                              <span>幸运号码:</span>{{::item.prizeNumber}}
+                           </p>
+                        </div>
+                    </div>
+                 </a>
+             </li>
+         </ul>
+  		</swipe-scroll>
+  </div>
+
+

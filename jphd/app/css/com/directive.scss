@@ -1,0 +1,112 @@
+
+/*head-Title 控件*/
+.head-title-container{
+	position: absolute;
+	top:0px;
+	left:0px; 
+	right:0px;
+	height:44px;
+	inline-height:44px;
+	overflow:hidden;
+	.title{
+		display: block;
+		position:absolute;
+		left:50px;
+		right:50px;
+		top:0px;
+		z-index: 0;
+		overflow: hidden;
+		margin:0px 10px;
+		min-width: 30px;
+		height: 43px;
+		inline-height:44px;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-size: 19px;
+		font-weight: 700;
+		color:#000;
+		span{
+			position: relative;
+			top:10px;
+		}
+	}
+	.left{
+		display: inline;
+		width: 50px;
+		height: 44px;
+		float: left;
+		padding-left: 5px;
+	}
+	.right{
+		display: inline;
+		width: 50px;
+		height: 44px;
+		float: right;
+		text-align: right;
+		padding-right:5px;
+	}
+	i{
+		margin-top: 10px;
+	}
+}
+
+
+
+/*swipescroll 控件*/
+/*滑动块的样式*/
+.swipescroll{
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling:touch;  
+    -webkit-user-select:none;
+    user-select:none;
+}
+/*滑动提示元素*/
+.swipescroll-reminder{
+	position: absolute;
+    top: -3.125rem;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    font-size: 16px;
+    font-color:#888888;
+    font-weight: 700;
+    padding-bottom: 10px;
+    overflow: hidden;
+    max-height: 3.125rem;
+    i{
+    	transition: all 0.5s;
+		-moz-transition: all 0.5s;	/* Firefox 4 */
+		-webkit-transition: all 0.5s;	/* Safari 和 Chrome */
+		-o-transition: all 0.5s;
+    }
+}
+
+
+/*footer-tab-container 控件*/
+.footer-tab-container{
+	position:absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+	height:44px;
+	a{
+		display: block;
+		width: 25%;
+		float: left;
+		font-size:13px;
+		text-align: center;
+		color:#444;
+		i{
+			display: block !important;
+			margin: 0px auto;
+		}
+		&.active{
+			color:#ff8000;
+		}
+	}
+}
+
+

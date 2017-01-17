@@ -1,0 +1,17 @@
+
+<div class="shader-container">
+	 <div class="shade-title" ng-if="shade.config.title">
+	 	{{shade.config.title}}
+	 </div>
+<div  	class="shade-content" 
+		ng-class="{'alone-content':!shade.config.title}">
+	 		<span>{{shade.config.content}}</span>
+	 </div>
+	 <div class="shade-button">
+	 	<button ng-class="{'alone': shade.config.button.length === 1 }" 
+ 				ng-repeat="button in shade.config.button" 
+				ng-click="button.callback()">
+	 		{{button.text}}
+	 	</button>
+	 </div>
+</div>
