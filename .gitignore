@@ -44,4 +44,5 @@ Temporary Items
 
 # 忽略node_modules
 
+jphd-react/node_modules/*
 node_modules/*
