@@ -1,8 +1,8 @@
 import React ,{ Component } from 'react';
 import { Router ,Route ,Redirect ,IndexRoute ,browserHistory ,hashHistory} from 'react-router';
-import layout from '../App/layout';
+import { layout } from '../App/layout';
 
-class Roots extends Componnet{
+class Roots extends Component{
     render(){
         return(
             <div>{this.props.children}</div>
@@ -16,7 +16,7 @@ const history = process.env.NODE_ENV !== 'production' ? browserHistory : hashHis
 const RouteConfig = (
         <Router history = {history}>
                 <Route path="/" component={Roots}>
-                    <indexRoute component={layout} />
+                    <IndexRoute component={layout}/>
                     <Route path='index' component={layout} />
                     <Redirect from="*" to='/' />
                 </Route>

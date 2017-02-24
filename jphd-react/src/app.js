@@ -1,10 +1,10 @@
 import React ,{ Component } from 'react';
-import ReactDOM from 'react-dom';
-import route from './Router/route';
+import ReactDom from 'react-dom';
+import { Router ,Route ,Redirect ,IndexRoute ,browserHistory ,hashHistory} from 'react-router';
+import RouteConfig from './Router/route';
 
 
-
-ReactDOM.render(
-        {route},
-    document.getElementById('app');
-)
+ReactDom.render(
+        RouteConfig,
+    document.getElementById('app')
+);
