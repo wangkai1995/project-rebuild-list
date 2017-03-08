@@ -44,5 +44,8 @@ Temporary Items
 
 # 忽略node_modules
 
+
+jphd/node_modules/*
 jphd-react/node_modules/*
+12306-wap-react/node_modules/*
 node_modules/*
