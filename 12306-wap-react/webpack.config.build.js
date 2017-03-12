@@ -1,6 +1,8 @@
 var path = require('path');
 var fs = require('fs');
 var SpritesmithPlugin = require('webpack-spritesmith');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var cssnano = require('cssnano');
 var webpack = require('webpack');
 
 /*
@@ -11,23 +13,20 @@ npm install webpack@2.1.0-beta.22 --save-dev
 */
 
 module.exports={
-	devtool:'cheap-module-eval-source-map',
+	devtool:'source-map',
 	//入口文件
 	entry:{
-		app:[
-			'webpack-hot-middleware/client',
-			'./src/app',
-		],
+		app:['./src/app',],
 		vendors:['react','react-dom','react-router'],
 	},
 	//输出文件
 	output:{
+		//输出目录
+		path: path.resolve(__dirname,'build'),
 		//文件命名
 		filename:'[name].js',
 		//分片文件 用来异步加载
-		chunkFilename: '[name].[chunkhash].js',
-		//输出目录
-		publicPath:'/static/',
+		chunkFilename: '[name].[chunkhash].js',	
 	},
 	//监控文件
 	module:{
@@ -42,24 +41,18 @@ module.exports={
 		,{
 			//开启css module
 			test: /\.scss$/,
-			// exclude: path.resolve(__dirname,'src/styles/sprite.scss'),
+			// exclude: path.resolve(__dirname,'src'),
 			include:[
 				path.resolve(__dirname,'src'),
 			],
-			loader: 'style!css?modules&localIdentName=[name]__[local]__[hash:base64:5]!sass?sourceMap=true!',
+			loader: 'style!css?modules&localIdentName=[name]__[local]__[hash:base64:5]!sass?sourceMap=true',
 		},
 		{
-			//开启css module-针对 icon
+			//开启css test
 			test: /\.css$/,
+			// exclude: path.resolve(__dirname,'src'),
 			include:[
 				path.resolve(__dirname,'src'),
-			],
-			loader: 'style!css?modules&localIdentName=[name]__[local]__[hash:base64:5]',
-		},
-		{
-			//针对 antd
-			test: /\.css$/,
-			include:[
 				path.resolve(__dirname,'node_modules/antd'),
 			],
 			loader: 'style!css',
@@ -70,9 +63,23 @@ module.exports={
 			include:[
 				path.resolve(__dirname,'src'),
 			],
-　　　　　　loader: 'url-loader?limit=8192&name=images/[name].[ext]',
+　　　　　　loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
 　　　　}],
 	},
+
+	postcss:[
+		cssnano({
+			sourcemap:true,
+			autoprefixer:{
+				add:true,
+				remove:true,
+				browsers:['last 2 version','Chrome 31','Safari 8'],
+				discardComments:{
+					removeAll:true,
+				},
+			},
+		}),
+	],
 
 	resolve:{
 		extensions:['','.js','.jsx','.scss','.css','.png','.jpg'],
@@ -88,30 +95,16 @@ module.exports={
 		//配置开发环境
 		new webpack.optimize.DedupePlugin(),
 		new webpack.DefinePlugin({
-   			'process.env' : {
-     			NODE_ENV : JSON.stringify('production')
-   			}
+   			'process.env.NODE_ENV' : JSON.stringify(process.env.NODE_ENV),
+     			_DEV_:false,
  		}),
- 		//错误提示
-		new webpack.NoErrorsPlugin(),
-		//热加载错误提示
-		new webpack.HotModuleReplacementPlugin(),
-		//雪碧图
-		new SpritesmithPlugin({
-		    src: {
-		        cwd: path.resolve(__dirname, 'src/images/sprite'),
-		        glob: '*.png'
-		    },
-		    target: {
-		        image: path.resolve(__dirname, 'src/images/sprite.png'),
-            	css: path.resolve(__dirname, 'src/styles/sprite.css'),
-		    },
-		    apiOptions: {
-		       cssImageRef: '../images/sprite.png'
-		    },
-		    spritesmithOptions: {
-		        algorithm: 'top-down'
-		    }
-	    })
+ 		new ExtractTextPlugin("[name]-[hash].css"),
+	    new webpack.optimize.UglifyJsPlugin({
+	    	compress:{
+	    		unused:true,
+	    		dead_code:true,
+	    	},
+	    }),
 	],
+
 };

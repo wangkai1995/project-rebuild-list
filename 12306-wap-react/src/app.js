@@ -5,7 +5,7 @@ import configureStore from './redux/configureStore';
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { hashHistory } from 'react-router';
-import DevTools from './redux/DevTools';
+// import DevTools from './redux/DevTools';
 
 
 
@@ -13,15 +13,24 @@ const store = configureStore();
 const history = syncHistoryWithStore( hashHistory , store );
 
 
-
 RecatDOM.render((
 	<Provider store={store} >
 		<div>
 			{routes(history)}
-			<DevTools />
 		</div>
 	</Provider>
 ),document.getElementById('app'));
+
+
+
+// RecatDOM.render((
+// 	<Provider store={store} >
+// 		<div>
+// 			{routes(history)}
+// 			<DevTools />
+// 		</div>
+// 	</Provider>
+// ),document.getElementById('app'));
 
 
 

@@ -17,7 +17,7 @@ const finalCreateStore = compose(
 		fetchMiddleware,
 		router,
 	),
-	DevTools.instrument(),
+	// DevTools.instrument(),
 )(createStore);
 
 

@@ -1,0 +1,40 @@
+
+.label-item{
+    composes: item from './public.scss';
+    composes: item-floating-label from './public.scss';
+    composes: text-overflow from "../../../styles/layout.scss";
+    composes: clear-fixed from "../../../styles/layout.scss";
+   	padding-top: 0;
+    padding-bottom: 16px;
+}
+
+
+
+.train-find{
+	position: relative;
+    overflow: hidden;
+    line-height: 70px;
+    height: 70px;
+    border-bottom: 1px solid #ddd;
+    p{
+    	olor: #333;
+	    font-size: 1.25rem;
+	    font-weight: 600;
+	    float: left;
+	    width: 50%;
+	    margin: 0 0 10px;
+	    margin-bottom: 2px;
+    }
+}
+
+
+.switch{
+	float: right;
+    position: relative;
+    top: 25px;
+    height: 25px !important;
+	min-width: 50px !important;
+}
+.switch:after{
+	height: 21px !important;
+}

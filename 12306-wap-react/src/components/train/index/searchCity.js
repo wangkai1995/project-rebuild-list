@@ -1,0 +1,36 @@
+import React ,{ Component } from 'react';
+import classnames from 'classnames';
+import {immutableRenderDecorator} from 'react-immutable-render-mixin';
+import CSSModules from 'react-css-modules'
+import styles from './searchCity.scss';
+import icon from '../../../styles/sprite.css';
+
+
+
+@immutableRenderDecorator
+@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
+class SearchCity extends Component{
+	render(){
+		return(
+			<label styleName='label-item'>
+				<div styleName='city-title'>
+					<span styleName="label-form-city">出发城市</span>
+					<span styleName="label-to-city">到达城市</span>
+				</div>
+				<div styleName="select-city">
+					<a styleName="city from-city">深圳</a>
+					<i styleName='icon-jiaohuan-ico cicon'></i>
+					<a styleName="city to-city">北京</a>
+				</div>
+					<div styleName="left-border"></div>
+					<div styleName="right-border"></div>
+			</label>
+		)
+
+	}
+}
+
+
+
+
+export default SearchCity;
