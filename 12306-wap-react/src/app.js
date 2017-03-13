@@ -9,6 +9,7 @@ import { hashHistory } from 'react-router';
 
 
 
+
 const store = configureStore();
 const history = syncHistoryWithStore( hashHistory , store );
 

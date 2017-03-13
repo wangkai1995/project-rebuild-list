@@ -1,4 +1,4 @@
-import React ,{ Component } from 'react';
+import React ,{ Component ,PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
@@ -6,11 +6,15 @@ import styles from './searchCity.scss';
 import icon from '../../../styles/sprite.css';
 
 
-
 @immutableRenderDecorator
 @CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
 class SearchCity extends Component{
+	static propTypes = {
+		fromCityName: PropTypes.string,
+		toCityName: PropTypes.string,
+	}
 	render(){
+		const { fromCityName, toCityName } = this.props; 
 		return(
 			<label styleName='label-item'>
 				<div styleName='city-title'>
@@ -18,15 +22,14 @@ class SearchCity extends Component{
 					<span styleName="label-to-city">到达城市</span>
 				</div>
 				<div styleName="select-city">
-					<a styleName="city from-city">深圳</a>
+					<a styleName="city from-city">{fromCityName}</a>
 					<i styleName='icon-jiaohuan-ico cicon'></i>
-					<a styleName="city to-city">北京</a>
+					<a styleName="city to-city">{toCityName}</a>
 				</div>
 					<div styleName="left-border"></div>
 					<div styleName="right-border"></div>
 			</label>
-		)
-
+		);
 	}
 }
 

@@ -1,60 +1,71 @@
-import React ,{ Component } from 'react';
+import React ,{ Component,PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import styles from './searchDate.scss';
 import icon from '../../../styles/sprite.css';
 
-import ModalDate from '../../modal/modalDate';
+
+import ModalDate from '../../modal/Date';
 
 
 @immutableRenderDecorator
 @CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
 class SearchDate extends Component{
+	static propTypes = {
+		showDate: PropTypes.string,
+		showWeek: PropTypes.string,
+		isVisible: PropTypes.bool,
+		onChangeDate: PropTypes.fuc,
+		onHide: PropTypes.func,
+		onShow: PropTypes.func,
+	};
+
 	constructor(props){
 		super(props);
-		this.state = {
-			visible: false,
-		};
-
-		this.handleTestClick = this.handleTestClick.bind(this);
-		this.handleTestCancel = this.handleTestCancel.bind(this);
+		this.handleShow = this.handleShow.bind(this);
+		this.handleDateChange = this.handleDateChange.bind(this);
+		this.handleHide = this.handleHide.bind(this);
 	}
 
 
-	handleTestClick(){
-		this.setState({
-			visible: true
-		});
+	handleShow(){
+		this.props.onShow();
 	}
-	handleTestCancel(){
-		this.setState({
-			visible: false
-		});
+	
+	handleHide(){
+		this.props.onHide();
 	}
 
+	handleDateChange(date){
+		this.props.onChangeDate(date);
+	}
 
 	render(){
+		const { showDate,showWeek,isVisible } = this.props;
+
 		return (
 			<label styleName="label-item">
-				<div styleName='form-date' onClick={this.handleTestClick}>
+				<div styleName='form-date' onClick={this.handleShow}>
 					<div styleName='labe-form-date'>
-						<i styleName='cicon icon-rili-ico'></i>&nbsp;&nbsp;出发日期
+						<i styleName='cicon icon-rili-ico'></i>
+						&nbsp;&nbsp;出发日期
 					</div>
 					<div styleName='form-date-selct'>
-						<input type="text" value="03月13日" styleName="date-input"/>
-						<span styleName="date-week">周一</span>
+						<p styleName="date-input">{showDate}</p>
+						<span styleName="date-week">{showWeek}</span>
 					</div>
 				</div>
 				<div styleName='border'></div>
 
-				<ModalDate 	cancel={this.handleTestCancel} 
-							visible={this.state.visible}
+				<ModalDate
+						onHide={this.handleHide}
+						onChange={this.handleDateChange} 	
+						isVisible={isVisible}
 				/>
 			</label>
 		)
 	}
-
 }
 
 

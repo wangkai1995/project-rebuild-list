@@ -1,32 +1,41 @@
 import React,{ Component } from 'react';
-import classnames from 'classnames';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
 
 import Banner from '../../../layouts/banner/banner';
 import Search from '../../../components/train/index/searchContainer';
 import styles from './index.scss';
+import { actions } from './indexRedux';
 
 
 @CSSModules(styles,{allowMultiple : true})
 class trainIndex extends Component {
 
 	render(){
-
-		let classname = classnames({
-			'index-container': true
-		});
-
-		console.log(classname);
+		const { search ,searchAction} = this.props;
 
 		return(
-			<div styleName={classname}>
+			<div styleName='index-container'>
 				<Banner classPrefix="train"/>
-				<Search/>
+				<Search {...search} {...searchAction} />
 			</div>
 		);
 	}
 }
 
-export default trainIndex;
+
+
+export default connect( state =>{
+	return{
+		search : state.train.index.search,
+	};
+},dispatch =>{
+	return{
+		searchAction : bindActionCreators(actions , dispatch),
+	}
+})(trainIndex);
+
+
 
 

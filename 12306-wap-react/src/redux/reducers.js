@@ -1,9 +1,8 @@
 //reducer
-// import home from '../views/home/HomeRedux';
-// import detail from '../views/detail/DetailRedux';
+import train from '../views/train/trainRedux';
 
 
-// export default  { 
-// 	home,
-// 	detail,
-// }
+
+export default  { 
+	train,
+}
