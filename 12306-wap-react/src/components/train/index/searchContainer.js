@@ -24,6 +24,7 @@ class Search extends Component{
 		showWeek: PropTypes.string,
 		findGD: PropTypes.bool,
 		isVisible: PropTypes.bool,
+		push: PropTypes.func,
 		changeDateAction: PropTypes.fuc,
 		hideDateAction: PropTypes.func,
 		showDateAction: PropTypes.func,
@@ -32,11 +33,17 @@ class Search extends Component{
 
 	constructor(props){
 		super(props);
-		this.hanlderDateChange = this.hanlderDateChange.bind(this);
+		this.handleDateChange = this.handleDateChange.bind(this);
+		this.handleSelectCity = this.handleSelectCity.bind(this);
 	}
 
-	hanlderDateChange(date){
+	handleDateChange(date){
 		this.props.changeDateAction(date);
+	}
+	
+	//direction = 出发还是达到城市
+	handleSelectCity(direction){
+		this.props.push('/city/train/'+direction);
 	}
 	
 	render(){
@@ -52,6 +59,7 @@ class Search extends Component{
 					<SearchCity
 						fromCityName={fromCityName}
 						toCityName={toCityName}
+						selectCity={this.handleSelectCity}
 					/>
 					<SearchDate 
 						showDate={showDate}
@@ -59,7 +67,7 @@ class Search extends Component{
 						onShow ={showDateAction}
 						onHide ={hideDateAction}
 						isVisible = {isVisible}
-						onChangeDate ={this.hanlderDateChange} 
+						onChangeDate ={this.handleDateChange} 
 					/>
 					<SearchType 
 						findGD = {findGD}

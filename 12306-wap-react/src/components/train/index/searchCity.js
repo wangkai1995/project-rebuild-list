@@ -12,7 +12,13 @@ class SearchCity extends Component{
 	static propTypes = {
 		fromCityName: PropTypes.string,
 		toCityName: PropTypes.string,
+		selectCity: PropTypes.func,
+	};
+
+	handleClick(direction){
+		this.props.selectCity(direction);
 	}
+	
 	render(){
 		const { fromCityName, toCityName } = this.props; 
 		return(
@@ -22,9 +28,17 @@ class SearchCity extends Component{
 					<span styleName="label-to-city">到达城市</span>
 				</div>
 				<div styleName="select-city">
-					<a styleName="city from-city">{fromCityName}</a>
+					<a 	styleName="city from-city" 
+						onClick={ () =>{ this.handleClick('from'); } }
+					>
+						{fromCityName}
+					</a>
 					<i styleName='icon-jiaohuan-ico cicon'></i>
-					<a styleName="city to-city">{toCityName}</a>
+					<a 	styleName="city to-city"
+						onClick={ () =>{ this.handleClick('to'); } }
+					>
+						{toCityName}
+					</a>
 				</div>
 					<div styleName="left-border"></div>
 					<div styleName="right-border"></div>
