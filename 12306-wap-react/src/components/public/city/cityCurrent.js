@@ -4,37 +4,25 @@ import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 
 import styles from './city.scss';
 
-import CityAnchor from './cityAnchor';
-import CityInput from './cityInput';
-import CityCurrent from './cityCurrent';
-
-
-
-
-
-
-
-
-
-
 
 
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
-class CityContainer extends Component{
+class CityCurrent extends Component{
+
 		render(){
 			return(
 				<div>
-					<CityAnchor/>
-					<CityInput/>
-					<CityCurrent/>
+					<h2 styleName="title">当前城市</h2>
+					<div styleName="inline-block-container">
+						<div styleName="citys">
+							<a>正在定位</a>
+						</div>
+					</div>
 				</div>
-			)
+			);
 		}
 }
 
 
-
-
-
-export default CityContainer;
+export default CityCurrent;

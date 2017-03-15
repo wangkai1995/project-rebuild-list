@@ -1,0 +1,92 @@
+
+.city-anchor{
+    width: 30px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    padding-top: 43px;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    overflow: auto;
+    a{
+    	line-height: 20px;
+    	height: 20px;
+	    font-size: .75rem;
+		text-align: center;
+		width: 100%;
+		float: left;
+		color: #2ca1f1;
+		text-decoration: none;
+    }
+}
+
+
+.city-input{
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0;
+    margin: 20px 10px;
+    position: relative;
+}
+.city-input-label{
+	composes: item from "../../../styles/layout.scss";
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    overflow: hidden;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    position: relative;
+    padding: 6px 0 5px 16px;
+    overflow: hidden;
+    line-height: 1.42857;
+    font-weight: 400
+}	
+.input{
+	flex: 1 120px;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 120px;
+    border-radius: 0;
+    margin: 0;
+		padding-right: 24px;
+	background-color: transparent;
+	-webkit-appearance: none;
+	font-weight: 400;
+	width: 100%;
+}
+
+
+
+
+.title{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+.inline-block-container{
+    height: auto;
+    overflow: auto;
+}
+.citys{
+	float: left;
+    width: 33.33%;
+    margin: 5px 0;
+    a{
+    	margin: 0 10px;
+	    display: block;
+	    background: #fff;
+	    border-radius: 5px;
+	    text-align: center;
+	    height: 36px;
+	    line-height: 36px;
+        color: #666;
+        text-decoration: none;
+    }
+}
