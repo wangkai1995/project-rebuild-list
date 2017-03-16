@@ -10,15 +10,6 @@ import CityCurrent from './cityCurrent';
 
 
 
-
-
-
-
-
-
-
-
-
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
 class CityContainer extends Component{
