@@ -1,7 +1,7 @@
 
 const fetchMiddleware = store => next => action =>{
 
-	if(!action.url || !Array.isArray(action.type)){
+	if(!action.request || !Array.isArray(action.type)){
 		return next(action);
 	}
 
@@ -13,27 +13,37 @@ const fetchMiddleware = store => next => action =>{
 		// ...action,
 	});
 
-	fetch( action.url , 
-			{ 	method:action.method? action.method: 'GET',
-		 		params: action.params ? action.params : null
- 			}
- 		)
-		.then( result =>{
-			result.json().then( data =>{
-				next({
-					type : SUCCESS,
-					loading : false,
-					payload : data,
-				});
-			}); // END JSON()
-		})
-		.catch( err =>{
+	var params = action.params? action.params: null;
+		
+	action.request( params ).then(function(data){
+		//请求是否接受
+		if(data.code === '00000'){
+			next({
+				type : SUCCESS,
+				loading : false,
+				payload : data.data,
+			});
+		}else{
 			next({
 				type : ERROR,
 				loading : false,
-				error: err,
+				error: data.message,
 			});
+		}
+	},function(err){
+		next({
+			type : ERROR,
+			loading : false,
+			error: err,
 		});
+	}).catch(function(err){
+		next({
+			type : ERROR,
+			loading : false,
+			error: err,
+		});
+	})
+
 
 }
 

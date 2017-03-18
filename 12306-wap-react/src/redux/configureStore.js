@@ -8,6 +8,7 @@ import rootReducer from './reducers';
 import DevTools from './DevTools';
 
 
+
 //注意这！！ 如果不这样传递 那么会报错！！！
 const router = routerMiddleware(hashHistory);
 

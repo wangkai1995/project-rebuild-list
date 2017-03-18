@@ -1,8 +1,10 @@
 //reducer
 import train from '../views/train/trainRedux';
+import publics from '../views/public/pubilcRedux';
 
 
 
-export default  { 
+export default { 
 	train,
+	publics,
 }

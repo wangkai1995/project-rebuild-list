@@ -1,0 +1,15 @@
+
+
+
+
+
+export const REQUEST_LOADING = 'REQUEST_LOADING';
+export const REQUEST_ERROR = 'REQUEST_ERROR';
+export const REQUEST_TRAIN_CITY = 'REQUEST_TRAIN_CITY';
+export const REQUEST_HOT_CITY = 'REQUEST_HOT_CITY';
+export const CHECK_CITY = 'CHECK_CITY';
+export const INPUT_CHANGE = 'INPUT_CHANGE';
+export const CLICK_ANCHOR = 'CLICK_ANCHOR';
+
+
+
