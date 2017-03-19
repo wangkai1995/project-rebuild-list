@@ -16,12 +16,12 @@ import CityContainer from '../../../components/public/city/cityContainer';
 class City extends Component{
 
 	render(){
-		const { city ,cityAction,push } = this.props;
+		const { city ,cityAction ,push ,params } = this.props;
 		
 		return(
 			<div styleName="city-container">
 				<Header title="选择城市" />
-				<CityContainer  {...city} {...cityAction}  push={push} />
+				<CityContainer routeParams={params}  {...city} {...cityAction}  push={push} />
 			</div>
 		)
 	}

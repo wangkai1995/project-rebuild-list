@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React,{ Component,PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import _ from 'lodash';
@@ -10,7 +10,11 @@ import CityItem from './cityItem';
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
 class CityList extends Component{
-
+		static propTypes = {
+			onClickCity: PropTypes.func,
+			cityList: PropTypes.arrayOf( PropTypes.object ),
+		};
+		
 		//城市按照索引首字母分类
 		filterCityIndex(citys){
 			var list = {};			
@@ -100,12 +104,13 @@ class CityList extends Component{
 		getCityItem(citys){
 			let cityList = [];
 			let key = Object.keys(citys);
+			const onClickCity = this.props;
 
 			if(key.length > 0){
 				for( let i=0; i<key.length; i++){
 					if( Array.isArray(citys[ key[i] ]) &&  citys[ key[i] ].length > 0 ){
 						cityList.push(
-							<CityItem title={key[i]}  citys={citys[key [i] ]} />
+							<CityItem onCheckCity={onClickCity} title={key[i]}  citys={citys[key [i] ]} />
 						);
 					}
 				}

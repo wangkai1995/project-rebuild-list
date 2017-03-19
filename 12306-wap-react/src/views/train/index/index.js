@@ -9,6 +9,8 @@ import Search from '../../../components/train/index/searchContainer';
 import styles from './index.scss';
 import { actions } from './indexRedux';
 
+import localServer from '../../../server/local/index'
+
 
 
 
@@ -16,8 +18,16 @@ import { actions } from './indexRedux';
 class trainIndex extends Component {
 
 	render(){
-		const { search ,searchAction ,push} = this.props;
-
+		const { searchAction ,push} = this.props;
+		let { search }= this.props;
+		//读取城市选择
+		let fromCity = localServer.get('train.fromCity');
+		let toCity = localServer.get('train.toCity');
+		search.fromCityName = fromCity? fromCity.cityName : '深圳';
+		search.fromCityCode = fromCity? fromCity.cityCode : 'SZQ';
+		search.toCityName = toCity? toCity.cityName : '北京';
+		search.toCityCode = toCity? toCity.cityCode : 'BJP';
+		
 		return(
 			<div styleName='index-container'>
 				<Banner classPrefix="train"/>

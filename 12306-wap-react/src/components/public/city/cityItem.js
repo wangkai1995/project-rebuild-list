@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React,{ Component,PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 
@@ -15,14 +15,22 @@ class CityItem extends Component{
 			anchorServer.setAnchor( this.props.title, this.refs.anchor.offsetTop );
 		}
 
+		handleClick(city){
+			this.props.onClickCity(city);
+		}
+
 		getCity(citys){
 			return citys.map( (city)=>{
 				return ( 
-					<li styleName="city-li">{city.cityName}</li>
+					<li styleName="city-li">
+						<a onClick={this.handleClick.bind(this.city)}>
+							{city.cityName}
+						</a>
+					</li>
 				);	
 			})
 		}
-
+		
 		render(){
 			const { title, citys } = this.props;
 			return(

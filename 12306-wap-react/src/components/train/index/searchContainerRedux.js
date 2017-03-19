@@ -10,13 +10,13 @@ const FIND_CHANGE = 'FIND_CHANGE';
 
 const initialState = {
 	isVisible: false,
-	Date : moment().format('MM月DD日'),
+	Date : moment().format('YYYY-MM-DD'),
 	showDate : moment().format('MM月DD日'),
 	showWeek: moment().format('dddd'),
-	fromCityName: '深圳',
-	fromCityCode: 'SZQ',
-	toCityName:'北京',
-	toCityCode:'BJP',
+	fromCityName: '',
+	fromCityCode: '',
+	toCityName:'',
+	toCityCode:'',
 	findGD:false
 }
 
@@ -61,7 +61,7 @@ function search( state = initialState , action){
 		case SEARCH_DATE_CHANGE : {
 			return{
 				...state,
-				Date : action.payload.format('MM月DD日'),
+				Date : action.payload.format('YYYY-MM-DD'),
 				showDate :  action.payload.format('MM月DD日'),
 				showWeek:  action.payload.format('dddd'),
 			};

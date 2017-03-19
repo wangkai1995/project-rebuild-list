@@ -33,6 +33,7 @@ class Search extends Component{
 
 	constructor(props){
 		super(props);
+		this.state = this.props;
 		this.handleDateChange = this.handleDateChange.bind(this);
 		this.handleSelectCity = this.handleSelectCity.bind(this);
 	}
@@ -45,9 +46,15 @@ class Search extends Component{
 	handleSelectCity(direction){
 		this.props.push('/city/train/'+direction);
 	}
+
+	handleSearchSubmit(){
+		const { fromCityName, fromCityCode ,toCityName, toCityCode ,Date , findGD } = this.props;
+		this.props.push('/train/list/'+encodeURI(fromCityName)+'/'+fromCityCode+'/'+encodeURI(toCityName)+'/'+toCityCode+'/'+Date+'/'+findGD);
+	}
 	
+
+
 	render(){
-		console.log(this.props);
 
 		const { fromCityName ,toCityName } = this.props;
 		const { isVisible , showDate , showWeek ,hideDateAction ,showDateAction} = this.props;
@@ -74,7 +81,7 @@ class Search extends Component{
 						onChangeFind= {findGDAction}
 					/>
 				</div>
-				<SearchSubmit/>
+				<SearchSubmit onSearchSubmit={this.handleSearchSubmit.bind(this)} />
 			</div>
 		);
 	}
@@ -86,3 +93,4 @@ class Search extends Component{
 
 
 export default Search;
+

@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React,{ Component,PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 
@@ -9,6 +9,10 @@ import styles from './city.scss';
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
 class CityAnchor extends Component{
+		static propTypes = {
+			clickAnchor: PropTypes.func,
+		};
+
 		constructor(props){
 			super(props);
 

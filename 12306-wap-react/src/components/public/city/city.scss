@@ -103,7 +103,20 @@
 }
 .city-li{
     composes: item from "../../../styles/layout.scss";
+    a{
+        color:#333;
+    }
 }
+
+
+.search-li{
+    composes: item from "../../../styles/layout.scss";
+    padding: 15px 10px;
+    a{
+        color:#333;
+    }
+}
+
 
 
 

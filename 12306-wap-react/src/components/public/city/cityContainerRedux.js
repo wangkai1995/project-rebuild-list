@@ -4,7 +4,6 @@ import *  as actionType  from './cityContainerType';
 const initialState = {
 	loading : false,
 	error : false,
-	scrollTop: 0,
 	citys : [],
 	hotCitys : [],
 }
@@ -47,30 +46,7 @@ function city( state = initialState , action){
 				hotCitys: action.payload,
 			};
 		}
-		
-		//点击瞄点定位
-		case actionType.CLICK_ANCHOR : {
-			return{
-				...state,
-				scrollTop: action.payload,
-			};
-		}
-
-		//选中城市
-		case actionType.CHECK_CITY : {
-			return{
-				...state,
-			};
-		}
-
-		//输入城市
-		case actionType.INPUT_CHANGE : {
-			return{
-				...state,
-			};
-		}
-		
-		
+			
 		default :
 			return state;
 

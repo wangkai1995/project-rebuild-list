@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React,{ Component,PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import {Motion ,spring} from 'react-motion';
@@ -9,22 +9,38 @@ import CityAnchor from './cityAnchor';
 import CityInput from './cityInput';
 import CityCurrent from './cityCurrent';
 import CityHotList from './cityHot';
+import CityHistory from './cityHistory';
 import CityList from './cityList';
 
 import trainModel from '../../../http/train/index';
+import seesionServer from '../../../server/session/index';
+import localServer from '../../../server/local/index';
 
 
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
 class CityContainer extends Component{
-		
+		static propTypes = {
+			citys: PropTypes.arrayOf( PropTypes.object ),
+			hotCitys: PropTypes.arrayOf( PropTypes.object ),
+			error: PropTypes.bool,
+			loading: PropTypes.bool,
+			push: PropTypes.func,
+			requestHotCity: PropTypes.func,
+			requestTrainCity: PropTypes.func,
+			routeParams: PropTypes.object,
+		};
+
 		constructor(props){
 			super(props);
 			this.state={
 				scrollTop:0,
+				trainHistory:[],
+				historyCity: localServer.get('historyCity')? localServer.get('historyCity') : [],
 			};
 
 			this.goCityAnchor = this.goCityAnchor.bind(this);
+			this.checkCity = this.checkCity.bind(this);
 		}
 
 		componentDidMount(){
@@ -32,7 +48,6 @@ class CityContainer extends Component{
 			this.props.requestHotCity(trainModel.trainHotCity);
 		}
 		
-
 		//过滤热门城市中的code
 		filterHotCityCode(hotCity, citys){
 			hotCity = hotCity.map( (item) =>{
@@ -57,17 +72,65 @@ class CityContainer extends Component{
 			}
 		}
 
+		//存历史城市缓存
+		setHistoryCity(city){
+			var buff = city,
+                flag = true,
+                cityArray = [];
+            const { citys } = this.props;
+
+
+			if(!city){
+				return false;
+			}
+			//存缓存
+			if( !localServer.get('historyCity') ){
+                        cityArray.push(buff);
+                        localServer.set('historyCity',cityArray);
+            }else{
+                cityArray = localServer.get('historyCity');
+                for(var i=0,len=citys.length;i<len;i++){
+                    if(buff.cityCode === citys[i].cityCode){
+                        flag = false;
+                    }
+                }
+                for(var i=0,len=cityArray.length;i<len;i++){
+                    if(buff.cityCode === cityArray[i].cityCode){
+                        flag = true;
+                    }
+                }
+
+                if(!flag){
+                    if(cityArray.length < 6){
+                        cityArray.push(buff);
+                    }else{
+                        cityArray.shift();
+                        cityArray.push(buff);
+                    }
+                }
+                
+                localServer.set('historyCity',cityArray);
+            }
+		}
+		
+		//点击城市
+		checkCity(city){
+			var model = this.props.routeParams.model;
+			var direction = this.props.routeParams.direction;
+			this.setHistoryCity(city);
+			localServer.set(model+'.'+direction+'City',city);
+			window.history.back();
+		}
+
 
 		render(){
-			//还缺历史选择城市没有做
-			// console.log(this.props);
-
+			console.log(this.props);
 			const { citys, hotCitys} = this.props;
 			//过滤热门城市中的code
 			const validHotCitys = this.filterHotCityCode(hotCitys,citys);
-		
+			
 			return(
-				<div ref='anchorContainer'>
+				<div>
 					<Motion style={ {scrollTop: spring(this.state.scrollTop)} }>
 						{  ( {scrollTop} ) => {
 								//控制滚动条
@@ -78,15 +141,17 @@ class CityContainer extends Component{
 						}
 					</Motion>
 					<CityAnchor clickAnchor={this.goCityAnchor}/>
-					<CityInput/>
-					<CityCurrent/>
-					<CityHotList cityList={validHotCitys} />
-					<CityList citys={citys} />
+					<CityInput onClickCity={this.checkCity} citys={citys} />
+					<CityCurrent onClickCity={this.checkCity} citys={citys}  />
+					<CityHistory onClickCity={this.checkCity} cityList={this.state.historyCity} />
+					<CityHotList onClickCity={this.checkCity} cityList={validHotCitys} />
+					<CityList onClickCity={this.checkCity} citys={citys} />
 				</div>	
 			);
 		}
-
 }
+
+
 
 
 
