@@ -4,11 +4,12 @@ import classnames from 'classnames';
 import CSSModules from 'react-css-modules';
 
 import styles from './header.scss';
+import trainStyle from './train.scss';
 import icon from '../../styles/sprite.css';
 
 
 @immutableRenderDecorator
-@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
+@CSSModules(Object.assign({},styles,trainStyle,icon),{allowMultiple: true})
 class Header extends Component{
 	static propTypes = {
 		childer:PropTypes.node,
@@ -35,12 +36,13 @@ class Header extends Component{
 		});
 
 		if(childer){
+			console.log(childer);
 			return(
 				<div styleName={ headerClass }>
 					<a styleName='back' onClick={this.handleBackClick} >
 						<i styleName="cicon icon-back-icon-1"></i>
 					</a>
-					<h1 styleName="title">{{title}}</h1>
+					<h1 styleName="title">{title}</h1>
 
 					{childer}
 				</div>

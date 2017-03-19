@@ -1,0 +1,80 @@
+//火车票部分
+.train-list-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background-color: #2ca1f1 !important;
+}
+.header-from-name{
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+.header-icon{
+    margin-bottom: 6px;
+}
+.header-to-name{
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+
+
+.bar-tab-time{
+    position: absolute;
+    top: 49px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 5px 10px;
+    text-align: center;
+    font-size: .875rem;
+    color: #333;
+    font-weight: 700;
+    i{
+        position: relative;
+        top: 2px;
+    }
+}
+.tab-forward{
+    text-decoration: none;
+    color: #fff;
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+    visibility: visible;
+}
+.tab-backwards{
+    text-decoration: none;
+    color: #fff;
+    float: right;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.tab-time{
+    display: inline-block;
+    color: #2ca1f1;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+    width: 50%;
+    border-radius: 5px;
+    background: #fff;
+    position: relative;
+}
+.time-select-icon{
+    display: inline-block;
+}
+.time-text{
+    font-weight: 400;
+    position: relative;
+    top: -2px;
+}
+.divide{
+    margin-top: 4px;
+}
+
+
+
+
