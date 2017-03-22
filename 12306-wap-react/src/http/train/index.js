@@ -18,6 +18,15 @@ export default {
 			url:'/v1/plane/hot-city',
 			method: 'GET',
 		})
+	},
+
+	//请求火车城市
+	trainInfoList:function(data){
+		return httpServer.request({
+			url:'/v1/train/trainInfos',
+			method: 'GET',
+			params: data,
+		})
 	}
 
 

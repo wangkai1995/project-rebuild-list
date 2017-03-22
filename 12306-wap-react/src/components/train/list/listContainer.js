@@ -5,6 +5,9 @@ import CSSModules from 'react-css-modules'
 import styles from './list.scss';
 
 
+import trainModel from '../../../http/train/index';
+
+import TrainListHeader from './listHeader';
 
 
 @immutableRenderDecorator
@@ -13,14 +16,30 @@ class TrainInfoContainer extends Component{
 	
 	constructor(props){
 		super(props);
-
 	}
 
-	render(){
+	componentDidMount(){
+		const { actions ,params } = this.props;
+		actions.initParams(params);
+		actions.requestTrainInfo(trainModel.trainInfoList,{
+			arrStationCode: params.toCityCode,
+			deptStationCode: params.fromCityCode,
+			deptDate: params.detpDate,
+			findGD:  tparams.findGD,
+		});
+	}
 
+
+	render(){
+		// console.log(this.props);
+		const { params }= this.props;
+		
 		return(
-			<div styleName='trainInfo-container'>
-				
+			<div styleName="root-container">
+				<TrainListHeader params={params} />
+				<div styleName='trainInfo-container'>
+					
+				</div>
 			</div>
 		);
 	}
@@ -31,4 +50,8 @@ class TrainInfoContainer extends Component{
 
 
 
+
+
 export default TrainInfoContainer;
+
+

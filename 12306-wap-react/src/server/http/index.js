@@ -26,6 +26,18 @@ class httpServer {
 	        'Content-Type': 'application/json',
 	    };
 
+	    if(config.params){
+	    	url +='?';
+	    	var keys = Object.keys(config.params);
+	    	for(var i=0 ;i<keys.length ;i++){
+	    		if(i+1 < keys.length){
+	    			url += ''+keys[i]+'='+config.params[ keys[i] ]+'&'
+	    		}else{
+	    			url += ''+keys[i]+'='+config.params[ keys[i] ];
+	    		}	
+	    	}
+	    }
+
 	    var defer = new Promise(function(resolve, reject){
 	    	switch(config.method){
 				case 'GET':

@@ -36,7 +36,6 @@ class Header extends Component{
 		});
 
 		if(childer){
-			console.log(childer);
 			return(
 				<div styleName={ headerClass }>
 					<a styleName='back' onClick={this.handleBackClick} >
