@@ -8,6 +8,8 @@ import styles from './list.scss';
 import trainModel from '../../../http/train/index';
 
 import TrainListHeader from './listHeader';
+import TrainInfo from './listTrainInfo';
+
 
 
 @immutableRenderDecorator
@@ -25,27 +27,23 @@ class TrainInfoContainer extends Component{
 			arrStationCode: params.toCityCode,
 			deptStationCode: params.fromCityCode,
 			deptDate: params.detpDate,
-			findGD:  tparams.findGD,
+			findGD:  params.findGD,
 		});
 	}
 
 
 	render(){
 		// console.log(this.props);
-		const { params }= this.props;
+		const { params , trainInfo }= this.props;
 		
 		return(
 			<div styleName="root-container">
 				<TrainListHeader params={params} />
-				<div styleName='trainInfo-container'>
-					
-				</div>
+				<TrainInfo trainInfo={trainInfo} />
 			</div>
 		);
 	}
 }
-
-
 
 
 
