@@ -27,7 +27,7 @@ class TrainInfo extends Component{
 		const { trainInfo } = this.props;
 		if( Array.isArray(trainInfo.trainInfos) && trainInfo.trainInfos.length > 0){
 			return(
-				<div styleName='trainInfo-container' key='111' >
+				<div styleName='trainInfo-container' >
 					<ul styleName="trainInfo-list">
 						{this.getTrainItem()}
 					</ul>
@@ -35,7 +35,7 @@ class TrainInfo extends Component{
 			);
 		}else{
 			return(
-				<div styleName='trainInfo-container' key='2222' >
+				<div styleName='trainInfo-container' >
 					<div styleName="list-empty ">没有找到符合条件的车次</div>
 				</div>
 			);

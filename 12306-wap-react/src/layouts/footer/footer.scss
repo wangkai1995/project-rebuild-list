@@ -1,0 +1,15 @@
+
+.bar-footer {
+	composes: bar from "../header/header.scss";
+    border-bottom-width: 0;
+    background-position: top;
+    height: 44px;
+    border-top-width: 1px;
+    bottom: 0px;
+    position: absolute;;
+}
+
+
+
+
+

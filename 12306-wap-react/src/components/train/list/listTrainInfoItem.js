@@ -18,31 +18,35 @@ class TrainInfoItem extends Component{
 		const { seatList } = this.props;
 		let count = 0;
 		let seat = seatList.filter(function(item){
-			count++;
 			if(parseInt(item.seatNum) === 0){
-				return false;
+				count++;
+				return item;
 			}
 			return item;
 		});
-		if(seat.length === 0){
+
+
+		//没有余票
+		if(seat.length === count){
 			return (<span styleName="item-trainSeat-Sell-Out">暂无余票,建议抢票</span>)
-		}else{
-			//只要前三坐席
-			if(seat.length > 3){
-				seat.splice(3,seat.length);
+		}
+
+
+		//只要前三坐席
+		if(seat.length > 3){
+			seat.splice(3,seat.length);
+		}
+		return seat.map(function(item){
+			if(parseInt(item.seatNum) === 0){
+				return (
+						<span styleName="item-trainSeat-item trainSeat-disabled">
+							{item.seatName}&nbsp;&nbsp;{item.seatNum}
+							<span styleName="item-trainSeat-rob">(抢)</span>
+						</span>
+				);
 			}
-			return seat.map(function(item){
-				if(parseInt(item.seatNum) === 0){
-					return (
-							<span styleName="item-trainSeat-item">
-								{item.seatName}&nbsp;&nbsp;{item.seatNum}
-								<span styleName="item-trainSeat-rob">(抢)</span>
-							</span>
-					);
-				}
-				return (<span styleName="item-trainSeat-item">{item.seatName}&nbsp;&nbsp;{item.seatNum}</span>);
-			});
-		}//END ESLE
+			return (<span styleName="item-trainSeat-item">{item.seatName}&nbsp;&nbsp;{item.seatNum}</span>);
+		});	
 	}
 
 	render(){

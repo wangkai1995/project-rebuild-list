@@ -4,12 +4,11 @@ import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import styles from './list.scss';
 
-
 import trainModel from '../../../http/train/index';
 
 import TrainListHeader from './listHeader';
 import TrainInfo from './listTrainInfo';
-
+import TrainFilter from './listFilter';
 
 
 @immutableRenderDecorator
@@ -34,12 +33,13 @@ class TrainInfoContainer extends Component{
 
 	render(){
 		// console.log(this.props);
-		const { params , trainInfo }= this.props;
+		const { params , trainInfo ,filterTrain }= this.props;
 		
 		return(
 			<div styleName="root-container">
 				<TrainListHeader params={params} />
 				<TrainInfo trainInfo={trainInfo} />
+				<TrainFilter trainInfo={trainInfo} filterTrainAction={filterTrain} />
 			</div>
 		);
 	}

@@ -22,7 +22,20 @@ function initParams(params){
 }
 
 
+//过滤火车站车次信息
+//特别注意 这里的trainInfo需要包含3个数组
+// trainArrStation  + trainDetpStation + trainInfos
+// trainInfos是过滤后的车次数据
+// trainArrStation  + trainDetpStation 保持不变源数据在//请求火车车次列表接口获取
+function filterTrain(trainInfo){
+	return{
+		type: actionType.FILTER_TRAIN_INFO,
+		payload: trainInfo,
+	}
+}
 
 
 
-export { requestTrainInfo , initParams  };
+
+
+export { requestTrainInfo , initParams ,filterTrain };

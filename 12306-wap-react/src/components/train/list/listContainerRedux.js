@@ -6,6 +6,7 @@ const initialState = {
 	loading : false,
 	error : false,
 	trainInfo:{},
+	trainLisr:[],
 	fromCode:'',
 	toCode:'',
 	detpDate:'',
@@ -53,6 +54,15 @@ function list( state = initialState , action){
 				trainInfo: action.payload,
 			};
 		}
+
+		//过滤火车站城市
+		case actionType.FILTER_TRAIN_INFO : {
+			return{
+				...state,
+				trainInfo: action.payload,
+			}
+		}
+
 			
 		default :
 			return state;
