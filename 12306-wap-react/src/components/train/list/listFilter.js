@@ -16,9 +16,23 @@ class TrainFilter extends Component{
 
 		this.state={
 			isModal:false,
+			trainInfosBuff:[],
 		}
 		this.showFilterModal = this.showFilterModal.bind(this);
 		this.hideFilterModal = this.hideFilterModal.bind(this);
+	}
+
+	componentDidMount(){
+		var buff =[];
+		const {trainInfos} = this.props.trainInfo;
+		if(trainInfos){
+			trainInfos.map(function(train){
+				buff.push(train);
+			});
+			this.setState({
+				trainInfosBuff:buff
+			});
+		}
 	}
 
 	showFilterModal(){
@@ -58,7 +72,7 @@ class TrainFilter extends Component{
 				</div>
 			)
 		}else{
-			return <TrainFilterModal onHide={this.hideFilterModal} trainArr={trainArrStations} trainDept={trainDeptStations} />
+			return <TrainFilterModal trainInfo={this.state.trainInfosBuff} onHide={this.hideFilterModal} trainArr={trainArrStations} trainDept={trainDeptStations} />
 		}
 	}
 

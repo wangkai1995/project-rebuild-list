@@ -71,7 +71,10 @@ class TrainFilterModal extends Component{
 		this.state = {
 			filterSeach : filterSeach,
 		}
+		this.handleCancelCheck = this.handleCancelCheck.bind(this);
+		this.handleSeachFilter = this.handleSeachFilter.bind(this);
 	}
+
 
 	handleSeachChange(model,index){
 		let filterSeach = this.state.filterSeach;
@@ -83,26 +86,180 @@ class TrainFilterModal extends Component{
 		});
 	}
 
-	render(){
+	handleCancelCheck(){
+		let filterSeach = this.state.filterSeach;
+		for(var i=0; i<filterSeach.trainType.length; i++ ){
+			filterSeach.trainType[i].checked = false;	
+		}
+		for(var i=0; i<filterSeach.trainTime.length; i++ ){
+			filterSeach.trainTime[i].checked = false;	
+		}
+		for(var i=0; i<filterSeach.trainStation.length; i++ ){
+			filterSeach.trainStation[i].checked = false;	
+		}
+		this.setState({
+			filterSeach : filterSeach,
+		});
+	}
+
+	handleSeachFilter(){
+		var buff = [];
 		console.log(this.props);
+       
+        // forEach($scope.buffData,function(item){
+        //     var screen;
+        //     screen = typeScreen(item);
+        //     screen = timeScreen(item,screen);
+        //     screen = stationScreen(item,screen);
+
+        //     if(screen){
+        //         buff.push(screen);
+        //     }
+        // });
+
+        // $scope.oData.trainInfos = buff;
+	}
+
+
+	render(){
 		return(
 			<Popup>
 				<div styleName="filter-popup">
 					<div styleName="filter-popup-tab">
-						<a>取消</a>
-						<a>
+						<a  onClick={this.props.onHide} >取消</a>
+						<a  onClick={this.handleCancelCheck} >
 							<i styleName="cicon icon-icon-dustbin"></i>
 							清空筛选
 						</a>
-						<a>确定</a>
+						<a onClick={this.handleSeachFilter}>确定</a>
 					</div>
-					<TrainFilterContent onSeachChange ={this.handleSeachChange}  filterSeach={ this.state.filterSeach} />
+					<TrainFilterContent onSeachChange ={this.handleSeachChange.bind(this)}  filterSeach={ this.state.filterSeach} />
 				</div>
 			</Popup>
 		);
 	}
 
 }
+
+
+//车次类型筛选
+//@data = 原始数据
+//#返回符合条件的过滤数据
+function typeScreen(data){
+    var flag = false;
+    var type = $scope.screenValue.type;
+
+    if(!data){
+        return null;
+    }
+    if(!type){
+        return data;
+    }
+
+    for(var key in type){
+        if( type[key] ){
+            flag = true;
+            var trainTypes = type[key].split('/');
+            var chat = data.trainCode.charAt(0);
+
+            if( trainTypes.indexOf(chat) > -1){
+                return data;
+            }
+        }
+    }
+
+    if(flag){
+        return null;
+    }
+
+    return data;
+}
+
+//开车时间筛选
+//@data = 原始数据
+//@curr = 过滤数据
+//#返回符合条件的过滤数据
+function timeScreen(data,curr){
+    var flag = false;
+    var time = $scope.screenValue.Time;
+
+    if(!data || !curr){
+        return null;
+    }
+    if(!time){
+        return curr;
+    }
+
+    for(var key in time){
+        if(time[key]){
+            flag = true;
+            var str;
+            var buff;
+
+            str = time[key].split('-');
+            str[0] = parseInt(str[0].replace(':',''));
+            str[1] = parseInt(str[1].replace(':',''));
+
+            buff = parseInt(data.deptTime.replace(':',''));
+
+            if(buff >= str[0] && buff <= str[1] ){
+                        return curr;
+            }
+        }
+    }
+
+    if(flag){
+        return null;
+    }
+
+    return curr;
+}
+
+//出发/到达车站筛选
+//@data = 原始数据
+//@curr = 过滤数据
+//#返回符合条件的过滤数据
+function stationScreen(data,curr){
+    var flag = false;
+    var detp = $scope.screenValue.detp;
+    var arr = $scope.screenValue.arr;
+
+    if(!data || !curr){
+        return null;
+    }
+    if(!detp && !arr){
+        return curr;
+    }
+
+    //出发车站
+    for(var key in detp){
+        if(detp[key]){
+            flag = true;
+
+            if(data.deptStationName === detp[key]){
+                return curr;
+            }
+        }
+    }
+
+    //到达车站
+    for(var key in arr){
+        if(arr[key]){
+            flag = true;
+
+            if(data.arrStationName === arr[key]){
+                return curr;
+            }
+        }
+    }
+
+    if(flag){
+        return null;
+    }
+
+    return curr;
+}
+
 
 
 
