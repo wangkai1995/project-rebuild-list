@@ -24,25 +24,25 @@ class TrainFilterCheckBox extends Component{
 
 	getCheckBox(){
 		var self = this;
-
 		const { checkBoxList } = this.state;
-		
-		return checkBoxList.map(function(item,index){
-			const checkClass = classnames({
-				'checked-icon-on' : item.checked,
-				'checked-icon-off' : !item.checked,
-			});	
+		if(checkBoxList){
+			return checkBoxList.map(function(item,index){
+				const checkClass = classnames({
+					'checked-icon-on' : item.checked,
+					'checked-icon-off' : !item.checked,
+				});	
 
-			return(
-				<li>
-					 <div styleName="checkbox-select">
-					 	<input type="checkBox" id={`${item.exec}-checkBox`} onChange={ self.handleCheck.bind(self,index) }  />
-					 	<label for={`${item.exec}-checkBox`} styleName={checkClass}></label>
-					 </div>
-					 <label styleName="popup-ul-value">{item.name}</label>
-				</li>
-			);
-		});
+				return(
+					<li>
+						 <div styleName="checkbox-select">
+						 	<input type="checkBox" id={`${item.exec}-checkBox`} onChange={ self.handleCheck.bind(self,index) }  />
+						 	<label for={`${item.exec}-checkBox`} styleName={checkClass}></label>
+						 </div>
+						 <label styleName="popup-ul-value">{item.name}</label>
+					</li>
+				);
+			});
+		}
 	}
 
 	render(){

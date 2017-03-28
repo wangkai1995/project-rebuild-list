@@ -19,7 +19,6 @@ function initTrainType(){
 }
 
 
-
 function initTrainDetpTime(){
 	var _0_6 = {  name:'00:00-06:00', exec:'00:00-06:00',checked:false };
 	var _6_12 = {  name:'06:00-12:00', exec:'06:00-12:00',checked:false };
@@ -28,7 +27,6 @@ function initTrainDetpTime(){
 
 	return [ _0_6, _6_12, _12_18, _18_24 ];
 }
-
 
 
 function initTrainDetp(detpStations,arrStations){
@@ -61,21 +59,32 @@ class TrainFilterModal extends Component{
 	
 	constructor(props){
 		super(props);
-		const { trainDept ,trainArr } = this.props;
-		//搜索条件
-		var filterSeach={
-			trainType: initTrainType(),
-			trainTime: initTrainDetpTime(),
-			trainStation: initTrainDetp(trainDept,trainArr),
+		const { trainDept ,trainArr ,filterSeach ,filterSeachAction } = this.props;
+		
+		if(!filterSeach){
+			//搜索条件
+			var Seach={
+				trainType: initTrainType(),
+				trainTime: initTrainDetpTime(),
+				trainStation: initTrainDetp(trainDept,trainArr),
+			}
+			this.state ={
+			 	filterSeach : Seach,
+			}
+			filterSeachAction(Seach);
+		}else{
+			this.state ={
+			 	filterSeach :filterSeach,
+			}
 		}
-		this.state = {
-			filterSeach : filterSeach,
-		}
+		
+
 		this.handleCancelCheck = this.handleCancelCheck.bind(this);
 		this.handleSeachFilter = this.handleSeachFilter.bind(this);
 	}
-
-
+	
+	
+	//筛选改变
 	handleSeachChange(model,index){
 		let filterSeach = this.state.filterSeach;
 		var seach = filterSeach[model];
@@ -86,6 +95,7 @@ class TrainFilterModal extends Component{
 		});
 	}
 
+	//清空筛选
 	handleCancelCheck(){
 		let filterSeach = this.state.filterSeach;
 		for(var i=0; i<filterSeach.trainType.length; i++ ){
@@ -102,26 +112,31 @@ class TrainFilterModal extends Component{
 		});
 	}
 
+	//选择筛选
 	handleSeachFilter(){
 		var buff = [];
-		console.log(this.props);
-       
-        // forEach($scope.buffData,function(item){
-        //     var screen;
-        //     screen = typeScreen(item);
-        //     screen = timeScreen(item,screen);
-        //     screen = stationScreen(item,screen);
-
-        //     if(screen){
-        //         buff.push(screen);
-        //     }
-        // });
-
-        // $scope.oData.trainInfos = buff;
+		const { trainInfo ,trainArr, trainDept ,onSeachFilter ,onHide } = this.props;
+		const { trainType,trainTime,trainStation } = this.state.filterSeach;
+		
+		if(trainInfo.length > 0){
+			trainInfo.map(function(item){
+				var screen;
+	            screen = typeScreen( item, trainType );
+	            screen = timeScreen( item, screen, trainTime );
+	            screen = stationScreen( item, screen, trainStation );
+	            if(screen){
+	                buff.push(screen);
+	            }
+			});
+		}
+		
+		onSeachFilter(buff);
+		onHide();
 	}
 
 
 	render(){
+		const { filterSeach } = this.state;
 		return(
 			<Popup>
 				<div styleName="filter-popup">
@@ -133,35 +148,32 @@ class TrainFilterModal extends Component{
 						</a>
 						<a onClick={this.handleSeachFilter}>确定</a>
 					</div>
-					<TrainFilterContent onSeachChange ={this.handleSeachChange.bind(this)}  filterSeach={ this.state.filterSeach} />
+					<TrainFilterContent onSeachChange ={this.handleSeachChange.bind(this)}  filterSeach={ filterSeach } />
 				</div>
 			</Popup>
 		);
 	}
-
 }
+
 
 
 //车次类型筛选
 //@data = 原始数据
+//@trainType = 过滤条件
 //#返回符合条件的过滤数据
-function typeScreen(data){
+function typeScreen(data,trainType){
     var flag = false;
-    var type = $scope.screenValue.type;
+    var type = trainType;
 
     if(!data){
         return null;
     }
-    if(!type){
-        return data;
-    }
 
-    for(var key in type){
-        if( type[key] ){
+    for(var i = 0; i<type.length ;i++ ){
+        if( type[i].checked ){
             flag = true;
-            var trainTypes = type[key].split('/');
+            var trainTypes = type[i].exec.split('/');
             var chat = data.trainCode.charAt(0);
-
             if( trainTypes.indexOf(chat) > -1){
                 return data;
             }
@@ -178,25 +190,23 @@ function typeScreen(data){
 //开车时间筛选
 //@data = 原始数据
 //@curr = 过滤数据
+//@trainTime = 过滤条件
 //#返回符合条件的过滤数据
-function timeScreen(data,curr){
+function timeScreen(data,curr,trainTime){
     var flag = false;
-    var time = $scope.screenValue.Time;
+    var time = trainTime;
 
     if(!data || !curr){
         return null;
     }
-    if(!time){
-        return curr;
-    }
 
-    for(var key in time){
-        if(time[key]){
+    for(var i = 0; i<time.length ;i++ ){
+        if(time[i].checked ){
             flag = true;
             var str;
             var buff;
 
-            str = time[key].split('-');
+            str = time[i].exec.split('-');
             str[0] = parseInt(str[0].replace(':',''));
             str[1] = parseInt(str[1].replace(':',''));
 
@@ -218,36 +228,24 @@ function timeScreen(data,curr){
 //出发/到达车站筛选
 //@data = 原始数据
 //@curr = 过滤数据
+//@trainStation = 过滤条件
 //#返回符合条件的过滤数据
-function stationScreen(data,curr){
+function stationScreen(data,curr,trainStation){
     var flag = false;
-    var detp = $scope.screenValue.detp;
-    var arr = $scope.screenValue.arr;
 
     if(!data || !curr){
         return null;
     }
-    if(!detp && !arr){
-        return curr;
-    }
 
     //出发车站
-    for(var key in detp){
-        if(detp[key]){
+    for(var i = 0; i<trainStation.length ;i++ ){
+        if( trainStation[i].checked ){
             flag = true;
 
-            if(data.deptStationName === detp[key]){
+            if( data.deptStationName === trainStation[i].exec ){
                 return curr;
             }
-        }
-    }
-
-    //到达车站
-    for(var key in arr){
-        if(arr[key]){
-            flag = true;
-
-            if(data.arrStationName === arr[key]){
+            if( data.arrStationName === trainStation[i].exec ){
                 return curr;
             }
         }
@@ -259,9 +257,6 @@ function stationScreen(data,curr){
 
     return curr;
 }
-
-
-
 
 
 

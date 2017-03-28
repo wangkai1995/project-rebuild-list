@@ -17,8 +17,17 @@ class TrainInfoContainer extends Component{
 	
 	constructor(props){
 		super(props);
+		this.state={
+			updateFlag: true,
+			trainInfo:{},
+			isBuff: false,
+			trainInfosBuff:[],
+		};
+		this.seachFilter = this.seachFilter.bind(this);
+		this.startDateChange = this.startDateChange.bind(this);
 	}
-
+	
+	//请求城市
 	componentDidMount(){
 		const { actions ,params } = this.props;
 		actions.initParams(params);
@@ -29,20 +38,60 @@ class TrainInfoContainer extends Component{
 			findGD:  params.findGD,
 		});
 	}
+	
+	//初始化车次缓存
+	componentWillReceiveProps(nextProps){
+		var buff = [];
+		const { trainInfos } = nextProps.trainInfo;
+		if( trainInfos && !this.state.isBuff ){
+			trainInfos.map(function(train){
+				buff.push(train);
+			});
+			this.setState({
+				updateFlag: !this.state.updateFlag,
+				isBuff: true,
+				trainInfosBuff:buff,
+				trainInfo: nextProps.trainInfo
+			});
+		}
+	}
+	
+	//出发时间发生变化
+	startDateChange(date){
+		console.log(date);
+	}
+	
+	//筛选车次
+	seachFilter(trainInfos){
+		let { trainInfo } = this.state;
+		trainInfo.trainInfos = trainInfos;
+		this.setState({
+			trainInfo: trainInfo,
+			updateFlag: !this.state.updateFlag,
+		});
+	}
 
 
 	render(){
-		// console.log(this.props);
-		const { params , trainInfo ,filterTrain }= this.props;
-		
+
+		const { params , filterSeach ,actions }= this.props;
+		const { trainInfo ,trainInfosBuff ,updateFlag } = this.state;
+
 		return(
 			<div styleName="root-container">
-				<TrainListHeader params={params} />
-				<TrainInfo trainInfo={trainInfo} />
-				<TrainFilter trainInfo={trainInfo} filterTrainAction={filterTrain} />
+				<TrainListHeader onDateChange={this.startDateChange} params={params} />
+				<TrainInfo trainInfo={ trainInfo } key={updateFlag} />
+				<TrainFilter 
+						onSeachFilter={this.seachFilter}
+						trainInfosBuff={trainInfosBuff}	
+						filterSeach={filterSeach}
+						trainInfo={trainInfo} 
+						filterSeachAction={actions.setFilterSeach} 
+				/>
 			</div>
 		);
 	}
+
 }
 
 

@@ -39,10 +39,10 @@ class TrainListHeader extends Component {
 	
 	//时间改变
 	handleDateChange(Date){
-		console.log(Date);
 		this.setState({
 			isVisible:false,
 		});
+		this.props.onDateChange(Date);
 	}
 	
 	//初始化头部城市组件

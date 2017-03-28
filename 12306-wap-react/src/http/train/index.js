@@ -3,6 +3,14 @@ import httpServer  from '../../server/http/index';
 
 
 export default {
+
+	//火车票购票时间范围
+	trainDateRange:function(){
+		return httpServer.request({
+			url:'/v1/train/config/dateRange',
+			method:'GET',
+		})
+	},
 	
 	//火车票城市
 	trainCity: function(){

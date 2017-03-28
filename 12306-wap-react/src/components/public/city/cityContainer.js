@@ -17,6 +17,7 @@ import seesionServer from '../../../server/session/index';
 import localServer from '../../../server/local/index';
 
 
+
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
 class CityContainer extends Component{
@@ -38,15 +39,27 @@ class CityContainer extends Component{
 				trainHistory:[],
 				historyCity: localServer.get('historyCity')? localServer.get('historyCity') : [],
 			};
-
 			this.goCityAnchor = this.goCityAnchor.bind(this);
 			this.checkCity = this.checkCity.bind(this);
 		}
 
 		componentDidMount(){
+			const model = this.props.routeParams.model;
+			switch(model){
+				case 'train':
+					return this.initTrainCity();
+
+				default:
+					return console.log('错误的模式');
+			}
+		}
+		
+
+		initTrainCity(){
 			this.props.requestTrainCity(trainModel.trainCity);
 			this.props.requestHotCity(trainModel.trainHotCity);
 		}
+		
 		
 		//过滤热门城市中的code
 		filterHotCityCode(hotCity, citys){
@@ -124,7 +137,7 @@ class CityContainer extends Component{
 
 
 		render(){
-			console.log(this.props);
+			// console.log(this.props);
 			const { citys, hotCitys} = this.props;
 			//过滤热门城市中的code
 			const validHotCitys = this.filterHotCityCode(hotCitys,citys);
@@ -149,6 +162,7 @@ class CityContainer extends Component{
 				</div>	
 			);
 		}
+
 }
 
 

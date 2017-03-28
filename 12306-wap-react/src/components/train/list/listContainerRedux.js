@@ -5,8 +5,9 @@ import *  as actionType  from './listContainerType';
 const initialState = {
 	loading : false,
 	error : false,
-	trainInfo:{},
-	trainLisr:[],
+	trainInfo: {},
+	filterSeach: null,
+	trainLisr: [],
 	fromCode:'',
 	toCode:'',
 	detpDate:'',
@@ -55,11 +56,11 @@ function list( state = initialState , action){
 			};
 		}
 
-		//过滤火车站城市
-		case actionType.FILTER_TRAIN_INFO : {
+		//初始化过滤条件
+		case actionType.FILTER_INIT_SEACH : {
 			return{
 				...state,
-				trainInfo: action.payload,
+				filterSeach: action.payload,
 			}
 		}
 

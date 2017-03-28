@@ -16,15 +16,16 @@ class TrainInfo extends Component{
 
 
 	getTrainItem(){
-		const trainList = this.props.trainInfo.trainInfos;
-		return trainList.map( function(item){
-			return <TrainInfoItem {...item} />
+		const { trainInfos } = this.props.trainInfo;
+		return trainInfos.map( function(item){
+			return <TrainInfoItem {...item} key={item.trainCode} />
 		});
 	}
 
 
 	render(){
 		const { trainInfo } = this.props;
+
 		if( Array.isArray(trainInfo.trainInfos) && trainInfo.trainInfos.length > 0){
 			return(
 				<div styleName='trainInfo-container' >

@@ -8,6 +8,10 @@ function requestTrainCity(request){
 	return{
 		type : [REQUEST_LOADING ,REQUEST_TRAIN_CITY ,REQUEST_ERROR],
 		request : request,
+		cache:{
+			key:'trainCity_Cache',
+			time:3,
+		}
 	}
 }
 
@@ -19,6 +23,10 @@ function requestHotCity(request){
 	return{
 		type : [REQUEST_LOADING , REQUEST_HOT_CITY ,REQUEST_ERROR],
 		request:request,
+		cache:{
+			key:'trainHotCity_Cache',
+			time:3,
+		}
 	}
 }
 

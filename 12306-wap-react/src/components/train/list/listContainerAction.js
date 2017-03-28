@@ -17,20 +17,16 @@ function requestTrainInfo(request,params){
 function initParams(params){
 	return{
 		type:actionType.REQUEST_INIT_PARAMS,
-		payload: params
+		payload: params,
 	}
 }
 
 
-//过滤火车站车次信息
-//特别注意 这里的trainInfo需要包含3个数组
-// trainArrStation  + trainDetpStation + trainInfos
-// trainInfos是过滤后的车次数据
-// trainArrStation  + trainDetpStation 保持不变源数据在//请求火车车次列表接口获取
-function filterTrain(trainInfo){
+//设置过滤条件
+function setFilterSeach(filterSeach){
 	return{
-		type: actionType.FILTER_TRAIN_INFO,
-		payload: trainInfo,
+		type:actionType.FILTER_INIT_SEACH,
+		payload: filterSeach,
 	}
 }
 
@@ -38,4 +34,7 @@ function filterTrain(trainInfo){
 
 
 
-export { requestTrainInfo , initParams ,filterTrain };
+
+
+
+export { requestTrainInfo , initParams , setFilterSeach  };
