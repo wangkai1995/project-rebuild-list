@@ -11,7 +11,8 @@ import { actions } from './indexRedux';
 
 import localServer from '../../../server/local/index'
 
-
+//测试自定义日历
+import ModalCalendar from '../../../components/modal/Calendar';
 
 
 @CSSModules(styles,{allowMultiple : true})
@@ -32,6 +33,7 @@ class trainIndex extends Component {
 			<div styleName='index-container'>
 				<Banner classPrefix="train"/>
 				<Search {...search} {...searchAction} push={push} />
+				<ModalCalendar />
 			</div>
 		);
 	}
