@@ -14,9 +14,21 @@ import CalendarFooter from './footer';
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
 class Calendar extends Component{
-		
-	
-	
+	static propTypes = {
+		default:  PropTypes.instanceOf(Date),
+		check: PropTypes.instanceOf(Date),
+		maxDate: PropTypes.instanceOf(Date),
+		minDate: PropTypes.instanceOf(Date),
+		isYearChange: PropTypes.bool,
+		isMonthChange: PropTypes.bool,
+		clickDateFlag: PropTypes.bool,
+		clickDateHide: PropTypes.bool,
+		onInit: PropTypes.func,
+		onHide: PropTypes.func,
+		onClickDate: PropTypes.func,
+		onChangeDate: PropTypes.func,
+		setCalendarHide: PropTypes.func,
+	};
 	
 	
 	constructor(props){
@@ -63,13 +75,13 @@ class Calendar extends Component{
           //最小日期
           minDate: this.props.minDate? this.props.minDate : null,
           //年份是否可调 默认可调
-          isYearChange: this.props.isYearChange? this.props.isYearChange : true,
+          isYearChange: (typeof this.props.isYearChange !== 'undefiend')? this.props.isYearChange : true,
           //月份是否可调 默认可调
-          isMonthChange: this.props.isMonthChange ? this.props.isMonthChange : true,
+          isMonthChange: (typeof this.props.isMonthChange !== 'undefiend')? this.props.isMonthChange : true,
           //点击元素是否立即改变 默认改变
-          clickDateFlag: this.props.clickDateFlag? this.props.clickDateFlag : true,
+          clickDateFlag: (typeof this.props.clickDateFlag !== 'undefiend')? this.props.clickDateFlag : true,
           //选择元素之后是否关闭 默认关闭 
-          clickDateHide: this.props.clickDateHide? this.props.clickDateHide : true,
+          clickDateHide: (typeof this.props.clickDateHide !== 'undefiend')? this.props.clickDateHide : true,
         };
         return confg;
 	}
@@ -177,7 +189,6 @@ class Calendar extends Component{
 		);
 	}
 
-	
 }
 
 

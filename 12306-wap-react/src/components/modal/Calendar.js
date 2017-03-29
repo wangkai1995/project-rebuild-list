@@ -8,7 +8,22 @@ import Calendar from './calendar/container';
 
 @immutableRenderDecorator
 class ModalCalendar extends Component{
-	
+	static propTypes = {
+		default:  PropTypes.instanceOf(Date),
+		check: PropTypes.instanceOf(Date),
+		maxDate: PropTypes.instanceOf(Date),
+		minDate: PropTypes.instanceOf(Date),
+		isYearChange: PropTypes.bool,
+		isMonthChange: PropTypes.bool,
+		clickDateFlag: PropTypes.bool,
+		clickDateHide: PropTypes.bool,
+		isVisible: PropTypes.bool,
+		onInit: PropTypes.func,
+		onHide: PropTypes.func,
+		onClickDate: PropTypes.func,
+		onChangeDate: PropTypes.func,
+	};
+
 	constructor(props){
 		super(props);
 		this.state={
@@ -40,6 +55,7 @@ class ModalCalendar extends Component{
 			return null;
 		}
 	}
+	
 }
 
 
