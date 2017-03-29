@@ -56,7 +56,7 @@ class Search extends Component{
 
 	render(){
 
-		const { fromCityName ,toCityName } = this.props;
+		const { fromCityName ,toCityName ,Date } = this.props;
 		const { isVisible , showDate , showWeek ,hideDateAction ,showDateAction} = this.props;
 		const { findGD,findGDAction } = this.props;
 
@@ -68,7 +68,8 @@ class Search extends Component{
 						toCityName={toCityName}
 						selectCity={this.handleSelectCity}
 					/>
-					<SearchDate 
+					<SearchDate
+						defaultDate={Date}
 						showDate={showDate}
 						showWeek={showWeek}
 						onShow ={showDateAction}

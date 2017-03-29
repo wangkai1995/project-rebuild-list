@@ -1,7 +1,3 @@
-import moment from 'moment';
-import 'moment/locale/zh-cn';
-moment.locale('zh-cn');
-
 
 const SEARCH_DATE_CHANGE = 'SEARCH_DATE_CHANGE';
 const SHOW_DATE_MODAL = 'SHOW_DATE_MODAL';
@@ -10,15 +6,17 @@ const FIND_CHANGE = 'FIND_CHANGE';
 
 const initialState = {
 	isVisible: false,
-	Date : moment().format('YYYY-MM-DD'),
-	showDate : moment().format('MM月DD日'),
-	showWeek: moment().format('dddd'),
+	Date : new Date().format('yyyy-MM-dd'),
+	showDate : new Date().format('MM月dd日'),
+	showWeek: new Date().forWeek(),
 	fromCityName: '',
 	fromCityCode: '',
 	toCityName:'',
 	toCityCode:'',
 	findGD:false
 }
+
+console.log(initialState);
 
 
 //date用的antd控件默认则是moment对象
@@ -61,9 +59,9 @@ function search( state = initialState , action){
 		case SEARCH_DATE_CHANGE : {
 			return{
 				...state,
-				Date : action.payload.format('YYYY-MM-DD'),
-				showDate :  action.payload.format('MM月DD日'),
-				showWeek:  action.payload.format('dddd'),
+				Date : action.payload.format('yyyy-MM-dd'),
+				showDate :  action.payload.format('MM月dd日'),
+				showWeek:  action.payload.forWeek(),
 			};
 		}
 

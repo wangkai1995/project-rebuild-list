@@ -6,8 +6,8 @@ import styles from './searchDate.scss';
 import icon from '../../../styles/sprite.css';
 
 
-import ModalDate from '../../modal/Date';
-
+//自定义日历
+import ModalCalendar from '../../../components/modal/Calendar';
 
 @immutableRenderDecorator
 @CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
@@ -42,7 +42,7 @@ class SearchDate extends Component{
 	}
 
 	render(){
-		const { showDate,showWeek,isVisible } = this.props;
+		const { showDate,showWeek,isVisible ,defaultDate } = this.props;
 
 		return (
 			<label styleName="label-item">
@@ -58,9 +58,10 @@ class SearchDate extends Component{
 				</div>
 				<div styleName='border'></div>
 
-				<ModalDate
+				<ModalCalendar
+						default={ new Date(defaultDate) }
 						onHide={this.handleHide}
-						onChange={this.handleDateChange} 	
+						onChangeDate={this.handleDateChange} 	
 						isVisible={isVisible}
 				/>
 			</label>

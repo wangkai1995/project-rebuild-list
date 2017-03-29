@@ -17,29 +17,64 @@ var numberOrWeek = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday',
 //扩展时间输出格式
 Date.prototype.format = function(format,date){
     if(!format || typeof format !== 'string'){
-    throw new Error('format is undefiend or type is Error');
-  }
-  if(data){
-  	date = date instanceof Date? date : (typeof date === 'number'|| typeof date === 'string')? new Date(date): new Date();
-  }else{
-  	data = this;
-  }
-  
-  var formatReg = {
-    'y+': date.getFullYear(),
-    'M+': date.getMonth()+1,
-    'd+': date.getDate(),
-    'h+': date.getHours(),
-    'm+': date.getMinutes(),
-    's+': date.getSeconds()
-  }
-  for(reg in formatReg){
-    if(new RegExp(reg).test(format)){
-            var match = RegExp.lastMatch;
-        format = format.replace(match, formatReg[reg].toString().slice(-match.length) );
+      throw new Error('format is undefiend or type is Error');
     }
-  }
-  return format;
+    if(date){
+    	date = date instanceof Date? date : (typeof date === 'number'|| typeof date === 'string')? new Date(date): new Date();
+    }else{
+    	date = this;
+    }
+    
+    var formatReg = {
+      'y+': date.getFullYear(),
+      'M+': date.getMonth()+1,
+      'd+': date.getDate(),
+      'h+': date.getHours(),
+      'm+': date.getMinutes(),
+      's+': date.getSeconds()
+    }
+    for(var reg in formatReg){
+      if(new RegExp(reg).test(format)){
+              var match = RegExp.lastMatch;
+          format = format.replace(match, formatReg[reg].toString().slice(-match.length) );
+      }
+    }
+    return format;
+}
+//扩展时间日期
+Date.prototype.forWeek = function(date){
+    if(date){
+        date = date instanceof Date? date : (typeof date === 'number'|| typeof date === 'string')? new Date(date): new Date();
+    }else{
+        date = this;
+    }
+    function formatFromWeek(week){
+        switch(week) {
+            case 1:
+                return '周一';
+            case 2:
+                return '周二';
+            case 3:
+                return '周三';
+            case 4:
+                return '周四';
+            case 5:
+                return '周五';
+            case 6:
+                return '周六';
+            case 0:
+                return '周日';
+        }
+    }
+
+    return formatFromWeek( date.getDay() );
+}
+
+
+
+//空函数
+export function neep(){
+	return false;
 }
 
 /************************内部使用的函数***********************************/
@@ -90,7 +125,7 @@ function getConfgDay(date,number){
 };
 
 //获取输入月有多少天
- function getMonthIsDay(date){
+function getMonthIsDay(date){
 	var day = 0;
     if( validDate(date) ){
        var year = date.getFullYear(),
@@ -129,13 +164,13 @@ function getWeek(date){
 //@@如果存在最小天数，则不能小于最小天数 否则不可用
 //@@如果存在最大天数，则不能超过最大天数 否则不可用
 function validDateActive(date,config){
- if(confg.minDate && validDate(confg.minDate) ){
-    if(date < confg.minDate){
+ if(config.minDate && validDate(config.minDate) ){
+    if(date < config.minDate){
       return false;
     }
  }
- if(confg.maxDate && validDate(confg.maxDate) ){
-    if(date > confg.maxDate){
+ if(config.maxDate && validDate(config.maxDate) ){
+    if(date > config.maxDate){
       return false;
     }
  }
@@ -143,10 +178,10 @@ function validDateActive(date,config){
  return true;
 };
 
-//向前补上个月的天数
+
 export function setBeforeDate(date, year, month,config){
- var beforeMonthDayNumber = getMonthIsDay(getConfgMonth(confg.default,-1)),
-     oneDay_week = weekOrNumber[ getWeek( getConfgDay(confg.default,1) ) ];
+	var beforeMonthDayNumber = getMonthIsDay(getConfgMonth(config.default,-1)),
+        oneDay_week = weekOrNumber[ getWeek( getConfgDay(config.default,1) ) ];
    //向前补上个月的天数
     for(var i = oneDay_week-1,j = 0; i>0; i--,j++){
        var buff = {};
@@ -160,7 +195,7 @@ export function setBeforeDate(date, year, month,config){
          buff.date = new Date(year,month-2,beforeMonthDayNumber-j);
        }
        //检测是否可用
-       buff.active =  validDateActive(buff.date);
+       buff.active =  validDateActive(buff.date,config);
        date.push(buff);
     }
     //上个月的数据是反的 所以需要翻转一下
@@ -170,12 +205,12 @@ export function setBeforeDate(date, year, month,config){
 };
 
 //计算这个月的天数
-export function setNowDate(date, year, month,confg){
-    var monthDayNumber = getMonthIsDay(confg.default),
-        oneDay_week = weekOrNumber[ getWeek( getConfgDay(confg.default,1) ) ];
+export function setNowDate(date, year, month,config,template){
+    var monthDayNumber = getMonthIsDay(config.default),
+        oneDay_week = weekOrNumber[ getWeek( getConfgDay(config.default,1) ) ];
       //计算这个月
       var count = oneDay_week; //星期的转换计数器
-      var now = calendar[module].confg.default.getDate(); //获取当天
+      var now = config.default.getDate(); //获取当天
       for(var i =0; i<monthDayNumber; i++){
         var buff = {};
         if(i === 0){
@@ -192,12 +227,12 @@ export function setNowDate(date, year, month,confg){
         if(i+1 === now){
           buff.now = true;
           //判断是否和选中日期相等
-          if(calendar[module].confg.check.getTime() === buff.date.getTime()){
-              scope.template.check = buff.date;
+          if(config.check.getTime() === buff.date.getTime()){
+              template.check = buff.date;
           }
         }
         //检测是否可用
-        buff.active =  validDateActive(buff.date);
+        buff.active =  validDateActive(buff.date,config);
         date.push(buff);
       }
 
@@ -205,9 +240,9 @@ export function setNowDate(date, year, month,confg){
 };
 
 //向后补下个月的天数
-export function setAtterDate(date, year ,month,confg){
+export function setAtterDate(date, year ,month,config){
  //向后补下个月的天数
-  var atterMonth = getConfgMonth(confg.default,1),
+  var atterMonth = getConfgMonth(config.default,1),
       atterDay_week = weekOrNumber[ getWeek( getConfgDay(atterMonth,1) )  ],
       len = date.length;
   for(var i = len,j = 0; i<42 ;i++,j++){
@@ -223,10 +258,16 @@ export function setAtterDate(date, year ,month,confg){
       buff.value = j+1;
       buff.date = new Date(year,month,j+1);
       //检测是否可用
-      buff.active =  validDateActive(buff.date);
+      buff.active =  validDateActive(buff.date,config);
       date.push(buff);
   }
   return date;
 };
+
+
+
+
+
+
 
 

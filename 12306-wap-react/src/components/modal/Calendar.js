@@ -1,6 +1,5 @@
 import React ,{ Component,PropTypes } from 'react';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
-import CSSModules from 'react-css-modules'
 
 
 import Popup from './Popup';
@@ -9,32 +8,37 @@ import Calendar from './calendar/container';
 
 @immutableRenderDecorator
 class ModalCalendar extends Component{
-	// static propTypes = {
-	// 	showDate: PropTypes.string,
-	// 	showWeek: PropTypes.string,
-	// 	isVisible: PropTypes.bool,
-	// 	onChange: PropTypes.func,
-	// 	onHide: PropTypes.func,
-	// };
-
+	
 	constructor(props){
 		super(props);
-		this.onDateChange = this.onDateChange.bind(this);
+		this.state={
+			isVisible: this.props.isVisible,
+		}
+		this.setCalendarHide = this.setCalendarHide.bind(this);
 	}
+	
+	componentWillReceiveProps(nextProps){
+		this.setState({
+			isVisible : nextProps.isVisible,
+		});
+	}	
 
-	onDateChange(value) {
-		console.log(value);
-	  // this.props.onChange(value);
-	  // this.props.onHide();
+	setCalendarHide(){
+		this.setState({
+			isVisible : false,
+		});
 	}
-
 
 	render(){
-		return (
-			<Popup>
-				<Calendar />
-			</Popup>
-		);
+		if(this.state.isVisible){
+			return (
+				<Popup>
+						<Calendar setCalendarHide={this.setCalendarHide} {...this.props} />
+				</Popup>
+			);
+		}else{
+			return null;
+		}
 	}
 }
 

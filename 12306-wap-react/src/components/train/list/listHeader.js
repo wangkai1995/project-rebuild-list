@@ -6,7 +6,8 @@ import styles from './list.scss';
 import icon from '../../../styles/sprite.css';
 
 import Header from '../../../layouts/header/header';
-import ModalDate from '../../modal/Date';
+//自定义日历
+import ModalCalendar from '../../../components/modal/Calendar';
 
 
 @immutableRenderDecorator
@@ -85,9 +86,9 @@ class TrainListHeader extends Component {
 		return(
 			<div styleName="list-header-container">
 				<Header title={this.getHeaderCityName()} prefix="train-list" childer={this.getHeaderDetpDate()} />
-				<ModalDate
+				<ModalCalendar
 						onHide={this.hideModalDate}
-						onChange={this.handleDateChange} 	
+						onDateChange={this.handleDateChange} 	
 						isVisible={this.state.isVisible}
 				/>
 			</div>
