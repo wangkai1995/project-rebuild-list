@@ -47,13 +47,15 @@ class CalendarHeader extends Component{
 
 	handleAddMonth(){
 		const { defaults , isMonthChange ,onDateChange } = this.props;
+
 		if(isMonthChange){
 			let newDefaults;
 			let year = defaults.getFullYear(),
                 month =defaults.getMonth(),
                 day = defaults.getDate();
 
-              newDefaults = new Date(year,month+1,day);
+              newDefaults = new Date(year,month+1,1);
+
               onDateChange(newDefaults);
 		}
 	}
@@ -66,7 +68,7 @@ class CalendarHeader extends Component{
                 month =defaults.getMonth(),
                 day = defaults.getDate();
 
-              newDefaults = new Date(year,month-1,day);
+              newDefaults = new Date(year,month-1,1);
               onDateChange(newDefaults);
 		}
 	}

@@ -33,7 +33,7 @@ class CalendarContent extends Component{
 			});
 			return <span 	
 						styleName={classname}
-						onClick={ self.handleCheckDate.bind(self,item.date) }
+						onClick={ self.handleCheckDate.bind(self,item) }
 						key={item.date.getTime()}
 					>
 						{item.value}
@@ -42,8 +42,10 @@ class CalendarContent extends Component{
 	}
 
 
-	handleCheckDate(date){
-		this.props.onCheckDate(date);
+	handleCheckDate(item){
+		if(item.active){
+			this.props.onCheckDate(item.date);
+		}
 	}
 
 

@@ -27,6 +27,7 @@ class TrainInfoContainer extends Component{
 		this.startDateChange = this.startDateChange.bind(this);
 	}
 	
+	
 	//请求城市
 	componentDidMount(){
 		const { actions ,params } = this.props;
@@ -39,6 +40,7 @@ class TrainInfoContainer extends Component{
 		});
 	}
 	
+
 	//初始化车次缓存
 	componentWillReceiveProps(nextProps){
 		var buff = [];
@@ -56,11 +58,13 @@ class TrainInfoContainer extends Component{
 		}
 	}
 	
+
 	//出发时间发生变化
 	startDateChange(date){
 		console.log(date);
 	}
 	
+
 	//筛选车次
 	seachFilter(trainInfos){
 		let { trainInfo } = this.state;

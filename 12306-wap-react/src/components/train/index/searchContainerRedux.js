@@ -1,62 +1,29 @@
 
-const SEARCH_DATE_CHANGE = 'SEARCH_DATE_CHANGE';
-const SHOW_DATE_MODAL = 'SHOW_DATE_MODAL';
-const HIDE_DATE_MODAL= 'HIDE_DATE_MODAL';
-const FIND_CHANGE = 'FIND_CHANGE';
+import *  as actionType  from './searchContainerType';
 
 const initialState = {
 	isVisible: false,
-	Date : new Date().format('yyyy-MM-dd'),
-	showDate : new Date().format('MM月dd日'),
-	showWeek: new Date().forWeek(),
+	Date : new Date( new Date().setDate( new Date().getDate()+1) ).format('yyyy-MM-dd'),
+	showDate : new Date( new Date().setDate( new Date().getDate()+1) ).format('MM月dd日'),
+	showWeek: new Date( new Date().setDate( new Date().getDate()+1) ).forWeek(),
 	fromCityName: '',
 	fromCityCode: '',
 	toCityName:'',
 	toCityCode:'',
-	findGD:false
-}
-
-console.log(initialState);
-
-
-//date用的antd控件默认则是moment对象
-function changeDateAction(date){
-	return{
-		type: SEARCH_DATE_CHANGE,
-		payload: date,
-	};
+	findGD:false,
+	//当天的前一天
+	minDate: new Date( new Date().format('yyyy-MM-dd') ),
+	maxDate: new Date( new Date().setDate( new Date().getDate()+30) ),
+	dateRange:0,
 }
 
 
-//显示日期选择控件
-function showDateAction(){
-	return{
-		type: SHOW_DATE_MODAL,
-	};
-}
-
-
-//关闭日期选择控件
-function hideDateAction(){
-	return{
-		type:HIDE_DATE_MODAL,
-	};
-}
-
-
-//选中是否查询高铁
-function findGDAction(bool){
-	return{
-		type: FIND_CHANGE,
-		payload:bool,
-	}
-}
 
 function search( state = initialState , action){
 	
 	switch(action.type){
 
-		case SEARCH_DATE_CHANGE : {
+		case actionType.SEARCH_DATE_CHANGE : {
 			return{
 				...state,
 				Date : action.payload.format('yyyy-MM-dd'),
@@ -65,32 +32,46 @@ function search( state = initialState , action){
 			};
 		}
 
-		case FIND_CHANGE : {
+		case actionType.FIND_CHANGE : {
 			return{
 				...state,
 				findGD:action.payload,
 			};
 		}
 
-		case SHOW_DATE_MODAL : {
+		case actionType.SHOW_DATE_MODAL : {
 			return{
 				...state,
 				isVisible: true,
 			};
 		}
 
-		case HIDE_DATE_MODAL : {
+		case actionType.HIDE_DATE_MODAL : {
 			return{
 				...state,
 				isVisible:false,
 			};
 		}
-			
+
+		case actionType.REQUEST_DATE_RANGE_SUCCESS : {
+			return{
+				...state,
+				dateRange : parseInt(action.payload),
+				maxDate :new Date( new Date().setDate( new Date().getDate()+parseInt(action.payload)) ),
+			}
+		}
+
+		case actionType.REQUEST_ERROR : {
+			return{
+				...state,
+			}
+		}
+
 		default:
 			return state;
 	}
 }
 
 
+
 export default search;
-export { changeDateAction ,showDateAction ,hideDateAction ,findGDAction };

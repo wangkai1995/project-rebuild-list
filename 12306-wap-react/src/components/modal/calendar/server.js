@@ -91,7 +91,8 @@ function validDate(obj){
 
 //抛出错误信息
 function setError(message){
-  throw new Error(message);
+  console.log(message);
+  return false;
 };
 
 //获取设定月份
@@ -99,7 +100,7 @@ function setError(message){
 //@number为正向上加月份，为负向下减月份
 //返回 设置月份的时间戳
 function getConfgMonth(date,number){
-  if(validDate(date)){
+  if( validDate(date) ){
       var year = date.getFullYear(),
           month = date.getMonth()+number,
           day = date.getDate();
@@ -125,16 +126,29 @@ function getConfgDay(date,number){
 };
 
 //获取输入月有多少天
-function getMonthIsDay(date){
+//date = 输入月
+//currDate 当前月
+function getMonthIsDay(date,currDate){
 	var day = 0;
     if( validDate(date) ){
        var year = date.getFullYear(),
            month = date.getMonth()+1;
-       day = new Date(year,month,0).getDate();
-
+           if(currDate){
+                //如果当前月是三月
+               var twoMonth  = /^.{5}(\d+).+$/.exec( currDate.toLocaleDateString() );
+               if( Array.isArray(twoMonth) && twoMonth.length >1 && twoMonth[1] === '3' ){
+                    return  getTwoMonthIsDay(year);     
+               }
+           }
+        day = new Date(year,month,0).getDate();
     }
     return day;
 };
+
+//获取二月份有多少天
+function getTwoMonthIsDay(year){
+    return new Date(year,2,0).getDate();
+}
 
 //获取星期
 function getWeek(date){
@@ -179,9 +193,12 @@ function validDateActive(date,config){
 };
 
 
+
+//计算上个月的天数
 export function setBeforeDate(date, year, month,config){
-	var beforeMonthDayNumber = getMonthIsDay(getConfgMonth(config.default,-1)),
+	var beforeMonthDayNumber = getMonthIsDay( getConfgMonth(config.default,-1) , config.default ),
         oneDay_week = weekOrNumber[ getWeek( getConfgDay(config.default,1) ) ];
+
    //向前补上个月的天数
     for(var i = oneDay_week-1,j = 0; i>0; i--,j++){
        var buff = {};

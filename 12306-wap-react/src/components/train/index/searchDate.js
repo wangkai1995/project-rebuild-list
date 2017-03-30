@@ -19,6 +19,8 @@ class SearchDate extends Component{
 		onChangeDate: PropTypes.fuc,
 		onHide: PropTypes.func,
 		onShow: PropTypes.func,
+		minDate: PropTypes.instanceOf(Date),
+		maxDate: PropTypes.instanceOf(Date),
 	};
 
 	constructor(props){
@@ -42,7 +44,7 @@ class SearchDate extends Component{
 	}
 
 	render(){
-		const { showDate,showWeek,isVisible ,defaultDate } = this.props;
+		const { showDate,showWeek,isVisible ,defaultDate ,minDate ,maxDate } = this.props;
 
 		return (
 			<label styleName="label-item">
@@ -63,6 +65,8 @@ class SearchDate extends Component{
 						onHide={this.handleHide}
 						onChangeDate={this.handleDateChange} 	
 						isVisible={isVisible}
+						minDate={minDate}
+						maxDate={maxDate}
 				/>
 			</label>
 		)

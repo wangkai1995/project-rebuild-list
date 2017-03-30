@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import search,{ changeDateAction ,showDateAction , hideDateAction ,findGDAction } from '../../../components/train/index/searchContainerRedux';
-
+import search from '../../../components/train/index/searchContainerRedux';
+import * as searchActions from '../../../components/train/index/searchContainerAction';
 
 //reducer
 export default combineReducers({
@@ -9,10 +9,5 @@ export default combineReducers({
 
 
 //action
-export const actions = {
-  	changeDateAction,
-  	showDateAction,
-  	hideDateAction,
-  	findGDAction,
-};
+export const actions = searchActions
 

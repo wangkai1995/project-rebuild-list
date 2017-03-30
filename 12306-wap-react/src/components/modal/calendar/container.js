@@ -30,7 +30,7 @@ class Calendar extends Component{
 		setCalendarHide: PropTypes.func,
 	};
 	
-	
+
 	constructor(props){
 		super(props);
 		this.state={
@@ -48,6 +48,7 @@ class Calendar extends Component{
 		this.initDate( this.state.config.default );
 		this.state.callBack.onInit();
 	}
+
 	
 	//初始化模板数据
 	initTemplate(){
@@ -75,13 +76,13 @@ class Calendar extends Component{
           //最小日期
           minDate: this.props.minDate? this.props.minDate : null,
           //年份是否可调 默认可调
-          isYearChange: (typeof this.props.isYearChange !== 'undefiend')? this.props.isYearChange : true,
+          isYearChange: (typeof this.props.isYearChange !== 'undefined')? this.props.isYearChange : true,
           //月份是否可调 默认可调
-          isMonthChange: (typeof this.props.isMonthChange !== 'undefiend')? this.props.isMonthChange : true,
+          isMonthChange: (typeof this.props.isMonthChange !== 'undefined')? this.props.isMonthChange : true,
           //点击元素是否立即改变 默认改变
-          clickDateFlag: (typeof this.props.clickDateFlag !== 'undefiend')? this.props.clickDateFlag : true,
-          //选择元素之后是否关闭 默认关闭 
-          clickDateHide: (typeof this.props.clickDateHide !== 'undefiend')? this.props.clickDateHide : true,
+          clickDateFlag: (typeof this.props.clickDateFlag !== 'undefined')? this.props.clickDateFlag : true,
+          //选择元素之后是否关闭 默认不关闭 
+          clickDateHide: (typeof this.props.clickDateHide !== 'undefined')? this.props.clickDateHide : false,
         };
         return confg;
 	}
@@ -108,7 +109,7 @@ class Calendar extends Component{
 		var date = [],
 	        year = newDate.getFullYear(),
 	        month = newDate.getMonth()+1;
-
+			
 			config.default = newDate;
 	        date = CalendarServer.setBeforeDate(date ,year ,month ,config);
 	        date = CalendarServer.setNowDate(date ,year ,month ,config ,template);
@@ -128,7 +129,6 @@ class Calendar extends Component{
 
 	//日期改变
 	onYearAsMonthChange(date){
-
 		this.initDate(date);
 	}
 
@@ -149,10 +149,10 @@ class Calendar extends Component{
 		}
 	}
 
-
+	
 	onOk(){
-		var { callBack ,config } = this.state;
-		callBack.onChangeDate(this.template.check);	
+		var { callBack ,config ,template } = this.state;
+		callBack.onChangeDate(template.check);	
 		//执行关闭回调
 		callBack.onHide();
 		this.props.setCalendarHide();
@@ -169,6 +169,7 @@ class Calendar extends Component{
 
 	render(){
 		const { template ,config } = this.state;
+	
 		return (
 			<div styleName="calendar-container">
 				<CalendarHeader
@@ -188,7 +189,8 @@ class Calendar extends Component{
 			</div>
 		);
 	}
-
+	
+	
 }
 
 

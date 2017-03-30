@@ -4,6 +4,7 @@ import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import styles from './searchContainer.scss';
 
+import trainModel from '../../../http/train/index';
 
 import SearchCity from './searchCity';
 import SearchDate from './searchDate';
@@ -29,7 +30,16 @@ class Search extends Component{
 		hideDateAction: PropTypes.func,
 		showDateAction: PropTypes.func,
 		findGDAction: PropTypes.func,
+		minDate: PropTypes.instanceOf(Date),
+		maxDate: PropTypes.instanceOf(Date),
+		dateRange: PropTypes.number,
 	};
+	
+
+	componentDidMount(){
+		this.props.dateRangeAction(trainModel.trainDateRange);
+	}
+	
 
 	constructor(props){
 		super(props);
@@ -56,10 +66,9 @@ class Search extends Component{
 
 	render(){
 
-		const { fromCityName ,toCityName ,Date } = this.props;
+		const { fromCityName ,toCityName ,Date ,minDate,maxDate } = this.props;
 		const { isVisible , showDate , showWeek ,hideDateAction ,showDateAction} = this.props;
 		const { findGD,findGDAction } = this.props;
-
 		return(
 			<div styleName='search-container'>
 				<div styleName='search-list'>
@@ -75,6 +84,8 @@ class Search extends Component{
 						onShow ={showDateAction}
 						onHide ={hideDateAction}
 						isVisible = {isVisible}
+						minDate={minDate}
+						maxDate={maxDate}
 						onChangeDate ={this.handleDateChange} 
 					/>
 					<SearchType 

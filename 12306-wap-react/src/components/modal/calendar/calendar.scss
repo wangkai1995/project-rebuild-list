@@ -1,26 +1,26 @@
 
 .calendar-container{
-	position: absolute;
-	top: 15%;
-	left:0px;
-	right:0px;
-	bottom:20%;
-	margin: 0px 5%;
-	padding:15px;
-	background-color:#fff;
-	border-radius: 10px;
+    position: absolute;
+    top: 15%;
+    bottom: 25%;
+    margin: 0px auto;
+    padding: 15px;
+    max-height: 400px;
+    max-width: 338px;
+    min-width: 290px;
+    background-color: #fff;
+    border-radius: 10px
 }
 
 .calendar-header{
 	composes: clear-fixed from "../../../styles/layout.scss";
-	position:absolute;
-	top:0px;
-	left:0px;
-	right: 0px;
-	height:25%;
-	border-bottom:1px solid #d0d0d0;
-	overflow: hidden;
-    margin-bottom: 10px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 23%;
+    border-bottom: 1px solid #d0d0d0;
+    overflow: hidden;
 	h1{
 		height: 34px;
 		line-height: 34px;
@@ -45,13 +45,13 @@
 }
 
 .calendar-content{
-	position:absolute;
-	top:25%;
-	bottom:15%;
-	left:0px;
-	right: 0px;
-	padding:10px;
-	border-bottom:1px solid #d0d0d0;
+	position: absolute;
+    top: 23%;
+    bottom: 15%;
+    left: 0px;
+    right: 0px;
+    padding: 10px;
+    border-bottom: 1px solid #d0d0d0;
 }
 
 .calendar-week{
@@ -74,7 +74,7 @@
 .calendar-date{
     width: 100%;
     height: 85%;
-    padding-top:10%;
+    padding-top: 7%;
     span{
     	float: left;
 	    width: 14%;
