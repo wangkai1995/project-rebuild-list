@@ -79,8 +79,8 @@ class Calendar extends Component{
           isYearChange: (typeof this.props.isYearChange !== 'undefined')? this.props.isYearChange : true,
           //月份是否可调 默认可调
           isMonthChange: (typeof this.props.isMonthChange !== 'undefined')? this.props.isMonthChange : true,
-          //点击元素是否立即改变 默认改变
-          clickDateFlag: (typeof this.props.clickDateFlag !== 'undefined')? this.props.clickDateFlag : true,
+          //点击元素是否立即改变 默认不改变
+          clickDateFlag: (typeof this.props.clickDateFlag !== 'undefined')? this.props.clickDateFlag : false,
           //选择元素之后是否关闭 默认不关闭 
           clickDateHide: (typeof this.props.clickDateHide !== 'undefined')? this.props.clickDateHide : false,
         };

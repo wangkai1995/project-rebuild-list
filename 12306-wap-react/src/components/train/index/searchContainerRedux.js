@@ -1,18 +1,19 @@
 
 import *  as actionType  from './searchContainerType';
+import * as DateFilter from '../../../filter/Date';
 
 const initialState = {
 	isVisible: false,
-	Date : new Date( new Date().setDate( new Date().getDate()+1) ).format('yyyy-MM-dd'),
-	showDate : new Date( new Date().setDate( new Date().getDate()+1) ).format('MM月dd日'),
-	showWeek: new Date( new Date().setDate( new Date().getDate()+1) ).forWeek(),
+	Date : new Date( DateFilter.getFormat(new Date().setDate( new Date().getDate()+1) ,'yyyy-MM-dd') ),
+	showDate :  DateFilter.getFormat(new Date().setDate( new Date().getDate()+1) ,'MM月dd日') ,
+	showWeek :  DateFilter.getWeek(new Date().setDate( new Date().getDate()+1) ) ,
 	fromCityName: '',
 	fromCityCode: '',
 	toCityName:'',
 	toCityCode:'',
 	findGD:false,
 	//当天的前一天
-	minDate: new Date( new Date().format('yyyy-MM-dd') ),
+	minDate: new Date( DateFilter.getFormat(new Date(),'yyyy-MM-dd')  ),
 	maxDate: new Date( new Date().setDate( new Date().getDate()+30) ),
 	dateRange:0,
 }
@@ -26,9 +27,9 @@ function search( state = initialState , action){
 		case actionType.SEARCH_DATE_CHANGE : {
 			return{
 				...state,
-				Date : action.payload.format('yyyy-MM-dd'),
-				showDate :  action.payload.format('MM月dd日'),
-				showWeek:  action.payload.forWeek(),
+				Date : DateFilter.getFormat(action.payload,'yyyy-MM-dd'),
+				showDate :  DateFilter.getFormat(action.payload,'MM月dd日'),
+				showWeek: DateFilter.getWeek( action.payload ),
 			};
 		}
 

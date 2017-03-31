@@ -12,6 +12,14 @@ function requestTrainInfo(request,params){
 	}
 }
 
+//请求预售范围
+function requestDateRange(request){
+	const { REQUEST_DATERANGE_LOADING, REQUEST_DATERANGE_SUCCESS, REQUEST_DATERANGE_ERROR }  = actionType;
+	return{
+		type : [REQUEST_DATERANGE_LOADING, REQUEST_DATERANGE_SUCCESS, REQUEST_DATERANGE_ERROR],
+		request : request,
+	}
+}
 
 //初始化请求参数
 function initParams(params){
@@ -37,4 +45,4 @@ function setFilterSeach(filterSeach){
 
 
 
-export { requestTrainInfo , initParams , setFilterSeach  };
+export { requestTrainInfo , initParams , setFilterSeach ,requestDateRange };

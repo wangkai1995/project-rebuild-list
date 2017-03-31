@@ -27,7 +27,7 @@ class TrainInfoContainer extends Component{
 		this.startDateChange = this.startDateChange.bind(this);
 	}
 	
-	
+
 	//请求城市
 	componentDidMount(){
 		const { actions ,params } = this.props;
@@ -38,6 +38,7 @@ class TrainInfoContainer extends Component{
 			deptDate: params.detpDate,
 			findGD:  params.findGD,
 		});
+		actions.requestDateRange(trainModel.trainDateRange);
 	}
 	
 
@@ -61,7 +62,7 @@ class TrainInfoContainer extends Component{
 
 	//出发时间发生变化
 	startDateChange(date){
-		console.log(date);
+		console.log(date.toLocaleString());
 	}
 	
 
@@ -78,12 +79,17 @@ class TrainInfoContainer extends Component{
 
 	render(){
 
-		const { params , filterSeach ,actions }= this.props;
+		const { params , filterSeach ,actions ,minDate ,maxDate }= this.props;
 		const { trainInfo ,trainInfosBuff ,updateFlag } = this.state;
 
 		return(
 			<div styleName="root-container">
-				<TrainListHeader onDateChange={this.startDateChange} params={params} />
+				<TrainListHeader 
+						minDate={minDate} 
+						maxDate={maxDate} 
+						onDateChange={this.startDateChange} 
+						params={params} 
+				/>
 				<TrainInfo trainInfo={ trainInfo } key={updateFlag} />
 				<TrainFilter 
 						onSeachFilter={this.seachFilter}

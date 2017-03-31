@@ -6,8 +6,9 @@ import styles from './list.scss';
 import icon from '../../../styles/sprite.css';
 
 import Header from '../../../layouts/header/header';
-//自定义日历
+
 import ModalCalendar from '../../../components/modal/Calendar';
+import * as DateFilter from '../../../filter/Date';
 
 
 @immutableRenderDecorator
@@ -16,14 +17,17 @@ class TrainListHeader extends Component {
 	
 	constructor(props){
 		super(props);
+		const { params } = this.props;
 		this.state={
 			isVisible:false,
+			detpDate: params.detpDate,
 		}
 		this.handleDateChange = this.handleDateChange.bind(this);
 		this.showModalDate = this.showModalDate.bind(this);
 		this.hideModalDate = this.hideModalDate.bind(this);
 	}
 	
+
 	//关闭时间选择
 	showModalDate(){
 		this.setState({
@@ -41,11 +45,15 @@ class TrainListHeader extends Component {
 	//时间改变
 	handleDateChange(Date){
 		this.setState({
-			isVisible:false,
-		});
+			detpDate:DateFilter.getFormat(Date,'yyyy-MM-dd'),
+		})
 		this.props.onDateChange(Date);
 	}
 	
+
+
+
+
 	//初始化头部城市组件
 	getHeaderCityName(){
 		const { fromCityName , toCityName } = this.props.params;
@@ -60,7 +68,7 @@ class TrainListHeader extends Component {
 	
 	//初始化时间选择组件
 	getHeaderDetpDate(){
-		const { detpDate } = this.props.params;
+		const { detpDate } = this.state;
 		return(
 			<div styleName="bar-tab-time">
 				<a styleName="tab-forward">
@@ -83,12 +91,15 @@ class TrainListHeader extends Component {
 	}
 
 	render(){
+		const { minDate, maxDate } = this.props;
 		return(
 			<div styleName="list-header-container">
 				<Header title={this.getHeaderCityName()} prefix="train-list" childer={this.getHeaderDetpDate()} />
 				<ModalCalendar
+						minDate={minDate}
+						maxDate={maxDate}
 						onHide={this.hideModalDate}
-						onDateChange={this.handleDateChange} 	
+						onChangeDate={this.handleDateChange} 	
 						isVisible={this.state.isVisible}
 				/>
 			</div>
@@ -99,3 +110,5 @@ class TrainListHeader extends Component {
 
 
 export default  TrainListHeader;
+
+
