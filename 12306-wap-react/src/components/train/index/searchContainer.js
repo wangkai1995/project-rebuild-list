@@ -58,15 +58,15 @@ class Search extends Component{
 	}
 
 	handleSearchSubmit(){
-		const { fromCityName, fromCityCode ,toCityName, toCityCode ,Date , findGD } = this.props;
-		this.props.push('/train/list/'+encodeURI(fromCityName)+'/'+fromCityCode+'/'+encodeURI(toCityName)+'/'+toCityCode+'/'+Date+'/'+findGD);
+		const { fromCityName, fromCityCode ,toCityName, toCityCode ,detpDate , findGD } = this.props;
+		this.props.push('/train/list/'+encodeURI(fromCityName)+'/'+fromCityCode+'/'+encodeURI(toCityName)+'/'+toCityCode+'/'+detpDate+'/'+findGD);
 	}
 	
 
 
 	render(){
 
-		const { fromCityName ,toCityName ,Date ,minDate,maxDate } = this.props;
+		const { fromCityName ,toCityName ,detpDate ,minDate,maxDate } = this.props;
 		const { isVisible , showDate , showWeek ,hideDateAction ,showDateAction} = this.props;
 		const { findGD,findGDAction } = this.props;
 		return(
@@ -78,7 +78,7 @@ class Search extends Component{
 						selectCity={this.handleSelectCity}
 					/>
 					<SearchDate
-						defaultDate={Date}
+						defaultDate={new Date(detpDate)}
 						showDate={showDate}
 						showWeek={showWeek}
 						onShow ={showDateAction}

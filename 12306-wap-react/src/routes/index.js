@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, Redirect, hashHistory } from 'react-router';
 import Train from '../views/train/train';
 import TrainIndex from '../views/train/index/index';
 import TrainList from '../views/train/list/list';
+import TrainSeat from '../views/train/seat/seat';
 
 
 import City from '../views/public/city/city';
@@ -14,6 +15,7 @@ const routes = historys =>  (
 		<Route path='/train' component={Train} >
 			<IndexRoute  component={TrainIndex} />
 			<Route path='/train/list/:fromCityName/:fromCityCode/:toCityName/:toCityCode/:detpDate/:findGD'  component={TrainList}/>
+			<Route path='/train/seat/:fromCityCode/:toCityCode/:detpDate/:trainCode'  component={TrainSeat}/>
 		</Route>
 		
 		<Route path='/city/:model/:direction' component={City}/>

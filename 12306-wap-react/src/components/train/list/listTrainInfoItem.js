@@ -12,6 +12,7 @@ class TrainInfoItem extends Component{
 	
 	constructor(props){
 		super(props);
+		this.handleChenckTrain = this.handleChenckTrain.bind(this);
 	}
 
 	getSeat(){
@@ -48,11 +49,15 @@ class TrainInfoItem extends Component{
 			return (<span styleName="item-trainSeat-item">{item.seatName}&nbsp;&nbsp;{item.seatNum}</span>);
 		});	
 	}
+	
+	handleChenckTrain(){
+		this.props.onCheckTrain(this.props);
+	}
 
 	render(){
 		var test = this.getSeat();
 		return(
-			<li styleName='trainInfo-item'>
+			<li styleName='trainInfo-item' onClick={this.handleChenckTrain} >
 				<div styleName="item-trainInfo">
 					<div styleName="item-deptCity">{this.props.deptStationName}</div>
 					<div styleName="item-infos">

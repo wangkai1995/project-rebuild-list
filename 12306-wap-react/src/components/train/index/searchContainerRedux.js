@@ -4,7 +4,7 @@ import * as DateFilter from '../../../filter/Date';
 
 const initialState = {
 	isVisible: false,
-	Date : new Date( DateFilter.getFormat(new Date().setDate( new Date().getDate()+1) ,'yyyy-MM-dd') ),
+	detpDate :  DateFilter.getFormat (new Date( DateFilter.getFormat(new Date().setDate( new Date().getDate()+1) ,'yyyy-MM-dd') ), 'yyyy-MM-dd'),
 	showDate :  DateFilter.getFormat(new Date().setDate( new Date().getDate()+1) ,'MM月dd日') ,
 	showWeek :  DateFilter.getWeek(new Date().setDate( new Date().getDate()+1) ) ,
 	fromCityName: '',
@@ -27,7 +27,7 @@ function search( state = initialState , action){
 		case actionType.SEARCH_DATE_CHANGE : {
 			return{
 				...state,
-				Date : DateFilter.getFormat(action.payload,'yyyy-MM-dd'),
+				detpDate : DateFilter.getFormat(action.payload,'yyyy-MM-dd'),
 				showDate :  DateFilter.getFormat(action.payload,'MM月dd日'),
 				showWeek: DateFilter.getWeek( action.payload ),
 			};

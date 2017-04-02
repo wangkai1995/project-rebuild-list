@@ -26,3 +26,25 @@
     bottom: 0;
     overflow: hidden
 }
+
+
+.popup-loading{
+    width: 85%;
+    height: auto;
+    background:#fff;
+    padding:15px;
+    border-radius: 5px;
+    p{
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color:#333;
+        text-align: center;
+        font-weight: 600;
+    }
+}
+.loading-bg{
+    background: url(../../images/loading.gif) no-repeat center;
+    width: 204px;
+    height: 126px;
+    margin: 0 auto;
+}

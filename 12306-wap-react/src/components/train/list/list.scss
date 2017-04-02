@@ -113,7 +113,7 @@
     border-bottom: 1px dashed #d0d0d0;
     display: block;
     font-size: 1.125rem;
-    width: 100%;
+    width: 100%; 
 }
 
 .item-detp {
@@ -211,6 +211,9 @@
             margin-right: 15px;
         }
     }
+    a:hover, a:visited, a:link, a:active {
+        color: #fff !important;
+    } 
     i{
         position:relative;
         top: 3px;

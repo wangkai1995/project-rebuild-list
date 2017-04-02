@@ -28,10 +28,20 @@ export default {
 		})
 	},
 
-	//请求火车城市
+	//请求车次列表
 	trainInfoList:function(data){
 		return httpServer.request({
 			url:'/v1/train/trainInfos',
+			method: 'GET',
+			params: data,
+		})
+	},
+
+
+	//请求车次详情
+	trainInfo:function(data){
+		return httpServer.request({
+			url:'/v1/train/trainInfo',
 			method: 'GET',
 			params: data,
 		})

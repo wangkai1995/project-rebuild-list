@@ -5,6 +5,7 @@ import CSSModules from 'react-css-modules'
 import styles from './list.scss';
 
 import trainModel from '../../../http/train/index';
+import * as DateFilter from '../../../filter/Date';
 
 import TrainListHeader from './listHeader';
 import TrainInfo from './listTrainInfo';
@@ -25,6 +26,7 @@ class TrainInfoContainer extends Component{
 		};
 		this.seachFilter = this.seachFilter.bind(this);
 		this.startDateChange = this.startDateChange.bind(this);
+		this.checkedTrain = this.checkedTrain.bind(this);
 	}
 	
 
@@ -62,7 +64,27 @@ class TrainInfoContainer extends Component{
 
 	//出发时间发生变化
 	startDateChange(date){
-		console.log(date.toLocaleString());
+		const { actions ,params } = this.props;
+		var date = DateFilter.getFormat(date,'yyyy-MM-dd');
+		this.setState({
+			isBuff: false,
+		});
+		actions.requestTrainInfo(trainModel.trainInfoList,{
+			arrStationCode: params.toCityCode,
+			deptStationCode: params.fromCityCode,
+			deptDate: date,
+			findGD:  params.findGD,
+		});
+	}
+
+
+	//选中车次
+	checkedTrain(train){
+		const {  deptStationCode ,arrStationCode ,deptDate ,trainCode } = train;
+		
+		console.log('/train/seat/'+deptStationCode+'/'+arrStationCode+'/'+deptDate+'/'+trainCode);
+
+		this.props.push('/train/seat/'+deptStationCode+'/'+arrStationCode+'/'+deptDate+'/'+trainCode);
 	}
 	
 
@@ -77,11 +99,9 @@ class TrainInfoContainer extends Component{
 	}
 
 
-	render(){
-
-		const { params , filterSeach ,actions ,minDate ,maxDate }= this.props;
+	render(){	
+		const { params , filterSeach ,actions ,minDate ,maxDate ,loading }= this.props;
 		const { trainInfo ,trainInfosBuff ,updateFlag } = this.state;
-
 		return(
 			<div styleName="root-container">
 				<TrainListHeader 
@@ -90,7 +110,12 @@ class TrainInfoContainer extends Component{
 						onDateChange={this.startDateChange} 
 						params={params} 
 				/>
-				<TrainInfo trainInfo={ trainInfo } key={updateFlag} />
+				<TrainInfo 
+						onCheckedTrain={this.checkedTrain} 
+						isLoading={loading} 
+						trainInfo={ trainInfo } 
+						key={updateFlag} 
+				/>
 				<TrainFilter 
 						onSeachFilter={this.seachFilter}
 						trainInfosBuff={trainInfosBuff}	

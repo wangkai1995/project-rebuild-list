@@ -66,7 +66,7 @@ module.exports={
 		},
 		{
 			//图片
-　　　　　　test: /\.(png|jpg)$/,
+　　　　　　test: /\.(png|jpg|gif)$/,
 			include:[
 				path.resolve(__dirname,'src'),
 			],
@@ -75,7 +75,7 @@ module.exports={
 	},
 
 	resolve:{
-		extensions:['','.js','.jsx','.scss','.css','.png','.jpg'],
+		extensions:['','.js','.jsx','.scss','.css','.png','.jpg','gif'],
 	},
 
 	//引用插件
