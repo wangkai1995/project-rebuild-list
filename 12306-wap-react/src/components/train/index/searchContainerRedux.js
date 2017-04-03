@@ -19,7 +19,6 @@ const initialState = {
 }
 
 
-
 function search( state = initialState , action){
 	
 	switch(action.type){

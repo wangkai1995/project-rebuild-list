@@ -18,8 +18,8 @@ function getFormat(date,format){
     }
     for(var reg in formatReg){
       if(new RegExp(reg).test(format)){
-              var match = RegExp.lastMatch;
-          format = format.replace(match, formatReg[reg].toString().slice(-match.length) );
+            var match = RegExp.lastMatch;
+            format = format.replace(match, formatReg[reg]< 10 ? '0'+formatReg[reg]: formatReg[reg].toString().slice(-match.length) );
       }
     }
     return format;
@@ -28,7 +28,7 @@ function getFormat(date,format){
 
 
 //时间星期
- function getWeek(date){
+function getWeek(date){
 	 
     date = date instanceof Date? date : (typeof date === 'number'|| typeof date === 'string')? new Date(date): new Date();
    
@@ -55,8 +55,20 @@ function getFormat(date,format){
 }
 
 
+//耗时
+function runTime(date){
+    if(typeof date === 'string'){
+        var time = date.split(':');
+        var hour = time[0]? parseInt(time[0],10) : 0;
+        var minute = time[1]? time[1] : '00';
+
+        return hour+'时'+minute+'分';
+    }
+    return date;
+}
 
 
-export { getFormat,getWeek };
 
+
+export { getFormat, getWeek ,runTime };
 

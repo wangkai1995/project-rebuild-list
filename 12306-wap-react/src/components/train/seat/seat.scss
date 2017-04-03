@@ -1,0 +1,185 @@
+
+
+
+.seta-container{
+	composes: war-container from "../../../styles/layout.scss";
+	padding:10px;
+}
+
+
+.train-info{
+	composes: clear-fixed from "../../../styles/layout.scss";
+    background-color: #fff;
+    padding: 21px 15px 12px;
+    border-radius: 5px;
+    p {
+	    margin: 0 0 10px;
+	}
+}
+
+.info-from{
+    float: left;
+    width: 35%;
+    text-align: left;
+}
+
+
+.info-info{
+    float: left;
+    width: 35%;
+   	text-align: center;
+    font-size: .75rem;
+    color: #666;
+    p:first-child {
+	    position: relative;
+	    top: 15px;
+	}
+	p:last-child {
+	    position: relative;
+	    top: -18px;
+	}
+}
+
+
+.info-to{
+    float: left;
+    width: 30%;
+    text-align: right;
+}
+
+.city{
+    font-size: 1rem;
+    color: #666;
+}
+
+.time {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.date{
+    color: #666;
+    font-size: 0.75rem;
+}
+
+.clear-fixed{
+   composes: clear-fixed from "../../../styles/layout.scss"; 
+}
+
+.date-select-containe{
+    composes: clear-fixed from "../../../styles/layout.scss";
+    padding-top: 12px;
+    border-top: 1px solid #dcdcdc;
+    line-height: 26px;
+    position: relative;
+    span{
+        font-size: .9rem;
+        color: #2ca1f1;
+        cursor: pointer;
+    }
+}
+
+.prev {
+    float: left;
+    width: 20%;
+    text-align: left;
+}
+
+.next {
+    float: right;
+    width: 20%;
+    text-align: right;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.select {
+    float: left;
+    width: 60%;
+    text-align: center;
+    line-height: 26px;
+    top: -3px;
+    position: relative;
+    i{
+        position:relative;
+        top: 5px;
+    }
+}
+
+
+.seat-list{
+    margin-top: 10px;
+    padding: 0 15px;
+    background-color: #fff;
+    position: relative;
+    border-radius: 5px;
+}
+
+
+.seat-item{
+    position: relative;
+    width: 100%;
+    height: 66px;
+    padding: 15px 0;
+    line-height: 40px;
+    border-bottom: 1px solid #dcdcdc;
+    color: #333;
+    span{
+        display: block;
+        float: left;
+        font-size: 1rem;
+    }
+    span:nth-child(1) {
+        width: 23%;
+    }
+    span:nth-child(2) {
+        width: 18%;
+    }
+    span:nth-child(3) {
+        width: 32%;
+        text-align: right;
+        color: #f63;
+    }
+    button{
+        margin-left: 10px;
+        border: 0;
+        padding: 10px 13px;
+        color: #fff;
+        background-color: #ff8409;
+        float: right;
+        border-radius: 5px;
+    }
+    i{
+        color: #333;
+        font-size: .75rem;
+    }
+}
+
+.no-buy{
+    width: 30%!important;
+}
+
+.disbled{
+    color: #ccc!important;
+    cursor: auto;
+}
+
+.rob-btn {
+    background-color: #2ca1f1!important;
+}
+
+.appoint{
+    margin: 0 !important;
+    padding: 10px 7px !important;
+    background-color: #fa2a2a!important;
+}
+
+.text-overflow{
+    composes: text-overflow from "../../../styles/layout.scss";
+}
+
+
+

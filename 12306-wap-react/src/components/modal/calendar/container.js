@@ -121,6 +121,7 @@ class Calendar extends Component{
 	        if(checkedDate){
 	        	template.check = checkedDate
 	        }
+
 	    this.setState({
 	    	template:template,
 	    	config: config,
@@ -169,7 +170,7 @@ class Calendar extends Component{
 
 	render(){
 		const { template ,config } = this.state;
-	
+		
 		return (
 			<div styleName="calendar-container">
 				<CalendarHeader

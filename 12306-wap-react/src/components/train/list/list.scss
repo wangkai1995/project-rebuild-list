@@ -129,7 +129,24 @@
     padding-right: 15px;
     text-align: left;
     position: relative;
+    span{
+        position: absolute;
+        right: 13%;
+        font-size: .75rem;
+        line-height: 20px;
+        width: 55px;
+        text-align: center;
+        border-radius: 3px;
+        display: inline-block;
+        background-color: #2ca1f1;
+        color: #fff;
+    }
 }
+
+.appoint{
+    background-color: #fa2a2a !important;
+}
+
 
 .item-trainSeat{
     padding-top: 10px;

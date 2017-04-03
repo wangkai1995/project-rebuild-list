@@ -78,7 +78,7 @@ class Search extends Component{
 						selectCity={this.handleSelectCity}
 					/>
 					<SearchDate
-						defaultDate={new Date(detpDate)}
+						defaultDate={detpDate}
 						showDate={showDate}
 						showWeek={showWeek}
 						onShow ={showDateAction}

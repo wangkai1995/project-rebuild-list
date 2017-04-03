@@ -49,6 +49,9 @@ class TrainInfoContainer extends Component{
 		var buff = [];
 		const { trainInfos } = nextProps.trainInfo;
 		if( trainInfos && !this.state.isBuff ){
+
+			console.log(nextProps.trainInfo,11111);
+
 			trainInfos.map(function(train){
 				buff.push(train);
 			});
@@ -60,7 +63,8 @@ class TrainInfoContainer extends Component{
 			});
 		}
 	}
-	
+
+
 
 	//出发时间发生变化
 	startDateChange(date){
@@ -81,9 +85,6 @@ class TrainInfoContainer extends Component{
 	//选中车次
 	checkedTrain(train){
 		const {  deptStationCode ,arrStationCode ,deptDate ,trainCode } = train;
-		
-		console.log('/train/seat/'+deptStationCode+'/'+arrStationCode+'/'+deptDate+'/'+trainCode);
-
 		this.props.push('/train/seat/'+deptStationCode+'/'+arrStationCode+'/'+deptDate+'/'+trainCode);
 	}
 	
@@ -102,6 +103,9 @@ class TrainInfoContainer extends Component{
 	render(){	
 		const { params , filterSeach ,actions ,minDate ,maxDate ,loading }= this.props;
 		const { trainInfo ,trainInfosBuff ,updateFlag } = this.state;
+
+		console.log(trainInfo,55555);
+
 		return(
 			<div styleName="root-container">
 				<TrainListHeader 

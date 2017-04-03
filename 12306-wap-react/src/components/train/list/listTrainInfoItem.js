@@ -14,9 +14,11 @@ class TrainInfoItem extends Component{
 		super(props);
 		this.handleChenckTrain = this.handleChenckTrain.bind(this);
 	}
+	
 
+	//坐席
 	getSeat(){
-		const { seatList } = this.props;
+		const { seatList , trainStatus ,reason } = this.props;
 		let count = 0;
 		let seat = seatList.filter(function(item){
 			if(parseInt(item.seatNum) === 0){
@@ -26,6 +28,13 @@ class TrainInfoItem extends Component{
 			return item;
 		});
 
+		if(trainStatus === -1){
+			return (<span>{reason}</span>)
+		}
+		
+		if(trainStatus === -2){
+			return (<span>{reason}</span>)
+		}
 
 		//没有余票
 		if(seat.length === count){
@@ -49,10 +58,26 @@ class TrainInfoItem extends Component{
 			return (<span styleName="item-trainSeat-item">{item.seatName}&nbsp;&nbsp;{item.seatNum}</span>);
 		});	
 	}
+
+	//是否抢票
+	getIcon(){
+		const { seatList , trainStatus ,reason } = this.props;
+		if(trainStatus === -2){
+			return <span styleName="appoint">预约抢票</span>
+		}
+		for(var i=0; i<seatList.length ;i++){
+			if(parseInt(seatList[i].seatNum) !== 0){
+				return null;
+			}
+		}
+		return <span>去抢票</span>
+	}
 	
+
 	handleChenckTrain(){
 		this.props.onCheckTrain(this.props);
 	}
+
 
 	render(){
 		var test = this.getSeat();
@@ -76,7 +101,10 @@ class TrainInfoItem extends Component{
 				</div>
 				<div styleName="item-trainTime">
 					<span styleName="item-detp">{this.props.deptTime}</span>
-					<span styleName="item-arr">{this.props.arrTime}</span>
+					<span styleName="item-arr">
+						{this.props.arrTime}
+						{this.getIcon()}
+					</span>
 				</div>
 				<div styleName="item-trainSeat">
 					{this.getSeat()}
@@ -84,6 +112,9 @@ class TrainInfoItem extends Component{
 			</li>
 		);
 	}
+
+
+	
 }
 
 

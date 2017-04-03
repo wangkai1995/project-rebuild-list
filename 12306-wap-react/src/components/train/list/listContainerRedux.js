@@ -1,6 +1,4 @@
 import *  as actionType  from './listContainerType';
-
-
 import * as DateFilter from '../../../filter/Date';
 
 const initialState = {

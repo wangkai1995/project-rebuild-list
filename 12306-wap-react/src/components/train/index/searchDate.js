@@ -45,7 +45,7 @@ class SearchDate extends Component{
 
 	render(){
 		const { showDate,showWeek,isVisible ,defaultDate ,minDate ,maxDate } = this.props;
-
+		
 		return (
 			<label styleName="label-item">
 				<div styleName='form-date' onClick={this.handleShow}>

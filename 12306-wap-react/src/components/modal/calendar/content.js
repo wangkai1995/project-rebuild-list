@@ -25,11 +25,23 @@ class CalendarContent extends Component{
 		const { dateList,checked } = this.props;
 		var self = this;
 
+		let isDateDifference = function(dateOne,dateTwo){
+			let year = (dateOne.getFullYear() === dateTwo.getFullYear());
+			let month = (dateOne.getMonth() === dateTwo.getMonth());
+			let day = (dateOne.getDate() === dateTwo.getDate());
+			
+
+			if(year && month && day){
+				return false;
+			}
+			return true;
+		}
+	
 		return  dateList.map(function(item){
 			let classname = classnames({
 				'date-disabled': !item.active,
 				'date-active': ( item.active && item.monthFlag !== 'now' ),
-				'date-checked': ( item.date.toString() === checked.toString() ) , 
+				'date-checked': !isDateDifference(item.date,checked),
 			});
 			return <span 	
 						styleName={classname}
@@ -40,7 +52,8 @@ class CalendarContent extends Component{
 					</span>
 		});
 	}
-
+	
+	
 
 	handleCheckDate(item){
 		if(item.active){
@@ -70,3 +83,4 @@ class CalendarContent extends Component{
 
 
 export default CalendarContent
+
