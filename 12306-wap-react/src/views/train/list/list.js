@@ -22,7 +22,6 @@ class TrainList extends Component {
 	render(){
 		// console.log(this.props);
 		const { params ,list, listAction ,push }= this.props;
-
 		return(
 			<div styleName='search-list-container'>
 				<TrainInfoContainer params={params} actions={listAction} push={push}  {...list}  />

@@ -28,16 +28,12 @@ class TrainInfoItem extends Component{
 			return item;
 		});
 
-		if(trainStatus === -1){
-			return (<span>{reason}</span>)
-		}
-		
-		if(trainStatus === -2){
+		if(trainStatus !== 0){
 			return (<span>{reason}</span>)
 		}
 
 		//没有余票
-		if(seat.length === count){
+		if(seat.length === count ){
 			return (<span styleName="item-trainSeat-Sell-Out">暂无余票,建议抢票</span>)
 		}
 
@@ -62,9 +58,14 @@ class TrainInfoItem extends Component{
 	//是否抢票
 	getIcon(){
 		const { seatList , trainStatus ,reason } = this.props;
+
 		if(trainStatus === -2){
 			return <span styleName="appoint">预约抢票</span>
 		}
+		if(trainStatus !== 0){
+			return null;
+		}
+
 		for(var i=0; i<seatList.length ;i++){
 			if(parseInt(seatList[i].seatNum) !== 0){
 				return null;
@@ -73,16 +74,24 @@ class TrainInfoItem extends Component{
 		return <span>去抢票</span>
 	}
 	
-
+	//选择坐席
 	handleChenckTrain(){
+		const { trainStatus } = this.props;
+		if(trainStatus !== 0 && trainStatus !== -2){
+			return false;
+		}
 		this.props.onCheckTrain(this.props);
 	}
 
 
 	render(){
-		var test = this.getSeat();
+		const { trainStatus } = this.props;
+		const itemClass = classnames({
+			'trainInfo-item' : true,
+			'trainInfo-item-disabled' : (trainStatus !== 0 && trainStatus !== -2)
+		});
 		return(
-			<li styleName='trainInfo-item' onClick={this.handleChenckTrain} >
+			<li styleName={itemClass} onClick={this.handleChenckTrain} >
 				<div styleName="item-trainInfo">
 					<div styleName="item-deptCity">{this.props.deptStationName}</div>
 					<div styleName="item-infos">
@@ -114,7 +123,6 @@ class TrainInfoItem extends Component{
 	}
 
 
-	
 }
 
 

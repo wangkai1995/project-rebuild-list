@@ -48,10 +48,19 @@ class TrainInfoContainer extends Component{
 	componentWillReceiveProps(nextProps){
 		var buff = [];
 		const { trainInfos } = nextProps.trainInfo;
-		if( trainInfos && !this.state.isBuff ){
+		const currTrainInfos = this.state.trainInfo;
+		//检查是否相同
+		function isDifferent(curr,next){
+			if(curr.length !== next.length){
+				return true;
+			}
+			if(curr[0] && next[0] && curr[0].deptStationCode !== next[0].deptStationCode ){
+				return  true;
+			}
+			return false;
+		}
 
-			console.log(nextProps.trainInfo,11111);
-
+		if( trainInfos && (isDifferent(trainInfos,currTrainInfos)  || !this.state.isBuff) ){
 			trainInfos.map(function(train){
 				buff.push(train);
 			});
@@ -63,7 +72,6 @@ class TrainInfoContainer extends Component{
 			});
 		}
 	}
-
 
 
 	//出发时间发生变化
@@ -103,9 +111,6 @@ class TrainInfoContainer extends Component{
 	render(){	
 		const { params , filterSeach ,actions ,minDate ,maxDate ,loading }= this.props;
 		const { trainInfo ,trainInfosBuff ,updateFlag } = this.state;
-
-		console.log(trainInfo,55555);
-
 		return(
 			<div styleName="root-container">
 				<TrainListHeader 

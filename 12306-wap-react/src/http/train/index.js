@@ -45,8 +45,16 @@ export default {
 			method: 'GET',
 			params: data,
 		})
+	},
+
+	trainThrough:function(data){
+		return httpServer.request({
+			url:'/v1/train/queryStations',
+			method: 'GET',
+			params: data,
+		})
 	}
 
 
-
 }
+

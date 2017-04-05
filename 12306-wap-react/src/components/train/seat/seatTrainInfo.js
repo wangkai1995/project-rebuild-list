@@ -54,7 +54,7 @@ class SeatTrainInfo extends Component{
 					<p styleName="date">{DateFilter.getFormat(deptDate,'MM月dd日')}&nbsp;{DateFilter.getWeek(deptDate)}</p>
 				</div>
 				<div styleName="info-info">
-					<Link>
+					<Link to={`/train/through/${deptDate}/${trainCode}`} >
 						<p>{trainCode}</p>
 						<p>
 							<i styleName="cicon icon-train-through-arrow-black"></i>
