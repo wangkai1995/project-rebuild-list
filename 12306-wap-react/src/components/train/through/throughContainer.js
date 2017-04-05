@@ -7,7 +7,7 @@ import styles from './through.scss';
 import trainModel from '../../../http/train/index';
 import ModalLoading from '../../../components/modal/loading';
 
-
+import TrainTroughContent from './throughContent';
 
 
 @immutableRenderDecorator
@@ -29,11 +29,11 @@ class TrainTroughContainer extends Component{
     }
 
 
-
     render(){
         const { throughData,loading } = this.props;
         return (
             <div styleName="through-container">
+                <TrainTroughContent throughData={throughData}  />
                 <ModalLoading isVisible={loading} textContent="正在为您加载"  />
             </div>
         );
@@ -41,6 +41,7 @@ class TrainTroughContainer extends Component{
 
 
 }
+
 
 
 

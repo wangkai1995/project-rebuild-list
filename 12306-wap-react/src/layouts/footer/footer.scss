@@ -11,5 +11,31 @@
 
 
 
+.footer{
+    color: #959595;
+    background-color: #fff;
+    height: 49px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    a {
+        display: block;
+        float: left;
+        width: 29%;
+        margin-top: 5px;
+        color: #959595;
+        font-size: 17px;
+        line-height: 12px;
+        &.active{
+            color: #2ca1f1!important;
+        }
+        span{
+            margin-top: 5px;
+            display: block;
+            font-size: .85rem;
+        }
+    }
+}
 
 

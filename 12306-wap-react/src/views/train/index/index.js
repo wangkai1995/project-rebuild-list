@@ -5,6 +5,7 @@ import { push } from 'react-router-redux';
 import CSSModules from 'react-css-modules';
 
 import Banner from '../../../layouts/banner/banner';
+import SearchFooter from '../../../layouts/footer/searchFooter';
 import Search from '../../../components/train/index/searchContainer';
 import styles from './index.scss';
 import { actions } from './indexRedux';
@@ -31,6 +32,7 @@ class trainIndex extends Component {
 			<div styleName='index-container'>
 				<Banner classPrefix="train"/>
 				<Search {...search} {...searchAction} push={push} />
+				<SearchFooter Model="train" />
 			</div>
 		);
 	}

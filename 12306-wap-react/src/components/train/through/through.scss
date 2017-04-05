@@ -2,7 +2,54 @@
 
 .through-container{
     composes: war-container from "../../../styles/layout.scss";
-    padding:10px;
+    table{
+        width: 100%;
+        thead {
+            background-color: #fff;
+            
+        }
+        tbody{
+            overflow-y: auto;
+            overflow-x: hidden;
+            
+        }
+        tr{
+            position: relative;
+            padding: 0 15px;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+        }
+        td{
+            font-size: 0.85rem;
+            color:#333;
+        }
+    }
 }
+
+
+
+.index-num{
+    height: 24px;
+    width: 24px;
+    padding: 2px 4px;
+    border-radius: 50%;
+    background-color: #2ca1f1;
+    color: #fff !important;
+    font-size: 0.75rem;
+    display: block;
+    line-height: 20px;
+    margin: 0 auto;
+}
+
+
+
+.index-unit{
+    padding: 0 5px!important;
+    height: 18px!important;
+    width: 18px!important;
+    line-height: 18px!important;
+}
+
 
 
