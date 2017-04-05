@@ -22,11 +22,12 @@
     a {
         display: block;
         float: left;
-        width: 29%;
+        width: 33%;
         margin-top: 5px;
         color: #959595;
         font-size: 17px;
         line-height: 12px;
+        text-align: center;
         &.active{
             color: #2ca1f1!important;
         }

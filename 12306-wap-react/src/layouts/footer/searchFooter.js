@@ -9,7 +9,7 @@ import icon from '../../styles/sprite.css';
 
 
 @immutableRenderDecorator
-@CSSModules(Object.assign({},styles,trainStyle,icon),{allowMultiple: true})
+@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
 class SearchFooter extends Component{
 
 	render(){
@@ -29,19 +29,28 @@ class SearchFooter extends Component{
             'icon-geren': Model !== 'user',
             'icon-geren-select' : Model === 'user',
         });
-		<div styleName="footer">
-            <Link>
-                <i styleName={trainIcon}></i>
-                <span>火车票</span>
-            </Link>
-            <Link>
-                <i styleName={busIcon}></i>
-                <span>汽车票</span>
-            </Link>
-            <Link>
-                <i styleName={userIcon}></i>
-                <span>个人中心</span>
-            </Link>
-        </div>
+        return(
+    		<div styleName="footer">
+                <Link>
+                    <i styleName={trainIcon}></i>
+                    <span>火车票</span>
+                </Link>
+                <Link>
+                    <i styleName={busIcon}></i>
+                    <span>汽车票</span>
+                </Link>
+                <Link>
+                    <i styleName={userIcon}></i>
+                    <span>个人中心</span>
+                </Link>
+            </div>
+        );
 	}
 }
+
+
+
+
+export default SearchFooter;
+
+

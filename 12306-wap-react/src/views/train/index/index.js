@@ -32,7 +32,7 @@ class trainIndex extends Component {
 			<div styleName='index-container'>
 				<Banner classPrefix="train"/>
 				<Search {...search} {...searchAction} push={push} />
-				<SearchFooter Model="train" />
+				<SearchFooter Model='train' />
 			</div>
 		);
 	}
