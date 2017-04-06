@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server.js",
     "clean": "rimraf build",
-    "build:webpack": "set NODE_ENV=production && webpack -p --config webpack.config.build.js",
+    "build:webpack": "set NODE_ENV=production && webpack --config webpack.config.build.js",
     "build": "npm run clean && npm run build:webpack"
   },
   "author": "",
@@ -44,7 +44,7 @@
     "less-loader": "^2.2.3",
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
-    "node-sass": "^4.5.0",
+    "node-sass": "^4.5.2",
     "postcss": "^5.2.16",
     "postcss-loader": "^1.3.3",
     "react-css-modules": "^4.1.0",

@@ -6,6 +6,7 @@ import styles from './searchCity.scss';
 import icon from '../../../styles/sprite.css';
 
 
+
 @immutableRenderDecorator
 @CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
 class SearchCity extends Component{
@@ -21,6 +22,7 @@ class SearchCity extends Component{
 	
 	render(){
 		const { fromCityName, toCityName } = this.props; 
+		
 		return(
 			<label styleName='label-item'>
 				<div styleName='city-title'>
@@ -33,7 +35,7 @@ class SearchCity extends Component{
 					>
 						{fromCityName}
 					</a>
-					<i styleName='icon-jiaohuan-ico cicon'></i>
+					<i styleName='cicon icon-jiaohuan-ico'></i>
 					<a 	styleName="city to-city"
 						onClick={ () =>{ this.handleClick('to'); } }
 					>

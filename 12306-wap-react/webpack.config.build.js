@@ -48,18 +48,26 @@ module.exports={
 			loader: 'style!css?modules&localIdentName=[name]__[local]__[hash:base64:5]!sass?sourceMap=true',
 		},
 		{
-			//开启css test
+			//开启css module-针对 icon
+			test: /\.css$/,
+			include:[
+				path.resolve(__dirname,'src'),
+			],
+			loader: 'style!css?modules&localIdentName=[name]__[local]__[hash:base64:5]',
+		},
+		{
+			//开启css antd
 			test: /\.css$/,
 			// exclude: path.resolve(__dirname,'src'),
 			include:[
-				path.resolve(__dirname,'src'),
+				// path.resolve(__dirname,'src'),
 				path.resolve(__dirname,'node_modules/antd'),
 			],
 			loader: 'style!css',
 		},
 		{
 			//图片
-　　　　　　test: /\.(png|jpg)$/,
+　　　　　　test: /\.(png|jpg|gif)$/,
 			include:[
 				path.resolve(__dirname,'src'),
 			],
@@ -82,7 +90,7 @@ module.exports={
 	],
 
 	resolve:{
-		extensions:['','.js','.jsx','.scss','.css','.png','.jpg'],
+		extensions:['','.js','.jsx','.scss','.css','.png','.jpg','.gif'],
 	},
 
 	//引用插件
@@ -95,8 +103,10 @@ module.exports={
 		//配置开发环境
 		new webpack.optimize.DedupePlugin(),
 		new webpack.DefinePlugin({
-   			'process.env.NODE_ENV' : JSON.stringify(process.env.NODE_ENV),
-     			_DEV_:false,
+   			'process.env': {
+		    	NODE_ENV: JSON.stringify('production')
+		  	},
+ 			_DEV_:false,
  		}),
  		new ExtractTextPlugin("[name]-[hash].css"),
 	    new webpack.optimize.UglifyJsPlugin({
@@ -108,3 +118,6 @@ module.exports={
 	],
 
 };
+
+
+
