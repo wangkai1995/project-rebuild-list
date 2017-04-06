@@ -99,12 +99,13 @@ class CityList extends Component{
 			return list;
 		}
 		
+
 		//渲染城市
 		//citys = 分类后的城市数据 是object类型
 		getCityItem(citys){
 			let cityList = [];
 			let key = Object.keys(citys);
-			const onClickCity = this.props;
+			const { onClickCity } = this.props;
 
 			if(key.length > 0){
 				for( let i=0; i<key.length; i++){

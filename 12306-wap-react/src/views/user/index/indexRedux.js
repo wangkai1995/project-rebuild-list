@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import index from '../../../components/user/index/indexContainerRedux';
-import * as indexActions from '../../../components/user/index/indexContainerAction';
+import * as rootsActions from '../../../components/user/index/indexContainerAction';
+
 
 //reducer
 export default combineReducers({
@@ -9,4 +10,4 @@ export default combineReducers({
 
 
 //action
-export const actions = indexActions
+export const actions = rootsActions;

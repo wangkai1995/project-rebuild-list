@@ -31,7 +31,7 @@ class SearchFooter extends Component{
         });
         return(
     		<div styleName="footer">
-                <Link>
+                <Link to="/train">
                     <i styleName={trainIcon}></i>
                     <span>火车票</span>
                 </Link>
@@ -39,7 +39,7 @@ class SearchFooter extends Component{
                     <i styleName={busIcon}></i>
                     <span>汽车票</span>
                 </Link>
-                <Link>
+                <Link to="/user">
                     <i styleName={userIcon}></i>
                     <span>个人中心</span>
                 </Link>

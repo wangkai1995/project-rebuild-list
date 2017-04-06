@@ -16,14 +16,14 @@ class CityItem extends Component{
 		}
 
 		handleClick(city){
-			this.props.onClickCity(city);
+			this.props.onCheckCity(city);
 		}
 
 		getCity(citys){
 			return citys.map( (city)=>{
 				return ( 
 					<li styleName="city-li">
-						<a onClick={this.handleClick.bind(this.city)}>
+						<a onClick={this.handleClick.bind(this,city)}>
 							{city.cityName}
 						</a>
 					</li>

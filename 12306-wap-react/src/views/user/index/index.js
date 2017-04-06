@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import CSSModules from 'react-css-modules';
 import styles from './index.scss';
-import icon from '../../styles/sprite.css';
 
 
 import { actions } from './indexRedux';
 
 
-
-@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
+@CSSModules(styles,{allowMultiple: true})
 class UserIndex extends Component {
 
-    render(){        
+    render(){
+        console.log(this.props);
+
         return(
             <div styleName='index-container'>
 
@@ -22,6 +22,7 @@ class UserIndex extends Component {
         );
     }
 }
+
 
 
 
