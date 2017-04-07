@@ -16,7 +16,7 @@ module.exports={
 	devtool:'source-map',
 	//入口文件
 	entry:{
-		app:['./src/app',],
+		app:['./src/app'],
 		vendors:['react','react-dom','react-router'],
 	},
 	//输出文件

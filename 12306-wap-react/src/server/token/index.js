@@ -7,10 +7,12 @@ class TokenServer {
 		}
 	}
 
+
 	set(key,value,time){
 		var value = JSON.stringify(value);
 		document.cookie = key+'='+value+';path=/;expires='+time.toGMTString();
 	}
+
 
 	get(key){
 		var CookieName = key+'=';
@@ -28,9 +30,48 @@ class TokenServer {
 		return CookieValue;
 	}
 
+
 	remove(key){
+
 		document.cookie = key +"=; expires ="+new Date(0)+" ; path=/";
 	}
+
+
+	queryToken(){
+		var token = this.get('token');
+		if(!token){
+			return false;
+		}
+		return token;
+	}
+
+
+	getToken(onDefeated){
+		var token = this.get('token');
+		if(!token){
+			if(onDefeated){
+				onDefeated();
+			}
+			return false;
+		}
+		return token;
+	}
+
+
+	setToken(token,onSuccess){
+		if(token){
+			var currentDate = new Date(),
+            	currentTime = currentDate.getTime();
+       		currentTime = currentTime + token.expires_in*1000;
+       		this.set('token',token,currentTime);
+       		if(onSuccess){
+       			onSuccess();
+       		}
+		}
+		console.log('设置token失败');
+	}
+
+
 }
 
 

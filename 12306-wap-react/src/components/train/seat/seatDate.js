@@ -2,6 +2,7 @@ import React ,{ Component , PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
+import _ from 'lodash';
 import styles from './seat.scss';
 import icon from '../../../styles/sprite.css';
 
@@ -9,7 +10,7 @@ import ModalCalendar from '../../../components/modal/Calendar';
 import * as DateFilter from '../../../filter/Date';
 
 @immutableRenderDecorator
-@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
 class SeatDate extends Component{
 	
 	constructor(props){

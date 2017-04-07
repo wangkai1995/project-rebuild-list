@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
+import _ from 'lodash';
 import styles from './seat.scss';
 import icon from '../../../styles/sprite.css';
 
@@ -11,7 +12,7 @@ import SeatDate from './seatDate';
 
 
 @immutableRenderDecorator
-@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
 class SeatTrainInfo extends Component{
 	
 	constructor(props){

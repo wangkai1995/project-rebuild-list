@@ -2,6 +2,7 @@ import React ,{ Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
+import _ from 'lodash';
 import styles from './searchType.scss';
 import icon from '../../../styles/sprite.css';
 import { Switch } from 'antd';
@@ -9,7 +10,7 @@ import 'antd/dist/antd.css';
 
 
 @immutableRenderDecorator
-@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
 class SearchType extends Component{
 	static propTypes = {
 		findGD: PropTypes.bool,

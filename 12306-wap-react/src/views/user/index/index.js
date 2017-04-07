@@ -7,21 +7,26 @@ import styles from './index.scss';
 
 
 import { actions } from './indexRedux';
+import SearchFooter from '../../../layouts/footer/searchFooter';
+import UserIndexContainer from '../../../components/user/index/indexContainer';
+
 
 
 @CSSModules(styles,{allowMultiple: true})
 class UserIndex extends Component {
 
     render(){
-        console.log(this.props);
-
+        const { index, indexAction } = this.props;
         return(
             <div styleName='index-container'>
-
+                <UserIndexContainer action={indexAction} {...index} />
+                <SearchFooter Model='user' />
             </div>
         );
     }
 }
+
+
 
 
 

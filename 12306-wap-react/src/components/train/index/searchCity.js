@@ -2,13 +2,14 @@ import React ,{ Component ,PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
+import _ from 'lodash';
 import styles from './searchCity.scss';
 import icon from '../../../styles/sprite.css';
 
 
 
 @immutableRenderDecorator
-@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
 class SearchCity extends Component{
 	static propTypes = {
 		fromCityName: PropTypes.string,

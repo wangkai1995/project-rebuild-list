@@ -2,6 +2,7 @@ import React ,{ Component,PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
+import _ from 'lodash';
 import styles from './searchDate.scss';
 import icon from '../../../styles/sprite.css';
 
@@ -10,7 +11,7 @@ import icon from '../../../styles/sprite.css';
 import ModalCalendar from '../../../components/modal/Calendar';
 
 @immutableRenderDecorator
-@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
 class SearchDate extends Component{
 	static propTypes = {
 		showDate: PropTypes.string,

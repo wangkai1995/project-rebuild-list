@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import CSSModules from 'react-css-modules';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
-
+import _ from 'lodash';
 import styles from './list.scss';
 import icon from '../../../styles/sprite.css';
 
@@ -13,7 +13,7 @@ import * as DateFilter from '../../../filter/Date';
 
 
 @immutableRenderDecorator
-@CSSModules(Object.assign({},styles,icon),{allowMultiple: true})
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
 class TrainListHeader extends Component {
 	
 	constructor(props){

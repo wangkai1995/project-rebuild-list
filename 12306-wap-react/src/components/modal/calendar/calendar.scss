@@ -1,16 +1,19 @@
 
 .calendar-container{
-    position: absolute;
-    top: 15%;
-    bottom: 25%;
-    margin: 0px auto;
+    position: relative;
+    margin-top: 15%;
+    margin-bottom: 25%;
+    margin-left: auto;
+    margin-right: auto;
     padding: 15px;
+    min-height: 340px;
     max-height: 400px;
     max-width: 338px;
     min-width: 290px;
     background-color: #fff;
     border-radius: 10px
 }
+
 
 .calendar-header{
 	composes: clear-fixed from "../../../styles/layout.scss";
