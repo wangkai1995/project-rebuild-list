@@ -38,6 +38,8 @@ const fetchMiddleware = store => next => action =>{
 	//发送请求
 	action.request( params ).then(function(data){
 		//请求是否接受
+		console.log(data);
+		
 		if(data.code === '00000'){
 			//检查是否有缓存要求
 			if(cache){

@@ -5,7 +5,6 @@ import Browser from '../../lib/explorer';
 import Promises from 'core-js/library//es6/promise';
 Promise = Promises;
 
-console.log(JSON.stringify(Browser) );
 
 
 function toQueryString(obj) {
@@ -20,6 +19,7 @@ function toQueryString(obj) {
         return encodeURIComponent(key) + '=' + encodeURIComponent(val);
     }).join('&') : '';
 }
+
 
 //fetch
 function fetchQequest(config){
@@ -82,9 +82,10 @@ function fetchQequest(config){
     return defer;
 }
  
+
 //ajax
 function ajaxQequest(config){
-	var ajax = new XMLHttpRequest();
+	var ajax = new XDomainRequest();
  	var url = Constant.host + config.url;
 	 if(config.params){
     	url +='?';
@@ -97,7 +98,8 @@ function ajaxQequest(config){
     		}	
     	}
     }
-      var defer = new Promise(function(resolve, reject){
+
+    var defer = new Promise(function(resolve, reject){
     	switch(config.method){
 			case 'GET':
 				//回调
@@ -105,6 +107,7 @@ function ajaxQequest(config){
 					console.log(ajax.readyState);
 					if(ajax.readyState === 4 ){
 						if(ajax.status === 200){
+                            console.log(resolve);
 							resolve(JSON.parse(ajax.responseText));
 						}else{
 							reject('错误代码'+ajax.status+'错误信息:'+ajax.statusText);
@@ -113,7 +116,7 @@ function ajaxQequest(config){
 
 				}
 				ajax.open('GET' , url, true) ;
-				ajax.send(null);
+				ajax.send();
 				break;
 
 			case 'POST':
@@ -142,6 +145,7 @@ function ajaxQequest(config){
 }
 
 
+
 class httpServer {
 	constructor(){	
 	}
@@ -149,7 +153,6 @@ class httpServer {
 	request(config){
 		//不兼容浏览器换ajax
 		if( (Browser.browser.ie && Browser.engine.ie <10) || (Browser.browser.safari && Browser.browser.safari < 6.1) ){
-			console.log(1111111);
 			return ajaxQequest(config);
 		}else{
 			return fetchQequest(config);
