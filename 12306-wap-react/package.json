@@ -43,6 +43,7 @@
     "cssnano": "^3.10.0",
     "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.1.0",
+    "fetch-polyfill2": "0.0.3",
     "file-loader": "^0.10.1",
     "immutable": "^3.8.1",
     "less": "^2.7.2",
