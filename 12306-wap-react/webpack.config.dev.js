@@ -112,6 +112,6 @@ module.exports={
 		    spritesmithOptions: {
 		        algorithm: 'top-down'
 		    }
-	    })
+	    }),
 	],
 };

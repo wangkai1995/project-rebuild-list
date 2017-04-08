@@ -1,0 +1,7 @@
+
+
+.login-container{
+    composes: index-container from "../../train/index/index.scss";
+    background: url(../../../images/login_bg.png) no-repeat;
+    background-size: cover;
+}

@@ -1,0 +1,98 @@
+
+
+.personal-center-bar{
+    position: relative;
+    height: 150px;
+    background: url(../../../images/user-bg.png) no-repeat!important;
+    width: 100%;
+    border: 0;
+}
+
+.personal-photo{
+    width: 100%;
+    height: 40%;
+    position: relative;
+    top: 40%;
+     button{
+        z-index: 1;
+        min-width: initial;
+        min-height: 31px;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 32px;
+        position: relative;
+        top: 15%;
+        margin-left: 10px;
+        background-color: #ff8409;
+        color:#fff;
+        border-radius: 6px;
+        padding: 0 15px;
+        border: 0;
+    }
+}
+
+.user-photo{
+    margin-left: 20px;
+    height: 50px;
+    width: 50px;
+    float: left;
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid #192d3a;
+        -webkit-user-drag: none;
+    }
+}
+
+.personal-content{
+    position: absolute;
+    top: 150px;
+    bottom: 53px;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.personal-center-ad{
+    background: url(../../../images/user-ad-img.png) center center no-repeat;
+    background-size: cover;
+    width: 8.15625rem;
+    height: 1.3125rem;
+    margin: 0 auto;
+}
+
+.content-list{
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 0;
+    margin-bottom: 20px;
+    
+}
+
+.content-item{
+    composes: item from "../../../styles/layout.scss";
+    padding: 14px 15px;
+    font-size: .94rem;
+    color: inherit;
+    text-decoration: none;
+    span{
+        float: left;
+        margin: 0;
+    }
+    i{
+        &:first-child{
+            margin: 1px 10px 0 0;
+            float: left;
+        }
+        &:last-child{
+            float: right;
+        }
+    }
+}
+
+.item-separate{
+    margin: 10px 0;
+}
+

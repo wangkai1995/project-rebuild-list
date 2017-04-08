@@ -2,14 +2,15 @@ import React ,{ Component,PropTypes } from 'react';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import classnames from 'classnames';
 import CSSModules from 'react-css-modules';
-
+import _ from 'lodash';
 import styles from './header.scss';
 import trainStyle from './train.scss';
+import userStyle from './user.scss';
 import icon from '../../styles/sprite.css';
 
 
 @immutableRenderDecorator
-@CSSModules(Object.assign({},styles,trainStyle,icon),{allowMultiple: true})
+@CSSModules(_.merge({},styles,trainStyle,userStyle,icon),{allowMultiple: true})
 class Header extends Component{
 	static propTypes = {
 		childer:PropTypes.node,

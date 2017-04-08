@@ -9,6 +9,7 @@ import TokenServer from '../../../server/token/index';
 import userModel from '../../../http/user/index';
 
 import UserHeader from './indexHeader';
+import UserContent from './indexContent';
 
 
 @immutableRenderDecorator
@@ -17,7 +18,11 @@ class UserIndexContainer extends Component{
 
     constructor(props){
         super(props);
-        console.log(this.props);
+        this.handleGoLogin = this.handleGoLogin.bind(this);
+    }
+
+    handleGoLogin(){
+        this.props.push('/user/login');
     }
 
 
@@ -32,11 +37,12 @@ class UserIndexContainer extends Component{
     }
     
 
-
     render(){
+        const { userInfo } = this.props;
         return(
-            <div >
-                <UserHeader />
+            <div>
+                <UserHeader onLogin={this.handleGoLogin} userInfo={userInfo} />
+                <UserContent />
             </div>
         );
     }

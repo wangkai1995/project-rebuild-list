@@ -16,10 +16,10 @@ import UserIndexContainer from '../../../components/user/index/indexContainer';
 class UserIndex extends Component {
 
     render(){
-        const { index, indexAction } = this.props;
+        const { index, indexAction, push } = this.props;
         return(
             <div styleName='index-container'>
-                <UserIndexContainer action={indexAction} {...index} />
+                <UserIndexContainer action={indexAction} push={push} {...index} />
                 <SearchFooter Model='user' />
             </div>
         );
