@@ -30,7 +30,7 @@ class UserIndexContainer extends Component{
         const { action } = this.props; 
         let token = TokenServer.queryToken();
         if( token ){
-            action.requestUserInfo(userModel,userInfo,{
+            action.requestUserInfo(userModel.userInfo,{
                 access_token : token.access_token,
             });
         }

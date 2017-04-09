@@ -32,7 +32,6 @@ class TokenServer {
 
 
 	remove(key){
-
 		document.cookie = key +"=; expires ="+new Date(0)+" ; path=/";
 	}
 
@@ -63,12 +62,13 @@ class TokenServer {
 			var currentDate = new Date(),
             	currentTime = currentDate.getTime();
        		currentTime = currentTime + token.expires_in*1000;
-       		this.set('token',token,currentTime);
+       		this.set('token',token,new Date(currentTime));
        		if(onSuccess){
        			onSuccess();
        		}
+		}else{
+			console.log('设置token失败');
 		}
-		console.log('设置token失败');
 	}
 
 

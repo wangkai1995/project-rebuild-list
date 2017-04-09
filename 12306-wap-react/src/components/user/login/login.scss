@@ -1,5 +1,16 @@
 
 
+.login-container{
+    position: absolute;
+    top: 54px;
+    left: 0px;
+    right: 0px;
+    bottom:0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
 
 
 .login-tab{
@@ -8,7 +19,6 @@
     margin: 0 15px;
     padding: 0;
     position: relative;
-    top: 55px;
     li{
         float: left;
         width: 50%;
@@ -24,8 +34,73 @@
 }
 
 
+.tab-active{
+    border-bottom: 2px solid #2ca1f1 !important;
+}
 
 
+.login-from-container{
+    composes: list from "../../../styles/layout.scss";
+    margin-top: 10px;
+}
 
+.login-from-input{
+    composes: item-input from "../../../styles/layout.scss";
+    padding-left: 0;
+    border-bottom: 1px solid #fff !important;
+    margin: 0 15px;
+    border: 0;
+    background: 0 0;
+    i{    
+        margin: 0 6px 0 0;
+    }
+    input{
+        color: #fff;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 120px;
+        flex: 1 120px;
+        width: 100%;
+        background:transparent;
+    }
+}
+
+.login-register{
+    margin-top: 20px;
+    height: 40px;
+    padding: 0 15px;
+    overflow: hidden;
+    a{
+        color: #fff;
+        font-size: 0.85rem;
+        &:first-child{
+            float: left;
+        }
+        &:last-child{
+            float: right;
+        }
+    }
+}
+
+
+.login-submie{
+    composes: button from "../../../styles/layout.scss";
+    composes: button-block from "../../../styles/layout.scss";
+    background-color: #ff8409;
+    color:#fff;
+    width: 90%;
+    margin: 0px auto;
+}
+
+.login-submie-disabled{
+    background-color: #ccc !important;
+    color:#fff !important;
+}
+
+.login-error{
+    margin-top: 10px;
+    color:#f30;
+    font-size: 1rem;
+    text-align: center;
+}
 
 

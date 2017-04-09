@@ -15,19 +15,28 @@ class UserHeader extends Component{
 
     constructor(props){
         super(props);
-        console.log(this.props);
+    }
+
+
+    getUserName(){
+        const { userInfo ,onLogin } = this.props;
+        if(userInfo){
+            return <span>{userInfo.realName}</span>
+        }
+        return <button onClick={onLogin} >登录/注册</button>
     }
 
 
     render(){
-        const { onLogin } =this.props; 
+        const { userInfo } =this.props; 
+        const userPhoto = userInfo? userInfo.headPic : defaultPhoto
         return(
             <div styleName="personal-center-bar">
                 <div styleName="personal-photo">
                     <div styleName="user-photo">
-                        <img src={defaultPhoto} />
+                        <img src={userPhoto} />
                     </div>
-                    <button onClick={onLogin} >登录/注册</button>
+                    { this.getUserName() }
                 </div>
             </div>
         );

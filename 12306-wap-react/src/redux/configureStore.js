@@ -1,6 +1,7 @@
 import { createStore ,combineReducers ,compose ,applyMiddleware} from 'redux';
 import { hashHistory } from 'react-router';
 import { routerReducer ,routerMiddleware } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form';
 
 import ThunkMiddleware from 'redux-thunk';
 import fetchMiddleware from './fetchMiddleware';
@@ -26,6 +27,7 @@ const finalCreateStore = compose(
 const reducer = combineReducers({
 	...rootReducer,
 	routing : routerReducer, 
+	form: formReducer,
 });
 
 

@@ -36,7 +36,7 @@ module.exports={
 			include:[
 				path.resolve(__dirname,'src'),
 			],
-			loaders:['react-hot','babel'],
+			loaders:['babel-loader'],
 		}
 		,{
 			//开启css module

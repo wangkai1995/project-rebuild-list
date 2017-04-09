@@ -28,7 +28,6 @@ function index( state = initialState , action){
         }
 
         case actionType.REQUEST_USER_INFO_ERROR : {
-            console.log(action.payload)
             return{
                 ...state,
                 loading:false,

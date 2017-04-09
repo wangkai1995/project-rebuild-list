@@ -29,7 +29,15 @@
         padding: 0 15px;
         border: 0;
     }
+    span{
+        position: absolute;
+        top: 8px;
+        margin: 0 0 0 10px;
+        color:#fff;
+        font-size: 0.85rem;
+    }
 }
+
 
 .user-photo{
     margin-left: 20px;

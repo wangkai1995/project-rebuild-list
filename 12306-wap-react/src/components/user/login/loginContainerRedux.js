@@ -1,10 +1,13 @@
 
 import *  as actionType  from './loginContainerType';
 
+
+
 const initialState = {
   loading:false,
   error:false,
-  loginInfo: false,
+  loginInfo:false,
+  loginType:1,   //1:账号密码登录 2:动态密码登录 
 }
 
 
@@ -20,15 +23,14 @@ function login( state = initialState , action){
         }
 
         case actionType.REQUEST_LOGIN_SUCCESS : {
-            return{
+             return{
                 ...state,
                 loading:false,
-                loginInfo : action.payload,
-            }
+                loginInfo: action.payload,
+            };
         }
 
-        case actionType.REQUEST_LOGIN_LOADING : {
-            console.log(action.payload)
+        case actionType.REQUEST_LOGIN_ERROR : {
             return{
                 ...state,
                 loading:false,

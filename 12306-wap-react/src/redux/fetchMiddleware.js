@@ -38,7 +38,7 @@ const fetchMiddleware = store => next => action =>{
 	//发送请求
 	action.request( params ).then(function(data){
 		//请求是否接受
-		if(data.code === '00000'){
+		if(data.code === '00000' ||  data.access_token){
 			//检查是否有缓存要求
 			if(cache){
 				//设置缓存
@@ -47,7 +47,7 @@ const fetchMiddleware = store => next => action =>{
 			next({
 				type : SUCCESS,
 				loading : false,
-				payload : data.data,
+				payload : data.data? data.data : data,
 			});
 		}else{
 			next({
