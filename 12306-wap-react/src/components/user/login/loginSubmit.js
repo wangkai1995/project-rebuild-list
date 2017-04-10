@@ -14,14 +14,6 @@ class LoginSubmit extends Component{
         super(props);
     }
 
-
-    getErrorMessage(){
-        const { error } = this.props;
-        if(error){
-            return  <p styleName="login-error">{error}</p>
-        }
-    }
-
     
     render(){
         const { disabled ,handleSubmit } = this.props;
@@ -42,7 +34,6 @@ class LoginSubmit extends Component{
                 >
                     登录
                 </button>
-               { this.getErrorMessage() }
             </div> 
         )
     }

@@ -40,13 +40,14 @@ class UserLoginContainer extends Component{
     
     //根据登陆模式获取对应表单
     getLoginFrom(){
-        const { loginType ,loading } = this.props;
+        const { loginType ,loading ,validPhone } = this.props;
         switch(loginType){
             case 1:
                 return <LoginFrom onLogin={ this.requestLogin } loading={loading} />;
             case 2:
                 return <LoginPhoneFrom
                             onVlidateCode={ this.validatePhone } 
+                            validPhone={validPhone}
                             onLogin={ this.requestLogin } 
                             loading={loading}  
                         />;
@@ -61,14 +62,16 @@ class UserLoginContainer extends Component{
         action.changeLoginType(type);
     }
 
-
     //获取验证码
     getValidateCode(){
     }
 
     //验证手机
     validatePhone(phone){
-        console.log(phone);
+        const { action } = this.props;
+        action.requestVlidatePhone(userModel.mobileValid,{
+            mobile: phone,
+        });
     }
 
     //请求登陆

@@ -15,18 +15,23 @@ const loginValidate = values => {
     const error = {}
     const phoneReg = /^0?(13|15|18|14|17)[0-9]{9}$/;
     const { username , password } = values;
-    if(!username || !password){
-        error._error= '用户名或密码不可以为空';
+    if(!username){
+        error.username= '用户名不可以为空';
         return error;
     }
 
     if( !phoneReg.test(username) ){
-        error._error= '手机格式不正确';
+        error.username= '手机格式不正确';
+        return error;
+    }
+
+    if(!password){
+        error.password= '密码不可以为空';
         return error;
     }
 
     if(password.length < 8 || password.length > 16){
-         error._error= '密码长度不正确8~16位';
+         error.password= '密码长度不正确8~16位';
          return error;
     }
 
@@ -36,6 +41,51 @@ const loginValidate = values => {
 
 @immutableRenderDecorator
 @CSSModules(_.merge({},styles,icon),{allowMultiple: true})
+class userField extends Component{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        const { input, label, type, meta: { touched, error} } = this.props;
+        return(
+            <div>
+                <label styleName="login-from-input" >
+                    <i styleName="cicon icon-login-user-ico"></i>
+                  <input {...input} placeholder={label} type={type}/>
+                </label>
+                 {touched && (error && <p styleName="login-error">{error}</p>)}
+            </div>
+        );
+    }
+}
+
+
+@immutableRenderDecorator
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
+class passwordField extends Component{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        const { input, label, type, meta: { touched, error} } = this.props;
+        return(
+            <div>
+                <label styleName="login-from-input" >
+                    <i styleName="cicon icon-login-password-ico"></i>
+                  <input {...input} placeholder={label} type={type}/>
+                </label>
+                 {touched && (error && <p styleName="login-error">{error}</p>)}
+            </div>
+        );
+    }
+}
+
+
+
+@immutableRenderDecorator
+@CSSModules(styles,{allowMultiple: true})
 class LoginFrom extends Component{
 
     constructor(props){
@@ -51,19 +101,12 @@ class LoginFrom extends Component{
         return(
             <div styleName="login-from-container">
                 <form>
-                    <label styleName="login-from-input" >
-                        <i styleName="cicon icon-login-user-ico"></i>
-                        <Field name="username" type="text" component="input" placeholder="请输入手机号码"/>
-                    </label>
-                    <label styleName="login-from-input" >
-                        <i styleName="cicon icon-login-password-ico"></i>
-                        <Field name="password" type="password" component="input" placeholder="请输入密码"/>
-                    </label>
+                    <Field name="username" type="text" component={userField} label="请输入手机号码"/>
+                    <Field name="password" type="password" component={passwordField} label="请输入密码"/>
                 </form>
                 <LoginSubmit 
                         handleSubmit={ handleSubmit( this.handleOnSubmit.bind(this) ) } 
                         disabled={ invalid || pristine || loading } 
-                        error={error}
                 />
             </div> 
         )

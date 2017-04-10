@@ -8,6 +8,7 @@ const initialState = {
   error: false,
   loginInfo:false,
   loginType:1,   //1:账号密码登录 2:动态密码登录 
+  validPhone:false,
   isVisible: false,
 }
 
@@ -40,6 +41,25 @@ function login( state = initialState , action){
                 loading:false,
                 isVisible:true,
                 error : '账号或密码错误',
+            }
+        }
+
+        //验证手机号码可用
+        case actionType.REQUEST_VALIDPHONE_SUCCESS : {
+             return{
+                ...state,
+                loading:false,
+                validPhone: true,
+            };
+        }
+
+        //验证手机号码不可用
+        case actionType.REQUEST_VALIDPHONE_ERROR : {
+            return{
+                ...state,
+                loading:false,
+                isVisible:true,
+                error : action.payload,
             }
         }
 
