@@ -14,15 +14,24 @@ class LoginTab extends Component{
         super(props);
     }
 
+    handleClick(type){
+        this.props.onTypeChange(type);
+    }
     
     render(){
         const { loginType } =this.props;
         return(
             <ul styleName="login-tab">
-                <li styleName={loginType === 1? 'tab-active': ''}>
+                <li 
+                    onClick={ this.handleClick.bind(this,1) }
+                    styleName={loginType === 1? 'tab-active': ''}
+                >
                     普通登录
                 </li>
-                <li styleName={loginType === 2? 'tab-active': ''}>
+                <li 
+                    onClick={ this.handleClick.bind(this,2) }
+                    styleName={loginType === 2? 'tab-active': ''}
+                >
                     手机动态密码登录
                 </li>
             </ul>

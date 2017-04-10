@@ -2,6 +2,7 @@ import React,{ Component,PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import {Motion ,spring} from 'react-motion';
+import { Seq } from 'immutable';
 import _ from 'lodash';
 import styles from './city.scss';
 
@@ -53,13 +54,11 @@ class CityContainer extends Component{
 					return console.log('错误的模式');
 			}
 		}
-		
 
 		initTrainCity(){
 			this.props.requestTrainCity(trainModel.trainCity);
 			this.props.requestHotCity(trainModel.trainHotCity);
 		}
-		
 		
 		//过滤热门城市中的code
 		filterHotCityCode(hotCity, citys){
@@ -72,8 +71,9 @@ class CityContainer extends Component{
 				}
 				return item;
 			});
-
-			return hotCity;
+            //转换程immutable
+            let $$hotCitys = Seq(hotCity);
+			return $$hotCitys;
 		}
 
 		//瞄点跳转
@@ -135,7 +135,6 @@ class CityContainer extends Component{
 			window.history.back();
 		}
 
-
 		render(){
 			// console.log(this.props);
 			const { citys, hotCitys} = this.props;
@@ -157,7 +156,7 @@ class CityContainer extends Component{
 					<CityInput onClickCity={this.checkCity} citys={citys} />
 					<CityCurrent onClickCity={this.checkCity} citys={citys}  />
 					<CityHistory onClickCity={this.checkCity} cityList={this.state.historyCity} />
-					<CityHotList onClickCity={this.checkCity} cityList={validHotCitys} />
+					<CityHotList onClickCity={this.checkCity} $$cityList={validHotCitys} />
 					<CityList onClickCity={this.checkCity} citys={citys} />
 				</div>	
 			);

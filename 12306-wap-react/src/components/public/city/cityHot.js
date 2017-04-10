@@ -12,14 +12,15 @@ import CityInlineItem from './cityInlineItem';
 class CityHotList extends Component{
 		static propTypes = {
 			onClickCity: PropTypes.func,
-			cityList: PropTypes.arrayOf( PropTypes.object ),
 		};
 		
 		render(){
-			const { cityList , onClickCity } = this.props;
-			let cityHotList =  cityList.map( (item) =>{
+			const { $$cityList , onClickCity } = this.props;
+
+			let cityHotList =  $$cityList.map( (item) =>{
 				return <CityInlineItem onCheckCity={onClickCity} {...item} />
 			} );
+
 
 			return(
 				<div>

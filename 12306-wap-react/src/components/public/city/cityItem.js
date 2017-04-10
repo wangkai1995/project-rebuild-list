@@ -17,10 +17,11 @@ class CityItem extends Component{
 
 		handleClick(city){
 			this.props.onCheckCity(city);
+
 		}
 
-		getCity(citys){
-			return citys.map( (city)=>{
+		getCity($$citys){
+			return $$citys.map( (city)=>{
 				return ( 
 					<li styleName="city-li">
 						<a onClick={this.handleClick.bind(this,city)}>
@@ -32,12 +33,12 @@ class CityItem extends Component{
 		}
 		
 		render(){
-			const { title, citys } = this.props;
+			const { title, $$citys } = this.props;
 			return(
 				<div ref='anchor'>
 					<h2 styleName="title">{title}</h2>
 					<ul styleName="city-ul">
-						{ this.getCity(citys) }
+						{ this.getCity($$citys) }
 					</ul>
 				</div>
 			);

@@ -1,9 +1,7 @@
 import React,{ Component,PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
-
 import styles from './city.scss';
-
 
 
 @immutableRenderDecorator
@@ -28,3 +26,5 @@ class CityInlineItem extends Component{
 
 
 export default CityInlineItem;
+
+

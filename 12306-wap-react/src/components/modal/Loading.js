@@ -10,7 +10,7 @@ import Popup from './Popup';
 @CSSModules(styles,{allowMultiple: true})
 class ModalLoading extends Component{
 	static propTypes = {
-		textContent:  PropTypes.instanceOf(Date),
+		textContent:  PropTypes.string,
 		isVisible: PropTypes.bool,
 	};
 
@@ -22,6 +22,7 @@ class ModalLoading extends Component{
 			textContent: textContent,
 		}
 	}
+	
 	
 	componentWillReceiveProps(nextProps){
 		this.setState({

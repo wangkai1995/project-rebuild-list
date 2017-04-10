@@ -27,7 +27,7 @@ class LoginSubmit extends Component{
         const { disabled ,handleSubmit } = this.props;
         const buttonClass=classnames({
             'login-submie': true,
-            'login-submie-disabled':disabled,
+            'button-disabled':disabled,
         });
         return (
             <div>

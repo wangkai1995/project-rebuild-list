@@ -91,7 +91,14 @@
     margin: 0px auto;
 }
 
-.login-submie-disabled{
+.login-validcode{
+    composes: button from "../../../styles/layout.scss";
+    composes: button-small from "../../../styles/layout.scss";
+    background-color: #ff8409;
+    color:#fff;
+}
+
+.button-disabled{
     background-color: #ccc !important;
     color:#fff !important;
 }

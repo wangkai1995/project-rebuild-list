@@ -37,3 +37,4 @@ class CityHistory extends Component{
 
 
 export default CityHistory;
+

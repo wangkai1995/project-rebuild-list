@@ -1,6 +1,7 @@
 import React,{ Component,PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
+import { Seq } from 'immutable';
 import _ from 'lodash';
 
 import styles from './city.scss';
@@ -110,8 +111,10 @@ class CityList extends Component{
 			if(key.length > 0){
 				for( let i=0; i<key.length; i++){
 					if( Array.isArray(citys[ key[i] ]) &&  citys[ key[i] ].length > 0 ){
+						//这里转换成immutale
+						let $$itemCity = Seq( citys[ key[i] ] );
 						cityList.push(
-							<CityItem onCheckCity={onClickCity} title={key[i]}  citys={citys[key [i] ]} />
+							<CityItem onCheckCity={onClickCity} title={key[i]}  $$citys={ $$itemCity } />
 						);
 					}
 				}
