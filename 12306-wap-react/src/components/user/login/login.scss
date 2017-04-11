@@ -96,11 +96,14 @@
     composes: button-small from "../../../styles/layout.scss";
     background-color: #ff8409;
     color:#fff;
+    width: 70px;
+    text-align: center;
 }
 
 .button-disabled{
     background-color: #ccc !important;
     color:#fff !important;
+    pointer-events: none;
 }
 
 .login-error{

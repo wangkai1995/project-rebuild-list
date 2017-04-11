@@ -14,28 +14,21 @@ import ValidateCode from './loginValidateCode';
 
 
 const loginValidate = values => {
-    const error = {}
     const phoneReg = /^0?(13|15|18|14|17)[0-9]{9}$/;
-    const { username , password } = values;
-    if(!username){
-        error._error= '手机号码不可以为空';
-        return error;
-    }
-    if( !phoneReg.test(username) ){
-        error._error= '手机格式不正确';
-        return error;
-    }
-    return error;
-}
-
-const passwordValidate = values =>{
     if(!values){
         return false;
     }
-
-    if(values>6){
+    if( !phoneReg.test(values) ){
         return false;
     }
+    return true;
+}
+
+const passwordValidate = values =>{
+    if(values.length === 6){
+        return true;
+    }
+    return false;
 }
 
 
@@ -67,8 +60,14 @@ class LoginPhoneFrom extends Component{
 
     constructor(props){
         super(props);
-        this.handleTest = this.handleTest.bind(this);
+        this.state={
+            submitFlag: false,
+            validPhoneFlag:false,
+        }
+        this.handleUserName = this.handleUserName.bind(this);
+        this.handlePassword = this.handlePassword.bind(this);
     }
+
 
     handleOnSubmit(data){
         this.props.onLogin(data);
@@ -76,33 +75,58 @@ class LoginPhoneFrom extends Component{
 
     handleOnValidateCode(data){
         const { username } = data;
-        this.props.onVlidateCode(username);
+        this.props.onGetValidateCode(username);
     }
 
-    ///
-    handleTest(event, newValue, previousValue){
-        console.log(event, newValue, previousValue);
+
+    handleUserName(event, newValue, previousValue){
+        if(loginValidate(newValue)){
+            this.setState({
+                validPhoneFlag:true,
+            })
+            this.props.onVlidatePhone(newValue);
+        }else{
+            this.setState({
+                validPhoneFlag:false,
+            })
+        }
+    }
+
+    handlePassword(event, newValue, previousValue){
+        if(passwordValidate(newValue)){
+            this.setState({
+               submitFlag: true, 
+            });
+        }else{
+            this.setState({
+               submitFlag: false, 
+            });
+        }
     }
 
 
     render(){
-        const { handleSubmit ,invalid ,error ,pristine ,loading ,validPhone } = this.props;
+        const { handleSubmit ,error ,pristine ,loading ,validPhone } = this.props;
+        const { validPhoneFlag ,submitFlag } = this.state;
+
+        console.log( validPhoneFlag ,submitFlag  );
+        
         return(
             <div styleName="login-from-container">
                 <form>
-                    <Field name="username" type="text" component={userField} label="请输入手机号码"/>
+                    <Field name="username" onChange={ this.handleUserName } type="text" component={userField} label="请输入手机号码"/>
                     <label styleName="login-from-input" >
                         <i styleName="cicon icon-login-password-ico"></i>
-                        <Field onChange={ this.handleTest } name="password" type="password" component="input" placeholder="请输入动态密码"/>
+                        <Field onChange={ this.handlePassword } name="password" type="password" component="input" placeholder="请输入动态密码"/>
                         <ValidateCode 
-                                disabled = { invalid || pristine || loading } 
+                                disabled = { pristine || loading || !validPhone ||!validPhoneFlag } 
                                 handleSubmit={ handleSubmit( this.handleOnValidateCode.bind(this) ) } 
                         />
                     </label>
                 </form>
                 <LoginSubmit 
                         handleSubmit={ handleSubmit( this.handleOnSubmit.bind(this) ) } 
-                        disabled={ invalid || pristine || loading || !validPhone } 
+                        disabled={ pristine || loading || !validPhone || !submitFlag } 
                 />
             </div> 
         )
@@ -114,9 +138,9 @@ class LoginPhoneFrom extends Component{
 
 
 
+
 export default reduxForm({
   form: 'loginPhoneFrom',                 //你的redux-form的特殊标记，必填项
-  validate:loginValidate,            // 上面定义的一个验证函数，使redux-form同步验证
 })(LoginPhoneFrom)   
 
 

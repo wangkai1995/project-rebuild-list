@@ -12,21 +12,54 @@ class ValidateCode extends Component{
 
     constructor(props){
         super(props);
+        this.state={
+            count:0,
+            text:'获取验证码'
+        }
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+
+    handleClick(){
+        const self = this;
+        const { disabled ,handleSubmit } = this.props;
+        const { count, text } = this.state;
+
+        if( !disabled && count === 0){
+            handleSubmit();
+            this.setState({
+                count:59,
+            })
+            var time =setInterval(function(){
+                var { count } = self.state;
+                if(count-1 === 0){
+                    self.setState({
+                        count:0,
+                    });
+                    return clearInterval(time);
+                }
+                count--;
+                self.setState({
+                    count:count,
+                });
+            },1000);
+        }
     }
 
     
     render(){
-         const { disabled ,handleSubmit } = this.props;
+        const { disabled } = this.props;
+        const { count, text } = this.state;
         const buttonClass=classnames({
             'login-validcode': true,
-            'button-disabled': disabled,
+            'button-disabled': disabled || count !== 0,
         });
         return(
             <button 
-                onClick={handleSubmit}
+                onClick={this.handleClick}
                 styleName={buttonClass}
             >
-                获取动态密码
+                {count === 0? text : count}
             </button>
         );
     }

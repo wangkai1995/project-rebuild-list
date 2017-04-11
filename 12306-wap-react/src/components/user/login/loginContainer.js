@@ -25,12 +25,13 @@ class UserLoginContainer extends Component{
         this.requestLogin = this.requestLogin.bind(this);
         this.changeLoginType = this.changeLoginType.bind(this);
         this.validatePhone = this.validatePhone.bind(this);
+        this.getValidateCode = this.getValidateCode.bind(this);
     }
 
     //更新的时候判断是否登录成功并且附带信息
     //另外判断手机号码是否验证成功
     componentWillReceiveProps(nextProps){
-        const { loginInfo } = nextProps;
+        const { loginInfo ,error } = nextProps;
         if(loginInfo){
             TokenServer.setToken(loginInfo,function(){
                 window.history.back();
@@ -43,10 +44,15 @@ class UserLoginContainer extends Component{
         const { loginType ,loading ,validPhone } = this.props;
         switch(loginType){
             case 1:
-                return <LoginFrom onLogin={ this.requestLogin } loading={loading} />;
+                return <LoginFrom 
+                            validPhone={validPhone}
+                            onVlidatePhone={ this.validatePhone } 
+                            onLogin={ this.requestLogin } 
+                            loading={loading} />;
             case 2:
                 return <LoginPhoneFrom
-                            onVlidateCode={ this.validatePhone } 
+                            onGetValidateCode={ this.getValidateCode }
+                            onVlidatePhone={ this.validatePhone } 
                             validPhone={validPhone}
                             onLogin={ this.requestLogin } 
                             loading={loading}  
@@ -63,7 +69,12 @@ class UserLoginContainer extends Component{
     }
 
     //获取验证码
-    getValidateCode(){
+    getValidateCode(phone){
+        const { action } = this.props;
+        action.requestVlidateCode(userModel.verifyCode,{
+            mode: 'dynamic-password',
+            mobile: phone,
+        });
     }
 
     //验证手机

@@ -49,7 +49,9 @@ function login( state = initialState , action){
              return{
                 ...state,
                 loading:false,
-                validPhone: true,
+                validPhone: action.payload === 1,
+                isVisible: action.payload !== 1,
+                error : action.payload !== 1? '该手机号码没有注册':false,
             };
         }
 
@@ -59,7 +61,7 @@ function login( state = initialState , action){
                 ...state,
                 loading:false,
                 isVisible:true,
-                error : action.payload,
+                error : '该手机号码没有注册',
             }
         }
 
