@@ -107,10 +107,7 @@ class LoginPhoneFrom extends Component{
 
     render(){
         const { handleSubmit ,error ,pristine ,loading ,validPhone } = this.props;
-        const { validPhoneFlag ,submitFlag } = this.state;
-
-        console.log( validPhoneFlag ,submitFlag  );
-        
+        const { validPhoneFlag ,submitFlag } = this.state;        
         return(
             <div styleName="login-from-container">
                 <form>
@@ -120,7 +117,7 @@ class LoginPhoneFrom extends Component{
                         <Field onChange={ this.handlePassword } name="password" type="password" component="input" placeholder="请输入动态密码"/>
                         <ValidateCode 
                                 disabled = { pristine || loading || !validPhone ||!validPhoneFlag } 
-                                handleSubmit={ handleSubmit( this.handleOnValidateCode.bind(this) ) } 
+                                onHandleSubmit={ handleSubmit( this.handleOnValidateCode.bind(this) ) } 
                         />
                     </label>
                 </form>

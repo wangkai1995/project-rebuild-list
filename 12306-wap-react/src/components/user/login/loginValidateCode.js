@@ -22,14 +22,13 @@ class ValidateCode extends Component{
 
     handleClick(){
         const self = this;
-        const { disabled ,handleSubmit } = this.props;
+        const { disabled ,onHandleSubmit } = this.props;
         const { count, text } = this.state;
-
         if( !disabled && count === 0){
-            handleSubmit();
             this.setState({
                 count:59,
             })
+            onHandleSubmit();
             var time =setInterval(function(){
                 var { count } = self.state;
                 if(count-1 === 0){
@@ -55,12 +54,12 @@ class ValidateCode extends Component{
             'button-disabled': disabled || count !== 0,
         });
         return(
-            <button 
+            <span 
                 onClick={this.handleClick}
                 styleName={buttonClass}
             >
                 {count === 0? text : count}
-            </button>
+            </span>
         );
     }
 

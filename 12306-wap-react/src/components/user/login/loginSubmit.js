@@ -27,13 +27,13 @@ class LoginSubmit extends Component{
                     <Link>忘记密码?</Link>
                     <Link>快速注册></Link>
                 </div>
-                <button
+                <span
                     styleName={buttonClass}
                     disabled={disabled}
                     onClick={handleSubmit}
                 >
                     登录
-                </button>
+                </span>
             </div> 
         )
     }

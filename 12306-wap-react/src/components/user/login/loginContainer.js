@@ -26,6 +26,7 @@ class UserLoginContainer extends Component{
         this.changeLoginType = this.changeLoginType.bind(this);
         this.validatePhone = this.validatePhone.bind(this);
         this.getValidateCode = this.getValidateCode.bind(this);
+        this.requestPhoneLogin = this.requestPhoneLogin.bind(this);
     }
 
     //更新的时候判断是否登录成功并且附带信息
@@ -34,6 +35,7 @@ class UserLoginContainer extends Component{
         const { loginInfo ,error } = nextProps;
         if(loginInfo){
             TokenServer.setToken(loginInfo,function(){
+                console.log('11111111');
                 window.history.back();
             });
         }
@@ -54,7 +56,7 @@ class UserLoginContainer extends Component{
                             onGetValidateCode={ this.getValidateCode }
                             onVlidatePhone={ this.validatePhone } 
                             validPhone={validPhone}
-                            onLogin={ this.requestLogin } 
+                            onLogin={ this.requestPhoneLogin } 
                             loading={loading}  
                         />;
             default :
@@ -94,6 +96,17 @@ class UserLoginContainer extends Component{
             username: username,
             password: password,
         });
+    }
+
+    //动态密码登录
+    requestPhoneLogin(data){
+       const { action } =this.props;
+        let username = data.username;
+        let password = data.password;
+        action.requestLogin(userModel.login,{
+            username: username,
+            password: password,
+        }); 
     }
 
 
