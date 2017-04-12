@@ -2,7 +2,7 @@ import React ,{ Component , PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
-import styles from './login.scss';
+import styles from './index.scss';
 
 
 
@@ -47,11 +47,11 @@ class ValidateCode extends Component{
 
     
     render(){
-        const { disabled } = this.props;
+        const { disabled ,prefix } = this.props;
         const { count, text } = this.state;
         const buttonClass=classnames({
-            'login-validcode': true,
-            'button-disabled': disabled || count !== 0,
+            [`${prefix}-validcode`]: true,
+            'disabled': disabled || count !== 0,
         });
         return(
             <span 
@@ -70,6 +70,3 @@ class ValidateCode extends Component{
 
 
 export default ValidateCode;
-
-
-

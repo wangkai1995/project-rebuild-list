@@ -65,6 +65,24 @@ function login( state = initialState , action){
             }
         }
 
+        //发送验证码成功
+        case actionType.REQUEST_VALIDCODE_SUCCESS:{
+            return{
+                ...state,
+                loading:false,
+            }
+        }
+
+         //发送验证码成功
+        case actionType.REQUEST_VALIDCODE_ERROR:{
+            return{
+                ...state,
+                loading:false,
+                isVisible:true,
+                error : '发送验证码失败错误信息:'+action.payload,
+            }
+        }
+
         //登陆模式切换
         case actionType.CHANGE_LOGIN_TYPE : {
             return{

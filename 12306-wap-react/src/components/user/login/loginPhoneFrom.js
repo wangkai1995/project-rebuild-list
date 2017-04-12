@@ -9,7 +9,7 @@ import icon from '../../../styles/sprite.css';
 
 
 import LoginSubmit from './loginSubmit';
-import ValidateCode from './loginValidateCode';
+import ValidateCode from '../../lib/validateCode/index';
 
 
 
@@ -107,7 +107,7 @@ class LoginPhoneFrom extends Component{
 
     render(){
         const { handleSubmit ,error ,pristine ,loading ,validPhone } = this.props;
-        const { validPhoneFlag ,submitFlag } = this.state;        
+        const { validPhoneFlag ,submitFlag } = this.state;     
         return(
             <div styleName="login-from-container">
                 <form>
@@ -116,6 +116,7 @@ class LoginPhoneFrom extends Component{
                         <i styleName="cicon icon-login-password-ico"></i>
                         <Field onChange={ this.handlePassword } name="password" type="password" component="input" placeholder="请输入动态密码"/>
                         <ValidateCode 
+                                prefix="login"
                                 disabled = { pristine || loading || !validPhone ||!validPhoneFlag } 
                                 onHandleSubmit={ handleSubmit( this.handleOnValidateCode.bind(this) ) } 
                         />
@@ -123,7 +124,7 @@ class LoginPhoneFrom extends Component{
                 </form>
                 <LoginSubmit 
                         handleSubmit={ handleSubmit( this.handleOnSubmit.bind(this) ) } 
-                        disabled={ pristine || loading || !validPhone || !submitFlag } 
+                        disabled={ loading || !validPhone || !submitFlag } 
                 />
             </div> 
         )

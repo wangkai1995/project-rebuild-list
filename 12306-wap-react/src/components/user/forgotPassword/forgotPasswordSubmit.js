@@ -1,14 +1,13 @@
 import React ,{ Component , PropTypes } from 'react';
-import { Link } from 'react-router';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
-import styles from './login.scss';
+import styles from './forgotPassword.scss';
 
 
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
-class LoginSubmit extends Component{
+class ForgotPasswordSubmit extends Component{
 
     constructor(props){
         super(props);
@@ -18,21 +17,17 @@ class LoginSubmit extends Component{
     render(){
         const { disabled ,handleSubmit } = this.props;
         const buttonClass=classnames({
-            'login-submie': true,
-            'button-disabled':disabled,
+            'submit': true,
+            'disabled':disabled,
         });
         return (
-            <div>
-                <div styleName="login-register">
-                    <Link to="/user/forgotPassword">忘记密码?</Link>
-                    <Link>快速注册></Link>
-                </div>
+            <div styleName="btn-Submit">
                 <span
                     styleName={buttonClass}
                     disabled={disabled}
                     onClick={handleSubmit}
                 >
-                    登录
+                    下一步
                 </span>
             </div> 
         )
@@ -45,4 +40,4 @@ class LoginSubmit extends Component{
 
 
 
-export default LoginSubmit;
+export default ForgotPasswordSubmit;
