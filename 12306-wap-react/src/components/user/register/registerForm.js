@@ -4,16 +4,17 @@ import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import _ from 'lodash';
-import styles from './login.scss';
+import styles from './register.scss';
 import icon from '../../../styles/sprite.css';
 
 
-import LoginSubmit from './loginSubmit';
+
 import ValidateCode from '../../lib/validateCode/index';
+import RegisterSubmit from './registerSubmit';
 
 
 
-const loginValidate = values => {
+const phoneVlidate = values => {
     const phoneReg = /^0?(13|15|18|14|17)[0-9]{9}$/;
     if(!values){
         return false;
@@ -24,17 +25,11 @@ const loginValidate = values => {
     return true;
 }
 
-const passwordValidate = values =>{
-    if(values.length === 6){
-        return true;
-    }
-    return false;
-}
 
 
 @immutableRenderDecorator
 @CSSModules(_.merge({},styles,icon),{allowMultiple: true})
-class userField extends Component{
+class RegisterUserField extends Component{
     constructor(props){
         super(props);
     }
@@ -43,20 +38,42 @@ class userField extends Component{
         const { input, label, type, meta: { touched, error} } = this.props;
         return(
             <div>
-                <label styleName="login-from-input" >
+                <label styleName="register-from-input" >
                     <i styleName="cicon icon-login-user-ico"></i>
                   <input {...input} placeholder={label} type={type}/>
                 </label>
-                 {touched && (error && <p styleName="login-error">{error}</p>)}
+                 {touched && (error && <p styleName="register-error">{error}</p>)}
+            </div>
+        );
+    }
+}
+
+@immutableRenderDecorator
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
+class RegisterPasswordField extends Component{
+    constructor(props){
+        super(props);
+    }
+
+    render(){
+        const { input, label, type, meta: { touched, error} } = this.props;
+        return(
+            <div>
+                <label styleName="register-from-input" >
+                    <i styleName="cicon icon-login-password-ico"></i>
+                  <input {...input} placeholder={label} type={type}/>
+                </label>
+                 {touched && (error && <p styleName="register-error">{error}</p>)}
             </div>
         );
     }
 }
 
 
+
 @immutableRenderDecorator
 @CSSModules(_.merge({},styles,icon),{allowMultiple: true})
-class LoginPhoneFrom extends Component{
+class RegisterFrom extends Component{
 
     constructor(props){
         super(props);
@@ -65,12 +82,11 @@ class LoginPhoneFrom extends Component{
             validPhoneFlag:false,
         }
         this.handleUserName = this.handleUserName.bind(this);
-        this.handlePassword = this.handlePassword.bind(this);
     }
 
 
     handleOnSubmit(data){
-        this.props.onLogin(data);
+        console.log(data);
     }
 
     handleOnValidateCode(data){
@@ -80,7 +96,7 @@ class LoginPhoneFrom extends Component{
 
 
     handleUserName(event, newValue, previousValue){
-        if(loginValidate(newValue)){
+        if(phoneVlidate(newValue)){
             this.setState({
                 validPhoneFlag:true,
             })
@@ -92,40 +108,29 @@ class LoginPhoneFrom extends Component{
         }
     }
 
-    handlePassword(event, newValue, previousValue){
-        if(passwordValidate(newValue)){
-            this.setState({
-               submitFlag: true, 
-            });
-        }else{
-            this.setState({
-               submitFlag: false, 
-            });
-        }
-    }
-
-
     render(){
         const { handleSubmit ,error ,pristine ,loading ,validPhone } = this.props;
         const { validPhoneFlag ,submitFlag } = this.state;     
         return(
-            <div styleName="login-from-container">
+            <div styleName="register-from-container">
                 <form>
-                    <Field name="username" onChange={ this.handleUserName } type="text" component={userField} label="请输入手机号码"/>
-                    <label styleName="login-from-input" >
+                    <Field name="username" onChange={ this.handleUserName } type="text" component={RegisterUserField} label="请输入手机号码"/>
+                    <Field name="password"  type="text" component={RegisterPasswordField} label="请输入密码8-16位字母,数字和符号"/>
+                    <Field name="validPassword"  type="text" component={RegisterPasswordField} label="密码确认"/>
+                    <label styleName="register-from-input" >
                         <i styleName="cicon icon-login-validation-ico"></i>
-                        <Field onChange={ this.handlePassword } name="password" type="text" component="input" placeholder="请输入动态密码"/>
+                        <Field onChange={ this.handlePassword } name="validCode" type="text" component="input" placeholder="请输入验证码"/>
                         <ValidateCode 
                                 prefix="login"
                                 disabled = { pristine || loading || !validPhone ||!validPhoneFlag } 
                                 onHandleSubmit={ handleSubmit( this.handleOnValidateCode.bind(this) ) } 
                         />
                     </label>
+                    <RegisterSubmit 
+                            handleSubmit={ handleSubmit( this.handleOnSubmit.bind(this) ) } 
+                            disabled={ loading || !validPhone || !submitFlag } 
+                    />
                 </form>
-                <LoginSubmit 
-                        handleSubmit={ handleSubmit( this.handleOnSubmit.bind(this) ) } 
-                        disabled={ loading || !validPhone || !submitFlag } 
-                />
             </div> 
         )
     }
@@ -138,8 +143,5 @@ class LoginPhoneFrom extends Component{
 
 
 export default reduxForm({
-  form: 'loginPhoneFrom',                 //你的redux-form的特殊标记，必填项
-})(LoginPhoneFrom)   
-
-
-
+  form: 'registerFrom',                 //你的redux-form的特殊标记，必填项
+})(RegisterFrom)   

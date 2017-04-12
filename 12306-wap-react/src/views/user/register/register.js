@@ -3,12 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import CSSModules from 'react-css-modules';
-import styles from './login.scss';
+import styles from './register.scss';
 
 import { actions } from './registerRedux';
 
 import Header from '../../../layouts/header/header'
-
+import RegisterContainer from '../../../components/user/register/registerContainer'
 
 
 @CSSModules(styles,{allowMultiple: true})
@@ -19,6 +19,7 @@ class UserRegister extends Component{
         return(
             <div styleName='register-container'>
                 <Header prefix="login" title="注册" />
+                <RegisterContainer {...register} action={registerAction} />
             </div>
         );
     }

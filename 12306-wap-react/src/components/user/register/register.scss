@@ -1,0 +1,36 @@
+
+
+.container{
+	 composes: war-container from "../../../styles/layout.scss";
+}
+
+
+.register-from-container{
+    composes: login-from-container from "../login/login.scss";
+    margin-top: 10px;
+}
+
+
+.register-from-input{
+	composes: login-from-input from "../login/login.scss";
+}
+
+
+.register-error{
+   composes: login-error from "../login/login.scss";
+}
+
+
+.btn-Submit{
+	composes: btn-Submit from "../forgotPassword/forgotPassword.scss";
+}
+
+.submit{
+    composes: submit from "../forgotPassword/forgotPassword.scss";
+}
+
+
+.disabled{
+    composes: disabled from "../forgotPassword/forgotPassword.scss";
+}
+
