@@ -29,12 +29,12 @@ class UserHeader extends Component{
 
 
     render(){
-        const { userInfo } =this.props; 
+        const { userInfo,handleUserAccount } =this.props; 
         const userPhoto = userInfo? (userInfo.headPic? userInfo.headPic :defaultPhoto) : defaultPhoto;
         return(
             <div styleName="personal-center-bar">
                 <div styleName="personal-photo">
-                    <div styleName="user-photo">
+                    <div styleName="user-photo" onClick={handleUserAccount}>
                         <img src={userPhoto} />
                     </div>
                     { this.getUserName() }

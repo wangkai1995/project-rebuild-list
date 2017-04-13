@@ -7,6 +7,7 @@ import UserIndex from '../views/user/index/index';
 import UserLogin from '../views/user/login/login';
 import UserForgotPassword from '../views/user/forgotPassword/forgotPassword';
 import UserRegister from '../views/user/register/register';
+import UserAccount from '../views/user/account/account';
 
 
 
@@ -17,9 +18,12 @@ const UserRoutes =  function(){
             <Route path='/user/login'  component={UserLogin}/>
             <Route path='/user/forgotPassword'  component={UserForgotPassword}/>
             <Route path='/user/register'  component={UserRegister}/>
+            <Route path='/user/account' component={UserAccount}/>
         </Route> 
     )      
 };
+
+
 
 
 export default UserRoutes;
