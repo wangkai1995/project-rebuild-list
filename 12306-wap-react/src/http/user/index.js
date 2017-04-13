@@ -31,6 +31,14 @@ export default {
     	   url: '/v1/verify-code/'+data.mode+'?mobile='+ data.mobile
     	})
     },
+
+    register:function(data){
+        return httpServer.request({
+            method : 'POST',
+            url :'/v1/register',
+            params: data,
+        })
+    },
     
 }
 

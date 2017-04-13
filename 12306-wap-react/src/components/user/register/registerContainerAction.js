@@ -25,6 +25,26 @@ function requestVlidateCode(request,params){
 }
 
 
+//请求注册
+function requestRegister(request,params){
+    const { REQUEST_LOADING, REQUEST_REGISTER_SUCCESS, REQUEST_REGISTER_ERROR }  = actionType;
+    return{
+        type : [REQUEST_LOADING, REQUEST_REGISTER_SUCCESS, REQUEST_REGISTER_ERROR],
+        request : request,
+        params: params,
+    }
+}
+
+
+//选择协议
+function checkAgreement(checked){
+    return{
+        type:actionType.AGREEMENT_FLAG,
+        payload: checked,
+    }
+}
+
+
 //重置错误信息
 function resetError(){
     return{
@@ -42,5 +62,5 @@ function setError(error){
 }
 
 
-export { resetError ,setError ,requestVlidatePhone ,requestVlidateCode };
+export { resetError ,setError ,requestVlidatePhone ,requestVlidateCode ,requestRegister ,checkAgreement };
 

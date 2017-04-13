@@ -3,7 +3,7 @@ import Constant from '../../constant/config';
 
 
 
-function toQueryString(obj) {
+function toQueryString(obj){
     return obj ? Object.keys(obj).sort().map(function (key) {
         var val = obj[key];
         if (Array.isArray(val)) {

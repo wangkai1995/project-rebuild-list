@@ -30,7 +30,6 @@ class UserLoginContainer extends Component{
     }
 
     //更新的时候判断是否登录成功并且附带信息
-    //另外判断手机号码是否验证成功
     componentWillReceiveProps(nextProps){
         const { loginInfo ,error } = nextProps;
         if(loginInfo){

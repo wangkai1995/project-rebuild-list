@@ -26,6 +26,35 @@ const phoneVlidate = values => {
 }
 
 
+const registerVlidate = values =>{
+    let error={};
+    const phoneReg = /^0?(13|15|18|14|17)[0-9]{9}$/;
+    const { username,password,validPassword,validCode } = values;
+
+    if( !phoneReg.test(username) ){
+        error.username='手机号码格式不正确'
+        return error;
+    }
+
+    if( !password || (password.length<7 && password>16) ){
+        error.password='密码不可以为空,长度8-16位'
+        return error;
+    }
+
+    if( password !== validPassword ){
+        error.validPassword='两次密码输入不一致'
+        return error;
+    }
+
+    if( !validCode || validCode.length !== 6 ){
+        error.validCode='验证码不可以为空,长度6位'
+        return error;
+    }
+
+    return error;
+}
+
+
 
 @immutableRenderDecorator
 @CSSModules(_.merge({},styles,icon),{allowMultiple: true})
@@ -78,22 +107,19 @@ class RegisterFrom extends Component{
     constructor(props){
         super(props);
         this.state={
-            submitFlag: false,
             validPhoneFlag:false,
         }
         this.handleUserName = this.handleUserName.bind(this);
     }
 
-
     handleOnSubmit(data){
-        console.log(data);
+        this.props.onRegister(data);
     }
 
     handleOnValidateCode(data){
         const { username } = data;
         this.props.onGetValidateCode(username);
     }
-
 
     handleUserName(event, newValue, previousValue){
         if(phoneVlidate(newValue)){
@@ -109,14 +135,14 @@ class RegisterFrom extends Component{
     }
 
     render(){
-        const { handleSubmit ,error ,pristine ,loading ,validPhone } = this.props;
-        const { validPhoneFlag ,submitFlag } = this.state;     
+        const { handleSubmit ,invalid ,pristine ,loading ,validPhone ,agreement,onCheckAgreement} = this.props;
+        const { validPhoneFlag  } = this.state;     
         return(
             <div styleName="register-from-container">
                 <form>
                     <Field name="username" onChange={ this.handleUserName } type="text" component={RegisterUserField} label="请输入手机号码"/>
-                    <Field name="password"  type="text" component={RegisterPasswordField} label="请输入密码8-16位字母,数字和符号"/>
-                    <Field name="validPassword"  type="text" component={RegisterPasswordField} label="密码确认"/>
+                    <Field name="password"  type="password" component={RegisterPasswordField} label="请输入密码8-16位字母,数字和符号"/>
+                    <Field name="validPassword"  type="password" component={RegisterPasswordField} label="密码确认"/>
                     <label styleName="register-from-input" >
                         <i styleName="cicon icon-login-validation-ico"></i>
                         <Field onChange={ this.handlePassword } name="validCode" type="text" component="input" placeholder="请输入验证码"/>
@@ -127,8 +153,9 @@ class RegisterFrom extends Component{
                         />
                     </label>
                     <RegisterSubmit 
+                            onCheckAgreement={onCheckAgreement}
                             handleSubmit={ handleSubmit( this.handleOnSubmit.bind(this) ) } 
-                            disabled={ loading || !validPhone || !submitFlag } 
+                            disabled={ !agreement || invalid || loading || !validPhone } 
                     />
                 </form>
             </div> 
@@ -144,4 +171,5 @@ class RegisterFrom extends Component{
 
 export default reduxForm({
   form: 'registerFrom',                 //你的redux-form的特殊标记，必填项
+  validate: registerVlidate,
 })(RegisterFrom)   

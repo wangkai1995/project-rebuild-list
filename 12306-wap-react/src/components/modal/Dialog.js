@@ -70,9 +70,7 @@ class ModalDialog extends Component{
         }else{
             return null;
         }
-    }  
-
-     
+    }     
 }
 
 

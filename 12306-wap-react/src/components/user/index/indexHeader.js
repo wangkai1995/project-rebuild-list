@@ -21,7 +21,8 @@ class UserHeader extends Component{
     getUserName(){
         const { userInfo ,onLogin } = this.props;
         if(userInfo){
-            return <span>{userInfo.realName}</span>
+            const userName = userInfo.realName ? userInfo.realName : userInfo.username;
+            return <span>{userName}</span>
         }
         return <button onClick={onLogin} >登录/注册</button>
     }
@@ -29,7 +30,7 @@ class UserHeader extends Component{
 
     render(){
         const { userInfo } =this.props; 
-        const userPhoto = userInfo? userInfo.headPic : defaultPhoto
+        const userPhoto = userInfo? (userInfo.headPic? userInfo.headPic :defaultPhoto) : defaultPhoto;
         return(
             <div styleName="personal-center-bar">
                 <div styleName="personal-photo">

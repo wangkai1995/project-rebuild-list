@@ -15,11 +15,11 @@ import RegisterContainer from '../../../components/user/register/registerContain
 class UserRegister extends Component{
 
     render(){
-        const { register, registerAction } = this.props;
+        const { register, registerAction ,push } = this.props;
         return(
             <div styleName='register-container'>
                 <Header prefix="login" title="注册" />
-                <RegisterContainer {...register} action={registerAction} />
+                <RegisterContainer {...register} action={registerAction} push={push} />
             </div>
         );
     }

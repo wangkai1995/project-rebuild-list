@@ -34,3 +34,45 @@
     composes: disabled from "../forgotPassword/forgotPassword.scss";
 }
 
+.checkbox-select{
+    min-height: 20px;
+    margin-right: 5px;
+    position: relative;
+    display: inline-block;
+    pointer-events: auto;
+    input[type=checkbox]{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        height: 100%;
+        z-index: 10;
+    }
+    label{
+        pointer-events: auto;
+        position: relative;
+        top: 2px;
+    }
+}
+
+.checked-icon-on{
+    composes: cicon from "../../../styles/sprite.css";
+    composes: icon-icon-che-icon-sel from "../../../styles/sprite.css";
+}
+
+.checked-icon-off{
+    composes: icon-icon-che-icon-nor from "../../../styles/sprite.css";
+    composes: cicon from "../../../styles/sprite.css";
+}
+
+.agreement{
+    color:#fff;
+    font-size: 0.75rem;
+    a{
+        color:#2ca1f1;
+    }
+}

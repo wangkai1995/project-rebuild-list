@@ -53,20 +53,20 @@ const fetchMiddleware = store => next => action =>{
 			next({
 				type : ERROR,
 				loading : false,
-				error: data.message,
+				payload: data.message,
 			});
 		}
 	},function(err){
 		next({
 			type : ERROR,
 			loading : false,
-			error: err,
+			payload: err,
 		});
 	}).catch(function(err){
 		next({
 			type : ERROR,
 			loading : false,
-			error: err,
+			payload: err,
 		});
 	})
 
