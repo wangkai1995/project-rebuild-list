@@ -8,17 +8,19 @@ import styles from './account.scss';
 
 import { actions } from './accountRedux';
 
-import Header from '../../../layouts/header/header'
+import Header from '../../../layouts/header/header';
+import AccountContainer from '../../../components/user/account/accountContainer';
 
 
 @CSSModules(styles,{allowMultiple: true})
 class UserAccount extends Component {
 
     render(){
-        const { account, accountAction } = this.props;
+        const { account, accountAction,push } = this.props;
         return(
             <div styleName='container'>
-                <Header title="我的账户" />  
+                <Header title="我的账户" /> 
+                <AccountContainer {...account} action={accountAction} push={push} />
             </div>
         );
     }

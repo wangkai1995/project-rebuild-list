@@ -35,6 +35,13 @@ function index( state = initialState , action){
             }
         }
 
+        case actionType.RESET_USER_INFO :{
+            return{
+                ...state,
+                userInfo:false
+            }
+        }
+
         default:
             return state;
     }

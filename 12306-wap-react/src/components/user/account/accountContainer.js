@@ -8,14 +8,17 @@ import styles from './account.scss';
 import TokenServer from '../../../server/token/index';
 import userModel from '../../../http/user/index';
 
+import AccountPhoto from './accountPhoto';
+import AccountInfo from './accountInfo';
 
 
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
-class UserAccountContainer extends Component{
+class AccountContainer extends Component{
 
     constructor(props){
         super(props);
+        this.handleExit = this.handleExit.bind(this);
     }
 
     componentDidMount(){
@@ -28,11 +31,20 @@ class UserAccountContainer extends Component{
         }
     }
 
+    handleExit(){
+        TokenServer.removeToken();
+        this.props.push('/user');
+    }
+
     render(){
-        const { userInfo } = this.props;
+        const { headPic } = this.props.userInfo;
         return(
-            <div>
-                
+            <div styleName='container'>
+                <AccountPhoto photo={headPic} />    
+                <AccountInfo userInfo={this.props.userInfo} />
+                <div styleName="btn-exit-container">
+                    <button onClick={this.handleExit} styleName="btn-exit">退出登录</button> 
+                </div>
             </div>
         );
     }
@@ -42,6 +54,8 @@ class UserAccountContainer extends Component{
 
 
 
-export default UserAccountContainer;
+
+
+export default AccountContainer;
 
 

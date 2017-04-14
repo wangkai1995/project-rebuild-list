@@ -155,11 +155,26 @@
     text-overflow: ellipsis;
     outline: 0;
 }
+
+.button:after{
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
+    content: ' ';
+}
+
+
 .button-block{
 	display: block;
 	clear: both;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.button-block:after{
+    clear: both;
 }
 
 .button-small{

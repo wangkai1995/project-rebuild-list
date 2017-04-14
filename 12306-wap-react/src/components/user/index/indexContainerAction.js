@@ -12,9 +12,17 @@ function requestUserInfo(request,params){
     }
 }
 
+//重置用户信息
+function resetUserInfo(){
+    return {
+        type : actionType.RESET_USER_INFO,
+
+    }
+}
 
 
 
-export { requestUserInfo };
+
+export { requestUserInfo ,resetUserInfo };
 
 

@@ -1,0 +1,117 @@
+
+
+.container{
+    composes: war-container from "../../../styles/layout.scss";
+}
+
+
+.account-photo{
+    composes: list from "../../../styles/layout.scss";
+    img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        float: left;
+        margin: 0 10px;
+    }
+    span{
+        font-size: .75rem;
+        padding: 11px 0 11px 11px;
+        color: #999;
+        float: right;
+        margin: 0 10px;
+    }
+    i{
+        float: right;
+        margin: 0 10px;
+        position: relative;
+        top: 4px;
+    }
+}
+
+
+.photo{
+    composes: item from "../../../styles/layout.scss";
+    composes: clear-fixed from "../../../styles/layout.scss";
+    border-width: 0px !important;
+    font-size: .75rem;
+    padding: 11px 0 11px 11px;
+}
+
+
+.account-info{
+    margin-top: 20px;
+}
+
+
+.about-item{
+    composes: clear-fixed from "../../../styles/layout.scss";
+    font-size: .75rem;
+    padding: 12px 0;
+    background-color: #fff;
+    color: #333;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: -1px;
+    overflow: hidden;
+    &.border{
+        border-bottom: 2px solid #d0d0d0;
+    }
+    i{
+        position: relative;
+        top: 2px;
+    }
+}
+
+
+.mt10{
+    margin-top: 10px;
+}
+
+.mb20{
+    margin-bottom: 20px;
+}
+
+.fl{
+    float: left;
+    margin: 0 10px;
+}
+
+.fr{
+    float: right;
+    margin: 0 10px;
+}
+
+.login12306{
+    line-height: 25px;
+    i{
+        position: relative;
+        top: 5px;
+    }
+}
+
+.btn-exit-container{
+    margin: 10px;
+}
+
+.btn-exit{
+   composes: button from "../../../styles/layout.scss"; 
+   composes: button-block from "../../../styles/layout.scss"; 
+   background-color: #ff8409;
+   color:#fff;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

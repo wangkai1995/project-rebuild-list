@@ -1,12 +1,9 @@
 
 
-class TokenServer {
-	constructor(){
-		if(!document.cookie){
-			console.log('tokenServer 出错了 没有找到document.cookie')
-		}
-	}
 
+
+
+class TokenServer {
 
 	set(key,value,time){
 		var value = JSON.stringify(value);
@@ -36,12 +33,9 @@ class TokenServer {
 	}
 
 
-	queryToken(){
-		var token = this.get('token');
-		if(!token){
-			return false;
-		}
-		return token;
+
+	removeToken(){
+		this.remove('token');
 	}
 
 
