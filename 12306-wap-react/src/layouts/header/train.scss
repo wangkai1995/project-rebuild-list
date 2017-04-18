@@ -80,4 +80,47 @@
 
 
 
+//订单填写头
+.train-fill-order-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background-color: #2ca1f1 !important;
+}
+
+
+.train-header-info{
+    composes: clear-fixed from "../../styles/layout.scss";
+    position: absolute;
+    top: 54px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 15px 10px;
+}
+
+.header-from{
+    float: left;
+    width: 35%;
+    text-align: left;
+    p{
+        margin: 0 0 10px;
+    }
+}
+
+.header-city{
+    font-size: 1rem; 
+}
+
+.header-time{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.header-date{
+    font-size: 0.8rem; 
+}
+
 

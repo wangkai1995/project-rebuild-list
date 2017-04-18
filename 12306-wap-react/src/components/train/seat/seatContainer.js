@@ -6,6 +6,7 @@ import styles from './seat.scss';
 
 
 import trainModel from '../../../http/train/index';
+import SessionServer from '../../../server/session/index';
 
 import ModalLoading from '../../../components/modal/loading';
 import SeatTrainInfo from './seatTrainInfo';
@@ -47,7 +48,15 @@ class TrainSeatContainer extends Component{
 
 	//选中坐席
 	handleCheckSeat(seat){
-		console.log(seat);
+		const { trainInfo ,push } = this.props;
+		//可以购买普通订单
+		if(seat.showButton === 1){
+			let checkedTrain = trainInfo;
+			checkedTrain.checkedSeat = seat;
+			SessionServer.set('FillOrderTrainInfo',checkedTrain);
+			//跳转到普通订单填写
+			push('/train/fillOrder/common');
+		}
 		
 	}
 

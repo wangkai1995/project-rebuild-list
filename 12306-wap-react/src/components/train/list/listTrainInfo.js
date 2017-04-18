@@ -29,7 +29,7 @@ class TrainInfo extends Component{
 
 	render(){
 		const { trainInfo,isLoading } = this.props;
-
+		
 		if( Array.isArray(trainInfo.trainInfos) && trainInfo.trainInfos.length > 0){
 			return(
 				<div styleName='trainInfo-container' >
@@ -46,7 +46,7 @@ class TrainInfo extends Component{
 				</div>
 			);
 		}else{
-			<ModalLoading isVisible={true} textContent="正在为您加载车次" />
+			return <ModalLoading isVisible={true} textContent="正在为您加载车次" />
 		}
 	}
 }

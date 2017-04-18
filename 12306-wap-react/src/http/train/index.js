@@ -46,12 +46,22 @@ export default {
 			params: data,
 		})
 	},
+	
 
+	//请求经停车站
 	trainThrough:function(data){
 		return httpServer.request({
 			url:'/v1/train/queryStations',
 			method: 'GET',
 			params: data,
+		})
+	},
+
+	//请求火车保险
+	trainInsurance:function(){
+		return httpServer.request({
+			url:'/v1/insurance/1',
+			method: 'GET',
 		})
 	}
 
