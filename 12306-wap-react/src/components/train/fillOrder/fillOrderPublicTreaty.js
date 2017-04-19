@@ -15,18 +15,26 @@ class TrainfillOrderPublicTreaty extends Component {
     
     constructor(props){
         super(props);
+        this.handleCheck = this.handleCheck.bind(this);
+    }
+
+    handleCheck(el){
+        const { onTreatyChange } = this.props;
+        const checked = el.target.checked;
+        onTreatyChange(checked);
     }
 
     render(){
+        const { treatyChecked } = this.props;
         const checkClass = classnames({
             'cicon':true,
-            'icon-icon-che-icon-sel': true,
-            'icon-icon-che-icon-nor': false,
+            'icon-icon-che-icon-sel': treatyChecked,
+            'icon-icon-che-icon-nor': !treatyChecked,
         });
         return(
             <div styleName="train-treaty">
                 <div styleName="checkbox-select">
-                        <input type="checkBox" id='train-treaty' />
+                        <input type="checkBox" checked={treatyChecked} onChange={this.handleCheck} id='train-treaty' />
                         <label for='train-treaty' styleName={checkClass}></label>
                 </div>
                 同意&nbsp;

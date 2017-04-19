@@ -19,6 +19,7 @@ import TrainfillOrderPublicPassenger from './fillOrderPublicPassenger';
 import TrainfillOrderPublicContactsMessage from './fillOrderPublicContactsMessage';
 import TrainfillOrderPublicInsurance from './fillOrderPublicInsurance';
 import TrainfillOrderPublicTreaty from './fillOrderPublicTreaty';
+import TrainfillOrderPublicFooter from './fillOrderPublicFooter';
 
 
 
@@ -34,10 +35,12 @@ class CommonTrainFillOrder extends Component{
                 mobile: '',
             },
             insurance:false,
+            treatyChecked: true,
         }
         this.contactsNameChange = this.contactsNameChange.bind(this);
         this.contactsMobileChange = this.contactsMobileChange.bind(this);
         this.insuranceChange = this.insuranceChange.bind(this);
+        this.treatyChange = this.treatyChange.bind(this);
     }
     
 
@@ -122,9 +125,17 @@ class CommonTrainFillOrder extends Component{
     }
 
 
+    //协议改变
+    treatyChange(Checked){
+        this.setState({
+            treatyChecked: Checked,
+        });
+    }
+
+
     render(){
         const { insuranceInfo, userInfo, trainInfo ,passengerInfo } = this.props;
-        const { contacts, insurance } =this.state; 
+        const { contacts, insurance ,treatyChecked } =this.state; 
         return (
             <div styleName="root-container">
                 <TrainfillOrderPublicHeader trainInfo={trainInfo} />
@@ -142,8 +153,12 @@ class CommonTrainFillOrder extends Component{
                                     checkedInsurance={insurance} 
                                     insuranceList={insuranceInfo.insurances} 
                     />
-                    <TrainfillOrderPublicTreaty />
+                    <TrainfillOrderPublicTreaty 
+                                    onTreatyChange={this.treatyChange} 
+                                    treatyChecked={treatyChecked} 
+                    />
                 </div>
+                <TrainfillOrderPublicFooter />
                 <ModalLoading isVisible={!insuranceInfo || !userInfo} textContent="正在为您加载"  />
             </div>
         );
