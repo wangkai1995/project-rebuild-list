@@ -99,15 +99,22 @@
     right: 0;
     bottom: 0;
     padding: 0 15px 10px;
+    p{
+        margin: 0 0 10px;
+    }
 }
 
 .header-from{
     float: left;
     width: 35%;
     text-align: left;
-    p{
-        margin: 0 0 10px;
-    }
+}
+
+.header-to{
+    float: left;
+    width: 35%;
+    text-align: right;
+
 }
 
 .header-city{
@@ -121,6 +128,25 @@
 
 .header-date{
     font-size: 0.8rem; 
+}
+
+.header-info{
+    float: left;
+    width: 30%;
+    text-align: center;
+    font-style: .75rem;
+    p{
+        color:#fff;
+        font-size: 0.8rem;
+        &:first-child{
+            position: relative;
+            top: 15px;
+        }
+        &:last-child{
+            position: relative;
+            top: -16px;
+        }
+    }
 }
 
 

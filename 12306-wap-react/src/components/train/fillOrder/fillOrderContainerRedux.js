@@ -7,6 +7,7 @@ const initialState = {
     insuranceInfo:false,
     userInfo:false,
     trainInfo:false,
+    passengerInfo:false,
 };
 
 
@@ -66,6 +67,15 @@ function seat( state = initialState , action){
             return{
                 ...state,
                 trainInfo : action.payload,
+            }
+        }
+
+
+        //填充乘客信息
+        case actionType.INIF_TRAIN_PASSENGER : {
+            return{
+                ...state,
+                passengerInfo : action.payload,
             }
         }
 

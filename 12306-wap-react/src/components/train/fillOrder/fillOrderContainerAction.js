@@ -34,6 +34,15 @@ function initTrainInfo(data){
 }
 
 
+//填充乘客信息
+function initTrainPassenger(data){
+    return{
+        type:actionType.INIF_TRAIN_PASSENGER,
+        payload: data,
+    }
+}
 
 
-export { requestInsuranceInfo ,requestUserInfo, initTrainInfo };
+
+
+export { requestInsuranceInfo ,requestUserInfo, initTrainInfo ,initTrainPassenger };
