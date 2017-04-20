@@ -228,3 +228,87 @@
     color: #fff;
 }
 
+
+.footer-price{
+    float: left;
+    margin: 0 10px;
+    margin-top: 6px;
+    width: 37%;
+    color: #f63;
+    font-size: 1.25rem;
+    .pirce {
+        font-size: 1.5625rem;
+    }
+}
+
+.footer-detail{
+    display: inline-block;
+    position: relative;
+    top: 11px;
+    float: right;
+    margin-right: 10px;
+}
+
+.footer-submit{
+    composes: button from "../../../styles/layout.scss";
+    padding: 0 15px!important;
+    background-color: #ff8400;
+    color: #fff;
+    margin: 5px 10px 5px auto;
+    min-width: 52px;
+    min-height: 30px;
+    line-height: 30px;
+    float: right;
+}
+
+
+.footer-submit-disabled{
+    opacity: .4;
+    cursor: default!important;
+    pointer-events: none;
+}
+
+
+
+.footer-popup-detail{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFF;
+    opacity: 1;
+    z-index: 1000;
+    display: block;
+}
+
+
+
+.popup-item{
+    composes: row from "../../../styles/layout.scss";
+    &.separated {
+        border-bottom: 1px solid #c8c8c8;
+    }
+}
+
+
+.item-col-left{
+    composes: col from "../../../styles/layout.scss";
+}
+
+
+.item-col-Middle{
+    composes: col from "../../../styles/layout.scss";
+    composes: col-50 from "../../../styles/layout.scss";
+    color: #ff8409;
+    text-align: right;
+}
+
+
+.item-col-right{
+    composes: col from "../../../styles/layout.scss";
+    text-align: right;
+}
+
+
+
+

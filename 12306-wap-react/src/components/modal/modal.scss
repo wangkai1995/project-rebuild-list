@@ -26,7 +26,36 @@
     bottom: 0;
     width: 100%;
     text-align: center;
-    overflow: hidden
+    overflow: hidden;
+}
+
+.fillOrder-popup-container{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    background: rgba(0,0,0,.4);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    z-index: 12;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 43px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
 }
 
 

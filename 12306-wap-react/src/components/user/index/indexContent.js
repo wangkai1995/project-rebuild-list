@@ -27,7 +27,7 @@ class UserContent extends Component{
                         <i styleName="cicon icon-user-arrow-ico"></i>
                     </Link>
 
-                    <Link styleName="content-item item-separate">
+                    <Link to="/user/passenger/user" styleName="content-item item-separate">
                         <i styleName="cicon  icon-user-information-ico "></i>
                         <span>常用信息</span>
                         <i styleName="cicon icon-user-arrow-ico"></i>

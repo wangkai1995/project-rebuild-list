@@ -8,6 +8,7 @@ import UserLogin from '../views/user/login/login';
 import UserForgotPassword from '../views/user/forgotPassword/forgotPassword';
 import UserRegister from '../views/user/register/register';
 import UserAccount from '../views/user/account/account';
+import UserPassengers from '../views/user/passengers/passengers';
 
 
 
@@ -19,6 +20,7 @@ const UserRoutes =  function(){
             <Route path='/user/forgotPassword'  component={UserForgotPassword}/>
             <Route path='/user/register'  component={UserRegister}/>
             <Route path='/user/account' component={UserAccount}/>
+            <Route path='/user/passenger/:model' component={UserPassengers}/>
         </Route> 
     )      
 };

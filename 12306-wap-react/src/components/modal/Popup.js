@@ -1,5 +1,6 @@
 import React ,{ Component,PropTypes } from 'react';
 import RecatDOM from 'react-dom';
+import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import styles from './modal.scss';
@@ -13,13 +14,20 @@ class PopupContainer extends Component{
 	}
 
 	render(){
+        const { prefix } = this.props;
+        const popupClass=classnames({
+            'popup-container': !prefix,
+            [`${prefix}-popup-container`]: prefix,
+        });
 		return (
-			<div styleName="popup-container">
+			<div styleName={popupClass} >
 				{this.props.children}
 			</div>
 		);
 	}
 }
+
+
 
 @immutableRenderDecorator
 class Popup extends Component{

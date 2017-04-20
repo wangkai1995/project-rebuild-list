@@ -4,6 +4,7 @@ import login from './login/loginRedux';
 import forgotPassword from './forgotPassword/forgotPasswordRedux';
 import register from './register/registerRedux';
 import account from './account/accountRedux';
+import passengers from './passengers/passengersRedux';
 
 
 
@@ -13,6 +14,7 @@ export default combineReducers({
     forgotPassword,
     register,
     account,
+    passengers,
 });
 
 
