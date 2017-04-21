@@ -10,6 +10,6 @@ export default combineReducers({
 
 
 //action
-export const actions = passengers;
+export const actions = passengersActions;
 
 

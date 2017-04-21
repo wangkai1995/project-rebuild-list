@@ -39,6 +39,15 @@ export default {
             params: data,
         })
     },
+
+    getPassenger:function(data){
+        return httpServer.request({
+            method: 'GET',
+            url:'/v1/passenger',
+            params: data,
+        })
+    }
+
     
 }
 
