@@ -1,12 +1,12 @@
 
 
 .container{
-    composes: war-container from "../../../styles/layout.scss";
+    composes: war-container from "../../../styles/common.scss";
 }
 
 
 .account-photo{
-    composes: list from "../../../styles/layout.scss";
+    composes: list from "../../../styles/common.scss";
     img{
         width: 40px;
         height: 40px;
@@ -31,8 +31,8 @@
 
 
 .photo{
-    composes: item from "../../../styles/layout.scss";
-    composes: clear-fixed from "../../../styles/layout.scss";
+    composes: item from "../../../styles/common.scss";
+    composes: clear-fixed from "../../../styles/common.scss";
     border-width: 0px !important;
     font-size: .75rem;
     padding: 11px 0 11px 11px;
@@ -45,7 +45,7 @@
 
 
 .about-item{
-    composes: clear-fixed from "../../../styles/layout.scss";
+    composes: clear-fixed from "../../../styles/common.scss";
     font-size: .75rem;
     padding: 12px 0;
     background-color: #fff;
@@ -96,8 +96,8 @@
 }
 
 .btn-exit{
-   composes: button from "../../../styles/layout.scss"; 
-   composes: button-block from "../../../styles/layout.scss"; 
+   composes: button from "../../../styles/common.scss"; 
+   composes: button-block from "../../../styles/common.scss"; 
    background-color: #ff8409;
    color:#fff;
     width: 100%;

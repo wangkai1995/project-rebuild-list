@@ -86,7 +86,7 @@
 
 
 .insurance-list{
-    composes: list from "../../../styles/layout.scss";
+    composes: list from "../../../styles/common.scss";
     &:last-child {
         margin-bottom: 0;
     }
@@ -250,7 +250,7 @@
 }
 
 .footer-submit{
-    composes: button from "../../../styles/layout.scss";
+    composes: button from "../../../styles/common.scss";
     padding: 0 15px!important;
     background-color: #ff8400;
     color: #fff;
@@ -284,7 +284,7 @@
 
 
 .popup-item{
-    composes: row from "../../../styles/layout.scss";
+    composes: row from "../../../styles/common.scss";
     &.separated {
         border-bottom: 1px solid #c8c8c8;
     }
@@ -292,20 +292,20 @@
 
 
 .item-col-left{
-    composes: col from "../../../styles/layout.scss";
+    composes: col from "../../../styles/common.scss";
 }
 
 
 .item-col-Middle{
-    composes: col from "../../../styles/layout.scss";
-    composes: col-50 from "../../../styles/layout.scss";
+    composes: col from "../../../styles/common.scss";
+    composes: col-50 from "../../../styles/common.scss";
     color: #ff8409;
     text-align: right;
 }
 
 
 .item-col-right{
-    composes: col from "../../../styles/layout.scss";
+    composes: col from "../../../styles/common.scss";
     text-align: right;
 }
 

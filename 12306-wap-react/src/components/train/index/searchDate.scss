@@ -3,13 +3,13 @@
 .label-item{
     composes: item from './public.scss';
     composes: item-floating-label from './public.scss';
-    composes: text-overflow from "../../../styles/layout.scss";
-    composes: clear-fixed from "../../../styles/layout.scss";
+    composes: text-overflow from "../../../styles/common.scss";
+    composes: clear-fixed from "../../../styles/common.scss";
 }
 
 
 .form-date{
-	composes: clear-fixed from "../../../styles/layout.scss";
+	composes: clear-fixed from "../../../styles/common.scss";
 	height: auto;
     overflow: hidden;
 }
@@ -26,7 +26,7 @@
 }
 
 .form-date-selct{
-	composes: clear-fixed from "../../../styles/layout.scss";
+	composes: clear-fixed from "../../../styles/common.scss";
 	width: 50%;
     float: left;
     position: relative;

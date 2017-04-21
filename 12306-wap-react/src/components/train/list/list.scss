@@ -30,7 +30,7 @@
 
 
 .trainInfo-list{
-	composes: list from "../../../styles/layout.scss";
+	composes: list from "../../../styles/common.scss";
 }
 
 
@@ -45,8 +45,8 @@
 
 
 .trainInfo-item{
-	composes: item from "../../../styles/layout.scss";
-	composes: text-overflow from "../../../styles/layout.scss";
+	composes: item from "../../../styles/common.scss";
+	composes: text-overflow from "../../../styles/common.scss";
     white-space: normal;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -62,14 +62,14 @@
 
 
 .item-trainInfo{
-	composes: clear-fixed from "../../../styles/layout.scss";
+	composes: clear-fixed from "../../../styles/common.scss";
     width: 100%;
     position: relative;
 }
 
 
 .item-City{
-	composes: text-overflow from "../../../styles/layout.scss";
+	composes: text-overflow from "../../../styles/common.scss";
     float: left;
     line-height: 36px;
     font-size: 1.025rem;
@@ -284,7 +284,7 @@
 
 
 .filter-popup-ul{
-    composes: clear-fixed from "../../../styles/layout.scss";
+    composes: clear-fixed from "../../../styles/common.scss";
     padding: 10px 15px 0;
     width: 100%;
     li{

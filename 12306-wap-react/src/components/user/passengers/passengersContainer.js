@@ -1,8 +1,11 @@
 import React,{ Component } from 'react';
+import { Link } from 'react-router';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules';
+import _ from 'lodash';
 import styles from './passengers.scss';
+import icon from '../../../styles/sprite.css';
 
 
 import TokenServer from '../../../server/token/index';
@@ -12,11 +15,12 @@ import ModalAlert from '../../../components/modal/Alert';
 
 
 import PassengersButton from './passengersButton';
+import PassengersList from './passengersList';
 
 
 
 @immutableRenderDecorator
-@CSSModules(styles,{allowMultiple: true})
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
 class PassengersContainer extends Component{
 
     constructor(props){
@@ -37,31 +41,12 @@ class PassengersContainer extends Component{
     }
     
 
-    getPassengerList(){
-        const{ model } = this.props;
-        switch(model){
-            case 'user':
-                return this.getShowPassenger();
-            default:
-                return this.getShowPassenger();
-        }
-    }
-
-
-
-    getShowPassenger(){
-
-    }
-
-
-
     render(){
+        const { passengers,params } = this.props;
         return(
             <div styleName="container" >
                 <PassengersButton />
-                <ul styleName='passenger-list'>
-                    {this.getPassengerList()}
-                </ul>
+                <PassengersList passengers={passengers} model={params.model} />
             </div>
         )
     }

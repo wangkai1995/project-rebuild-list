@@ -2,7 +2,7 @@
 .label-item{
     composes: item from './public.scss';
     composes: item-floating-label from './public.scss';
-    composes: text-overflow from "../../../styles/layout.scss";
+    composes: text-overflow from "../../../styles/common.scss";
 }
 
 .city-title{
@@ -29,7 +29,7 @@
 }
 
 .select-city{
-    composes: clear-fixed from "../../../styles/layout.scss";
+    composes: clear-fixed from "../../../styles/common.scss";
 	text-align: center;
     margin: 16px 0;
 }

@@ -80,7 +80,7 @@
 }
 
 .content-item{
-    composes: item from "../../../styles/layout.scss";
+    composes: item from "../../../styles/common.scss";
     padding: 14px 15px;
     font-size: .94rem;
     color: inherit;

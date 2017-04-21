@@ -2,13 +2,13 @@
 
 
 .seta-container{
-	composes: war-container from "../../../styles/layout.scss";
+	composes: war-container from "../../../styles/common.scss";
 	padding:10px;
 }
 
 
 .train-info{
-	composes: clear-fixed from "../../../styles/layout.scss";
+	composes: clear-fixed from "../../../styles/common.scss";
     background-color: #fff;
     padding: 21px 15px 12px;
     border-radius: 5px;
@@ -64,11 +64,11 @@
 }
 
 .clear-fixed{
-   composes: clear-fixed from "../../../styles/layout.scss"; 
+   composes: clear-fixed from "../../../styles/common.scss"; 
 }
 
 .date-select-containe{
-    composes: clear-fixed from "../../../styles/layout.scss";
+    composes: clear-fixed from "../../../styles/common.scss";
     padding-top: 12px;
     border-top: 1px solid #dcdcdc;
     line-height: 26px;
@@ -178,7 +178,7 @@
 }
 
 .text-overflow{
-    composes: text-overflow from "../../../styles/layout.scss";
+    composes: text-overflow from "../../../styles/common.scss";
 }
 
 

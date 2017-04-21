@@ -4,8 +4,8 @@
 }
 
 .submit-button{
-	composes: button from "../../../styles/layout.scss";
-	composes: button-block from "../../../styles/layout.scss";
+	composes: button from "../../../styles/common.scss";
+	composes: button-block from "../../../styles/common.scss";
     border-radius: 6px;
     background-color: #ef8019;
     font-size: 1.25rem;

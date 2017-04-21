@@ -16,7 +16,7 @@
 
 
 .calendar-header{
-	composes: clear-fixed from "../../../styles/layout.scss";
+	composes: clear-fixed from "../../../styles/common.scss";
     position: absolute;
     top: 0px;
     left: 0px;
@@ -58,7 +58,7 @@
 }
 
 .calendar-week{
-	composes: clear-fixed from "../../../styles/layout.scss";
+	composes: clear-fixed from "../../../styles/common.scss";
 	position: relative;
     width: 100%;
     height: 15%;
@@ -107,7 +107,7 @@
 
 
 .calendar-footer{
-	composes: clear-fixed from "../../../styles/layout.scss";
+	composes: clear-fixed from "../../../styles/common.scss";
 	position:absolute;
 	bottom:0px;
 	left:0px;

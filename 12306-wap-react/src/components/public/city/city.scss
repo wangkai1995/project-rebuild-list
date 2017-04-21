@@ -31,7 +31,7 @@
     position: relative;
 }
 .city-input-label{
-	composes: item from "../../../styles/layout.scss";
+	composes: item from "../../../styles/common.scss";
     display: flex;
     display: -webkit-box;
     display: -webkit-flex;
@@ -102,7 +102,7 @@
     margin-bottom: 20px;
 }
 .city-li{
-    composes: item from "../../../styles/layout.scss";
+    composes: item from "../../../styles/common.scss";
     a{
         color:#333;
     }
@@ -110,7 +110,7 @@
 
 
 .search-li{
-    composes: item from "../../../styles/layout.scss";
+    composes: item from "../../../styles/common.scss";
     padding: 15px 10px;
     a{
         color:#333;

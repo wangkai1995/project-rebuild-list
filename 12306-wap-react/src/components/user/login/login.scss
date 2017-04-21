@@ -40,12 +40,12 @@
 
 
 .login-from-container{
-    composes: list from "../../../styles/layout.scss";
+    composes: list from "../../../styles/common.scss";
     margin-top: 10px;
 }
 
 .login-from-input{
-    composes: item-input from "../../../styles/layout.scss";
+    composes: item-input from "../../../styles/common.scss";
     padding-left: 0;
     border-bottom: 1px solid #fff !important;
     margin: 0 15px;
@@ -83,8 +83,8 @@
 
 
 .login-submie{
-    composes: button from "../../../styles/layout.scss";
-    composes: button-block from "../../../styles/layout.scss";
+    composes: button from "../../../styles/common.scss";
+    composes: button-block from "../../../styles/common.scss";
     background-color: #ff8409;
     color:#fff;
     width: 90%;

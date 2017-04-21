@@ -1,13 +1,13 @@
 
 .container{
-    composes: war-container from "../../../styles/layout.scss";
+    composes: war-container from "../../../styles/common.scss";
     padding-top: 10px;
 }
 
 
 .button-container{
-    composes: list from "../../../styles/layout.scss";
-    composes: clear-fixed from "../../../styles/layout.scss";
+    composes: list from "../../../styles/common.scss";
+    composes: clear-fixed from "../../../styles/common.scss";
 }
 
 
@@ -30,5 +30,35 @@
 }
 
 .passenger-list{
-    composes: list from "../../../styles/layout.scss";
+    composes: list from "../../../styles/common.scss";
 }
+
+
+
+.passenger-item{
+    composes: item from "../../../styles/common.scss";
+    padding-right: 54px;
+    border-color: #ddd;
+    background-color: #fff;
+    h2{
+        margin: 0 0 2px;
+        font-weight: 400;
+        font-size: 16px !important;
+    }
+    p{
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+    i{
+        top: 32px; 
+        position: absolute;
+        right: 15px;
+        display: flex;
+        display: -webkit-flex;
+        -webkit-justify-content: center;
+        justify-content: center;
+        z-index: 100;
+    }
+}
+

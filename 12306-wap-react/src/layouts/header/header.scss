@@ -62,7 +62,7 @@
 }
 
 .back{
-	composes: button from "../../styles/layout.scss";
+	composes: button from "../../styles/common.scss";
     text-decoration: none;
     z-index: 1;
     padding: 0 8px;

@@ -1,7 +1,7 @@
 
 
 .through-container{
-    composes: war-container from "../../../styles/layout.scss";
+    composes: war-container from "../../../styles/common.scss";
     table{
         width: 100%;
         thead {
