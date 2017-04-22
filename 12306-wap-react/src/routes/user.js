@@ -23,7 +23,7 @@ const UserRoutes =  function(){
             <Route path='/user/register'  component={UserRegister}/>
             <Route path='/user/account' component={UserAccount}/>
             <Route path='/user/passenger/:model' component={UserPassengers}/>
-            <Route path='/user/changePassenger/:model/userId' component={UserChangePassengers}/>
+            <Route path='/user/changePassenger/:model/:userId' component={UserChangePassengers}/>
         </Route> 
     )      
 };

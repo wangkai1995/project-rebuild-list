@@ -34,7 +34,6 @@ class UserLoginContainer extends Component{
         const { loginInfo ,error } = nextProps;
         if(loginInfo){
             TokenServer.setToken(loginInfo,function(){
-                console.log('11111111');
                 window.history.back();
             });
         }
@@ -132,6 +131,8 @@ class UserLoginContainer extends Component{
 
 
 
+
 export default UserLoginContainer;
+
 
 

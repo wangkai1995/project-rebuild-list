@@ -6,6 +6,7 @@ import *  as actionType  from './changePassengersContainerType';
 const initialState = {
   loading:false,
   error: false,
+  isVisible: false,
   passengers: false,
 }
 
@@ -39,6 +40,16 @@ function passengers( state = initialState , action){
                 error : action.payload,
             }
         }
+
+        //重置错误
+        case actionType.RESET_ERROR : {
+            return{
+                ...state,
+                isVisible:false,
+                error:false,
+            }
+        }
+        
 
         default:
             return state;

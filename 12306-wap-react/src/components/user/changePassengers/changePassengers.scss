@@ -1,0 +1,33 @@
+
+
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+}
+
+
+.input-list{
+    composes: list from "../../../styles/common.scss";
+}
+
+
+.input-item{
+    composes: item from "../../../styles/common.scss";
+    composes: item-input from "../../../styles/common.scss";
+    input{
+        width: 100%;
+        color: #999;
+    }
+}
+
+
+.input-label {
+    display: table;
+    padding: 7px 10px 7px 0;
+    max-width: 200px;
+    width: 35%;
+    color: #444;
+    font-size: 16px;
+}
+
+

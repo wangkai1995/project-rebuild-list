@@ -16,7 +16,17 @@ function requestPassengers(request,params){
 
 
 
+//重置错误信息
+function resetError(){
+    return{
+        type:actionType.RESET_ERROR,
+    }
+}
 
-export {  requestPassengers };
+
+
+
+
+export {  requestPassengers , resetError };
 
 

@@ -22,7 +22,7 @@ class PassengersButton extends Component{
     render(){
         return(
             <ul styleName="button-container" > 
-                <Link styleName="add-button">
+                <Link to="/user/changePassenger/add/null" styleName="add-button">
                     <i styleName="cicon icon-icon-add-white"></i>
                     新增旅客
                 </Link>

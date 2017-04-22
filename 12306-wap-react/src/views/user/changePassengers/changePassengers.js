@@ -8,6 +8,7 @@ import styles from './changePassengers.scss';
 
 import { actions } from './changePassengersRedux';
 import Header from '../../../layouts/header/header'
+import ChangePassengersContainer from '../../../components/user/changePassengers/changePassengersContainer';
 
 
 @CSSModules(styles,{allowMultiple: true})
@@ -18,6 +19,12 @@ class UserChangePassengers extends Component {
         return(
             <div styleName='container'>
                 <Header title="常用旅客"/>
+                <ChangePassengersContainer 
+                        {...changePassengers}
+                        actions={changePassengersAction}
+                        params={params}
+                        push={push}
+                />
             </div>
         );
     }
