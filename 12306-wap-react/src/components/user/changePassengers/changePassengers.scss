@@ -31,3 +31,52 @@
 }
 
 
+
+.inline-submit{
+    float: left;
+    width: 40%;
+    height: 30px;
+    padding: 10px;
+    margin: 10px 5%;
+    border-color: transparent;
+    min-width: 52px;
+    min-height: 47px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    vertical-align: top;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.submit-stable{
+    background-color: #fff!important;
+    color: #333;
+    pointer-events: none;
+}
+
+.submit-update {
+    background-color: #ff8409!important;
+    color: #fff;
+}
+
+.submit-delete {
+    background-color: #f63;
+    color: #fff;
+}
+
+
+.submit{
+    composes: login-submie from "../login/login.scss";
+}
+
+.disabled-add{
+    composes: disabled from "../forgotPassword/forgotPassword.scss";
+}
+
+.error{
+    color:#f30;
+    font-size: 1rem;
+    text-align: center;
+}
+

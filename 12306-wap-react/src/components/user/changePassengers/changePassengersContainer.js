@@ -21,15 +21,28 @@ class ChangePassengersContainer extends Component{
 
     constructor(props){
         super(props);
+        this.handleAddPassenger = this.handleAddPassenger.bind(this);
+        this.handleUpdatePassenger = this.handleUpdatePassenger.bind(this);
+    }
+    
+    handleAddPassenger(data){
+        console.log(data);
     }
 
+    handleUpdatePassenger(data){
+        console.log(data);
+    }
 
     render(){
         console.log(this.props);
-        const { actions ,error ,isVisible } = this.props;
-        return(
+        const { actions ,error ,isVisible, params } = this.props;
+        return( 
             <div styleName='container'>
-                <ChangePassengersForm />
+                <ChangePassengersForm 
+                            addSubmit={this.handleAddPassenger} 
+                            updateSubmit={this.handleUpdatePassenger}
+                            model={params.model} 
+                />
             </div>
         );
     }
