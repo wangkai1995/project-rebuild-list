@@ -33,19 +33,19 @@ class UserContent extends Component{
                         <i styleName="cicon icon-user-arrow-ico"></i>
                     </Link>
 
-                    <Link styleName="content-item">
+                    <Link to="/pubilc/faq" styleName="content-item">
                         <i styleName="cicon  icon-user-help-ico "></i>
                         <span>帮助中心</span>
                         <i styleName="cicon icon-user-arrow-ico"></i>
                     </Link>
 
-                    <Link styleName="content-item">
+                    <Link to="/pubilc/feedback" styleName="content-item">
                         <i styleName="cicon  icon-user-advice-ico "></i>
                         <span>投诉与建议</span>
                         <i styleName="cicon icon-user-arrow-ico"></i>
                     </Link>
 
-                    <Link styleName="content-item">
+                    <Link to="/pubilc/aboutUs" styleName="content-item">
                         <i styleName="cicon  icon-user-about-ico "></i>
                         <span>关于我们</span>
                         <i styleName="cicon icon-user-arrow-ico"></i>
@@ -56,8 +56,6 @@ class UserContent extends Component{
            </div>
         );
     }
-
-
 }
 
 
@@ -66,4 +64,5 @@ class UserContent extends Component{
 
 
 export default UserContent;
+
 

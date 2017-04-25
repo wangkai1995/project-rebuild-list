@@ -46,7 +46,15 @@ export default {
             url:'/v1/passenger',
             params: data,
         })
-    }
+    },
+
+    complain:function(data){
+        return httpServer.request({
+            method: 'POST',
+            url:'/v1/complain',
+            params: data,
+        })
+    },
 
     
 }

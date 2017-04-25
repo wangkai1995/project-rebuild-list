@@ -1,0 +1,42 @@
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+}
+
+
+.about-title{
+    text-align: center;
+    img {
+        margin-top: 20px;
+        -webkit-user-drag: none;
+    }
+    span {
+        display: block;
+    }
+}
+
+
+.about-list{
+    margin-top: 20px;
+    composes: list from "../../../styles/common.scss";
+}
+
+
+.about-item{
+    composes: item from "../../../styles/common.scss";
+    composes: clear-fixed from "../../../styles/common.scss";
+    color: inherit;
+    text-decoration: none;
+    span{
+        float: left;
+        margin: 0 10px;
+    }
+    i{
+        float: right;
+        margin: 0 10px;
+        position: relative;
+        top: 2px;
+    }
+}
+
+

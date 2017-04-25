@@ -27,8 +27,9 @@ class Header extends Component{
 		window.history.go(-1);
 	}
 
+
 	render(){
-		const { prefix,childer,title } = this.props;
+		const { prefix,childer,title ,pullRight } = this.props;
 		
 		let headerClass = classnames({
 			[`${prefix}-header`] : prefix,
@@ -43,7 +44,7 @@ class Header extends Component{
 						<i styleName="cicon icon-back-icon-1"></i>
 					</a>
 					<h1 styleName="title">{title}</h1>
-
+					{pullRight}
 					{childer}
 				</div>
 			);
@@ -54,6 +55,7 @@ class Header extends Component{
 						<i styleName="cicon icon-back-icon-1"></i>
 					</a>
 					<h1 styleName="title">{title}</h1>
+					{pullRight}
 				</div>
 			)
 		}

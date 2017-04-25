@@ -96,5 +96,15 @@
 }
 
 
+//右上角提交按钮 如果有多个 则单独分离处理
+.pull-input{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    background-color: #2ca1f1;
+    color: #fff;
+    border-width: 0;
+}
 
 

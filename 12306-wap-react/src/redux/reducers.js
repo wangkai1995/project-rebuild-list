@@ -1,6 +1,6 @@
 //reducer
 import train from '../views/train/trainRedux';
-import publics from '../views/public/pubilcRedux';
+import publics from '../views/public/publicRedux';
 import user from '../views/user/userRedux';
 
 

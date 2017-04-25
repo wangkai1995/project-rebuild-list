@@ -54,7 +54,7 @@ class Search extends Component{
 	
 	//direction = 出发还是达到城市
 	handleSelectCity(direction){
-		this.props.push('/city/train/'+direction);
+		this.props.push('/pubilc/city/train/'+direction);
 	}
 
 	handleSearchSubmit(){
