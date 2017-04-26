@@ -1,17 +1,17 @@
 
-import *  as actionType  from './passengersContainerType';
+import *  as actionType  from './agreementListContainerType';
 
 
 
 const initialState = {
   loading:false,
   error: false,
-  passengers: false,
+  article :false,
 }
 
 
 
-function passengers( state = initialState , action){
+function agreementList( state = initialState , action){
     
     switch(action.type){
         //请求loading
@@ -22,23 +22,25 @@ function passengers( state = initialState , action){
             };
         }
 
-        //获取乘客列表
-        case actionType.REQUEST_PASSENGERS_SUCCESS : {
+        //请求文章成功
+        case actionType.REQUEST_ARTICLE_SUCCESS : {
              return{
                 ...state,
                 loading:false,
-                passengers: action.payload,
+                article: action.payload,
             };
         }
 
-        //获取乘客列表失败
-        case actionType.REQUEST_PASSENGERS_ERROR : {
+        //请求文章成功
+        case actionType.REQUEST_ARTICLE_ERROR : {
             return{
                 ...state,
                 loading:false,
                 error : action.payload,
             }
         }
+
+
 
         default:
             return state;
@@ -47,5 +49,4 @@ function passengers( state = initialState , action){
 
 
 
-export default passengers;
-
+export default agreementList;

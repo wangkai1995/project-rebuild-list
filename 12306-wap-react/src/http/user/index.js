@@ -40,10 +40,10 @@ export default {
         })
     },
 
-    getPassenger:function(data){
+    getPassengerList:function(data){
         return httpServer.request({
             method: 'GET',
-            url:'/v1/passenger',
+            url:'/v1/passenger/',
             params: data,
         })
     },
@@ -56,6 +56,29 @@ export default {
         })
     },
 
+
+    getPassenger:function(data){
+        return httpServer.request({
+            method: 'GET',
+            url:'/v1/passenger/'+data.passengerId+'?access_token='+data.access_token,
+        })
+    },
+
+    addPassenger:function(data){
+        return httpServer.request({
+            method: 'POST',
+            url:'/v1/passenger/',
+            params: data,
+        })
+    },
+
+    updatePassenger:function(data){
+        return httpServer.request({
+            method: 'POST',
+            url:'/v1/passenger/'+data.passengerId,
+            params: data.info,
+        })
+    },
     
 }
 

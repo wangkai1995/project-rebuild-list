@@ -40,7 +40,7 @@ class PassengersList extends Component{
                         >
                             <h2>{item.userName}</h2>
                             <p>身份证: {item.passportId}</p>
-                            <Link>
+                            <Link to={`/user/changePassenger/update/${item.passengerId}`}>
                                 <i styleName="cicon icon-right-icon"></i>
                             </Link>
                         </li>

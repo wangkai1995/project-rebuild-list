@@ -1,18 +1,23 @@
 import React ,{ Component , PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import styles from './changePassengers.scss';
 
+
+
+import userModel from '../../../http/user/index';
+
 import ChangePassengersSubmit from './changePassengersSubmit';
 
 
 const passportIdValidate = values =>{
-    num = num.toUpperCase();
+    var num = values.toUpperCase();
     //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。
     if (!(/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test(num))){
-        console.log('输入的身份证号长度不对，或者号码不符合规定！\n15位号码应全为数字，18位号码末位可以为数字或X。');
+        // console.log('输入的身份证号长度不对，或者号码不符合规定！\n15位号码应全为数字，18位号码末位可以为数字或X。');
         return false;
     }
     //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
@@ -29,7 +34,7 @@ const passportIdValidate = values =>{
         bGoodDay = (dtmBirth.getYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4]));
         if (!bGoodDay)
         {
-            console.log('输入的身份证号里出生日期不对！');
+            // console.log('输入的身份证号里出生日期不对！');
             return false;
         }
         else
@@ -57,7 +62,7 @@ const passportIdValidate = values =>{
         var bGoodDay;
         bGoodDay = (dtmBirth.getFullYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4]));
         if (!bGoodDay){
-            console.log('输入的身份证号里出生日期不对！');
+            // console.log('输入的身份证号里出生日期不对！');
             return false;
         }else{
             //检验18位身份证的校验码是否正确。
@@ -73,7 +78,7 @@ const passportIdValidate = values =>{
             valnum = arrCh[nTemp % 11];
             if (valnum != num.substr(17, 1))
             {
-                console.log('18位身份证的校验码不正确！应该为：' + valnum);
+                // console.log('18位身份证的校验码不正确！应该为：' + valnum);
                 return false;
             }
             return true;
@@ -83,11 +88,10 @@ const passportIdValidate = values =>{
 }
 
 const passengersValidate = values => {
-    const phoneReg = /^0?(13|15|18|14|17)[0-9]{9}$/;
     const nameReg = /^[\u4e00-\u9fa5]{2,10}$/;
+    const PhoneReg = /^0?(13|15|18|14|17)[0-9]{9}$/;
     var error = {};
-    const { name, phone ,passportId } = values;
-    
+    const { name, phone ,passportId } = values;    
     if(!name){
         error._error = '请输入乘客姓名';
         return error;
@@ -99,15 +103,14 @@ const passengersValidate = values => {
     }
 
     if(!phone){
-        error._error = '请输入乘客联系电话';
+        error._error = '请输入手机号码';
         return error;
     }
 
-    if(!phoneReg.test(name)){
+    if(!PhoneReg.test(phone)){
         error._error = '手机号码不正确';
         return error;
     }
-
 
     if(!passportId){
         error._error = '请输入乘客证件号码';
@@ -134,11 +137,16 @@ class ChangePassengersForm extends Component{
     }
     
     handleOnSubmit(data){
-        console.log(data);
+        const { model ,onAddSubmit ,onUpdateSubmit } = this.props;
+        if(model === 'add'){
+            onAddSubmit(data);
+        }else{
+            onUpdateSubmit(data);
+        }
     }
 
     render(){
-        const { handleSubmit ,error ,invalid ,pristine ,model } = this.props;   
+        const { handleSubmit ,error ,invalid ,pristine ,model ,loading } = this.props; 
         return(
             <form>
                 <div styleName="input-list">
@@ -148,16 +156,16 @@ class ChangePassengersForm extends Component{
                     </label>
                     <label styleName="input-item">
                         <span styleName="input-label">手机号码</span>
-                        <Field name="phone" type="text" component="input"  placeholder="请输入正确手机号码" />
+                        <Field name="phone" type="text" component="input"  placeholder="请输入手机号码" />
                     </label>
                     <label styleName="input-item">
                         <span styleName="input-label">证件号码</span>
-                        <Field namne="passportId" type="text" component="input"  placeholder="请输入正确身份证号码" />
+                        <Field name="passportId" type="text" component="input"  placeholder="请输入正确身份证号码" />
                     </label>
                 </div>
                 <ChangePassengersSubmit 
                         handleSubmit={ handleSubmit( this.handleOnSubmit.bind(this) ) } 
-                        disabled={ invalid || pristine || loading } 
+                        disabled={ invalid || loading } 
                         error={error}
                         model={model}
                 />
@@ -170,11 +178,29 @@ class ChangePassengersForm extends Component{
 
 
 
+//链接到redux初始化表单
+function mapStateToProps(state){
+    var passengersInfo = state.user.changePassengers.changePassengers.passengersInfo;
+    if(passengersInfo){
+       return {
+            initialValues:{
+                name:passengersInfo.userName,
+                phone: passengersInfo.mobile1,
+                passportId: passengersInfo.passportId,
+            }
+        } 
+    }   
+}
 
-export default reduxForm({
-  form: 'changePassengersForm',                 //redux-form的特殊标记，必填项
-  validate: passengersValidate,
-})(ChangePassengersForm)   
+
+
+export default connect(mapStateToProps)(
+    reduxForm({
+      form: 'changePassengersForm',                 //redux-form的特殊标记，必填项
+      validate: passengersValidate,
+    })(ChangePassengersForm) 
+) 
+
 
 
 

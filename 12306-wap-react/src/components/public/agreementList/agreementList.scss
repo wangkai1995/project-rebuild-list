@@ -1,0 +1,26 @@
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+}
+
+.list{
+    composes: list from "../../../styles/common.scss";  
+}
+
+.item{
+    composes: item from "../../../styles/common.scss";  
+    composes: clear-fixed from "../../../styles/common.scss";
+    color: inherit;
+    text-decoration: none;
+    span{
+        float: left;
+        margin: 0 10px;
+    }
+    i{
+        float: right;
+        margin: 0 10px;
+        position: relative;
+        top: 2px;
+    }
+}
+

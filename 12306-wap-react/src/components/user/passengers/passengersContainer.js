@@ -32,7 +32,7 @@ class PassengersContainer extends Component{
         const { actions ,push } = this.props; 
         let token = TokenServer.getToken();
         if( token ){
-            actions.requestPassengers(userModel.getPassenger,{
+            actions.requestPassengers(userModel.getPassengerList,{
                 access_token : token.access_token,
             });
         }else{

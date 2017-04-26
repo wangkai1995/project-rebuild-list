@@ -15,15 +15,15 @@ class AboutUsContent extends Component{
     render(){
         return(
             <div styleName="about-list">
-                <Link  to="/pubilc/company"  styleName="about-item">
+                <Link  to="/public/company"  styleName="about-item">
                     <span>公司简介</span>
                     <i styleName="cicon icon-right-icon"></i>
                 </Link>
-                <Link styleName="about-item">
+                <Link  to="/public/legalnotices" styleName="about-item">
                     <span>法律声明</span>
                     <i styleName="cicon icon-right-icon"></i>
                 </Link>
-                <Link styleName="about-item">
+                <Link  to="/public/agreementList" styleName="about-item">
                     <span>协议条款</span>
                     <i styleName="cicon icon-right-icon"></i>
                 </Link>
@@ -35,6 +35,7 @@ class AboutUsContent extends Component{
         )
     }
 }
+
 
 
 

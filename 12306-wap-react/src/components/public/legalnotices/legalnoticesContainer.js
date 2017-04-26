@@ -1,21 +1,21 @@
 import React,{ Component } from 'react';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules';
-import styles from './company.scss';
+import styles from './legalnotices.scss';
 
 import articleModel from '../../../http/article/index';
 
 
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple : true})
-class CompanyContainer extends Component{
+class LegalnoticesContainer extends Component{
     constructor(props){
         super(props);
     }
 
     componentDidMount(){
         const { actions } = this.props; 
-        actions.requestArticle(articleModel.company);
+        actions.requestArticle(articleModel.legalnotices);
     }
 
 
@@ -40,6 +40,6 @@ class CompanyContainer extends Component{
 
 
 
-export default CompanyContainer;
+export default LegalnoticesContainer;
 
 

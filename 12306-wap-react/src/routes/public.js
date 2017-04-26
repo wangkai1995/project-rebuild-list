@@ -8,18 +8,24 @@ import Faq from '../views/public/faq/faq';
 import Feedback from '../views/public/feedback/feedback'
 import AboutUs from '../views/public/aboutUs/aboutUs'
 import Company from '../views/public/company/company'
+import Legalnotices from '../views/public/legalnotices/legalnotices';
+import AgreementList from '../views/public/agreementList/agreementList';
+import Agreement from '../views/public/agreement/agreement';
 
 
 
 const PublicRoutes =  function(){
     
     return(
-        <Route path='/pubilc' component={Pubilc} >
-            <Route path='/pubilc/city/:model/:direction' component={City}/>
-            <Route path='/pubilc/faq' component={Faq}/>
-            <Route path='/pubilc/feedback' component={Feedback}/>
-            <Route path='/pubilc/aboutUs' component={AboutUs}/>
-            <Route path='/pubilc/company' component={Company}/>
+        <Route path='/public' component={Pubilc} >
+            <Route path='/public/city/:model/:direction' component={City}/>
+            <Route path='/public/faq' component={Faq}/>
+            <Route path='/public/feedback' component={Feedback}/>
+            <Route path='/public/aboutUs' component={AboutUs}/>
+            <Route path='/public/company' component={Company}/>
+            <Route path='/public/legalnotices' component={Legalnotices} />
+            <Route path='/public/agreementList' component={AgreementList} />
+            <Route path='/public/agreement/:id' component={Agreement} />
         </Route>
     )
 

@@ -34,9 +34,8 @@ class UserChangePassengers extends Component {
 
 
 
-
-
 export default connect( state =>{
+    // console.log(state.user.changePassengers.changePassengers,111111);
     return{
         changePassengers : state.user.changePassengers.changePassengers,
     };
