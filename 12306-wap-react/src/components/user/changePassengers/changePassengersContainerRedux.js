@@ -16,9 +16,6 @@ const initialState = {
 
 function changePassengers( state = initialState , action){
 
-        console.log(action,state);
-
-
     switch(action.type){
         //请求loading
         case actionType.REQUEST_LOADING : {

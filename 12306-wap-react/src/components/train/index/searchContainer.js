@@ -57,6 +57,7 @@ class Search extends Component{
 		this.props.push('/public/city/train/'+direction);
 	}
 
+
 	handleSearchSubmit(){
 		const { fromCityName, fromCityCode ,toCityName, toCityCode ,detpDate , findGD } = this.props;
 		this.props.push('/train/list/'+encodeURI(fromCityName)+'/'+fromCityCode+'/'+encodeURI(toCityName)+'/'+toCityCode+'/'+detpDate+'/'+findGD);
@@ -98,9 +99,6 @@ class Search extends Component{
 		);
 	}
 }
-
-
-
 
 
 

@@ -200,3 +200,83 @@
     -webkit-box-flex: 0;
 }
 
+.tabs{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: horizontal;
+    -moz-flex-direction: horizontal;
+    -ms-flex-direction: horizontal;
+    flex-direction: horizontal;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    border-color: #b2b2b2;
+    background-color: #f8f8f8;
+    background-image: linear-gradient(0deg,#b2b2b2,#b2b2b2 50%,transparent 50%);
+    color: #444;
+    z-index: 5;
+    width: 100%;
+    height: 49px;
+    border-style: solid;
+    background-size: 0;
+    line-height: 49px;
+    padding-top: 2px;
+    border-top: none!important;
+    border-bottom: none;
+    background-position: top;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+}
+
+.tabs-striped{
+    background-color: #fff;
+    border-color: #dcdcdc;
+    background-image: none;
+    padding-top: 0;
+    border-bottom-width: 1px;
+    background-position: bottom;
+    border: none;
+    border-bottom: 3px solid #ddd;
+}
+
+
+.tab-item{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+    overflow: hidden;
+    max-width: 150px;
+    height: 100%;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 14px;
+    opacity: .7;
+    outline: 0;
+    background: 0 0;
+    -webkit-transition: color .1s ease;
+    -moz-transition: color .1s ease;
+    -ms-transition: color .1s ease;
+    -o-transition: color .1s ease;
+    transition: color .1s ease;
+    border: 0 solid #fff
+}
+
+
+

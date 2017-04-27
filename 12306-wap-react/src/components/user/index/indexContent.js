@@ -21,7 +21,7 @@ class UserContent extends Component{
         return(
            <div styleName="personal-content">
                 <div styleName="content-list">
-                    <Link styleName="content-item">
+                    <Link to="/user/orderCenter"  styleName="content-item">
                         <i styleName="cicon  icon-user-order-ico "></i>
                         <span>我的订单</span>
                         <i styleName="cicon icon-user-arrow-ico"></i>

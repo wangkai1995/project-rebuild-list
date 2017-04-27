@@ -79,6 +79,14 @@ export default {
             params: data.info,
         })
     },
+
+    orderInfo:function(data){
+        return httpServer.request({
+            method: 'GET',
+            url:'/v1/user/orders',
+            params: data,
+        })
+    },
     
 }
 

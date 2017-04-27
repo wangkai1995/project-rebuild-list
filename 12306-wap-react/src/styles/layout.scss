@@ -10,6 +10,19 @@
 	    font-size: 100%;
 	}
 
+    html{
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-family: sans-serif;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        overflow: hidden;
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    }
+
 	button,h1,h2,h3,h4,h5,h6,input,select,textarea{
 	    font-family: "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
 	}

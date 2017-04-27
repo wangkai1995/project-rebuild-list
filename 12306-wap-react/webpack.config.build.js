@@ -9,8 +9,8 @@ var webpack = require('webpack');
 npm uninstall webpack --save-dev
 
 npm install webpack@2.1.0-beta.22 --save-dev
-
 */
+
 
 module.exports={
 	devtool:'source-map',

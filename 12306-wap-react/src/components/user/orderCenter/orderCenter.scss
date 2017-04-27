@@ -1,0 +1,110 @@
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+}
+
+
+.tab-container{
+    composes: tabs from "../../../styles/common.scss";
+    composes: tabs-striped from "../../../styles/common.scss";
+}
+
+
+.tab-item{
+    composes: tab-item from "../../../styles/common.scss";
+    &.active{
+        color: #2ca1f1;
+        border-bottom: 2px solid #2ca1f1;
+        margin-top: 1px;
+        border-width: 0 0 2px!important;
+        border-style: solid;
+    }
+}
+
+.order-list{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    div{
+        font-size: .875rem;
+    }
+}
+
+
+.order-item{
+    composes: item from "../../../styles/common.scss";
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: 10px 6px;
+    padding: 10px 5px;
+    border: 0;
+    border-radius: 10px;
+}
+
+
+.orderStatus-gray {
+    color: #c8c8c8!important;
+}
+
+
+.item-title{
+    composes: clear-fixed from "../../../styles/common.scss";
+    height: 25px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.price-type{
+    margin-left: 10px;
+    float: left;
+    margin: 0 10px;
+}
+
+.price-right {
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+
+.money{
+    color: #f63;
+}
+
+
+.item-row{
+    composes: row from "../../../styles/common.scss";
+    width: 100%;
+}
+
+.item-col{
+    composes: col from "../../../styles/common.scss";
+    composes: col-50 from "../../../styles/common.scss";
+    &.right{
+        text-align: right;
+        padding-right:10px; 
+    }
+}
+
+
+
+.load-refresh{
+    font-size: 1rem;
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #2ca1f1;
+    &.hide{
+        display: none;
+    }
+}
+
+
+
