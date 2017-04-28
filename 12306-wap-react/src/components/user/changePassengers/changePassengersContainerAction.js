@@ -6,9 +6,9 @@ import *  as actionType  from './changePassengersContainerType';
 
 //请求乘客数据
 function requestPassengersInfo(request,params){
-    const { REQUEST_LOADING, REQUEST_PASSENGERS_INFO_SUCCESS, REQUEST_ERROR }  = actionType;
+    const { REQUEST_CHANGE_PASSENGERS_LOADING, REQUEST_PASSENGERS_INFO_SUCCESS, REQUEST_ERROR }  = actionType;
     return{
-        type : [REQUEST_LOADING, REQUEST_PASSENGERS_INFO_SUCCESS, REQUEST_ERROR],
+        type : [REQUEST_CHANGE_PASSENGERS_LOADING, REQUEST_PASSENGERS_INFO_SUCCESS, REQUEST_ERROR],
         request : request,
         params: params,
     }
@@ -17,9 +17,9 @@ function requestPassengersInfo(request,params){
 
 //请求添加乘客数据
 function requestAddPassengers(request,params){
-    const { REQUEST_LOADING, REQUEST_ADD_PASSENGERS_SUCCESS, REQUEST_ERROR }  = actionType;
+    const { REQUEST_CHANGE_PASSENGERS_LOADING, REQUEST_ADD_PASSENGERS_SUCCESS, REQUEST_ERROR }  = actionType;
     return{
-        type : [REQUEST_LOADING, REQUEST_ADD_PASSENGERS_SUCCESS, REQUEST_ERROR],
+        type : [REQUEST_CHANGE_PASSENGERS_LOADING, REQUEST_ADD_PASSENGERS_SUCCESS, REQUEST_ERROR],
         request : request,
         params: params,
     }
@@ -27,9 +27,9 @@ function requestAddPassengers(request,params){
 
 //请求更新乘客数据
 function requestUpdatePassengers(request,params){
-    const { REQUEST_LOADING, REQUEST_UPDATE_PASSENGERS_SUCCESS, REQUEST_ERROR }  = actionType;
+    const { REQUEST_CHANGE_PASSENGERS_LOADING, REQUEST_UPDATE_PASSENGERS_SUCCESS, REQUEST_ERROR }  = actionType;
     return{
-        type : [REQUEST_LOADING, REQUEST_UPDATE_PASSENGERS_SUCCESS, REQUEST_ERROR],
+        type : [REQUEST_CHANGE_PASSENGERS_LOADING, REQUEST_UPDATE_PASSENGERS_SUCCESS, REQUEST_ERROR],
         request : request,
         params: params,
     }

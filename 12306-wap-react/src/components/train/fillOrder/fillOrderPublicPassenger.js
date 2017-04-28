@@ -22,9 +22,9 @@ class TrainfillOrderPublicPassenger extends Component {
         const { passengerInfo } = this.props;
         if(passengerInfo){
 
-
+            
         }else{
-            return  <Link styleName="add-passenger">
+            return  <Link to="/user/passenger/train" styleName="add-passenger">
                         <i styleName="cicon icon-icon-add-passenger"></i>&nbsp;
                         添加乘客(成人/儿童)
                     </Link>

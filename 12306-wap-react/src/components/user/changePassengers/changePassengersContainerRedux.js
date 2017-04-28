@@ -18,7 +18,7 @@ function changePassengers( state = initialState , action){
 
     switch(action.type){
         //请求loading
-        case actionType.REQUEST_LOADING : {
+        case actionType.REQUEST_CHANGE_PASSENGERS_LOADING : {
             return{
                 ...state,
                 loading:true,
