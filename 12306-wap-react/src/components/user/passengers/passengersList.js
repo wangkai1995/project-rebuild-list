@@ -8,7 +8,7 @@ import styles from './passengers.scss';
 import icon from '../../../styles/sprite.css';
 
 import SessionServer from '../../../server/session/index';
-
+import ModalAlert from '../../../components/modal/Alert';
 
 @immutableRenderDecorator
 @CSSModules(_.merge({},styles,icon),{allowMultiple: true})
@@ -40,6 +40,14 @@ class PassengersList extends Component{
             if(!Array.isArray(selectPassenger)){
                 selectPassenger = [];
             }
+            if(selectPassenger.length +1 >5){
+                return  ModalAlert.show({
+                    content:'最对只能添加5名乘客',
+                    onClick:function(){
+                        ModalAlert.hide();
+                    }
+                });
+            }
             selectPassenger.push(item);
             this.setState({
                 selectPassenger:selectPassenger,
@@ -59,7 +67,19 @@ class PassengersList extends Component{
         }
         SessionServer.set(model+'Passenger',selectPassenger);
     }
+    
 
+    getSubmit(){
+        const{ model } = this.props;
+        if(model !== 'user'){
+            return <button styleName="submit-btn"
+                           onClick={ ()=>{ window.history.back() } }
+                    >
+                        提交
+                    </button>
+        }
+    }
+    
 
     getPassengerList(){
         const{ model } = this.props;
@@ -142,6 +162,7 @@ class PassengersList extends Component{
         return(
             <ul styleName='passenger-list'>
                 {this.getPassengerList()}
+                {this.getSubmit()}
             </ul>
         )
     }

@@ -46,6 +46,128 @@
     }
 }
 
+.passenger-container{
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+    padding: 0 0 0 15px;
+    background-color: #fff;
+}
+
+
+.passenger-label{
+    height: 50px;
+    line-height: 50px;
+    color: #666;
+    font-size: 1rem;
+    span{
+        font-size: 0.75rem;
+    }
+}
+
+
+.passenger-item{
+    composes: clear-fixed from "../../../styles/common.scss";
+    height: 72px;
+    padding: 0;
+    width: 100%;
+    border-top: 1px solid #dcdcdc;
+    color: black;
+}
+
+.passenger-icon{
+    float: left;
+    width: 10%;
+    display: block;
+    i {
+        margin-top: 18px;
+        transition: all .3s linear;
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        -ms-transition: all .3s linear;
+        -o-transition: all .3s linear;
+        transform: matrix(0,1,-1,0,0,0);
+        -ms-transform: matrix(0,1,-1,0,0,0);
+        -moz-transform: matrix(0,1,-1,0,0,0);
+        -webkit-transform: matrix(0,1,-1,0,0,0);
+        -o-transform: matrix(0,1,-1,0,0,0);
+    }
+    &.active{
+        i{
+            transform: matrix(1,0,0,1,0,0);
+            -ms-transform: matrix(1,0,0,1,0,0);
+            -moz-transform: matrix(1,0,0,1,0,0);
+            -webkit-transform: matrix(1,0,0,1,0,0);
+            -o-transform: matrix(1,0,0,1,0,0); 
+        }
+        
+    }
+}
+
+.passenger-message {
+    composes: text-overflow from "../../../styles/common.scss";
+    width: 65%;
+    float: left;
+    padding: 5px;
+    font-size: 1rem;
+    p{
+        margin: 5px;
+    }
+}
+
+.passenger-delete{
+    width: 15%;
+    height: 100%;
+    font-size: .875rem;
+    float: right;
+    background-color: #f63;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    span{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 23px;
+    }
+    &.active{
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+    }
+}
+
+
+.passenger-change{
+    height: 50px;
+    font-size: .9rem;
+    overflow: hidden;
+    border-top: 1px solid #dcdcdc;
+    padding-left: 13%;
+    a{
+        color: #2ca1f1;
+        width: 50%;
+        display: block;
+        padding-top: 15px;
+        float: left;
+        text-align: center;
+        &:first-child{
+            text-align: left;
+        }
+    }
+}
 
 
 .contacts-container{

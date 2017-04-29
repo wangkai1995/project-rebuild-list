@@ -95,3 +95,13 @@
 }
 
 
+.submit-btn{
+    composes: button from "../../../styles/common.scss";
+    composes: button-block from "../../../styles/common.scss";
+    background-color: #ff8409;
+    color:#fff;
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+

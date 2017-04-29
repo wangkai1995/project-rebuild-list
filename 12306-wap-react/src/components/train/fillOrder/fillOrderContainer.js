@@ -41,6 +41,7 @@ class CommonTrainFillOrder extends Component{
         this.contactsMobileChange = this.contactsMobileChange.bind(this);
         this.insuranceChange = this.insuranceChange.bind(this);
         this.treatyChange = this.treatyChange.bind(this);
+        this.passengersChange = this.passengersChange.bind(this);
     }
     
 
@@ -97,6 +98,12 @@ class CommonTrainFillOrder extends Component{
         return  passenger? passenger : false;
     }
 
+    
+    //乘客改变
+    passengersChange(){
+        const { actions } = this.props;
+        actions.initTrainPassenger( this.initPassenger() );
+    }
 
     //联系人姓名修改
     contactsNameChange(name){
@@ -134,14 +141,16 @@ class CommonTrainFillOrder extends Component{
 
 
     render(){
-        const { insuranceInfo, userInfo, trainInfo ,passengerInfo } = this.props;
+        const { insuranceInfo, userInfo, trainInfo ,passengerInfo ,push } = this.props;
         const { contacts, insurance ,treatyChecked } =this.state; 
         return (
             <div styleName="root-container">
                 <TrainfillOrderPublicHeader trainInfo={trainInfo} />
                 <div styleName="train-fill-order-container">
-                    <TrainfillOrderPublicPassenger  
+                    <TrainfillOrderPublicPassenger
+                                    onPassengerChange={this.passengersChange}  
                                     passengerInfo={passengerInfo} 
+                                    push={push}
                     />
                     <TrainfillOrderPublicContactsMessage 
                                     contacts={contacts}

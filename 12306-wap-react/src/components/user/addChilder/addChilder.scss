@@ -1,0 +1,51 @@
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+}
+
+
+.list-container{
+	composes: list from "../../../styles/common.scss";
+	padding-left: 20px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+
+.item{
+	composes: item-input from "../../../styles/common.scss";
+    composes: item from "../../../styles/common.scss";
+    padding-left: 0;
+    border-left: 0;
+    &:first-child{
+    	border-top: 0;
+    }
+    &:last-child{
+    	border-bottom: 0;
+    }
+}
+
+
+.item-label{
+	composes: input-label from "../../../styles/common.scss";
+	width: 25%;
+	input{
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1 120px;
+	    flex: 1 120px;    
+	    width: 100%;
+	}
+}
+
+.form-submit{
+	padding:10px;
+}
+
+.submit{
+	composes: button from "../../../styles/common.scss";
+    composes: button-block from "../../../styles/common.scss";
+    background-color: #ff8409;
+    color:#fff;
+    width: 100%;
+}
+
