@@ -41,11 +41,38 @@
 	padding:10px;
 }
 
+
+.popup-adult{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.adult-item{
+    line-height: 50px;
+    background-color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    &.close {
+        color: #2ca1f1;
+    }
+}
+
 .submit{
 	composes: button from "../../../styles/common.scss";
     composes: button-block from "../../../styles/common.scss";
     background-color: #ff8409;
     color:#fff;
     width: 100%;
+}
+
+
+.disabled{
+    background-color: #ccc !important;
+    color:#fff !important;
+    pointer-events: none;
 }
 

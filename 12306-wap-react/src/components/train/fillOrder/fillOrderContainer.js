@@ -167,7 +167,7 @@ class CommonTrainFillOrder extends Component{
                                     treatyChecked={treatyChecked} 
                     />
                 </div>
-                <TrainfillOrderPublicFooter />
+                <TrainfillOrderPublicFooter passengerInfo={passengerInfo}  />
                 <ModalLoading isVisible={!insuranceInfo || !userInfo} textContent="正在为您加载"  />
             </div>
         );

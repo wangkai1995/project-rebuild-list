@@ -8,8 +8,10 @@ import styles from './addChilder.scss';
 import icon from '../../../styles/sprite.css';
 
 import * as DateFilter from '../../../filter/Date';
+import SessionServer from '../../../server/session/index';
 
 import SelectAdultModal from './addChilderAdultModal';
+
 
 @immutableRenderDecorator
 @CSSModules(_.merge({},styles,icon),{allowMultiple: true})
@@ -20,6 +22,7 @@ class AddChilderContainer extends Component{
         this.state={
             isVisibile:false,
             isAdult:false,
+            adult: '',
             birthday:'',
             name:'',
         }
@@ -27,6 +30,10 @@ class AddChilderContainer extends Component{
         this.handleDateShow = this.handleDateShow.bind(this);
         this.handleDateHide = this.handleDateHide.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleAdultShow = this.handleAdultShow.bind(this);
+        this.handleAdultHide = this.handleAdultHide.bind(this);
+        this.handleAdultChange = this.handleAdultChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
@@ -57,8 +64,50 @@ class AddChilderContainer extends Component{
         })
     }
 
+    handleAdultShow(){
+        this.setState({
+            isAdult:true,
+        })
+    }
+
+    handleAdultHide(){
+        this.setState({
+            isAdult:false,
+        })
+    }
+
+    handleAdultChange(adult){
+        this.setState({
+            adult:adult,
+            isAdult:false,
+        })
+    }
+
+    
+    handleSubmit(){
+        const { birthday ,name  ,adult } = this.state;
+        if(!name || !birthday|| !adult){
+            return false;
+        }
+        var passneger = SessionServer.get('trainPassenger');
+        var childerPassneger = {
+            userName:name,
+            birthday:birthday,
+            adult:adult,
+            childer:true,
+        }
+        passneger.push(childerPassneger);
+        SessionServer.set('trainPassenger',passneger);
+        window.history.back();
+    }
+
+
     render(){
-        const { birthday ,name ,isVisibile } = this.state;
+        const { birthday ,name ,isVisibile ,isAdult ,adult } = this.state;
+        const submitClass=classnames({
+            'submit':true,
+            'disabled': (!name || !birthday|| !adult),
+        });
         return(
             <div styleName='container'>
                 <div styleName="list-container">
@@ -76,12 +125,12 @@ class AddChilderContainer extends Component{
                     </label>
                     <label styleName="item" >
                         <span styleName="item-label">同行成人</span>
-                        <input type="text" placeholder="请选择成人" />
+                        <input type="text" value={adult.userName? adult.userName : ''} placeholder="请选择成人" onClick={this.handleAdultShow} />
                     </label>
                 </div>
 
                 <div styleName="form-submit">
-                    <button styleName="submit">提交</button>
+                    <button styleName="submit" styleName={submitClass} onClick={this.handleSubmit} >提交</button>
                 </div>
 
                 <DatePicker
@@ -92,7 +141,11 @@ class AddChilderContainer extends Component{
                     max={new Date()}
                     isOpen={isVisibile}
                 />
-                <SelectAdultModal />
+                <SelectAdultModal
+                    isVisibile={isAdult}
+                    onSelect={this.handleAdultChange}
+                    onCancel={this.handleAdultHide}
+                />
             </div>
         );
     }

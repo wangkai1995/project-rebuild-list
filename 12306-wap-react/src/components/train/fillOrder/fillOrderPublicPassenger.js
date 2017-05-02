@@ -45,7 +45,7 @@ class TrainfillOrderPublicPassenger extends Component {
         const { push } = this.props;
         if(passengerInfo.length +1 > 5){
             return ModalAlert.show({
-                content:'最对只能添加5名乘客',
+                content:'最多只能添加5名乘客',
                 onClick:function(){
                     ModalAlert.hide();
                 }
@@ -60,7 +60,15 @@ class TrainfillOrderPublicPassenger extends Component {
         const { push } = this.props;
         if(passengerInfo.length +1 > 5){
             return ModalAlert.show({
-                content:'最对只能添加5名乘客',
+                content:'最多只能添加5名乘客',
+                onClick:function(){
+                    ModalAlert.hide();
+                }
+            });
+        }
+        if(!passengerInfo){
+            return ModalAlert.show({
+                content:'至少有一名成人乘客',
                 onClick:function(){
                     ModalAlert.hide();
                 }
@@ -72,10 +80,12 @@ class TrainfillOrderPublicPassenger extends Component {
 
     handleClick(flag,index){
         let { passengerInfo } = this.state;
-        passengerInfo[index].delete = flag;
-        this.setState({
-            passengerInfo:passengerInfo,
-        })
+        if(passengerInfo[index]){
+            passengerInfo[index].delete = flag;
+            this.setState({
+                passengerInfo:passengerInfo,
+            })
+        }
     }
 
 
@@ -106,20 +116,39 @@ class TrainfillOrderPublicPassenger extends Component {
                  'passenger-delete' : true,
                  'active': item.delete,
             });
+            //成人
+            if(!item.childer){
+                return(
+                    <div key={item.passportId}  styleName="passenger-item" onClick={ self.handleClick.bind(self,!item.delete,index) }>
+                        <div styleName={passengerIcon}>
+                            <i styleName="cicon icon-icon-fillorder-cho"></i>
+                        </div>
+                        <div styleName="passenger-message">
+                            <p>{item.userName}</p>
+                            <p>{item.passportId}</p>
+                        </div>
+                        <div styleName={passengerDelete} onClick={ self.handleDelete.bind(self,index) }>
+                            <span>删除</span>
+                        </div>
+                    </div>
+                )
+            }
+            //儿童
             return(
-                <div key={item.passportId}  styleName="passenger-item" onClick={ self.handleClick.bind(self,!item.delete,index) }>
+                <div key={item.userName}  styleName="passenger-item" onClick={ self.handleClick.bind(self,!item.delete,index) }>
                     <div styleName={passengerIcon}>
                         <i styleName="cicon icon-icon-fillorder-cho"></i>
                     </div>
                     <div styleName="passenger-message">
-                        <p>{item.userName}</p>
-                        <p>{item.passportId}</p>
+                        <p>{item.userName}&nbsp;<i styleName="cicon icon-label-child"></i></p>
+                        <p>请使用{item.adult.userName}身份证取票</p>
                     </div>
                     <div styleName={passengerDelete} onClick={ self.handleDelete.bind(self,index) }>
                         <span>删除</span>
                     </div>
                 </div>
             )
+           
         })
     }
 

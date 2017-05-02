@@ -42,7 +42,7 @@ class PassengersList extends Component{
             }
             if(selectPassenger.length +1 >5){
                 return  ModalAlert.show({
-                    content:'最对只能添加5名乘客',
+                    content:'最多只能添加5名乘客',
                     onClick:function(){
                         ModalAlert.hide();
                     }

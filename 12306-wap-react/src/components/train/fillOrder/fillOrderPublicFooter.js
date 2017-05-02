@@ -51,9 +51,9 @@ class TrainfillOrderPublicFooter extends Component {
 				<TrainfillOrderCommonModal isModal={isModal} />
 			</div>
 		);
-	}
-	
+	}	
 }
+
 
 
 
