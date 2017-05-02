@@ -62,7 +62,8 @@ class httpServer {
 					fetch(url,{
 						method:'POST',
 						headers:headers,
-						body:toQueryString(config.data),
+						// body:toQueryString(config.data),
+						body: JSON.stringify(config.data),
 					}).then( result =>{
 						result.json().then( data =>{
 							resolve(data);

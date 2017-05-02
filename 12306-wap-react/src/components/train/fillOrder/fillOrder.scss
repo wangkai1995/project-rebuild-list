@@ -169,9 +169,15 @@
         text-align: center;
         &:first-child{
             text-align: left;
+            span{
+                display: inline-block;
+                width: 100%;
+                border-right: 1px solid #d0d0d0;
+            }
         }
     }
 }
+
 
 
 .contacts-container{
@@ -389,8 +395,9 @@
 
 
 .footer-submit-disabled{
-    opacity: .4;
-    cursor: default!important;
+    background-color: #ccc !important;
+    color:#fff !important;
+    pointer-events: none;
     pointer-events: none;
 }
 
@@ -437,4 +444,109 @@
 
 
 
+.popup-12306-login{
+    background-color: #fff;
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    h3{
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+    p{
+        margin: 0 0 10px;
+        text-align: left;
+    }
+}
 
+
+
+.popup-colse{
+    position: absolute;
+    right: 20px;
+    top: -8px;
+}
+
+
+
+.login-12306-container{
+    height: 225px;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+.login-12306-item{
+    composes: clear-fixed from "../../../styles/common.scss";
+    display: inline-block;
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d0d0d0;
+    text-align: left;
+}
+
+
+.input-label{
+    width: 15%;
+    float: left;
+    line-height: 40px;
+    i{
+        position: relative;
+        top: 5px;
+        margin-right: 10px;
+    }
+}
+
+
+.input-input{
+    width: 85%;
+    float: left;
+    line-height: 40px;
+    input{
+        border: 0;
+        height: 40px;
+        position: relative;
+        top: -3px;
+        background-color: transparent;
+    }
+}
+
+.button{
+    margin-top: 15px;
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #bbb;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+    border-radius: 5px;
+    &.active{
+        background-color: #ff8400 !important;
+    }
+    &.disabled{
+        background-color: #ccc !important;
+        color:#fff !important;
+        pointer-events: none;
+    }
+    &.submit{
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #fea820;
+    }
+}
+
+.login-12306-loading {
+    background: #fff;
+    border-radius: 10px;
+    p{
+        margin-top: 10px;
+        text-align: center;
+    }
+}

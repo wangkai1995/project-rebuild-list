@@ -54,6 +54,8 @@ const fetchMiddleware = store => next => action =>{
 				type : ERROR,
 				loading : false,
 				payload: data.message,
+				code: data.code,
+				errorOrder: data.data? data.data :false,
 			});
 		}
 	},function(err){

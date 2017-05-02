@@ -15,47 +15,55 @@ class TrainfillOrderPublicContactsMessage extends Component {
     
     constructor(props){
         super(props);
-        this.state={
-            name : '',
-            mobile : '',
-        };
+        this.state = {
+            name:'',
+            mobile: '',
+        }
         this.handleNameInput = this.handleNameInput.bind(this);
         this.handleMobileInput = this.handleMobileInput.bind(this);
     }
-    
-    componentWillReceiveProps(nextProps){
-        const { contacts } = nextProps;
+
+    componentDidMount(){
+        const { contacts } = this.props;
         if(contacts){
             this.setState({
-                name: contacts.realName,
+                name:contacts.name,
                 mobile: contacts.mobile,
-            });
+            })
         }
     }
 
 
-    handleNameInput(el){
-        const { onNameChange } = this.props;
-        const value = el.target.value;
-        var nameReg = /^[\u4e00-\u9fa5]{2,10}$/;
-        if(nameReg.test(value)){
-            onNameChange(value);
+    componentWillReceiveProps(nextProps){
+        const { contacts } = this.props;
+        if(contacts){
+            this.setState({
+                name:contacts.name,
+                mobile: contacts.mobile,
+            })
         }
+    }
+
+
+    handleBlure(){
+        const { onContactsChange } = this.props;
+        onContactsChange(this.state);
+    }
+
+
+    
+    handleNameInput(el){
+        const value = el.target.value;
         this.setState({
             name:value,
-        });
+        })
     }
 
     handleMobileInput(el){
-        const { onMobileChange } = this.props;
         const value = el.target.value;
-        var mobileReg = /^0?(13|15|18|14|17)[0-9]{9}$/;
-        if(mobileReg.test(value)){
-            onMobileChange(value);
-        }
         this.setState({
             mobile:value,
-        });
+        })
     }
 
 

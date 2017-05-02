@@ -66,6 +66,22 @@ class TokenServer {
 	}
 
 
+	set12306(onSuccess){
+		var token = this.get('token');
+		if(token){
+			var currentDate = new Date(),
+            	currentTime = currentDate.getTime();
+       		currentTime = currentTime + token.expires_in*1000;
+       		token.access_12306 = true;
+       		this.set('token',token,new Date(currentTime));
+       		return true;
+		}
+		console.log('设置token失败');
+		return false;
+	}
+
+	
+
 }
 
 

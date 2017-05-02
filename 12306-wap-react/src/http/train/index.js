@@ -63,6 +63,15 @@ export default {
 			url:'/v1/insurance/1',
 			method: 'GET',
 		})
+	},
+
+	//请求下单
+	trainBuyTicket:function(data){
+		return httpServer.request({
+			url:'/v1/train/order?access_token='+data.token,
+			method: 'POST',
+			data: data.data,
+		})
 	}
 
 

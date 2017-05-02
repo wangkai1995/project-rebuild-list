@@ -88,6 +88,15 @@ export default {
         })
     },
     
+
+    login12306:function(data){
+        return httpServer.request({
+            method: 'POST',
+            url: '/v1/train/trainAccount',
+            params: data
+        })
+    },
+
 }
 
 

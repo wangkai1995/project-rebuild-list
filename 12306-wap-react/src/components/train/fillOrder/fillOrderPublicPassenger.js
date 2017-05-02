@@ -158,12 +158,14 @@ class TrainfillOrderPublicPassenger extends Component {
         return(
             <div styleName="passenger-container">
                 <div styleName="passenger-label">
-                    <label>乘车人</label>
+                    <label>乘车人&nbsp;</label>
                     <span>还可以添加&nbsp;({5-passengerInfo.length}人)</span>
                 </div>
                 {this.getPassengerItem()}
                 <div styleName="passenger-change">
-                    <a onClick={this.handleAddPassenger} >添加/编辑乘客</a>
+                    <a onClick={this.handleAddPassenger} >
+                        <span>添加/编辑乘客</span>
+                    </a>
                     <a onClick={this.handleAddChilder} >添加儿童</a>
                 </div>
             </div>

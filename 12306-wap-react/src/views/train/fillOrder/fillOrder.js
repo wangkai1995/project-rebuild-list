@@ -10,7 +10,7 @@ import { actions } from './fillOrderRedux';
 import TokenServer from '../../../server/token/index';
 
 import ModalAlert from '../../../components/modal/Alert';
-import CommonTrainFillOrder from '../../../components/train/fillOrder/fillOrderContainer';
+import CommonTrainFillOrder from '../../../components/train/fillOrder/fillOrderCommonContainer';
 
 
 
@@ -35,6 +35,7 @@ class TrainFillOrder extends Component {
                             token={token}  
                             push={push} 
                             actions={fillOrderAction}
+                            type={params.type}
                      />
         }else if(params.type === "rob"){
         //抢票订单
