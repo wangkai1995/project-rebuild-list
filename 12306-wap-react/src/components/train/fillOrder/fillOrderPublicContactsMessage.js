@@ -21,6 +21,7 @@ class TrainfillOrderPublicContactsMessage extends Component {
         }
         this.handleNameInput = this.handleNameInput.bind(this);
         this.handleMobileInput = this.handleMobileInput.bind(this);
+        this.handleBlure = this.handleBlure.bind(this);
     }
 
     componentDidMount(){
@@ -35,7 +36,7 @@ class TrainfillOrderPublicContactsMessage extends Component {
 
 
     componentWillReceiveProps(nextProps){
-        const { contacts } = this.props;
+        const { contacts } = nextProps;
         if(contacts){
             this.setState({
                 name:contacts.name,
@@ -73,11 +74,11 @@ class TrainfillOrderPublicContactsMessage extends Component {
             <div styleName="contacts-container" >
                 <div styleName="contacts-list">
                     <label>联系人</label>
-                    <input type="text" onChange={this.handleNameInput} value={name} placeholder="请输入联系人姓名" />   
+                    <input type="text" onBlur={this.handleBlure} onChange={this.handleNameInput} value={name} placeholder="请输入联系人姓名" />   
                 </div>
                 <div styleName="contacts-list">
                     <label>电话</label>
-                    <input type="text" onChange={this.handleMobileInput}  value={mobile} placeholder="请输入联系人电话" />   
+                    <input type="text" onBlur={this.handleBlure} onChange={this.handleMobileInput}  value={mobile} placeholder="请输入联系人电话" />   
                 </div>
             </div>
         )

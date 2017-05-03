@@ -46,6 +46,16 @@ function requestSubmit(request,params){
 }
 
 
+//取消订单
+function requestCancelOrder(request,params){
+    const { REQUEST_TRAIN_FILLORDER_LOADIND, REQUEST_TRAIN_FILLORDER_CANCEL_ORDER_SUCCESS, REQUEST_TRAIN_FILLORDER_ERROR }  = actionType;
+    return{
+        type : [REQUEST_TRAIN_FILLORDER_LOADIND, REQUEST_TRAIN_FILLORDER_CANCEL_ORDER_SUCCESS, REQUEST_TRAIN_FILLORDER_ERROR],
+        request : request,
+        params: params,
+    }
+}
+
 //填充车次信息
 function initTrainInfo(data){
     return{
@@ -75,6 +85,6 @@ function resetError(){
 
 
 
-export { requestInsuranceInfo ,requestUserInfo,  request12306Login,  requestSubmit,  initTrainInfo ,initTrainPassenger ,resetError };
+export { requestInsuranceInfo ,requestUserInfo, requestCancelOrder,  request12306Login,  requestSubmit,  initTrainInfo ,initTrainPassenger ,resetError };
 
 

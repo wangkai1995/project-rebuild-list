@@ -11,6 +11,7 @@ const initialState = {
     trainInfo:false,
     passengerInfo:false,
     Login12306: false,
+    cancelFlag: false,
     orderNo:false,
 };
 
@@ -48,12 +49,13 @@ function seat( state = initialState , action){
         }
 
 
-        //请求登录失败
+        //请求订单失败
         case actionType.REQUEST_TRAIN_FILLORDER_SUBMIT_ERROR:{
             return{
                 ...state,
                 loading: false,
                 Login12306: false,
+                cancelFlag : false,
                 error: action.payload,
                 errorCode: action.code,
                 errorOrder: action.errorOrder,
@@ -111,10 +113,21 @@ function seat( state = initialState , action){
                 ...state,
                 loading:false,
                 Login12306: false,
+                cancelFlag : false,
                 orderNo : action.payload,
             }
         }
+        
 
+        //请求取消订单成功
+        case actionType.REQUEST_TRAIN_FILLORDER_CANCEL_ORDER_SUCCESS :{
+            console.log('1111111111');
+            return{
+                ...state,
+                loading:false,
+                cancelFlag : true,
+            }
+        }
 
         //填充车次信息
         case actionType.INIT_TRAIN_INFO : {

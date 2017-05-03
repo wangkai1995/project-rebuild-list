@@ -72,7 +72,16 @@ export default {
 			method: 'POST',
 			data: data.data,
 		})
-	}
+	},
+
+	//取消订单
+	trainCancelOrder: function(data) {
+		return httpServer.request({
+			method: 'POST',
+			url: '/v1/train/cancel',
+			params: data,
+		})
+	},
 
 
 }

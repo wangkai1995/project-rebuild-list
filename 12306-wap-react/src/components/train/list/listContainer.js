@@ -87,6 +87,7 @@ class TrainInfoContainer extends Component{
 			deptDate: date,
 			findGD:  params.findGD,
 		});
+		this.props.push('/train/list/'+encodeURI(params.fromCityName)+'/'+params.fromCityCode+'/'+encodeURI(params.toCityName)+'/'+params.toCityCode+'/'+date+'/'+params.findGD);
 	}
 
 

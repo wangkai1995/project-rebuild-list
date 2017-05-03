@@ -57,14 +57,25 @@ class CommonTrainFillOrder extends Component{
     //更新保险和联系人
     //查询是否登录12306
     //查询是否提交成功
+    //查询是否取消成功
     //查询错误
     componentWillReceiveProps(nextProps){
-        const { userInfo ,insuranceInfo  ,orderNo ,Login12306 ,actions } = nextProps;
+        const { userInfo ,insuranceInfo  ,orderNo ,Login12306 ,cancelFlag ,actions } = nextProps;
         const { insurance ,contacts } = this.state;
 
         if(Login12306){
             TokenServer.set12306();
             this.handleBuyTicketSubmit();
+            return false;
+        }
+
+        if(cancelFlag){
+            //这里取消订单在下单有延时加300MS延时在提交订单
+            var self = this;
+            setTimeout(function(){
+                console.log('dddddddd');
+                self.handleBuyTicketSubmit();
+            },300);
             return false;
         }
 
@@ -76,17 +87,17 @@ class CommonTrainFillOrder extends Component{
                 });
             }
             if(userInfo && !contacts){
-                let contacts  ={};
+                let setContacts; 
                 if(localContacts){
-                    contacts = localContacts;
+                    setContacts = localContacts;
                 }else{
-                    contacts ={
+                    setContacts ={
                         name: userInfo.realName,
                         mobile: userInfo.mobile,
                     }
                 }
                 this.setState({
-                    contacts: contacts,
+                    contacts: setContacts,
                 });
             }
         }
@@ -122,7 +133,7 @@ class CommonTrainFillOrder extends Component{
 
     //联系人修改
     contactsChange(contacts){
-        let { actions } = this.props;
+        console.log(contacts);
         this.setState({
             contacts: contacts,
         });
@@ -157,8 +168,13 @@ class CommonTrainFillOrder extends Component{
 
     //购票提交
     handleBuyTicketSubmit(user12306){
-        const { actions ,token ,trainInfo ,passengerInfo ,contacts } = this.props;
-        const { insurance } = this.state;
+        const { actions ,token ,trainInfo ,passengerInfo } = this.props;
+        const { insurance ,contacts } = this.state;
+
+
+        console.log('111111111dwadawda');
+
+
         if(user12306){
             user12306.access_token = token.access_token;
             actions.request12306Login(userModel.login12306,user12306);
@@ -218,13 +234,17 @@ class CommonTrainFillOrder extends Component{
 
     //去支付未支付订单
     handlePayPrevOrder(order){
-        console.log(order,111111);
+        console.log(order,'跳转订单详情');
     }
 
 
     //重新下单
-    handleResetSubmit(order){
-        
+    handleResetSubmit(orderNo){
+        const { actions ,token } = this.props;
+        actions.requestCancelOrder(trainModel.trainCancelOrder,{
+            access_token: token.access_token,
+            orderNo: orderNo,
+        });
     }
 
 
