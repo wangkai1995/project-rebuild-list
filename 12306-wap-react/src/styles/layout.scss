@@ -23,6 +23,31 @@
         touch-action: pan-y;
     }
 
+    body {
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+        user-select: none;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        color: #000;
+        word-wrap: break-word;
+        font-size: 14px;
+        font-family: -apple-system;
+        font-family: "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
+        line-height: 20px;
+        text-rendering: optimizeLegibility;
+        -webkit-backface-visibility: hidden;
+        -ms-content-zooming: none;
+        webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-text-size-adjust: none;
+        -moz-text-size-adjust: none;
+        text-size-adjust: none;
+        -webkit-touch-callout: none;
+    }
+
 	button,h1,h2,h3,h4,h5,h6,input,select,textarea{
 	    font-family: "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
 	}

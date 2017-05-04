@@ -70,11 +70,11 @@ class OrderCenterContainer extends Component{
     
 
     render(){
-        const { orderConter ,type ,page ,orderInfo ,orderList } = this.props;
+        const { orderConter ,type ,page ,orderInfo ,orderList ,push } = this.props;
         return(
             <div styleName="container" >
                 <OrderCenterTab onTabChange={this.handleTabChange} tabActive={type} />
-                <OrderCenterList orderInfo={orderInfo} orderList={orderList} onAdd={this.handleAddPage} page={page} />
+                <OrderCenterList orderInfo={orderInfo} orderList={orderList} onAdd={this.handleAddPage} page={page} push={push} />
             </div>
         )
     }

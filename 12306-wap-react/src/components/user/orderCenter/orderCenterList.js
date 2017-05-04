@@ -16,10 +16,10 @@ class OrderCenterList extends Component{
     }
 
     getOrderItem(){
-        const { orderList } = this.props;
+        const { orderList ,push } = this.props;
         if(Array.isArray(orderList) && orderList.length > 0 ){
             return orderList.map(function(item){
-                return <OrderCenterItem key={item.orderNo} {...item} />
+                return <OrderCenterItem key={item.orderNo} push={push} {...item} />
             });
         }
     }

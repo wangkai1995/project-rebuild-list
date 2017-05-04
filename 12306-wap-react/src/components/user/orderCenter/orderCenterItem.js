@@ -16,7 +16,7 @@ class OrderCenterItem extends Component{
     }
 
     getTrainOrder(){
-        const { orderStatus ,totalPrice ,trainItems ,orderStatusText } = this.props;
+        const { orderStatus ,totalPrice ,trainItems ,orderStatusText ,orderNo ,push } = this.props;
         const iconClass=classnames({
             'cicon': true,
             'icon-train_gray': orderStatus === '2' || orderStatus === '10',
@@ -27,7 +27,7 @@ class OrderCenterItem extends Component{
             'money': orderStatus !== '12' && orderStatus !== '2'
         });
         return(
-            <div>
+            <div onClick={ ()=>{ push('/train/orderDetail/'+orderNo); } }>
                 <div styleName="item-title">
                     <span styleName="price-type">
                         <i styleName={iconClass}></i>
@@ -75,7 +75,6 @@ class OrderCenterItem extends Component{
 
 
     render(){
-        console.log(this.props);
         const { orderStatus, orderType } = this.props;
         const itemClass=classnames({
             'order-item': true,

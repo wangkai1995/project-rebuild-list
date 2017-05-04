@@ -133,7 +133,6 @@ class CommonTrainFillOrder extends Component{
 
     //联系人修改
     contactsChange(contacts){
-        console.log(contacts);
         this.setState({
             contacts: contacts,
         });
@@ -170,11 +169,6 @@ class CommonTrainFillOrder extends Component{
     handleBuyTicketSubmit(user12306){
         const { actions ,token ,trainInfo ,passengerInfo } = this.props;
         const { insurance ,contacts } = this.state;
-
-
-        console.log('111111111dwadawda');
-
-
         if(user12306){
             user12306.access_token = token.access_token;
             actions.request12306Login(userModel.login12306,user12306);

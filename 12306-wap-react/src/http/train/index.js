@@ -83,6 +83,14 @@ export default {
 		})
 	},
 
+	//订单详情
+	trainOrderDetail: function(data) {
+		return httpServer.request({
+			method: 'GET',
+			url: '/v1/train/order-detail/'+data.orderNo+'/?access_token='+data.token,
+		})
+	},
+
 
 }
 

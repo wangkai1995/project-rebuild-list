@@ -1,0 +1,294 @@
+
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+    padding-bottom: 10px;
+}
+
+
+.status-container{
+    margin: 10px 10px 0;
+    padding: 15px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+
+.color-money{
+    color:#f30 !important;
+}
+
+
+//待支付
+.train-status-await-pay{
+    h4{
+        font-size: 1rem;
+        color:#ff8400;
+        margin: 0px;
+        margin-bottom: 5px;
+    }
+}
+.train-status-pay-footer{
+    position: absolute;
+    bottom:0px;
+    left: 0px;
+    right: 0px;
+    height: 43px;
+    background-color: #3a495a;
+    color:#fff;
+    .order-detail{
+        margin-top: 10px;
+        width: 40%;
+        .money{
+            color: #ff6633;
+            font-size: 1.25rem;
+            .pirce{
+                font-size: 1.5625rem;
+            }
+        }
+    }
+    .detail{
+        display: inline-block;
+        position: relative;
+        top: 11px;
+        float: right;
+        margin-right: 10px;
+    }
+    input{
+        padding: 0px 15px !important;
+        background-color: #ff8400;
+        color:#fff;
+        margin: 5px auto;
+        min-width: 52px;
+        min-height: 30px;
+        line-height: 30px;
+        float: right;
+        margin-right: 10px;
+    }
+}
+
+
+//已取消
+.train-status-cancel{
+    color:#bbb;
+    font-size: 0.9rem;
+    .title{
+        font-size: 1rem;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 10px;
+        span{
+            float: right;
+            font-size: 0.75rem;
+            color:#2ca1f1;
+        }
+        .price{
+            font-size: 1.3rem;
+            color:#f30 !important;
+        }
+    }
+}
+
+
+//占座失败
+.train-status-failed{
+    color:#333;
+    font-size: 0.9rem;
+    .title{
+        font-size: 1rem;
+        overflow: hidden;
+        width: 100%;
+        span{
+            float: right;
+            font-size: 0.75rem;
+            color:#2ca1f1;
+        }
+        .price{
+            font-size: 1.3rem;
+            color:#f30 !important;
+        }
+    }
+    .reason{
+        color:#ff8400;
+    }
+    .gray{
+        color:#666;
+    }
+}
+
+
+//出票成功
+.train-status-success{
+    color:#333;
+    font-size: 0.9rem;
+    .title{
+        font-size: 1rem;
+        overflow: hidden;
+        width: 100%;
+        color:#2ca1f1;
+        span{
+            float: right;
+            font-size: 0.75rem;
+            color:#2ca1f1;
+        }
+        .price{
+            font-size: 1.3rem;
+            color:#f30 !important;
+        }
+    }
+    p{
+        font-size: 0.75rem;
+    }
+}
+
+
+//等待出票
+.train-status-await{
+    color:#333;
+    font-size: 0.9rem;
+    .title{
+        font-size: 1rem;
+        overflow: hidden;
+        width: 100%;
+        color:#2ca1f1;
+        span{
+            float: right;
+            font-size: 0.75rem;
+            color:#2ca1f1;
+        }
+        .price{
+            font-size: 1.3rem;
+            color:#f30 !important;
+        }
+    }
+    p{
+        font-size: 0.75rem;
+    }
+}
+
+
+.trainInfo{
+    margin: 15px 10px 0;
+    padding: 15px 10px 12px;
+    background-color: #fff;
+    border-radius: 5px;
+    h3{
+        text-align: center;
+        color: #666;
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+}
+
+.train-info{
+    composes: clear-fixed from "../../../styles/common.scss";
+    background-color: #fff;
+    border-bottom: 1px solid #d0d0d0;
+    p{
+        margin: 0 0 10px;
+    }
+}
+
+.train-info-from{
+    float: left;
+    width: 35%;
+    text-align: left;
+}
+
+.train-info-to{
+    float: left;
+    width: 35%;
+    text-align: right;
+
+}
+
+.train-info-city{
+    font-size: 1.25rem;
+    color: #666;
+}
+
+.train-info-time{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.train-info-date{
+    font-size: 0.8rem; 
+}
+
+.train-info-info{
+    float: left;
+    width: 30%;
+    text-align: center;
+    font-size: .75rem;
+    color: #666;
+    height: 60px;
+    position: relative;
+    top: -31px;
+    p{
+        color:#000;
+        font-size: 0.8rem;
+        &:first-child{
+            position: relative;
+            top: 15px;
+        }
+        &:last-child{
+            position: relative;
+            top: -16px;
+        }
+    }
+}
+
+
+.change{
+    margin: 10px 0 0;
+    font-size: .75rem;
+    color: #2ca1f1;
+}
+
+
+.detail-passenger{
+    composes: clear-fixed from "../../../styles/common.scss";
+    margin: 15px 10px 0;
+    padding: 15px 10px 12px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.passenger-title{
+    width: 30%;
+    float: left;
+    margin: 10px 0 0;
+}
+
+.passenger-list{
+    width: 70%;
+    float: left;
+    margin: 10px 0 0;
+}
+
+
+.passenger-container{
+    composes: clear-fixed from "../../../styles/common.scss";
+    border-bottom: 1px solid #d0d0d0;
+}
+
+
+.passenger-item{
+    padding: 10px 0;
+    border-bottom: 1px solid #d0d0d0;
+    p{
+        margin: 0 0 10px;
+    }
+    &:first-child{
+        padding-top: 0;
+    }
+    &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+}
+
+

@@ -8,6 +8,7 @@ import TrainList from '../views/train/list/list';
 import TrainSeat from '../views/train/seat/seat';
 import TrainThrough from '../views/train/through/through'
 import TrainFillOrder from '../views/train/fillOrder/fillOrder';
+import TrainOrderDetail from '../views/train/orderDetail/orderDetail';
 
 
 
@@ -19,6 +20,7 @@ const TrainRoutes =  function(){
             <Route path='/train/seat/:fromCityCode/:toCityCode/:detpDate/:trainCode'  component={TrainSeat}/>
             <Route path='/train/through/:deptDate/:trainCode'  component={TrainThrough}/>
             <Route path='/train/fillOrder/:type' component={TrainFillOrder} />
+            <Route path='/train/orderDetail/:orderNo' component={TrainOrderDetail} />
         </Route> 
     )      
 };
