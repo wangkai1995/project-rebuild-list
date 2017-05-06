@@ -91,6 +91,23 @@ export default {
 		})
 	},
 
+	//查询订单状态
+	trainOrderStatus:function(data){
+		return httpServer.request({
+				method: 'GET',
+				url: '/v1/train/status/'+data.orderNo+'/?access_token='+data.token,
+		})
+	},
+
+	//通知服务器订单超时
+	trainOrderTimeOut:function(data){
+		return httpServer.request({
+				method: 'GET',
+				url: '/v1/train/lock/timeout/'+data.orderNo+'/?access_token='+data.token,
+		})
+	},
+
+	
 
 }
 

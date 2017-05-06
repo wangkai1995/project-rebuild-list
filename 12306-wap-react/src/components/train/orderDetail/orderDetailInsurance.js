@@ -20,7 +20,7 @@ class OrderDetailInsurance extends Component{
 
             return insuranceInfo.map(function(item){
                 return(
-                    <li styleName="passenger-item">
+                    <li styleName="insurance-item">
                         <p>{item.passengerName}</p>
                         <p>{item.insuranceName}</p>
                     </li>
@@ -37,10 +37,10 @@ class OrderDetailInsurance extends Component{
         }
 
         return (
-            <div styleName="detail-passenger"> 
-                <div styleName="passenger-container">
-                    <div styleName="passenger-title">保险</div>
-                    <div styleName="passenger-list">
+            <div styleName="detail-insurance"> 
+                <div styleName="insurance-container">
+                    <div styleName="insurance-title">保险</div>
+                    <div styleName="insurance-list">
                         <ul>
                             {this.getInsuranceItem()}
                         </ul>

@@ -2,20 +2,50 @@ import React ,{ Component , PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
+import _ from 'lodash';
 import styles from './orderDetail.scss';
+import icon from '../../../styles/sprite.css';
+
+
+import CountDown from '../../lib/countDown/index';
+import OrderDetailProgress from './orderDetailProgress';
 
 
 @immutableRenderDecorator
-@CSSModules(styles,{allowMultiple: true})
+@CSSModules(_.merge({},styles,icon),{allowMultiple: true})
 class OrderDetailStatus extends Component{
     
     constructor(props){
         super(props);
+        this.handleCountDownOver = this.handleCountDownOver.bind(this);
     }
     
 
-    getOrderStopPay(){
-      const { orderDetail } = this.props;  
+    handleCountDownOver(){
+        const { onCountDownOver } = this.props;
+        //延时500毫秒
+        setTimeout(function(){
+            onCountDownOver(); 
+        },500);
+    }
+
+
+    getOrderCountTimePay(){
+        const { orderDetail } = this.props; 
+        return (
+            <div styleName="pay-countTime">
+                <i styleName="cicon icon-order_smile"></i>
+                &nbsp;座位已成功锁定!,请在
+                <CountDown onOver={this.handleCountDownOver} time={orderDetail.overplusTime}/>
+                秒内完成支付.
+            </div>
+        )
+    }
+
+
+    getOrderProgress(){
+        const { onQuery , onTimeout } = this.props;
+        return <OrderDetailProgress onTimeout={onTimeout} onQuery={onQuery} />
     }
 
 
@@ -274,23 +304,28 @@ class OrderDetailStatus extends Component{
             default:
                 statusElement =  null;
         }
-        return statusElement;
+        return(
+            <div styleName="status-container">
+                { statusElement }   
+            </div>
+        );
     }
 
 
 
     render(){
         const { orderDetail } = this.props;
+
         if(!orderDetail){
             return null;
         }else{
             return (
-                <div styleName="status-container">
-                   { orderDetail.status !== 1? this.getOrderStatus() : this.getOrderStopPay()}
+                <div>
+                    { orderDetail.status === 3? this.getOrderCountTimePay() : null }
+                    { orderDetail.status !== 1? this.getOrderStatus() : this.getOrderProgress() }
                 </div>
             );
-        }
-        
+        }   
     }
 
 
@@ -302,5 +337,6 @@ class OrderDetailStatus extends Component{
 
 
 export default OrderDetailStatus;
+
 
 

@@ -7,6 +7,8 @@ import CSSModules from 'react-css-modules';
 import styles from './orderDetail.scss';
 import { actions } from './orderDetailRedux';
 
+import TokenServer from '../../../server/token/index';
+
 
 import Header from '../../../layouts/header/header';
 import TrainOrderDetailContainer from '../../../components/train/orderDetail/orderDetailContainer';
@@ -22,11 +24,11 @@ class TrainOrderDetail extends Component {
 
     render(){
         const { params, orderDetail, orderDetailAction  }= this.props;
-
+        var token = TokenServer.getToken();
         return(
             <div styleName="container" >
                 <Header title="订单详情" />
-                <TrainOrderDetailContainer params={params} actions={orderDetailAction} {...orderDetail} />
+                <TrainOrderDetailContainer  token={token}  params={params} actions={orderDetailAction} {...orderDetail} />
             </div>
         );
     }

@@ -26,6 +26,7 @@ function seat( state = initialState , action){
             return{
                 ...state,
                 loading: true,
+                orderNo:false,
             };
         }
 

@@ -3,6 +3,9 @@
 .container{
     composes: war-container from "../../../styles/common.scss";
     padding-bottom: 10px;
+    &.await-pay {
+        bottom: 44px;
+    }
 }
 
 
@@ -67,6 +70,24 @@
         margin-right: 10px;
     }
 }
+.pay-countTime{
+    composes: text-overflow from "../../../styles/common.scss";
+    height: 45px;
+    line-height: 45px;
+    background-color: #fffcdb;
+    color: #000;
+    padding-left: 15px;
+    font-size: 1rem;
+    i{
+        position: relative;
+        top: 5px; 
+    }
+    span {
+        color: #ff8400;
+    }
+}
+
+
 
 
 //已取消
@@ -269,12 +290,10 @@
     margin: 10px 0 0;
 }
 
-
 .passenger-container{
     composes: clear-fixed from "../../../styles/common.scss";
     border-bottom: 1px solid #d0d0d0;
 }
-
 
 .passenger-item{
     padding: 10px 0;
@@ -292,3 +311,151 @@
 }
 
 
+.detail-insurance{
+    composes: detail-passenger;
+}
+
+.insurance-title{
+    composes: passenger-title;
+}
+
+.insurance-list{
+    composes: passenger-list;
+}
+
+.insurance-container{
+    composes: clear-fixed from "../../../styles/common.scss";
+}
+
+.insurance-item{
+    composes: passenger-item;
+}
+
+
+
+.pay-footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 43px;
+    background-color: #3a495a;
+    color: #fff;
+}
+
+.footer-price{
+    float: left;
+    margin: 0 10px;
+    margin-top: 10px;
+    width: 37%;
+    color: #f63;
+    font-size: 1.25rem;
+    .pirce {
+        font-size: 1.5625rem;
+    }
+}
+
+.footer-detail{
+    display: inline-block;
+    position: relative;
+    top: 11px;
+    float: right;
+    margin-right: 10px;
+}
+
+.footer-submit{
+    composes: button from "../../../styles/common.scss";
+    padding: 0 15px!important;
+    background-color: #ff8400;
+    color: #fff;
+    margin: 5px 10px 5px auto;
+    min-width: 52px;
+    min-height: 30px;
+    line-height: 30px;
+    float: right;
+}
+
+
+.footer-popup-detail{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFF;
+    opacity: 1;
+    z-index: 1000;
+    display: block;
+}
+
+
+.popup-item{
+    composes: row from "../../../styles/common.scss";
+    &.separated {
+        border-bottom: 1px solid #c8c8c8;
+    }
+}
+
+
+.item-col-left{
+    composes: col from "../../../styles/common.scss";
+}
+
+
+.item-col-Middle{
+    composes: col from "../../../styles/common.scss";
+    composes: col-50 from "../../../styles/common.scss";
+    color: #ff8409;
+    text-align: right;
+}
+
+
+.item-col-right{
+    composes: col from "../../../styles/common.scss";
+    text-align: right;
+}
+
+
+.train-progress-container{
+    height: 44px;
+    line-height: 44px;
+    background-color: #fff;
+    color:#333;
+    font-size: 1rem;
+    padding: 0px 15px;
+    border-radius: 5px;
+    margin: 0px 10px;
+    margin-top: 10px;
+    position: relative;
+    overflow:hidden;
+    .progress{
+        position: absolute;
+        top: 0px ;
+        bottom:0px;
+        left: 0px;
+        width: 0px;
+        z-index: 1;
+        background-color: #fffcdb;
+        margin: 0;
+        border-radius: 5px;
+        transition: all .3s linear;
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        -ms-transition: all .3s linear;
+        -o-transition: all .3s linear;
+    }
+    .meesage{
+        position: absolute;
+        top: 0px;
+        bottom:0px;
+        right: 15px;
+        left: 15px;
+        z-index: 5;
+        overflow:hidden;
+    }
+    .fl{
+        float: left;
+    }
+    .fr{
+        float: right;
+    }
+}

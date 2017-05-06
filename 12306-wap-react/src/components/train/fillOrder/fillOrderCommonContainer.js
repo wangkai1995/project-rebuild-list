@@ -60,13 +60,18 @@ class CommonTrainFillOrder extends Component{
     //查询是否取消成功
     //查询错误
     componentWillReceiveProps(nextProps){
-        const { userInfo ,insuranceInfo  ,orderNo ,Login12306 ,cancelFlag ,actions } = nextProps;
+        const { userInfo ,insuranceInfo  ,orderNo ,Login12306 ,cancelFlag ,actions ,push } = nextProps;
         const { insurance ,contacts } = this.state;
 
         if(Login12306){
             TokenServer.set12306();
             this.handleBuyTicketSubmit();
             return false;
+        }
+
+        //下单成功
+        if(orderNo){
+            push('/train/orderDetail/'+orderNo.orderNo);
         }
 
         if(cancelFlag){
@@ -101,6 +106,7 @@ class CommonTrainFillOrder extends Component{
                 });
             }
         }
+
     }
 
     //初始化填充车次信息
@@ -227,8 +233,9 @@ class CommonTrainFillOrder extends Component{
 
 
     //去支付未支付订单
-    handlePayPrevOrder(order){
-        console.log(order,'跳转订单详情');
+    handlePayPrevOrder(orderNo){
+        const { push } = this.props;
+        push('/train/orderDetail/'+orderNo);
     }
 
 
