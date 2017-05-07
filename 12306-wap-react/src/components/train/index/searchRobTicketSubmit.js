@@ -7,17 +7,17 @@ import styles from './search.scss';
 
 @immutableRenderDecorator
 @CSSModules(styles,{allowMultiple: true})
-class SearchSubmit extends Component{
+class SearchRobTicketSubmit extends Component{
 	
 	handleSubmit(){
-		this.props.onSearchSubmit();
+		this.props.onSearchRobTicketSubmit();
 	}
 
 	render(){
 		return (
 			<div styleName="search-submit">
-				<a onClick={ this.handleSubmit.bind(this) } styleName="submit-button">
-					开始搜索
+				<a onClick={ this.handleSubmit.bind(this) } styleName="search-rob-button">
+					抢票
 				</a>
 			</div>
 		)
@@ -26,4 +26,5 @@ class SearchSubmit extends Component{
 }
 
 
-export default SearchSubmit;
+export default SearchRobTicketSubmit;
+

@@ -2,7 +2,7 @@ import React ,{ Component , PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
-import styles from './searchContainer.scss';
+import styles from './search.scss';
 
 import trainModel from '../../../http/train/index';
 
@@ -10,6 +10,7 @@ import SearchCity from './searchCity';
 import SearchDate from './searchDate';
 import SearchType from './searchType';
 import SearchSubmit from './searchSubmit';
+import SearchRobTicketSubmit from './searchRobTicketSubmit';
 
 
 @immutableRenderDecorator
@@ -62,6 +63,12 @@ class Search extends Component{
 		const { fromCityName, fromCityCode ,toCityName, toCityCode ,detpDate , findGD } = this.props;
 		this.props.push('/train/list/'+encodeURI(fromCityName)+'/'+fromCityCode+'/'+encodeURI(toCityName)+'/'+toCityCode+'/'+detpDate+'/'+findGD);
 	}
+
+
+	handleSearchRobTicketSubmit(){
+		const { detpDate ,push  } = this.props;
+		push('/train/setRobTicket/'+detpDate);
+	}
 	
 
 
@@ -71,30 +78,33 @@ class Search extends Component{
 		const { isVisible , showDate , showWeek ,hideDateAction ,showDateAction} = this.props;
 		const { findGD,findGDAction } = this.props;
 		return(
-			<div styleName='search-container'>
-				<div styleName='search-list'>
-					<SearchCity
-						fromCityName={fromCityName}
-						toCityName={toCityName}
-						selectCity={this.handleSelectCity}
-					/>
-					<SearchDate
-						defaultDate={detpDate}
-						showDate={showDate}
-						showWeek={showWeek}
-						onShow ={showDateAction}
-						onHide ={hideDateAction}
-						isVisible = {isVisible}
-						minDate={minDate}
-						maxDate={maxDate}
-						onChangeDate ={this.handleDateChange} 
-					/>
-					<SearchType 
-						findGD = {findGD}
-						onChangeFind= {findGDAction}
-					/>
+			<div>
+				<div styleName='search-container'>
+					<div styleName='search-list'>
+						<SearchCity
+							fromCityName={fromCityName}
+							toCityName={toCityName}
+							selectCity={this.handleSelectCity}
+						/>
+						<SearchDate
+							defaultDate={detpDate}
+							showDate={showDate}
+							showWeek={showWeek}
+							onShow ={showDateAction}
+							onHide ={hideDateAction}
+							isVisible = {isVisible}
+							minDate={minDate}
+							maxDate={maxDate}
+							onChangeDate ={this.handleDateChange} 
+						/>
+						<SearchType 
+							findGD = {findGD}
+							onChangeFind= {findGDAction}
+						/>
+					</div>
+					<SearchSubmit onSearchSubmit={this.handleSearchSubmit.bind(this)} />
 				</div>
-				<SearchSubmit onSearchSubmit={this.handleSearchSubmit.bind(this)} />
+				<SearchRobTicketSubmit onSearchRobTicketSubmit={this.handleSearchRobTicketSubmit.bind(this)} />
 			</div>
 		);
 	}

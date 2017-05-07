@@ -4,7 +4,8 @@ import list from './list/listRedux';
 import seat from './seat/seatRedux';
 import through from './through/throughRedux';
 import fillOrder from './fillOrder/fillOrderRedux';
-import orderDetail from './orderDetail/orderDetailRedux'
+import orderDetail from './orderDetail/orderDetailRedux';
+import setRobTicket from './setRobTicket/setRobTicketRedux';
 
 
 
@@ -15,6 +16,7 @@ export default combineReducers({
     through,
     fillOrder,
     orderDetail,
+    setRobTicket,
 });
 
 

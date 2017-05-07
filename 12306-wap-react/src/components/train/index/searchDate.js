@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import _ from 'lodash';
-import styles from './searchDate.scss';
+import styles from './search.scss';
 import icon from '../../../styles/sprite.css';
 
 
@@ -17,7 +17,7 @@ class SearchDate extends Component{
 		showDate: PropTypes.string,
 		showWeek: PropTypes.string,
 		isVisible: PropTypes.bool,
-		onChangeDate: PropTypes.fuc,
+		onChangeDate: PropTypes.func,
 		onHide: PropTypes.func,
 		onShow: PropTypes.func,
 		minDate: PropTypes.instanceOf(Date),

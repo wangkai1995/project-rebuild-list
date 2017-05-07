@@ -1,0 +1,98 @@
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+    top:54px;
+}
+
+.set-rob-city {
+    background-color: #fff;
+    padding: 15px 15px 0;
+    color: #444;
+}
+
+.rob-city{
+	composes: clear-fixed from "../../../styles/common.scss";
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d0d0d0;
+    i{
+	    position: relative;
+	    top: 10px;
+	}
+}
+
+.city{
+	width: 40%;
+    span {
+	    font-size: .75rem;
+	    color: #666;
+	}
+	a{
+		display: block;
+	    text-decoration: none;
+	    height: 35px;
+	    line-height: 35px;
+	    overflow: hidden;
+	    font-size: 1.25rem;
+	    color: #333;
+	    font-weight: 900;
+	    position: relative;
+	}
+}
+
+
+.fromCity{
+	composes: city;
+    float: left;
+    text-align: left;
+    
+}
+
+
+.toCity{
+	composes: city;
+    float: right;
+    text-align: right;
+}
+
+
+.ser-rob-item{
+    background-color: #fff;
+    padding: 15px 15px 0;
+    color: #444;
+}
+
+.border-buttom {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+
+.item-content {
+	composes: text-overflow from "../../../styles/common.scss";
+	composes: clear-fixed from "../../../styles/common.scss";
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    z-index: 5;
+    font-size: 1rem;
+    .title {
+	    float: left;
+	    width: 25%;
+	    line-height: 30px;
+	    font-size: 1rem;
+	    color: #666;
+	}
+}
+
+.item-show-content {
+	composes: text-overflow  from "../../../styles/common.scss";
+    float: left;
+    width: 68%;
+    color: #000;
+    position: relative;
+}
+
+
+
+

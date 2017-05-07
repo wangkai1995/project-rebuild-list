@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import _ from 'lodash';
-import styles from './searchCity.scss';
+import styles from './search.scss';
 import icon from '../../../styles/sprite.css';
 
 
@@ -54,3 +54,4 @@ class SearchCity extends Component{
 
 
 export default SearchCity;
+
