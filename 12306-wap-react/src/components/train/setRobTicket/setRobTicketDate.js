@@ -6,9 +6,11 @@ import _ from 'lodash';
 import styles from './setRobTicket.scss';
 import icon from '../../../styles/sprite.css';
 
+
 import * as DateFilter from '../../../filter/Date';
 //自定义日历
 import ModalCalendar from '../../../components/modal/Calendar';
+
 
 
 @immutableRenderDecorator
@@ -79,6 +81,7 @@ class SetRobTicketDate extends Component{
 						&nbsp;
 						<span>{ DateFilter.getWeek(detpDate) }</span>
 					</span>
+					<i styleName="cicon icon-right-icon"></i>
 				</div>
 				<div styleName="border-buttom"></div>
 				<ModalCalendar

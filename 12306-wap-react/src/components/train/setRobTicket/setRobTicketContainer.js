@@ -7,9 +7,14 @@ import styles from './setRobTicket.scss';
 import trainModel from '../../../http/train/index';
 import * as DateFilter from '../../../filter/Date';
 
+import ModalLoading from '../../../components/modal/loading';
 
 import SetRobTicketCity from './setRobTicketCity';
 import SetRobTicketDate from './setRobTicketDate';
+import SetRobTicketTrain from './setRobTicketTrain';
+import SetRobTicketSeat from './setRobTicketSeat';
+import SetRobTicketPack from './SetRobTicketPack';
+
 
 
 @immutableRenderDecorator
@@ -27,6 +32,7 @@ class TrainSetRobTicketContainer extends Component{
 	componentDidMount(){
 		const { actions } = this.props;
 		actions.requestDateRange(trainModel.trainDateRange);
+		actions.requestPack(trainModel.trainRobPack);
 	}
 	
 	//选择城市
@@ -41,7 +47,11 @@ class TrainSetRobTicketContainer extends Component{
 
 
 	render(){	
-		const { fromCityName ,toCityName ,maxDate ,minDate ,params } = this.props;
+		const { loading, fromCityName ,toCityName ,maxDate ,minDate ,packInfo ,push ,params } = this.props;
+		const buttonClass=classnames({
+			'rob-ticket-submit' : true,
+			'submit-disabled' : true,
+		});
 		return(
 			<div styleName="container">
 				<SetRobTicketCity  
@@ -55,11 +65,18 @@ class TrainSetRobTicketContainer extends Component{
 							detpDate={params.detpDate} 
 							onChangeDate={this.handleChangeDate} 
 				/>
+				<SetRobTicketTrain />
+				<SetRobTicketSeat  />
+				<SetRobTicketPack push={push} packInfo={packInfo} />
+
+				<button styleName={buttonClass}>下一步</button>
+				<ModalLoading isVisible={loading} textContent="加载中" />
 			</div>
 		);
 	}
 
 }
+
 
 
 

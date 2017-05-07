@@ -65,6 +65,14 @@ export default {
 		})
 	},
 
+	//抢票加速包
+	trainRobPack:function(){
+		return httpServer.request({
+			url:'/v1/train/accelerator/packs',
+			method: 'GET',
+		})
+	},
+
 	//请求下单
 	trainBuyTicket:function(data){
 		return httpServer.request({

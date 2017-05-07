@@ -10,6 +10,7 @@ import TrainThrough from '../views/train/through/through'
 import TrainFillOrder from '../views/train/fillOrder/fillOrder';
 import TrainOrderDetail from '../views/train/orderDetail/orderDetail';
 import TrainSetRobTicket from '../views/train/setRobTicket/setRobTicket';
+import TrainRobPack from '../views/train/robPack/robPack';
 
 
 
@@ -23,6 +24,7 @@ const TrainRoutes =  function(){
             <Route path='/train/fillOrder/:type' component={TrainFillOrder} />
             <Route path='/train/orderDetail/:orderNo' component={TrainOrderDetail} />
             <Route path='/train/setRobTicket/:detpDate' component={TrainSetRobTicket} />
+            <Route path='/train/robPack' component={TrainRobPack} />
         </Route> 
     )      
 };
@@ -30,5 +32,7 @@ const TrainRoutes =  function(){
 
 
 
+
 export default TrainRoutes;
+
 

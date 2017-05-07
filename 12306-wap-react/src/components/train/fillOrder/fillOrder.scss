@@ -395,10 +395,7 @@
 
 
 .footer-submit-disabled{
-    background-color: #ccc !important;
-    color:#fff !important;
-    pointer-events: none;
-    pointer-events: none;
+    composes: button-disabled from "../../../styles/common.scss";
 }
 
 

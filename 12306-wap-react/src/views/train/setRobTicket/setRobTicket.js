@@ -45,8 +45,6 @@ class TrainSetRobTicket extends Component {
 
 
 
-
-
 export default connect( state =>{
     return{
         setRobTicket : state.train.setRobTicket.setRobTicket,
@@ -57,4 +55,8 @@ export default connect( state =>{
         push : bindActionCreators(push , dispatch),
     };
 })(TrainSetRobTicket);
+
+  
+
+
 

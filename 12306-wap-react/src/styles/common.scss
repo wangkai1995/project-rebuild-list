@@ -106,6 +106,12 @@
     line-height: 26px
 }
 
+.button-disabled{
+    background-color: #ccc !important;
+    color:#fff !important;
+    pointer-events: none !important;
+}
+
 
 .list{
     padding-top: 1px;
