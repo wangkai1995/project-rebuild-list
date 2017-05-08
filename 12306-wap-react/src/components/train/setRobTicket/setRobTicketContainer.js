@@ -25,6 +25,8 @@ class TrainSetRobTicketContainer extends Component{
 		super(props);
 		this.handleSelectCity = this.handleSelectCity.bind(this);
 		this.handleChangeDate = this.handleChangeDate.bind(this);
+		this.handleSelectTrain = this.handleSelectTrain.bind(this);
+		this.handleSelectSeat = this.handleSelectSeat.bind(this);
 	}
 	
 
@@ -37,12 +39,24 @@ class TrainSetRobTicketContainer extends Component{
 	
 	//选择城市
 	handleSelectCity(direction){
+		this.props.push('/public/city/train/'+direction);
 	}
 
 	//时间改变
 	handleChangeDate(date){
 		const { push  } = this.props;
 		push('/train/setRobTicket/'+date);
+	}
+
+	//选择车次
+	handleSelectTrain(){
+		const { fromCityName, fromCityCode ,toCityName, toCityCode ,params ,push } = this.props;
+		push('/train/robTrainInfo/'+encodeURI(fromCityName)+'/'+fromCityCode+'/'+encodeURI(toCityName)+'/'+toCityCode+'/'+params.detpDate);
+	}
+
+	//选择坐席
+	handleSelectSeat(){
+
 	}
 
 
@@ -65,8 +79,8 @@ class TrainSetRobTicketContainer extends Component{
 							detpDate={params.detpDate} 
 							onChangeDate={this.handleChangeDate} 
 				/>
-				<SetRobTicketTrain />
-				<SetRobTicketSeat  />
+				<SetRobTicketTrain onSelectTrain={this.handleSelectTrain} />
+				<SetRobTicketSeat onSelectSeat={this.handleSelectSeat}  />
 				<SetRobTicketPack push={push} packInfo={packInfo} />
 
 				<button styleName={buttonClass}>下一步</button>

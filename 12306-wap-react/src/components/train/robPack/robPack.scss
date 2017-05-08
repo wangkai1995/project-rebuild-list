@@ -4,3 +4,29 @@
     composes: war-container from "../../../styles/common.scss";
 }
 
+
+.accelerate-container{
+    background-color: #fff;
+    padding: 0 15px;
+}
+
+.accelerate-item {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #d0d0d0;
+    position: relative;
+    i{
+        display: none;
+    }
+    &:last-child {
+        border-bottom: 0;
+        color: #999;
+    }
+}
+
+.icon-confim{
+    position: absolute;
+    right: 0;
+    top: 15px;
+    display: inline-block !important;
+}

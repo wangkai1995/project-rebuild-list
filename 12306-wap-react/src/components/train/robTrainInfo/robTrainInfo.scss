@@ -1,0 +1,212 @@
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+}
+
+
+.train-info-tab{
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 90px;
+    h3{
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: .78rem;
+        text-align: center;
+        background-color: #ffb566;
+        margin: 0;
+        border-bottom: 1px solid #dcdcdc;
+        border-top: 1px solid #dcdcdc;
+        color: #fff;
+    }
+}
+
+
+.tab-info{
+    background-color: #fff;
+    padding: 15px 15px 0;
+    a{
+        height: 28px;
+        line-height: 28px;
+        display: inline-block;
+        width: 49%;
+        text-align: center;
+        color: #666;
+        &:first-child {
+            border-right: 1px solid #d0d0d0;
+        }
+        &.active {
+            color: #2ca1f1;
+        }
+    }   
+}
+
+
+.tab-border{
+    margin: 0 0 0 5%;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #2ca1f1;
+    width: 40%;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    &.standby {
+        transform: translateX(126%);
+        -webkit-transform: translateX(126%);
+        -moz-transform: translateX(126%);
+        -ms-transform: translateX(126%);
+        -o-transform: translateX(126%);
+    }
+}
+
+
+
+.rob-trainInfo-list{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 90px;
+    bottom: 54px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    &.code-list {
+        bottom: 84px;
+    }
+}
+
+.rob-trainCode{
+    composes: text-overflow from "../../../styles/common.scss";
+    position: absolute;
+    bottom: 44px;
+    right: 0;
+    left: 0;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+}
+
+
+.rob-trainInfo-item{
+    margin: 5px 5px 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+
+.trainInfo {
+    padding: 15px 10px;
+    border-bottom: 1px dashed #d0d0d0;
+    font-size: 1rem;
+    span {
+        width: 35%;
+        float: left;
+        &:first-child {
+            width: 20%;
+        }
+    }
+}
+
+
+.date{
+    composes: clear-fixed from "../../../styles/common.scss";
+}
+.from{
+    composes: clear-fixed from "../../../styles/common.scss";
+    position: relative;
+    i{
+        color: #ff8400;
+        font-size: .75rem;
+    }
+    em {
+        color: #999;
+        font-size: .75rem;
+    }
+    .price {
+        float: none;
+        color: #ff8400;
+        font-size: 1.25rem;
+    }
+}
+.to{
+    composes: clear-fixed from "../../../styles/common.scss";
+    color: #666;
+}
+
+
+.checkbox-select{
+    min-height: 24px;
+    position: absolute;
+    right: 0;
+    input[type=checkbox] {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+    }
+}
+
+
+
+.trainSeat {
+    height: 29px;
+    line-height: 29px;
+    padding: 0 15px;
+    font-size: .8rem;
+    color: #333;
+    overflow-y: hidden;
+    overflow-x: visible;
+    width: auto;
+    white-space: nowrap;
+    span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+        width: 33%;
+        overflow: hidden;
+    }
+    .rob{
+        width: auto;
+        color: #2ca1f1;
+        display: inline;
+    }
+}
+
+
+
+.submit{
+    composes: button from "../../../styles/common.scss";
+    position: absolute;
+    bottom: 0;
+    background-color: #ff8400;
+    color: #fff;
+    width: 100%;
+    display: block;
+    clear: both;
+    margin-top: 10px;
+}
+
+
+
+.submit-disabled{
+    composes: button-disabled from "../../../styles/common.scss";
+}
+
+
+

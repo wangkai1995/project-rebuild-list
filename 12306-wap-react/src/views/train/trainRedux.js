@@ -6,6 +6,8 @@ import through from './through/throughRedux';
 import fillOrder from './fillOrder/fillOrderRedux';
 import orderDetail from './orderDetail/orderDetailRedux';
 import setRobTicket from './setRobTicket/setRobTicketRedux';
+import robTrainInfo from './robTrainInfo/robTrainInfoRedux';
+
 
 
 
@@ -17,7 +19,9 @@ export default combineReducers({
     fillOrder,
     orderDetail,
     setRobTicket,
+    robTrainInfo,
 });
+
 
 
 

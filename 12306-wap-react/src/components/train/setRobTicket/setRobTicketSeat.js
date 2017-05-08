@@ -20,18 +20,20 @@ class SetRobTicketSeat extends Component{
 	}
 
 
-
 	componentDidMount(){
 	}
+
 
 	getRobSeat(){
 		return <span>建议多选</span>
 	}
 
+
 	render(){
+		const { onSelectSeat } = this.props;
 		return(
 			<div styleName='ser-rob-item'>
-				<div styleName="item-content">
+				<div styleName="item-content" onClick={onSelectSeat}>
 					<span styleName="title">选择坐席</span>
 					<span styleNmae="item-show-content" >
 						{this.getRobSeat()}

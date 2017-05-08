@@ -45,7 +45,7 @@ class SetRobTicketPack extends Component{
 		}
 		
 		if(checkedPack){
-			return <span>{checkedPack.packName}</span>
+			return <span styleName="text-overflow">{checkedPack.packName}</span>
 		}
 	}
 

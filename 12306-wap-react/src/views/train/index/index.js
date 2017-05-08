@@ -30,8 +30,10 @@ class trainIndex extends Component {
 		
 		return(
 			<div styleName='index-container'>
-				<Banner classPrefix="train"/>
-				<Search {...search} {...searchAction} push={push} />
+				<div styleName="content-container">
+					<Banner classPrefix="train"/>
+					<Search {...search} {...searchAction} push={push} />
+				</div>
 				<SearchFooter Model='train' />
 			</div>
 		);

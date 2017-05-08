@@ -20,7 +20,6 @@ class SetRobTicketTrain extends Component{
 	}
 
 
-
 	componentDidMount(){
 	}
 	
@@ -32,9 +31,10 @@ class SetRobTicketTrain extends Component{
 	
 
 	render(){
+		const { onSelectTrain } = this.props;
 		return(
 			<div styleName='ser-rob-item'>
-				<div styleName="item-content">
+				<div styleName="item-content" onClick={onSelectTrain}>
 					<span styleName="title">选择车次</span>
 					<span styleNmae="item-show-content" >
 						{this.getRobTrain()}

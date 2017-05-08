@@ -97,6 +97,9 @@
 	}
 }
 
+.text-overflow {
+   composes: text-overflow  from "../../../styles/common.scss";
+}
 
 
 .item-show-content {
