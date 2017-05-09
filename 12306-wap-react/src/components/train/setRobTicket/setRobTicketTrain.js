@@ -7,7 +7,7 @@ import styles from './setRobTicket.scss';
 import icon from '../../../styles/sprite.css';
 
 
-import SessionServer from '../../../server/session/index'
+
 
 
 
@@ -19,13 +19,30 @@ class SetRobTicketTrain extends Component{
 		super(props);
 	}
 
-
-	componentDidMount(){
-	}
 	
 
 	getRobTrain(){
-		return <span>建议多选</span>
+		const { robTrainInfo } = this.props;
+		const { firstTrain, standbyTrain } = robTrainInfo;
+		if(!robTrainInfo){
+			return <span>建议多选</span>
+		}
+        let firstCode = firstTrain.trainCode+'(首选)';
+        let standbyCode = [];
+        for(let i=0; i<standbyTrain.length ;i++){
+            standbyCode.push(standbyTrain[i].trainCode);
+        }
+        return(
+            <div styleName="content text-overflow">
+                <span>{firstCode}</span>&nbsp;
+                {
+                    standbyCode.map(function(item){
+                        return <span>{item}&nbsp;</span>
+                    }) 
+                }  
+            </div>
+        )
+		
 	}
 	
 	

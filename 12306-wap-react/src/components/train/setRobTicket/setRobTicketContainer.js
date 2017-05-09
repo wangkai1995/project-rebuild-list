@@ -5,6 +5,7 @@ import CSSModules from 'react-css-modules'
 import styles from './setRobTicket.scss';
 
 import trainModel from '../../../http/train/index';
+import SessionServer from '../../../server/session/index'
 import * as DateFilter from '../../../filter/Date';
 
 import ModalLoading from '../../../components/modal/loading';
@@ -23,6 +24,9 @@ class TrainSetRobTicketContainer extends Component{
 	
 	constructor(props){
 		super(props);
+		this.state={
+			robTrainInfo: false,
+		};
 		this.handleSelectCity = this.handleSelectCity.bind(this);
 		this.handleChangeDate = this.handleChangeDate.bind(this);
 		this.handleSelectTrain = this.handleSelectTrain.bind(this);
@@ -33,8 +37,14 @@ class TrainSetRobTicketContainer extends Component{
 	//请求城市
 	componentDidMount(){
 		const { actions } = this.props;
+		let robTrainInfo = SessionServer.get('robTicketTrainInfo');
 		actions.requestDateRange(trainModel.trainDateRange);
 		actions.requestPack(trainModel.trainRobPack);
+		if(robTrainInfo){
+			this.setState({
+				robTrainInfo: robTrainInfo,
+			})
+		}
 	}
 	
 	//选择城市
@@ -62,6 +72,7 @@ class TrainSetRobTicketContainer extends Component{
 
 	render(){	
 		const { loading, fromCityName ,toCityName ,maxDate ,minDate ,packInfo ,push ,params } = this.props;
+		const { robTrainInfo } = this.state;
 		const buttonClass=classnames({
 			'rob-ticket-submit' : true,
 			'submit-disabled' : true,
@@ -79,9 +90,17 @@ class TrainSetRobTicketContainer extends Component{
 							detpDate={params.detpDate} 
 							onChangeDate={this.handleChangeDate} 
 				/>
-				<SetRobTicketTrain onSelectTrain={this.handleSelectTrain} />
-				<SetRobTicketSeat onSelectSeat={this.handleSelectSeat}  />
-				<SetRobTicketPack push={push} packInfo={packInfo} />
+				<SetRobTicketTrain
+							robTrainInfo={robTrainInfo}
+							onSelectTrain={this.handleSelectTrain} 
+				/>
+				<SetRobTicketSeat 
+							onSelectSeat={this.handleSelectSeat}  
+				/>
+				<SetRobTicketPack 
+							push={push} 
+							packInfo={packInfo} 
+				/>
 
 				<button styleName={buttonClass}>下一步</button>
 				<ModalLoading isVisible={loading} textContent="加载中" />

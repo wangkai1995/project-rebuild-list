@@ -11,7 +11,8 @@ import TrainFillOrder from '../views/train/fillOrder/fillOrder';
 import TrainOrderDetail from '../views/train/orderDetail/orderDetail';
 import TrainSetRobTicket from '../views/train/setRobTicket/setRobTicket';
 import TrainRobPack from '../views/train/robPack/robPack';
-import TrainRobTrainInfo from '../views/train/robTrainInfo/robTrainInfo'
+import TrainRobTrainInfo from '../views/train/robTrainInfo/robTrainInfo';
+import TrainRobTrainSeat from '../views/train/robTrainSeat/robTrainSeat';
 
 
 
@@ -27,6 +28,7 @@ const TrainRoutes =  function(){
             <Route path='/train/setRobTicket/:detpDate' component={TrainSetRobTicket} />
             <Route path='/train/robPack' component={TrainRobPack} />
             <Route path='/train/robTrainInfo/:fromCityName/:fromCityCode/:toCityName/:toCityCode/:detpDate' component={TrainRobTrainInfo} />
+            <Route path='/train/robTrainSeat' component={TrainRobTrainSeat} />
         </Route> 
     )      
 };

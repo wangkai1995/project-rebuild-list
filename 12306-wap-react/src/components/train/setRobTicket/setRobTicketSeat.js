@@ -20,10 +20,6 @@ class SetRobTicketSeat extends Component{
 	}
 
 
-	componentDidMount(){
-	}
-
-
 	getRobSeat(){
 		return <span>建议多选</span>
 	}
@@ -45,6 +41,7 @@ class SetRobTicketSeat extends Component{
 		);
 	}
 }
+
 
 
 

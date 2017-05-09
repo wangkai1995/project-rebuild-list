@@ -6,6 +6,8 @@ import styles from './robTrainInfo.scss';
 
 
 import trainModel from '../../../http/train/index';
+import SessionServer from '../../../server/session/index'
+
 import ModalLoading from '../../../components/modal/loading';
 import ModalAlert from '../../../components/modal/Alert';
 
@@ -28,6 +30,7 @@ class RobTrainInfoContainer extends Component{
         this.handleTabChange = this.handleTabChange.bind(this);
         this.handleFirstSelect = this.handleFirstSelect.bind(this);
         this.handleStandbySelect = this.handleStandbySelect.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
@@ -115,6 +118,18 @@ class RobTrainInfoContainer extends Component{
     }
 
 
+    handleSubmit(){
+        const { firstTrain ,standbyTrain } = this.state;
+        const { push ,params } = this.props;
+        const robTrain = {
+            firstTrain: firstTrain,
+            standbyTrain: standbyTrain,
+        };
+        SessionServer.set('robTicketTrainInfo',robTrain);
+        push('/train/setRobTicket/'+params.detpDate);
+    }
+
+
     getSelectTrainCode(){
         const { firstTrain, standbyTrain } = this.state;
         if(!firstTrain){
@@ -162,7 +177,7 @@ class RobTrainInfoContainer extends Component{
                 />
                 { this.getSelectTrainCode() }
 
-                <button styleName={submitClass}>确认</button>
+                <button onClick={this.handleSubmit} styleName={submitClass}>确认</button>
                 <ModalLoading isVisible={loading} textContent="正在为您加载车次" />
             </div>
         )
