@@ -21,8 +21,28 @@ class SetRobTicketSeat extends Component{
 
 
 	getRobSeat(){
-		return <span>建议多选</span>
+		const { robSeatInfo } = this.props;
+		const { firstSeat, standbySeat } = robSeatInfo;
+		if(!robSeatInfo){
+			return <span>建议多选</span>
+		}
+        let firstName = firstSeat.seatName+'(首选)';
+        let standbyName = [];
+        for(let i=0; i<standbySeat.length ;i++){
+            standbyName.push(standbySeat[i].seatName);
+        }
+        return(
+            <div styleName="content text-overflow">
+                <span>{firstName}</span>&nbsp;
+                {
+                    standbyName.map(function(item){
+                        return <span>{item}&nbsp;</span>
+                    }) 
+                }  
+            </div>
+        )
 	}
+
 
 
 	render(){

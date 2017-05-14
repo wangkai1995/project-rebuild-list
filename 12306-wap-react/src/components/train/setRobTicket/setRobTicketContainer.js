@@ -9,6 +9,8 @@ import SessionServer from '../../../server/session/index'
 import * as DateFilter from '../../../filter/Date';
 
 import ModalLoading from '../../../components/modal/loading';
+import ModalAlert from '../../../components/modal/Alert';
+
 
 import SetRobTicketCity from './setRobTicketCity';
 import SetRobTicketDate from './setRobTicketDate';
@@ -26,6 +28,7 @@ class TrainSetRobTicketContainer extends Component{
 		super(props);
 		this.state={
 			robTrainInfo: false,
+			robSeatInfo: false,
 		};
 		this.handleSelectCity = this.handleSelectCity.bind(this);
 		this.handleChangeDate = this.handleChangeDate.bind(this);
@@ -35,9 +38,11 @@ class TrainSetRobTicketContainer extends Component{
 	
 
 	//请求城市
+	//这里还没做完 车次修改应该请空坐席
 	componentDidMount(){
 		const { actions } = this.props;
 		let robTrainInfo = SessionServer.get('robTicketTrainInfo');
+		let robSeatInfo = SessionServer.get('robTicketSeatInfo');
 		actions.requestDateRange(trainModel.trainDateRange);
 		actions.requestPack(trainModel.trainRobPack);
 		if(robTrainInfo){
@@ -45,16 +50,30 @@ class TrainSetRobTicketContainer extends Component{
 				robTrainInfo: robTrainInfo,
 			})
 		}
+		if(robSeatInfo){
+			this.setState({
+				robTrainInfo: robTrainInfo,
+				robSeatInfo: robSeatInfo
+			})
+		}
 	}
+	
 	
 	//选择城市
 	handleSelectCity(direction){
+
 		this.props.push('/public/city/train/'+direction);
 	}
 
 	//时间改变
 	handleChangeDate(date){
 		const { push  } = this.props;
+		SessionServer.remove('robTicketTrainInfo');
+		SessionServer.remove('robTicketSeatInfo');
+		this.setState({
+			robTrainInfo: false,
+			robSeatInfo: false,
+		})
 		push('/train/setRobTicket/'+date);
 	}
 
@@ -64,15 +83,26 @@ class TrainSetRobTicketContainer extends Component{
 		push('/train/robTrainInfo/'+encodeURI(fromCityName)+'/'+fromCityCode+'/'+encodeURI(toCityName)+'/'+toCityCode+'/'+params.detpDate);
 	}
 
+
 	//选择坐席
 	handleSelectSeat(){
-
+		const { robTrainInfo } = this.state;
+		const { push } = this.props;
+		if(!robTrainInfo){
+			return ModalAlert.show({
+                content:'请先选择抢票车次',
+                onClick:function(){
+                    ModalAlert.hide();
+                }
+            });
+		}
+		push('/train/robTrainSeat');
 	}
 
 
 	render(){	
 		const { loading, fromCityName ,toCityName ,maxDate ,minDate ,packInfo ,push ,params } = this.props;
-		const { robTrainInfo } = this.state;
+		const { robTrainInfo ,robSeatInfo } = this.state;
 		const buttonClass=classnames({
 			'rob-ticket-submit' : true,
 			'submit-disabled' : true,
@@ -95,6 +125,7 @@ class TrainSetRobTicketContainer extends Component{
 							onSelectTrain={this.handleSelectTrain} 
 				/>
 				<SetRobTicketSeat 
+							robSeatInfo={robSeatInfo}
 							onSelectSeat={this.handleSelectSeat}  
 				/>
 				<SetRobTicketPack 

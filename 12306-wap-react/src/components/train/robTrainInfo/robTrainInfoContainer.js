@@ -36,11 +36,18 @@ class RobTrainInfoContainer extends Component{
 
     componentDidMount(){
         const { actions ,params } = this.props; 
+        const robTrainInfo = SessionServer.get('robTicketTrainInfo');
         actions.requestTrainInfo(trainModel.trainInfoList,{
             arrStationCode: params.toCityCode,
             deptStationCode: params.fromCityCode,
             deptDate: params.detpDate,
         });
+        if(robTrainInfo){
+            this.setState({
+                firstTrain:robTrainInfo.firstTrain,
+                standbyTrain: robTrainInfo.standbyTrain,
+            })
+        }
     }
 
 
