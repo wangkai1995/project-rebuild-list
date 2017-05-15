@@ -10,7 +10,7 @@ import SessionServer from '../../../server/session/index'
 
 import ModalLoading from '../../../components/modal/loading';
 import ModalAlert from '../../../components/modal/Alert';
-
+import { showDialog ,hideDialog } from '../../../components/modal/Dialog';
 
 import RobTrainInfoTab from './robTrainInfoTab';
 import RobTrainInfoList from './robTrainInfoList';
@@ -122,16 +122,37 @@ class RobTrainInfoContainer extends Component{
         this.setState({
             tabType: type,
         });
+
     }
 
 
     handleSubmit(){
+        const self = this;
         const { firstTrain ,standbyTrain } = this.state;
         const { push ,params } = this.props;
         const robTrain = {
             firstTrain: firstTrain,
             standbyTrain: standbyTrain,
         };
+        if(!standbyTrain){
+            return showDialog({
+                title:'提示',
+                content:'建议您去选择备选车次,可提升抢票成功率',
+                leftText:'暂不需要',
+                leftClick:function(){
+                    hideDialog();
+                    SessionServer.set('robTicketTrainInfo',robTrain);
+                    push('/train/setRobTicket/'+params.detpDate);
+                },
+                rightText:'去选择',
+                rightClick:function(){
+                    hideDialog();
+                    self.setState({
+                        tabType: 1,
+                    });
+                },
+            });
+        }
         SessionServer.set('robTicketTrainInfo',robTrain);
         push('/train/setRobTicket/'+params.detpDate);
     }

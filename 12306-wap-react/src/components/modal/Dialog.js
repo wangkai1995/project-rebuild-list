@@ -1,4 +1,5 @@
 import React ,{ Component,PropTypes } from 'react';
+import RecatDOM from 'react-dom';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import classnames from 'classnames';
@@ -74,5 +75,38 @@ class ModalDialog extends Component{
 }
 
 
+const modalDialogConstructor= function(){
+    var self = this;
+    var container = document.createElement('div');
+
+    var addDialog = function(props){
+        document.body.appendChild(container);
+        return  RecatDOM.render(
+                    <ModalDialog {...props} isVisible={true} />,
+                    container
+        );
+        
+    }
+
+    var removeDialog= function(){
+        return RecatDOM.render(
+                <div />,
+            container
+        )
+    }
+
+    return{
+        showDialog:addDialog,
+        hideDialog:removeDialog,
+    }
+}
+
+
+var exportDialog = modalDialogConstructor();
+
+
 
 export default ModalDialog;
+export var showDialog = exportDialog.showDialog;
+export var hideDialog = exportDialog.hideDialog;
+
