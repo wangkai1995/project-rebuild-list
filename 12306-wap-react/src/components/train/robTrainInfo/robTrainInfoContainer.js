@@ -53,6 +53,7 @@ class RobTrainInfoContainer extends Component{
 
     handleFirstSelect(train){
         const { firstTrain } = this.state;
+        SessionServer.remove('robTicketSeatInfo');
         //初选
         if(!firstTrain){
             this.setState({
@@ -80,6 +81,7 @@ class RobTrainInfoContainer extends Component{
     handleStandbySelect(train){
         let { standbyTrain } = this.state;
         let newFlag = true;
+        SessionServer.remove('robTicketSeatInfo');
         //初选
         if(!standbyTrain){
             standbyTrain = [];

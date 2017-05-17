@@ -34,11 +34,11 @@ class TrainSetRobTicketContainer extends Component{
 		this.handleChangeDate = this.handleChangeDate.bind(this);
 		this.handleSelectTrain = this.handleSelectTrain.bind(this);
 		this.handleSelectSeat = this.handleSelectSeat.bind(this);
+		this.handleSubmitFillOrder = this.handleSubmitFillOrder.bind(this);
 	}
 	
 
 	//请求城市
-	//这里还没做完 车次修改应该请空坐席
 	componentDidMount(){
 		const { actions } = this.props;
 		let robTrainInfo = SessionServer.get('robTicketTrainInfo');
@@ -83,7 +83,6 @@ class TrainSetRobTicketContainer extends Component{
 		push('/train/robTrainInfo/'+encodeURI(fromCityName)+'/'+fromCityCode+'/'+encodeURI(toCityName)+'/'+toCityCode+'/'+params.detpDate);
 	}
 
-
 	//选择坐席
 	handleSelectSeat(){
 		const { robTrainInfo } = this.state;
@@ -99,13 +98,65 @@ class TrainSetRobTicketContainer extends Component{
 		push('/train/robTrainSeat');
 	}
 
+	//车次价格修正
+    seatPriceValida(train,seat){
+        //如果是硬卧
+        if(seat.seatCode === '3' || seat.seatName === '硬卧'){
+            seat.seatPrice = train.ywXiaPrice;
+        }
+
+        //如果是软卧
+        if(seat.seatCode === '4' || seat.seatName === '软卧'){
+             seat.seatPrice = train.rwXiaPrice;
+        }
+        return seat;
+    }
+	
+	//提交
+	handleSubmitFillOrder(){
+		const { push } = this.props;
+		const { robTrainInfo,robSeatInfo } = this.state;
+		var checkedTrain = robTrainInfo.firstTrain;
+		checkedTrain.checkedSeat = robSeatInfo.firstSeat;
+        var maxPrice = parseFloat(robSeatInfo.firstSeat.seatPrice);
+		//客户端显示
+		//车次
+		checkedTrain.trainShow = robTrainInfo.firstTrain.trainCode+'(首选)';
+		if(Array.isArray(robTrainInfo.standbyTrain)){
+			checkedTrain.standbyTrainCode = '';
+			for(let i=0; i<robTrainInfo.standbyTrain.length ;i++){
+	            checkedTrain.trainShow += ','+robTrainInfo.standbyTrain[i].trainCode;
+	            checkedTrain.standbyTrainCode += robTrainInfo.standbyTrain[i].trainCode+',';
+	        }
+	        checkedTrain.standbyTrainCode = checkedTrain.standbyTrainCode.substring(0,checkedTrain.standbyTrainCode.length-1);
+		}
+        //坐席
+        checkedTrain.seatShow = robSeatInfo.firstSeat.seatName+'(首选)';
+        if(Array.isArray(robSeatInfo.standbySeat)){
+        	checkedTrain.standbySeatCode = '';
+			for(let i=0; i<robSeatInfo.standbySeat.length ;i++){
+	            checkedTrain.seatShow += ','+robSeatInfo.standbySeat[i].seatName;
+	            checkedTrain.standbySeatCode += robSeatInfo.standbySeat[i].seatCode+',';
+	            //拿到票价最高价格
+	            if(parseFloat(robSeatInfo.standbySeat[i].seatPrice) > maxPrice ){
+	            	maxPrice = parseFloat(robSeatInfo.standbySeat[i].seatPrice);
+	            }
+	        }
+	        checkedTrain.standbySeatCode = checkedTrain.standbySeatCode.substring(0,checkedTrain.standbySeatCode.length-1);
+        }
+        checkedTrain.ticketMaxPrice  = maxPrice;
+        SessionServer.set('FillOrderTrainInfo',checkedTrain);
+		//跳转到抢票订单填写
+		push('/train/fillOrder/rob');
+	}
+
 
 	render(){	
 		const { loading, fromCityName ,toCityName ,maxDate ,minDate ,packInfo ,push ,params } = this.props;
 		const { robTrainInfo ,robSeatInfo } = this.state;
 		const buttonClass=classnames({
 			'rob-ticket-submit' : true,
-			'submit-disabled' : true,
+			'submit-disabled' : (!robTrainInfo.firstTrain || !robSeatInfo.firstSeat),
 		});
 		return(
 			<div styleName="container">
@@ -133,7 +184,7 @@ class TrainSetRobTicketContainer extends Component{
 							packInfo={packInfo} 
 				/>
 
-				<button styleName={buttonClass}>下一步</button>
+				<button onClick={this.handleSubmitFillOrder} styleName={buttonClass}>下一步</button>
 				<ModalLoading isVisible={loading} textContent="加载中" />
 			</div>
 		);

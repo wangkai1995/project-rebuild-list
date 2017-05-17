@@ -25,6 +25,21 @@
     overflow-scrolling: touch;
 }
 
+.rob-info{
+    padding: 0 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.rob-item{
+    composes: text-overflow from "../../../styles/common.scss";
+    line-height: 50px;
+    height: 50px;
+    border-bottom: 1px solid #d0d0d0;
+    label {
+        color: #666;
+    }
+}
 
 .add-passenger{
     background-color: #fff;

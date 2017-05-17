@@ -11,6 +11,7 @@ import TokenServer from '../../../server/token/index';
 
 import ModalAlert from '../../../components/modal/Alert';
 import CommonTrainFillOrder from '../../../components/train/fillOrder/fillOrderCommonContainer';
+import RobTrainFillOrder from '../../../components/train/fillOrder/fillOrderRobContainer';
 
 
 
@@ -39,7 +40,13 @@ class TrainFillOrder extends Component {
                      />
         }else if(params.type === "rob"){
         //抢票订单
-            return null;
+            return <RobTrainFillOrder
+                            {...fillOrder}
+                            token={token}  
+                            push={push} 
+                            actions={fillOrderAction}
+                            type={params.type}
+                    />;
         }
         ModalAlert.show({
             content:'无效的订单类型',
@@ -48,6 +55,7 @@ class TrainFillOrder extends Component {
                 window.history.back();
             }
         });
+        return null;
     }
 
 
