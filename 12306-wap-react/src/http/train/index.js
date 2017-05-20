@@ -64,6 +64,14 @@ export default {
 			method: 'GET',
 		})
 	},
+	
+	//请求抢票费用
+	trainRobHandleFee:function(){
+		return httpServer.request({
+			url:'/v1/train/config/grabHandFee',
+			method: 'GET',
+		})
+	},
 
 	//抢票加速包
 	trainRobPack:function(){
@@ -81,6 +89,15 @@ export default {
 			data: data.data,
 		})
 	},
+	
+	//抢票下单
+	reservationOrder: function(data){
+        return httpServer.request({
+        	url: '/v1/train/grabOrder?access_token='+data.token,
+            method: 'POST',
+            data: data.data
+        })
+    },
 
 	//取消订单
 	trainCancelOrder: function(data) {

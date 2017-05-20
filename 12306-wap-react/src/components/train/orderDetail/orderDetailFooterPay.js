@@ -81,7 +81,7 @@ class OrderDetailFooterPay extends Component{
             'icon-up-icon':!isModal,
             'icon-down-icon':isModal,
         });
-        if(!orderDetail || orderDetail.status !== 3){
+        if(!orderDetail || (orderDetail.status !== 3 && orderDetail.status !== 11) ){
             return null;
         }
         return (
@@ -101,7 +101,9 @@ class OrderDetailFooterPay extends Component{
                     insurancePrice={insurancePrice}
                     adultLen={adultLen}
                     childrenLen={childrenLen}
-                    isModal={isModal} 
+                    isModal={isModal}
+                    orderType={orderDetail.orderType}
+                    totalInfo={orderDetail.totalInfo}
                 />
             </div>
         );

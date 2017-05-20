@@ -44,7 +44,7 @@ class TrainOrderDetailContainer extends Component{
         });
     }
 
-
+// ticketStatus
     //查询状态
     handleQueryStatus(){
         const { params ,token } = this.props;
@@ -85,6 +85,9 @@ class TrainOrderDetailContainer extends Component{
             'container' : true,
             'await-pay' : (orderDetail && (orderDetail.status === 3 || orderDetail.status === 11) ),
         });
+        
+        console.log(orderDetail);
+
         return (
             <div>
                 <div styleName={containerClass} >

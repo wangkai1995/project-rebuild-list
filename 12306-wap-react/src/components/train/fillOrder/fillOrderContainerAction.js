@@ -13,6 +13,16 @@ function requestInsuranceInfo(request){
 }
 
 
+//请求抢票费用
+function requestRobHandleFee(request){
+    const { REQUEST_TRAIN_FILLORDER_LOADIND, REQUEST_TRAIN_FILLORDER_ROB_HANDLE_FEE_SUCCESS, REQUEST_TRAIN_FILLORDER_ERROR }  = actionType;
+    return{
+        type : [REQUEST_TRAIN_FILLORDER_LOADIND, REQUEST_TRAIN_FILLORDER_ROB_HANDLE_FEE_SUCCESS, REQUEST_TRAIN_FILLORDER_ERROR],
+        request : request,
+    }
+}
+
+
 //请求用户信息
 function requestUserInfo(request,params){
     const { REQUEST_TRAIN_FILLORDER_LOADIND, REQUEST_TRAIN_FILLORDER_USER_INFO_SUCCESS, REQUEST_TRAIN_FILLORDER_ERROR }  = actionType;
@@ -85,6 +95,6 @@ function resetError(){
 
 
 
-export { requestInsuranceInfo ,requestUserInfo, requestCancelOrder,  request12306Login,  requestSubmit,  initTrainInfo ,initTrainPassenger ,resetError };
+export { requestInsuranceInfo ,requestRobHandleFee ,requestUserInfo, requestCancelOrder,  request12306Login,  requestSubmit,  initTrainInfo ,initTrainPassenger ,resetError };
 
 

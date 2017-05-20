@@ -188,6 +188,9 @@
     }
 }
 
+.reservationOrder-detail-tarinInfo {
+    margin: 15px 10px 0;
+}
 
 .trainInfo{
     margin: 15px 10px 0;
@@ -200,6 +203,9 @@
         font-size: 1.1rem;
         margin-bottom: 15px;
     }
+    &.reservationOrder{ margin: 0;
+        border-bottom: 1px dashed #d0d0d0;
+    }
 }
 
 .train-info{
@@ -208,6 +214,9 @@
     border-bottom: 1px solid #d0d0d0;
     p{
         margin: 0 0 10px;
+    }
+    &.reservationOrder {
+        border-bottom: 0;
     }
 }
 
@@ -267,6 +276,28 @@
     margin: 10px 0 0;
     font-size: .75rem;
     color: #2ca1f1;
+}
+
+.robInfo{
+    background-color: #fff;
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+
+.rob-item {
+    line-height: 50px;
+    height: 50px;
+    border-bottom: 1px solid #d0d0d0;
+    label {
+        color: #666;
+    }
+    &:last-child{
+        border-bottom: 0;
+    }
+}
+
+.text-overflow{
+    composes: text-overflow from "../../../styles/common.scss";
 }
 
 

@@ -15,6 +15,9 @@ import ModalLoading from '../../../components/modal/loading';
 import ModalAlert from '../../../components/modal/Alert';
 import ModalDialog from '../../../components/modal/Dialog';
 
+
+import TrainfillOrderRobInfo from './fillOrderRobInfo';
+
 import TrainfillOrderPublicHeader from './fillOrderPublicHeader';
 import TrainfillOrderPublicPassenger from './fillOrderPublicPassenger';
 import TrainfillOrderPublicContactsMessage from './fillOrderPublicContactsMessage';
@@ -34,6 +37,7 @@ class RobTrainFillOrder extends Component{
             insurance:false,
             treatyChecked: true,
             contacts: false,
+            robPack:false,
         }
         this.contactsChange = this.contactsChange.bind(this);
         this.insuranceChange = this.insuranceChange.bind(this);
@@ -45,8 +49,9 @@ class RobTrainFillOrder extends Component{
 
     //初始化请求保险和用户信息
     componentDidMount(){
-        const { actions , token } = this.props;
+        const { actions , token ,trainInfo } = this.props;
         actions.requestInsuranceInfo(trainModel.trainInsurance);
+        actions.requestRobHandleFee(trainModel.trainRobHandleFee);
         actions.requestUserInfo(userModel.userInfo,{
             access_token : token.access_token,
         });
@@ -73,7 +78,7 @@ class RobTrainFillOrder extends Component{
         if(orderNo){
             push('/train/orderDetail/'+orderNo.orderNo);
         }
-
+        //取消订单
         if(cancelFlag){
             //这里取消订单在下单有延时加300MS延时在提交订单
             var self = this;
@@ -83,7 +88,7 @@ class RobTrainFillOrder extends Component{
             },300);
             return false;
         }
-
+        //联系人和保险
         if(!contacts || !insurance){
             let localContacts = SessionServer.get('fillorderContacts');
             if(insuranceInfo){
@@ -121,6 +126,9 @@ class RobTrainFillOrder extends Component{
                 }
             });
         }
+        this.setState({
+            robPack:trainInfo.robPack.checked,
+        });
         return trainInfo;
     }
 
@@ -172,8 +180,8 @@ class RobTrainFillOrder extends Component{
 
     //购票提交
     handleBuyTicketSubmit(user12306){
-        const { actions ,token ,trainInfo ,passengerInfo } = this.props;
-        const { insurance ,contacts } = this.state;
+        const { actions ,token ,trainInfo ,passengerInfo ,robHandleFee } = this.props;
+        const { insurance ,contacts ,robPack } = this.state;
         if(user12306){
             user12306.access_token = token.access_token;
             actions.request12306Login(userModel.login12306,user12306);
@@ -191,6 +199,8 @@ class RobTrainFillOrder extends Component{
             usingTrainAccount: tokens.access_12306? true : false,
             trainZWCode: trainInfo.checkedSeat.seatCode,
             source: trainInfo.source,
+            reserveTrainCode:trainInfo.standbyTrainCode? trainInfo.standbyTrainCode: '',
+            reserveZwCode: trainInfo.standbySeatCode? trainInfo.standbySeatCode: '',
         };
         submitData.contactsInfo={
             contactEmail: '',
@@ -223,8 +233,10 @@ class RobTrainFillOrder extends Component{
             }
             submitData.passengers.push(buff);
         });
-
-        actions.requestSubmit(trainModel.trainBuyTicket,{
+        let  insurancePrice = insurance? insurance.price : 0;
+        submitData.clientTotalFee = (submitData.passengers.length * trainInfo.ticketMaxPrice) + (submitData.passengers.length * insurancePrice ) + robHandleFee + robPack.packPrice ;
+        
+        actions.requestSubmit(trainModel.reservationOrder,{
             token: token.access_token,
             data: submitData,
         });
@@ -276,26 +288,16 @@ class RobTrainFillOrder extends Component{
     }
 
 
-
     render(){
-        const { insuranceInfo, userInfo, trainInfo ,passengerInfo ,push ,type ,loading  } = this.props;
-        const { insurance ,treatyChecked ,contacts } =this.state;
-
+        const { insuranceInfo, userInfo, trainInfo ,passengerInfo ,robHandleFee ,push ,type ,loading  } = this.props;
+        const { insurance ,treatyChecked ,contacts ,robPack } =this.state;
         console.log(trainInfo);
+
         return (
             <div styleName="root-container">
                 <TrainfillOrderPublicHeader trainInfo={trainInfo} />
                 <div styleName="train-fill-order-container">
-                    <div styleName="rob-info">
-                        <div styleName="rob-item">
-                            <label>已选车次</label>
-                            <span>{trainInfo.trainShow}</span>
-                        </div>
-                        <div styleName="rob-item">
-                            <label>已选坐席</label>
-                            <span>{trainInfo.seatShow}</span>
-                        </div>
-                    </div>
+                    <TrainfillOrderRobInfo trainInfo={trainInfo} />
                     <TrainfillOrderPublicPassenger
                                     onPassengerChange={this.passengersChange}  
                                     passengerInfo={passengerInfo} 
@@ -320,8 +322,10 @@ class RobTrainFillOrder extends Component{
                                     loading={loading}
                                     type={type}
                                     passengerInfo={passengerInfo} 
+                                    robHandleFee={robHandleFee}
+                                    robPack={robPack}
                                     insurance={insurance}  
-                                    ticketPrice={trainInfo? trainInfo.checkedSeat.seatPrice : trainInfo}
+                                    ticketPrice={trainInfo? trainInfo.ticketMaxPrice: 0}
                                     onBuySubmit={this.handleBuyTicketSubmit}
                                     
                 />

@@ -438,6 +438,7 @@
 
 .item-col-left{
     composes: col from "../../../styles/common.scss";
+    text-align: left;
 }
 
 
@@ -452,6 +453,9 @@
 .item-col-right{
     composes: col from "../../../styles/common.scss";
     text-align: right;
+    &.money{
+        color: #ff8409;
+    }
 }
 
 

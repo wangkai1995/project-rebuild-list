@@ -116,6 +116,7 @@ class TrainSetRobTicketContainer extends Component{
 	handleSubmitFillOrder(){
 		const { push } = this.props;
 		const { robTrainInfo,robSeatInfo } = this.state;
+		var robPack = SessionServer.get('trainRobPack');
 		var checkedTrain = robTrainInfo.firstTrain;
 		checkedTrain.checkedSeat = robSeatInfo.firstSeat;
         var maxPrice = parseFloat(robSeatInfo.firstSeat.seatPrice);
@@ -145,6 +146,7 @@ class TrainSetRobTicketContainer extends Component{
 	        checkedTrain.standbySeatCode = checkedTrain.standbySeatCode.substring(0,checkedTrain.standbySeatCode.length-1);
         }
         checkedTrain.ticketMaxPrice  = maxPrice;
+        checkedTrain.robPack = robPack;
         SessionServer.set('FillOrderTrainInfo',checkedTrain);
 		//跳转到抢票订单填写
 		push('/train/fillOrder/rob');

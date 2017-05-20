@@ -42,6 +42,18 @@ class OrderDetailStatus extends Component{
         )
     }
 
+    getRobOrderCountTimePay(){
+        const { orderDetail } = this.props; 
+        return (
+            <div styleName="pay-countTime">
+                <i styleName="cicon icon-order_smile"></i>
+                &nbsp;抢票订单尚未支付,请在
+                <CountDown onOver={this.handleCountDownOver} time={orderDetail.overplusTime}/>
+                秒内完成支付.
+            </div>
+        )
+    }
+
 
     getOrderProgress(){
         const { onQuery , onTimeout } = this.props;
@@ -322,6 +334,7 @@ class OrderDetailStatus extends Component{
             return (
                 <div>
                     { orderDetail.status === 3? this.getOrderCountTimePay() : null }
+                    { orderDetail.status === 11? this.getRobOrderCountTimePay() : null }
                     { orderDetail.status !== 1? this.getOrderStatus() : this.getOrderProgress() }
                 </div>
             );

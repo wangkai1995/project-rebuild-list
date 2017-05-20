@@ -17,8 +17,24 @@ class OrderDetailModal extends Component {
         super(props);
     }
 
+
+    getRobHandleFee(){
+        const { orderType ,totalInfo ,childrenLen ,adultLen } = this.props;
+        if(orderType !== 2 ){
+            return null;
+        }
+        const robHandleFee = (totalInfo[3] && totalInfo[3].type === 4 )? totalInfo[3].price : 0;
+        return (
+            <li styleName="popup-item">
+                <div styleName="item-col-left">抢票服务</div>
+                <div styleName="item-col-Middle">¥{robHandleFee}</div>
+                <div styleName="item-col-right">x{childrenLen+adultLen}人</div>
+            </li>
+        )
+    }
+
     render(){
-        const { isModal ,childrenLen ,adultLen ,adultPrice  ,childrenPrice ,insurancePrice  } = this.props;
+        const { isModal ,childrenLen ,adultLen ,adultPrice  ,childrenPrice ,insurancePrice ,orderType  } = this.props;
         if(!isModal){
             return null;
         }
@@ -40,6 +56,7 @@ class OrderDetailModal extends Component {
                         <div styleName="item-col-Middle">¥{insurancePrice}</div>
                         <div styleName="item-col-right">x{childrenLen+adultLen}人</div>
                     </li>
+                    { this.getRobHandleFee() }
                 </ul>
             </Popup>
         );

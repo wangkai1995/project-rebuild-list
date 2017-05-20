@@ -11,6 +11,7 @@ import icon from '../../../styles/sprite.css';
 import TokenServer from '../../../server/token/index';
 
 import TrainfillOrderCommonModal from './fillOrderCommonModal';
+import TrainfillOrderRobModal from './fillOrderRobModal';
 import TrainfillOrderBuy12306Modal from './fillOrderPublic12306Buy';
 
 
@@ -35,7 +36,7 @@ class TrainfillOrderPublicFooter extends Component {
 
     //处理展示数据
 	componentWillReceiveProps(nextProps){
-        let { insurance ,passengerInfo ,ticketPrice } = nextProps;
+        let { insurance ,passengerInfo ,robHandleFee ,ticketPrice ,type ,robPack } = nextProps;
         let totalfee = 0;
         let insurancePrice = 0;
         let adult = [];
@@ -55,7 +56,11 @@ class TrainfillOrderPublicFooter extends Component {
                 passengerInfo = [];
             }
             insurancePrice = insurance? insurance.price : 0;
-        	totalfee = (passengerInfo.length * ticketPrice) + ( passengerInfo.length * insurancePrice)
+            if(type === 'rob'){
+                totalfee = (passengerInfo.length * ticketPrice) + ( passengerInfo.length * insurancePrice)+ robHandleFee + robPack.packPrice;
+            }else{
+                totalfee = (passengerInfo.length * ticketPrice) + ( passengerInfo.length * insurancePrice)
+            }
 
         	this.setState({
         		totalfee: totalfee,
@@ -96,7 +101,7 @@ class TrainfillOrderPublicFooter extends Component {
 
     getFeeDetailModel(){
         const { ticketPrice ,insurance ,adultLen ,childrenLen ,isModal } = this.state;
-        const { type } = this.props;
+        const { type ,robPack ,robHandleFee } = this.props;
         if(type === 'common'){
             return <TrainfillOrderCommonModal 
                         ticketPrice={ticketPrice}
@@ -105,6 +110,16 @@ class TrainfillOrderPublicFooter extends Component {
                         childrenLen={childrenLen}
                         isModal={isModal} 
                     />
+        }else{
+            return <TrainfillOrderRobModal 
+                        ticketPrice={ticketPrice}
+                        insurancePrice={insurance? insurance.price : 0}
+                        adultLen={adultLen}
+                        childrenLen={childrenLen}
+                        isModal={isModal} 
+                        robHandleFee={robHandleFee}
+                        robPack={robPack}
+            />
         }
     }
 	

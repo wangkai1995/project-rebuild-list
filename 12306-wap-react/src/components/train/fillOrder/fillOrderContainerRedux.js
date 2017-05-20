@@ -10,6 +10,7 @@ const initialState = {
     userInfo:false,
     trainInfo:false,
     passengerInfo:false,
+    robHandleFee:false,
     Login12306: false,
     cancelFlag: false,
     orderNo:false,
@@ -105,7 +106,16 @@ function seat( state = initialState , action){
                 Login12306 : true,
             }
         }
-
+        
+        
+        //请求抢票费用
+        case actionType.REQUEST_TRAIN_FILLORDER_ROB_HANDLE_FEE_SUCCESS:{
+            return{
+                ...state,
+                loading:false,
+                robHandleFee : parseFloat(action.payload),
+            }
+        }
 
 
         //请求提交订单成功
@@ -122,7 +132,6 @@ function seat( state = initialState , action){
 
         //请求取消订单成功
         case actionType.REQUEST_TRAIN_FILLORDER_CANCEL_ORDER_SUCCESS :{
-            console.log('1111111111');
             return{
                 ...state,
                 loading:false,
