@@ -30,7 +30,9 @@ class httpServer {
 	    };
 
 	    if(config.params){
-	    	url +='?';
+	    	if(url.indexOf('?') === -1){
+	    		url +='?';
+	    	}
 	    	var keys = Object.keys(config.params);
 	    	for(var i=0 ;i<keys.length ;i++){
 	    		if(i+1 < keys.length){

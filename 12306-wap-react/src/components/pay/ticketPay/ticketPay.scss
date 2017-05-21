@@ -1,0 +1,42 @@
+.container{
+    composes: war-container from "../../../styles/common.scss";
+}
+
+.order-detail{
+	composes: clear-fixed from "../../../styles/common.scss";
+    margin: 10px 0 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    height: auto;
+    overflow: hidden;
+    border-bottom: 1px solid #c8c8c8;
+    border-top: 1px solid #c8c8c8;
+}
+
+.passengers {
+	composes: clear-fixed from "../../../styles/common.scss";
+    margin-top: 10px;
+    font-size: .9375rem;
+    color: #666;
+}
+
+.left-detail-icon {
+    width: 12%;
+    float: left;
+    i {
+	    position: relative;
+	    left: 5px;
+	}
+}
+
+.right-detail-message {
+    width: 80%;
+    float: left;
+    color: #666;
+    font-size: .75rem;
+    overflow: hidden;
+}
+
+.mt10{
+	margin-top:10px;
+}

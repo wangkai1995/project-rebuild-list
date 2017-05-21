@@ -4,6 +4,7 @@ import {immutableRenderDecorator} from 'react-immutable-render-mixin';
 import CSSModules from 'react-css-modules'
 import styles from './orderDetail.scss';
 
+import SessionServer from '../../../server/session/index';
 
 import trainModel from '../../../http/train/index';
 import ModalLoading from '../../../components/modal/loading';
@@ -27,6 +28,7 @@ class TrainOrderDetailContainer extends Component{
         this.handleResetOrderDetail = this.handleResetOrderDetail.bind(this);
         this.handleQueryStatus = this.handleQueryStatus.bind(this);
         this.handleLockTimeOut = this.handleLockTimeOut.bind(this);
+        this.handleOrderPaySubmit = this.handleOrderPaySubmit.bind(this);
     }
     
 
@@ -44,7 +46,6 @@ class TrainOrderDetailContainer extends Component{
         });
     }
 
-// ticketStatus
     //查询状态
     handleQueryStatus(){
         const { params ,token } = this.props;
@@ -78,6 +79,13 @@ class TrainOrderDetailContainer extends Component{
         })
     }
 
+    //跳转去支付
+    handleOrderPaySubmit(){
+        const { orderDetail ,push } = this.props;
+        SessionServer.set('trainPayInfo',orderDetail);
+        push('/pay/ticket/train');
+    }
+
 
     render(){
         const { loading ,orderDetail } = this.props;
@@ -85,8 +93,6 @@ class TrainOrderDetailContainer extends Component{
             'container' : true,
             'await-pay' : (orderDetail && (orderDetail.status === 3 || orderDetail.status === 11) ),
         });
-        
-        console.log(orderDetail);
 
         return (
             <div>
@@ -104,7 +110,7 @@ class TrainOrderDetailContainer extends Component{
                     />
                     <OrderDetailInsurance insuranceInfo={orderDetail? orderDetail.insuranceInfo : false} />
                 </div>
-                <OrderDetailFooterPay orderDetail={orderDetail} />
+                <OrderDetailFooterPay orderDetail={orderDetail} onPaySubmit={this.handleOrderPaySubmit} />
                 <ModalLoading isVisible={loading} textContent="正在为您加载"  />
             </div>  
         );

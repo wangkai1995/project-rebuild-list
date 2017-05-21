@@ -17,12 +17,29 @@ class CountDown extends Component{
     }
 
     componentDidMount(){
-        const { time } = this.props; 
+        let { time } = this.props; 
+        if(!time){ 
+            time='00:00';
+        }
         var timeout = this.handleCountDown(time);
         this.setState({
             count: time,
             timeout: timeout,
         })
+    }
+    
+    //倒计时修正
+    componentWillReceiveProps(nextProps){
+         let { time } = nextProps; 
+         var { count ,timeout } = this.state;
+         if(count !== time){
+            clearInterval(timeout);
+            var timeout = this.handleCountDown(time);
+            this.setState({
+                count: time,
+                timeout: timeout,
+            })
+         }
     }
 
     componentWillUnmount(){

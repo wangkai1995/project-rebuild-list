@@ -1,0 +1,50 @@
+
+.payment-message-detail {
+    padding: 15px;
+    height: auto;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.pay-price {
+    height: auto;
+    overflow: hidden;
+}
+
+.price-money-left {
+    float: left;
+    width: 80%;
+    font-size: .75rem;
+}
+
+
+.price-mesage{
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.price-time{
+	color:#666;
+	i{
+		position: relative;
+		top: 5px;
+	}
+}
+
+.price {
+    font-size: .825rem;
+    color: #ff805d;
+}
+
+
+.price-icon-right {
+    float: left;
+    width: 20%;
+    text-align: right;
+    i {
+        position: relative;
+        top: 20px;
+    }
+}
+
+

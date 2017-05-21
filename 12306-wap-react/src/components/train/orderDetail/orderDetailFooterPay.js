@@ -71,10 +71,12 @@ class OrderDetailFooterPay extends Component{
             isModal:flag,
         });
     }
+
+    
     
     
     render(){
-        const { orderDetail } = this.props;
+        const { orderDetail ,onPaySubmit } = this.props;
         const { totalfee  ,isModal ,insurancePrice ,adultPrice ,childrenPrice ,adultLen ,childrenLen } = this.state;
         const iconClass = classnames({
             'cicon':true,
@@ -90,7 +92,7 @@ class OrderDetailFooterPay extends Component{
                     &yen;&nbsp;&nbsp;
                     <span styleName="pirce">{totalfee}</span>
                 </span>
-                <input type="submit" styleName="footer-submit" value="提交订单" /> 
+                <input type="submit" styleName="footer-submit" value="提交订单" onClick={ onPaySubmit } /> 
                 <span styleName="footer-detail" onClick={ this.handleClickDetail.bind(this,!isModal) }>
                     明细&nbsp;
                     <i styleName={iconClass}></i>

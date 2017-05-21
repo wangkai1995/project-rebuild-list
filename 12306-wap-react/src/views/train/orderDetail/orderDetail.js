@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import CSSModules from 'react-css-modules';
 
 
@@ -23,12 +24,12 @@ class TrainOrderDetail extends Component {
     }
 
     render(){
-        const { params, orderDetail, orderDetailAction  }= this.props;
+        const { params, orderDetail, orderDetailAction ,push  }= this.props;
         var token = TokenServer.getToken();
         return(
             <div styleName="container" >
                 <Header title="订单详情" />
-                <TrainOrderDetailContainer  token={token}  params={params} actions={orderDetailAction} {...orderDetail} />
+                <TrainOrderDetailContainer push={push}  token={token}  params={params} actions={orderDetailAction} {...orderDetail} />
             </div>
         );
     }
@@ -44,6 +45,7 @@ export default connect( state =>{
 },dispatch =>{
     return{
         orderDetailAction : bindActionCreators(actions , dispatch),
+        push : bindActionCreators(push , dispatch),
     };
 })(TrainOrderDetail);
 

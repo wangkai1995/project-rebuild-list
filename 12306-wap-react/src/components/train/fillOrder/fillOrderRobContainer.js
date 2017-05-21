@@ -83,7 +83,6 @@ class RobTrainFillOrder extends Component{
             //这里取消订单在下单有延时加300MS延时在提交订单
             var self = this;
             setTimeout(function(){
-                console.log('dddddddd');
                 self.handleBuyTicketSubmit();
             },300);
             return false;
@@ -291,7 +290,6 @@ class RobTrainFillOrder extends Component{
     render(){
         const { insuranceInfo, userInfo, trainInfo ,passengerInfo ,robHandleFee ,push ,type ,loading  } = this.props;
         const { insurance ,treatyChecked ,contacts ,robPack } =this.state;
-        console.log(trainInfo);
 
         return (
             <div styleName="root-container">
