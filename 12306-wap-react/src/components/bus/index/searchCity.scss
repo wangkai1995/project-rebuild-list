@@ -1,0 +1,77 @@
+
+.label-item{
+    composes: item from './public.scss';
+    composes: item-floating-label from './public.scss';
+    composes: text-overflow from "../../../styles/common.scss";
+}
+
+.city-title{
+	display: block;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.label-city{
+	font-size: 1.0625rem;
+    color: #c3c3c3;
+}
+
+.label-form-city{
+	composes:label-city;
+	float: left;
+}
+
+.label-to-city{
+	composes:label-city;
+	float: right;
+}
+
+.select-city{
+    composes: clear-fixed from "../../../styles/common.scss";
+	text-align: center;
+    margin: 16px 0;
+}
+
+.city{
+	display: block;
+    text-decoration: none;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    width: 40%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: 900;
+    position: relative;
+}
+
+.from-city{
+    float: left;
+    text-align: left
+}
+
+.to-city{
+	float: right;
+    text-align: right;
+}
+
+.left-border {
+    width: 40%;
+    margin-right: 15px;
+    float: left;
+    content: " ";
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.right-border{
+    width: 40%;
+    margin-left: 15px;
+    float: right;
+    content: " ";
+    border-bottom: 1px solid #c8c8c8;
+}

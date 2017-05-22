@@ -1,0 +1,625 @@
+ 
+
+.root-container{
+	height:100%;
+	width:100%;
+	position: relative;
+}
+
+
+.train-fill-order-container{
+    position: absolute;
+    top: 140px;
+    right: 0;
+    margin: 0;
+    left: 0;
+    padding: 10px 0 0;
+    bottom: 43px;
+    overflow-x: hidden;
+    background-color: #ececec;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -o-overflow-scrolling: touch;
+    -ms-overflow-scrolling: touch;
+    -moz-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+
+
+.add-passenger{
+    background-color: #fff;
+    color: #888;
+    font-size: .9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    z-index: 2;
+    margin-top: 10px;
+    padding: 13px;
+    text-align: left;
+    i{
+        position: relative;
+        top: 4px;
+    }
+    .red{
+        color:#f63;
+    }
+    span{
+        color:#ababab;
+        font-size:.75rem;
+    }
+}
+
+.passenger-container{
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+    padding: 0 0 0 15px;
+    background-color: #fff;
+}
+
+
+.passenger-label{
+    height: 50px;
+    line-height: 50px;
+    color: #666;
+    font-size: 1rem;
+    span{
+        font-size: 0.75rem;
+    }
+}
+
+
+.passenger-item{
+    composes: clear-fixed from "../../../styles/common.scss";
+    height: 72px;
+    padding: 0;
+    width: 100%;
+    border-top: 1px solid #dcdcdc;
+    color: black;
+}
+
+.passenger-icon{
+    float: left;
+    width: 10%;
+    display: block;
+    i {
+        margin-top: 18px;
+        transition: all .3s linear;
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        -ms-transition: all .3s linear;
+        -o-transition: all .3s linear;
+        transform: matrix(0,1,-1,0,0,0);
+        -ms-transform: matrix(0,1,-1,0,0,0);
+        -moz-transform: matrix(0,1,-1,0,0,0);
+        -webkit-transform: matrix(0,1,-1,0,0,0);
+        -o-transform: matrix(0,1,-1,0,0,0);
+    }
+    &.active{
+        i{
+            transform: matrix(1,0,0,1,0,0);
+            -ms-transform: matrix(1,0,0,1,0,0);
+            -moz-transform: matrix(1,0,0,1,0,0);
+            -webkit-transform: matrix(1,0,0,1,0,0);
+            -o-transform: matrix(1,0,0,1,0,0); 
+        }
+        
+    }
+}
+
+.passenger-message {
+    composes: text-overflow from "../../../styles/common.scss";
+    width: 65%;
+    float: left;
+    padding: 5px;
+    font-size: 1rem;
+    p{
+        margin: 5px;
+    }
+    i{
+        position: relative;
+        top: 5px;
+    }
+}
+
+.passenger-delete{
+    width: 15%;
+    height: 100%;
+    font-size: .875rem;
+    float: right;
+    background-color: #f63;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    span{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 23px;
+    }
+    &.active{
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+    }
+}
+
+
+.passenger-change{
+    height: 50px;
+    font-size: .9rem;
+    overflow: hidden;
+    border-top: 1px solid #dcdcdc;
+    padding-left: 13%;
+    a{
+        color: #2ca1f1;
+        width: 50%;
+        display: block;
+        padding-top: 15px;
+        float: left;
+        text-align: center;
+        &:first-child{
+            text-align: left;
+            span{
+                display: inline-block;
+                width: 100%;
+                border-right: 1px solid #d0d0d0;
+            }
+        }
+    }
+}
+
+
+
+.contacts-container{
+    margin: 10px 0;
+    background-color: #fff;
+}
+
+
+.contacts-list{
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    padding: 10px 10px 10px 15px;
+    border-bottom: 1px solid #c8c8c8;
+    font-size: .9375rem;
+    &:first-child {
+        padding: 10px 10px 10px 0;
+        margin-left: 15px;
+    }
+    label{
+        color: #888;
+        position: relative;
+        top: 3px;
+    }
+    input{
+        float: right;
+        height: 25px;
+        width: 79%;
+        margin-right: 10px;
+    }
+}
+
+.insurance-container{
+    padding: 0;
+    margin-bottom: 15px;
+    background-color: #fff; 
+}
+
+
+.insurance-list{
+    composes: list from "../../../styles/common.scss";
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+
+.insurance-item{
+    height: auto;
+    overflow: hidden;
+    border: 0 solid #fff;
+    margin: 0 0 0 15px;
+    padding: 5px 5px 5px 0;
+    border-bottom: .5px solid #C8C8C8;
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+
+
+.insurance-message{
+    width: 80%;
+    margin-top: 6px;
+    float: left;
+    height: auto;
+    overflow: hidden;
+    font-size: .875rem;
+    color: #333;
+}
+
+
+.insurance-check{
+    width: 20%;
+    float: left;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    i{
+        position: relative;
+        top: 4px;
+    }
+}
+
+.check-select{
+    padding: 0;
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: auto;
+    input{
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        display: block;
+        border: 0;
+        background: 0 0;
+        cursor: pointer;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+        outline: none !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        margin: 0;
+        line-height: normal;
+        left: 3px;
+        top: 3px;
+        border: 0px;    
+    }
+}
+
+
+.insurance-message-detail{
+    font-size: .75rem;
+    color: #666;
+    &.show{
+        display: block;
+    }
+    &.hide{
+        display: none;
+    }
+    .small{
+       font-size: 0.75rem; 
+    }
+}
+
+
+.train-treaty{
+    margin-bottom: 15px;
+    margin-right: 15px;
+    font-size: .8rem;
+    color: #8b8b8b;
+}
+
+
+
+
+
+.checkbox-select{
+    min-height: 20px;
+    position: relative;
+    display: inline-block;
+    pointer-events: auto;
+    min-height: 24px;
+    margin-top: 2px;
+    position: relative;
+    float: left;
+    margin: 0 10px;
+    input[type=checkbox]{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        height: 100%;
+        z-index: 10;
+    }
+    label{
+        pointer-events: auto;
+    }
+}
+
+
+
+.order-footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 43px;
+    background-color: #3a495a;
+    color: #fff;
+}
+
+
+.footer-price{
+    float: left;
+    margin: 0 10px;
+    margin-top: 6px;
+    width: 37%;
+    color: #f63;
+    font-size: 1.25rem;
+    .pirce {
+        font-size: 1.5625rem;
+    }
+}
+
+.footer-detail{
+    display: inline-block;
+    position: relative;
+    top: 11px;
+    float: right;
+    margin-right: 10px;
+}
+
+.footer-submit{
+    composes: button from "../../../styles/common.scss";
+    padding: 0 15px!important;
+    background-color: #ff8400;
+    color: #fff;
+    margin: 5px 10px 5px auto;
+    min-width: 52px;
+    min-height: 30px;
+    line-height: 30px;
+    float: right;
+}
+
+
+.footer-submit-disabled{
+    composes: button-disabled from "../../../styles/common.scss";
+}
+
+
+
+.footer-popup-detail{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFF;
+    opacity: 1;
+    z-index: 1000;
+    display: block;
+}
+
+
+
+.popup-item{
+    composes: row from "../../../styles/common.scss";
+    &.separated {
+        border-bottom: 1px solid #c8c8c8;
+    }
+}
+
+
+.item-col-left{
+    composes: col from "../../../styles/common.scss";
+}
+
+
+.item-col-Middle{
+    composes: col from "../../../styles/common.scss";
+    composes: col-50 from "../../../styles/common.scss";
+    color: #ff8409;
+    text-align: right;
+}
+
+
+.item-col-right{
+    composes: col from "../../../styles/common.scss";
+    text-align: right;
+}
+
+
+
+.popup-12306-login{
+    background-color: #fff;
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    h3{
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+    p{
+        margin: 0 0 10px;
+        text-align: left;
+    }
+}
+
+
+
+.popup-colse{
+    position: absolute;
+    right: 20px;
+    top: -8px;
+}
+
+
+
+.login-12306-container{
+    height: 225px;
+    width: 100%;
+    text-align: center;
+}
+
+
+
+.login-12306-item{
+    composes: clear-fixed from "../../../styles/common.scss";
+    display: inline-block;
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #d0d0d0;
+    text-align: left;
+}
+
+
+.input-label{
+    width: 15%;
+    float: left;
+    line-height: 40px;
+    i{
+        position: relative;
+        top: 5px;
+        margin-right: 10px;
+    }
+}
+
+
+.input-input{
+    width: 85%;
+    float: left;
+    line-height: 40px;
+    input{
+        border: 0;
+        height: 40px;
+        position: relative;
+        top: -3px;
+        background-color: transparent;
+    }
+}
+
+.button{
+    margin-top: 15px;
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #bbb;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+    border-radius: 5px;
+    &.active{
+        background-color: #ff8400 !important;
+    }
+    &.disabled{
+        background-color: #ccc !important;
+        color:#fff !important;
+        pointer-events: none;
+    }
+    &.submit{
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #fea820;
+    }
+}
+
+.login-12306-loading {
+    background: #fff;
+    border-radius: 10px;
+    p{
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+.ticket-price{
+    background:#fff;
+    width:100%;
+    height:auto;
+    overflow:hidden;
+    padding:10px 15px;
+    font-size:.8125rem;
+    .left{
+        margin:0;
+        float:left;
+        color:#208dd7;                
+    }
+    .right{
+        margin:0 5px 0 0;
+        float:right;
+        .money{
+            color:#ff957a;
+        }
+    }
+}
+
+.contacts-message{
+    margin:10px 0;
+    background-color:#fff;
+    .contacts-list-container{
+        .contacts-list{
+            position:relative;
+            height:auto;
+            overflow:hidden;
+            padding:10px 10px 10px 0;
+            margin-left:15px;
+            border-bottom:1px solid #c8c8c8;
+            font-size:.9375rem;
+            label{
+                color:#888;
+                position:relative;
+                top:3px;
+            }
+            .left{
+                float:left;
+                margin:0 10px;
+            }
+            input{
+                float:right;
+                height:25px;
+                width:60%;
+                margin-right:10px;
+            }
+        }
+        .contacts-list:last-child{
+            border-bottom:none;
+        }
+    }
+}
+
+.icon-bus-point-to{
+    
+}
+
+.iconBus{
+    float:right;
+}
+.busFillOrder{
+    bottom:0 !important;
+}
+.queIcon{
+    margin-left:5px;
+}

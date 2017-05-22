@@ -1,0 +1,15 @@
+
+.search-submit{
+	padding: 10px;
+}
+
+.submit-button{
+	composes: button from "../../../styles/common.scss";
+	composes: button-block from "../../../styles/common.scss";
+    border-radius: 6px;
+    background-color: #ef8019;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #fff;
+    margin-top: 0;
+}

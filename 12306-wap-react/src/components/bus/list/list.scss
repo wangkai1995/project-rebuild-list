@@ -1,0 +1,468 @@
+
+.root-container{
+	height:100%;
+	width:100%;
+	position: relative;
+}
+
+
+.list-header-container{
+	position:absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+	height:88px;
+}
+
+.trainInfo-container{
+	position: absolute;
+    top: 88px;
+    bottom: 53px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+
+
+.trainInfo-list{
+	composes: list from "../../../styles/common.scss";
+}
+
+
+.list-empty {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+}
+
+
+.trainInfo-item{
+	composes: item from "../../../styles/common.scss";
+	composes: text-overflow from "../../../styles/common.scss";
+    white-space: normal;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 15px 10px 10px;
+}
+
+.trainInfo-item-disabled{
+    color:#ccc !important;
+    span{
+       color:#ccc !important; 
+    }
+}
+
+
+.item-trainInfo{
+	composes: clear-fixed from "../../../styles/common.scss";
+    width: 100%;
+    position: relative;
+}
+
+
+.item-City{
+	composes: text-overflow from "../../../styles/common.scss";
+    float: left;
+    line-height: 36px;
+    font-size: 1.025rem;
+}
+
+.item-deptCity{
+	composes: item-City;
+	width: 25%;
+    font-weight: 600;
+}
+
+.item-infos{
+	composes: item-City;
+    width: 20%;
+    text-align: center;
+    line-height: 12px;
+    font-size: .75rem;
+    color: #666;
+}  
+
+.item-arrCity{
+	composes: item-City;
+    width: 25%;
+    text-align: center;
+    font-weight: 600;
+}
+
+.item-price{
+	composes: item-City;
+    width: 30%;
+    text-align: center;
+}
+
+.item-small {
+    margin-left: 1px;
+    font-size: .75rem;
+    color: #666;
+}
+
+.item-money {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #f30;
+}
+
+.item-trainTime{
+	padding-bottom: 12px;
+    border-bottom: 1px dashed #d0d0d0;
+    display: block;
+    font-size: 1.125rem;
+    width: 100%; 
+}
+
+.item-detp {
+	display: inline-block;
+    width: 49%;
+    color: #2ca1f1;
+}
+
+.item-arr {
+	display: inline-block;
+    width: 49%;
+    color: #333;
+    padding-right: 15px;
+    text-align: left;
+    position: relative;
+    span{
+        position: absolute;
+        right: 13%;
+        font-size: .75rem;
+        line-height: 20px;
+        width: 55px;
+        text-align: center;
+        border-radius: 3px;
+        display: inline-block;
+        background-color: #2ca1f1;
+        color: #fff;
+    }
+}
+
+.appoint{
+    background-color: #fa2a2a !important;
+}
+
+
+.item-trainSeat{
+    padding-top: 10px;
+    font-size: .8rem;
+    color: #333;
+}
+
+.trainSeat-disabled{
+    color: #bbb!important;
+}
+
+.item-trainSeat-item{
+	display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 33%;
+    overflow: hidden;
+}
+
+.item-trainSeat-rob{
+    width: auto;
+    color: #2ca1f1;
+    display: inline;
+    overflow: hidden
+}
+
+.item-trainSeat-Sell-Out{
+    color: #00c51f;
+}
+
+
+.filter-footer{
+    composes: bar-footer from "../../../layouts/footer/footer.scss";
+    background-color: #3a495a!important;
+    height: 55px !important;
+    div{
+        display: block;
+        width: 34%;
+        margin-top: 3px;
+        text-align: center;
+    }
+    i{
+        color: #fff;
+    }
+    span{
+        display: block;
+        color: #fff;
+    }
+}
+
+
+
+.filter-popup{
+    background-color: #f0f0f0;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    height: 255px;
+    color: #666;
+}
+
+.filter-popup-tab{
+    padding: 10px;
+    height: 40px;
+    background-color: #3a495a;
+    a{
+        float: left;
+        width: 30%;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1rem;
+        &:first-child {
+            text-align: left;
+            margin-left: 15px;
+        }
+        &:last-child {
+            text-align: right;
+            margin-right: 15px;
+        }
+    }
+    a:hover, a:visited, a:link, a:active {
+        color: #fff !important;
+    } 
+    i{
+        position:relative;
+        top: 3px;
+        margin-right: 3px;
+    }
+}
+
+.filter-popup-content{
+    height: 212px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.filter-popup-item{
+    padding-top: 21px;
+}
+
+
+.filter-popup-title{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    span{
+        display: inline-block;
+        width: 45px;
+        border-bottom: 1px solid #ddd;
+        margin: 0 15px;
+        position: relative;
+        top: -8px;
+    }
+}
+
+
+.filter-popup-ul{
+    composes: clear-fixed from "../../../styles/common.scss";
+    padding: 10px 15px 0;
+    width: 100%;
+    li{
+        float: left;
+        width: 50%;
+        display: block;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.popup-ul-value{
+    position: relative;
+    top: -5px;
+    font-size: 1rem;
+    margin-left: 5px;
+    color: #666;
+}
+
+
+
+.checkbox-select{
+    min-height: 20px;
+    position: relative;
+    display: inline-block;
+    pointer-events: auto;
+    input[type=checkbox]{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        height: 100%;
+        z-index: 10;
+    }
+    label{
+        pointer-events: auto;
+    }
+}
+
+.checked-icon-on{
+    composes: cicon from "../../../styles/sprite.css";
+    composes: icon-cho-pre from "../../../styles/sprite.css";
+}
+
+.checked-icon-off{
+    composes: icon-cho-nor from "../../../styles/sprite.css";
+    composes: cicon from "../../../styles/sprite.css";
+}
+
+.busList-footer{
+    font-size:14px;
+}
+.busInfo-list{
+    padding:12px;
+    white-space:normal;
+    color:#444;
+    position:relative;
+    z-index:2;
+    display:block;
+    margin:-1px;
+    border-width:1px;
+    border-style:solid;
+    font-size:16px;
+    border-color:#ddd;
+    background-color:#fff;
+    overflow:hidden;
+    .car-list-left{
+        width:20%;
+        float:left;
+        height:auto;
+        overflow:hidden;
+        .starttime{
+            display:block;
+            font-size:1.25rem;
+            color:#333;
+            text-align:center;
+        }
+        .car-type{
+            margin-top:10px;
+            display:block;
+            font-size:.75rem;
+            color:#666;
+            word-wrap:break-word;
+            word-break:normal;
+            text-align:center;
+        }
+    }
+    .car-list-divide{
+        width:5%;
+        float:left;
+        text-align:center;
+        color:#c3c3c3;
+        .divide-top{
+            display:block;
+            position:relative;
+            top:5px;
+            width:8px;
+            height:8px;
+            border-radius:50px;
+            background:#c3c3c3;
+        }
+        .divide{
+            width:100%;
+            border-right:1px solid #c8c8c8;
+            position:relative;
+            right:4px;
+            top:8px;
+        }
+        .divide-bottom{
+            display:block;
+            position:relative;
+            width:8px;
+            height:8px;
+            border-radius:50px;
+            background:#c3c3c3;
+            top:10px;
+        }
+    }
+    .car-list-right{
+        width:75%;
+        float:left;
+        height:auto;
+        overflow:auto;
+        .arr-dpt{
+            width:52%;
+            float:left;
+            .car-fromcity,.car-tocity{
+                margin-left:5px;
+                display:block;
+                font-size:.75rem;
+                color:#333;
+            }
+            .car-tocity{
+                margin-top:10px;
+            }
+        }
+        .price{
+            width:23%;
+            float:left;
+            font-size:.875rem;
+            .ticket-price{
+                display:block;
+                color:#f63;
+                .money{
+                    font-size:1.3125rem;
+                    color:#ff8409;
+                }
+            }
+            .ticket-count{
+                margin-top:7px;
+                font-size:.875rem;
+                display:block;
+                color:#666;
+            }
+        }
+        .buy{
+            width:25%;
+            float:left;
+            a{
+                position:relative;
+                top:5px;
+                display:block;
+                text-decoration:none;
+                background-color:#ff8409;
+                color:#fff;
+                text-align:center;
+                padding:10px 5px;
+                border-radius:5px;
+                font-size:.75rem;
+            }
+        }
+    }
+}
+
+
+

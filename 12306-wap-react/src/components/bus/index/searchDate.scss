@@ -1,0 +1,66 @@
+
+
+.label-item{
+    composes: item from './public.scss';
+    composes: item-floating-label from './public.scss';
+    composes: text-overflow from "../../../styles/common.scss";
+    composes: clear-fixed from "../../../styles/common.scss";
+}
+
+
+.form-date{
+	composes: clear-fixed from "../../../styles/common.scss";
+	height: auto;
+    overflow: hidden;
+}
+
+
+.labe-form-date{
+	display: block;
+    width: 50%;
+    float: left;
+    font-size: 1.0625rem;
+    color: #c3c3c3;
+    height: 34px;
+    line-height: 34px;
+}
+
+.form-date-selct{
+	composes: clear-fixed from "../../../styles/common.scss";
+	width: 50%;
+    float: left;
+    position: relative;
+    line-height: 34px;
+}
+
+.date-input{
+    display: block;
+    padding-top: 2px;
+    padding-left: 0;
+    line-height: 34px;
+    height: 34px;
+    color: #111;
+    font-size: 14px;
+    border: 0;
+    width: 100%;
+    text-align: right;
+    padding-right: 36px;
+    background-color: #fff;
+    font-size: 1.25rem;
+    cursor: not-allowed;
+}
+
+.date-week{
+	font-size: .75rem;
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    z-index: 10;
+}
+
+.border{
+	margin-top: 15px;
+    border-bottom: 1px solid #c8c8c8;
+}
+
+
