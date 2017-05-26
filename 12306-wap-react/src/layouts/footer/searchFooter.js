@@ -35,7 +35,7 @@ class SearchFooter extends Component{
                     <i styleName={trainIcon}></i>
                     <span>火车票</span>
                 </Link>
-                <Link>
+                <Link to="/bus">
                     <i styleName={busIcon}></i>
                     <span>汽车票</span>
                 </Link>

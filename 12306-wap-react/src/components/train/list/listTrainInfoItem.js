@@ -28,7 +28,7 @@ class TrainInfoItem extends Component{
 			return item;
 		});
 
-		if(trainStatus !== 0){
+		if(trainStatus === 0){
 			return (<span>{reason}</span>)
 		}
 
@@ -62,7 +62,7 @@ class TrainInfoItem extends Component{
 		if(trainStatus === -2){
 			return <span styleName="appoint">预约抢票</span>
 		}
-		if(trainStatus !== 0){
+		if(trainStatus === 0){
 			return null;
 		}
 
@@ -77,7 +77,7 @@ class TrainInfoItem extends Component{
 	//选择坐席
 	handleChenckTrain(){
 		const { trainStatus } = this.props;
-		if(trainStatus !== 0 && trainStatus !== -2){
+		if(trainStatus === 0 || trainStatus !== -2){
 			return false;
 		}
 		this.props.onCheckTrain(this.props);
@@ -88,7 +88,7 @@ class TrainInfoItem extends Component{
 		const { trainStatus } = this.props;
 		const itemClass = classnames({
 			'trainInfo-item' : true,
-			'trainInfo-item-disabled' : (trainStatus !== 0 && trainStatus !== -2)
+			'trainInfo-item-disabled' : (trainStatus === 0 || trainStatus !== -2)
 		});
 		return(
 			<li styleName={itemClass} onClick={this.handleChenckTrain} >

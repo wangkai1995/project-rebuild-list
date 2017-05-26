@@ -61,6 +61,7 @@ class TicketPayContainer extends Component{
     
 
 
+
     render(){
         const { loading } = this.props;
         return (
