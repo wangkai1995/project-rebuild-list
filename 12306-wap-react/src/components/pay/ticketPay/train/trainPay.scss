@@ -48,3 +48,17 @@
 }
 
 
+.submit{
+    padding: 10px;
+}
+
+.pay-btn{
+    composes: button from "../../../../styles/common.scss";
+    composes: button-block from "../../../../styles/common.scss";
+    margin-top: 20px!important;
+    background-color: #ff8400;
+    color: #fff;
+    width: 100%;
+    border-radius: 10px;
+}
+

@@ -89,7 +89,6 @@ class TrainPayInfo extends Component{
 
 
     render(){
-    	console.log(this.props);
     	const { payInfo, payCountDown } = this.props;
     	const { isVisible } = this.state
 		const iconClass=classnames({

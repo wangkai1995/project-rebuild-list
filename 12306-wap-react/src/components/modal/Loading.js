@@ -27,6 +27,7 @@ class ModalLoading extends Component{
 	componentWillReceiveProps(nextProps){
 		this.setState({
 			isVisible : nextProps.isVisible,
+			textContent: nextProps.textContent,
 		});
 	}	
 

@@ -7,7 +7,7 @@ import pubilcStyles from '../ticketPay.scss';
 import styles from './trainPay.scss';
 import icon from '../../../../styles/sprite.css';
 
-import WechatPayServer from '../../../../server/pay/weChat';
+import WechatPayServer from '../../../../server/pay/weChat/index';
 
 
 @immutableRenderDecorator
