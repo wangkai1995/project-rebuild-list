@@ -2,6 +2,7 @@
     composes: war-container from "../../../styles/common.scss";
 }
 
+
 .order-detail{
 	composes: clear-fixed from "../../../styles/common.scss";
     margin: 10px 0 0;
@@ -13,12 +14,14 @@
     border-top: 1px solid #c8c8c8;
 }
 
+
 .passengers {
 	composes: clear-fixed from "../../../styles/common.scss";
     margin-top: 10px;
     font-size: .9375rem;
     color: #666;
 }
+
 
 .left-detail-icon {
     width: 12%;
@@ -28,6 +31,7 @@
 	    left: 5px;
 	}
 }
+
 
 .right-detail-message {
     width: 80%;
@@ -40,3 +44,50 @@
 .mt10{
 	margin-top:10px;
 }
+
+
+.payment-method-container{
+    margin-top: 15px;
+    height: auto;
+    overflow: hidden;
+}
+
+
+.pay-model {
+    width: 100%;
+    padding: 15px;
+    font-size: .9375rem;
+    position: relative;
+    background-color: #fff;
+    border-bottom: 1px solid #d0d0d0;
+    span {
+        position: relative;
+        bottom: 10px;
+        margin-left: 5px;
+    }
+    .recommend {
+        position: relative;
+        bottom: 8px;
+    }
+    &:last-child{
+        border-bottom: 0;
+    }
+}
+
+
+.hidden{
+    display: none !important;
+}
+
+
+
+.checkbox-select {
+    display: inline-block;
+    min-height: 24px;
+    margin: 0 10px;
+    margin-top: 10px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+

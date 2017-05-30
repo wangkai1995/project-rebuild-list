@@ -614,13 +614,13 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
   width: 5.71875rem;
   height: 1.53125rem;
 }
-.icon-order-zhifubao-png {
+.icon-order-zhifubao {
   background-image: url(../images/sprite.png);
   background-position: 0rem -110.40625rem;
   width: 1.9375rem;
   height: 1.9375rem;
 }
-.icon-order-weixin_png {
+.icon-order-weixin {
   background-image: url(../images/sprite.png);
   background-position: 0rem -112.34375rem;
   width: 1.9375rem;

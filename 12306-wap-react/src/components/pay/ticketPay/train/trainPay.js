@@ -10,6 +10,7 @@ import icon from '../../../../styles/sprite.css';
 import PayModel from '../../../../http/pay/index';
 
 import TrainPayInfo from './trainPayInfo';
+import TrainPaySelect from './trainPaySelect';
 
 
 @immutableRenderDecorator
@@ -18,9 +19,14 @@ class TrainPay extends Component{
     
     constructor(props){
         super(props);
+        this.state={
+            type:0,
+        }
+        this.HandleSelectPayMethod = this.HandleSelectPayMethod.bind(this);
     }
 	
-	 //初始化支付倒计时
+
+	//初始化支付倒计时
     componentDidMount(){
         const { actions ,payInfo ,payCountDown,token } = this.props;
 		actions.requestTrainPayCountDown( PayModel.getTrainPayCountDown,{
@@ -28,18 +34,30 @@ class TrainPay extends Component{
 				token: token.access_token,
   		})
     }
+
+    
+    
+    HandleSelectPayMethod(type){
+        this.setState({
+            type:type,
+        });
+    }
+
+
     
     render(){
     	const { payInfo ,payCountDown } = this.props;
-
+        const { type } = this.state;
         return (
             <div>
 				<TrainPayInfo payInfo={payInfo} payCountDown={payCountDown}  />
+                <TrainPaySelect defaultType={type} onMethodSelect={this.HandleSelectPayMethod} />
             </div>
         );
     }
 
 }
+
 
 
 
