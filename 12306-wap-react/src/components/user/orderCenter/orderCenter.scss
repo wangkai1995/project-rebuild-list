@@ -83,9 +83,19 @@
     width: 100%;
 }
 
+
 .item-col{
     composes: col from "../../../styles/common.scss";
     composes: col-50 from "../../../styles/common.scss";
+    a{
+        text-decoration: none;
+        color: #c8c8c8;
+        padding: 3px 5px;
+        border: 1px solid #F93;
+        border-radius: 3px;
+        position:relative;
+        z-index: 10;
+    }
     &.right{
         text-align: right;
         padding-right:10px; 

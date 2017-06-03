@@ -6,7 +6,7 @@ import styles from './orderCenter.scss';
 
 import OrderCenterItem from './orderCenterItem';
 
-@immutableRenderDecorator
+// @immutableRenderDecorator 为了解决删除问题
 @CSSModules(styles,{allowMultiple: true})
 class OrderCenterList extends Component{
 
@@ -16,10 +16,16 @@ class OrderCenterList extends Component{
     }
 
     getOrderItem(){
-        const { orderList ,push } = this.props;
+        const { orderList ,push ,onDelete } = this.props;
         if(Array.isArray(orderList) && orderList.length > 0 ){
-            return orderList.map(function(item){
-                return <OrderCenterItem key={item.orderNo} push={push} {...item} />
+            return orderList.map(function(item,index){
+                return <OrderCenterItem 
+                            index={index}
+                            key={item.orderNo} 
+                            push={push}
+                            onDelete={onDelete}
+                            {...item} 
+                />
             });
         }
     }

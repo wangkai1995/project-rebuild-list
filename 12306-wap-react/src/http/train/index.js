@@ -107,6 +107,15 @@ export default {
 			params: data,
 		})
 	},
+	
+	//删除订单
+	trainDeleteOrder:function(data){
+		return httpServer.request({
+			method: 'DELETE',
+			url: '/v1/train/delete/'+data.orderNo+'?access_token='+data.token,
+		})
+    },
+
 
 	//订单详情
 	trainOrderDetail: function(data) {

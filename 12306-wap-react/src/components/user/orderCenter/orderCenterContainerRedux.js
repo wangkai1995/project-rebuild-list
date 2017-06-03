@@ -44,6 +44,16 @@ function orderCenter( state = initialState , action){
             }
         }
 
+        //删除订单
+        case actionType.REQUEST_DELETE_ORDER: {
+            var item = state.orderList.splice(action.payload,1)
+            return{
+                ...state,
+                orderList: state.orderList,
+            };
+        }
+
+
         //tab切换
         case actionType.CHANGE_ORDER_TAB:{
             return{

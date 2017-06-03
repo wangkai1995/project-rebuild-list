@@ -88,7 +88,6 @@ export default {
         })
     },
     
-
     login12306:function(data){
         return httpServer.request({
             method: 'POST',

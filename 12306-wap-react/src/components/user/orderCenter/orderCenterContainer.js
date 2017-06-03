@@ -8,6 +8,8 @@ import styles from './orderCenter.scss';
 
 import TokenServer from '../../../server/token/index';
 import userModel from '../../../http/user/index';
+import trainModel from '../../../http/train/index';
+
 import ModalLoading from '../../../components/modal/loading';
 import ModalAlert from '../../../components/modal/Alert';
 
@@ -16,7 +18,7 @@ import OrderCenterList from './orderCenterList'
 
 
 
-@immutableRenderDecorator
+// @immutableRenderDecorator 为了解决删除问题
 @CSSModules(styles,{allowMultiple: true})
 class OrderCenterContainer extends Component{
 
@@ -24,6 +26,7 @@ class OrderCenterContainer extends Component{
         super(props);
         this.handleTabChange = this.handleTabChange.bind(this);
         this.handleAddPage = this.handleAddPage.bind(this);
+        this.handleDeleteOrder = this.handleDeleteOrder.bind(this);
     }
 
 
@@ -51,6 +54,43 @@ class OrderCenterContainer extends Component{
             limit: 10,
         });
     }
+    
+
+    handleDeleteOrder(index){
+        const token = TokenServer.getToken();
+        let{ actions ,orderList } = this.props;
+        let params = {
+            orderNo:orderList[index].orderNo,
+            token:token.access_token,
+        };        
+        switch(orderList[index].orderType){
+            case '1':
+                trainModel.trainDeleteOrder(params).then(function(result){
+                    if(result.code === '00000'){
+                        actions.deleteOrder(index);
+                    }else{
+                        ModalAlert.show({
+                            content: result.message,
+                            onClick:function(){
+                                ModalAlert.hide();
+                            }
+                        });
+                    }
+                });
+                break;
+            case '3':
+                //bus
+                break;
+            default:
+                ModalAlert.show({
+                    content: '错误的订单',
+                    onClick:function(){
+                        ModalAlert.hide();
+                    }
+                })
+                break;
+        }
+    }
 
 
     componentDidMount(){
@@ -70,11 +110,18 @@ class OrderCenterContainer extends Component{
     
 
     render(){
-        const { orderConter ,type ,page ,orderInfo ,orderList ,push } = this.props;
+        const { type ,page ,orderInfo ,orderList ,push } = this.props;
         return(
             <div styleName="container" >
                 <OrderCenterTab onTabChange={this.handleTabChange} tabActive={type} />
-                <OrderCenterList orderInfo={orderInfo} orderList={orderList} onAdd={this.handleAddPage} page={page} push={push} />
+                <OrderCenterList 
+                        orderInfo={orderInfo} 
+                        orderList={orderList} 
+                        onAdd={this.handleAddPage}
+                        onDelete={this.handleDeleteOrder} 
+                        page={page} 
+                        push={push} 
+                />
             </div>
         )
     }

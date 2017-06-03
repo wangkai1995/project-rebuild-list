@@ -77,7 +77,17 @@ class httpServer {
 					break;
 
 				default:
-					resolve('fetch method error');
+					fetch(url,{
+						method:config.method,
+						headers:headers,	
+					}).then( result =>{
+						result.json().then( data =>{
+							resolve(data);
+						}); 
+					})
+					.catch( err =>{
+						reject(err);
+					});
 					break;
 		    }
 	    });

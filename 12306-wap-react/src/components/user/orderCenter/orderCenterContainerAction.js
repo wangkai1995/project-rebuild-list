@@ -29,5 +29,14 @@ function changePage(page){
 }
 
 
-export {  requestOrderCenter ,changeTab ,changePage };
+//删除订单
+function deleteOrder(index){
+    return{
+        type: actionType.REQUEST_DELETE_ORDER,
+        payload: index,
+    }
+}
+
+
+export {  requestOrderCenter ,changeTab ,changePage ,deleteOrder };
 

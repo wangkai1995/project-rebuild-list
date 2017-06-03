@@ -41,11 +41,11 @@ class TicketPayContainer extends Component{
 
 
     getPayModel(){
-        const { params ,payInfo } = this.props;
+        const { params ,payInfo ,push } = this.props;
         if(payInfo){
            switch(params.model){
                 case 'train':
-                    return <TrainPay {...this.props }/>;
+                    return <TrainPay {...this.props } push={push} />;
                 case 'bus':
                     return null;
                 default:

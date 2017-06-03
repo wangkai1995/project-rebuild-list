@@ -21,7 +21,7 @@ class UserOrderCenter extends Component {
         return(
             <div styleName='container'>
                 <Header title="我的订单"/>
-                <OrderCenterContainer  {...orderCenter} actions={orderCenterAction} push={push} />
+                <OrderCenterContainer {...orderCenter} actions={orderCenterAction} push={push} />
             </div>
         );
     }

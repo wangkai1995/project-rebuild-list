@@ -13,7 +13,24 @@ class OrderCenterItem extends Component{
 
     constructor(props){
         super(props);
+        this.handleDeleteOrder = this.handleDeleteOrder.bind(this);
     }
+
+    handleDeleteOrder(el){
+        const { index,onDelete } = this.props;
+        el.stopPropagation();
+        el.preventDefault();
+        onDelete(index)
+    }
+    
+
+    getButton(){
+        const { orderStatus } = this.props;
+        if(orderStatus === '2' || orderStatus === '10'){
+            return <a onClick={this.handleDeleteOrder}>删除</a>
+        }
+    }
+
 
     getTrainOrder(){
         const { orderStatus ,totalPrice ,trainItems ,orderStatusText ,orderNo ,push } = this.props;
@@ -45,7 +62,9 @@ class OrderCenterItem extends Component{
                     </div>
                     <div styleName="item-row">
                         <div styleName="item-col">{trainItems[0].deptTime}</div>
-                        <div styleName="item-col"></div>
+                        <div styleName="item-col right">
+                            {this.getButton()}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -45,9 +45,14 @@ class TrainPay extends Component{
     
     //支付成功回调
     onPaySuccess(){
-        const { payInfo } = this.props;
-        console.log('11111');
-        //
+        const { payInfo ,push } = this.props;
+        switch(payInfo.model){
+            case 'train':
+                push('/train/orderDetail/'+payInfo.orderNo);
+                break;
+            case 'bus':
+                break;
+        }
 
     }
 
