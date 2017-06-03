@@ -19,10 +19,6 @@ class TicketPayContainer extends Component{
     
     constructor(props){
         super(props);
-        this.state = {
-            payLoading:false,
-        };
-        this.handlePayLoading = this.handlePayLoading.bind(this);
     }
     
     //初始化获取支付订单信息
@@ -43,20 +39,13 @@ class TicketPayContainer extends Component{
     }
     
 
-    //支付loading状态
-    handlePayLoading(){
-        this.setState({
-            payLoading:true,
-        });
-    }
-
 
     getPayModel(){
         const { params ,payInfo } = this.props;
         if(payInfo){
            switch(params.model){
                 case 'train':
-                    return <TrainPay {...this.props } onPayStart={this.handlePayLoading} />;
+                    return <TrainPay {...this.props }/>;
                 case 'bus':
                     return null;
                 default:
@@ -76,12 +65,10 @@ class TicketPayContainer extends Component{
 
     render(){
         const { loading } = this.props;
-        const { payLoading } = this.state;
-        const loadingText = payLoading? '正在获取支付信息': '正在为您加载';
         return (
             <div styleName="container">
                 { this.getPayModel() }
-                 <ModalLoading isVisible={loading || payLoading} textContent={loadingText} />
+                 <ModalLoading isVisible={loading} textContent='正在为您加载' />
             </div>
         );
     }

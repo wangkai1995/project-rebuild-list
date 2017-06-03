@@ -2,8 +2,7 @@ import React,{ Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
-
-
+import { push } from 'react-router-redux';
 import styles from './ticketPay.scss';
 import { actions } from './ticketPayRedux';
 
@@ -23,12 +22,12 @@ class TrainThrough extends Component {
     }
 
     render(){
-        const { params, pay, payAction  }= this.props;
+        const { params, pay, payAction ,push  }= this.props;
          var token = TokenServer.getToken();
         return(
             <div styleName="container" >
                 <Header title="订单支付" />
-                <TicketPayContainer token={token} params={params} {...pay} actions={payAction} />
+                <TicketPayContainer push={push} token={token} params={params} {...pay} actions={payAction} />
             </div>
         );
     }
@@ -44,6 +43,7 @@ export default connect( state =>{
 },dispatch =>{
     return{
         payAction : bindActionCreators(actions , dispatch),
+        push : bindActionCreators(push , dispatch),
     };
 })(TrainThrough);
 

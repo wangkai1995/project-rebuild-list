@@ -27,12 +27,14 @@ class TrainPay extends Component{
         };
         this.HandleSelectPayMethod = this.HandleSelectPayMethod.bind(this);
         this.HandleSubmitPay = this.HandleSubmitPay.bind(this);
+        this.onPaySuccess = this.onPaySuccess.bind(this);
     }
 	
 
 	//初始化支付倒计时
     componentDidMount(){
         const { actions ,payInfo ,payCountDown,token } = this.props;
+        WechatPayServer.initValidCode();
 		actions.requestTrainPayCountDown( PayModel.getTrainPayCountDown,{
 				order: payInfo.orderNo,
 				token: token.access_token,
@@ -40,6 +42,17 @@ class TrainPay extends Component{
     }
 
     
+    
+    //支付成功回调
+    onPaySuccess(){
+        const { payInfo } = this.props;
+        console.log('11111');
+        //
+
+    }
+
+    
+
     //选择支付方式
     HandleSelectPayMethod(type){
         this.setState({
@@ -51,20 +64,19 @@ class TrainPay extends Component{
     //提交支付
     HandleSubmitPay(){
         const { type } = this.state;
-        let { payInfo ,onPayStart } = this.props;
+        let { payInfo } = this.props;
         payInfo.model = this.props.params.model;
         switch(type){
             case 0:
-                WechatPayServer.pay(payInfo);
+                WechatPayServer.pay(payInfo,this.onPaySuccess);
                 break;
             case 1:
                 //支付宝
                 break;
             default:
-                WechatPayServer.pay(payInfo);
+                WechatPayServer.pay(payInfom,this.onPaySuccess);
                 break;
         }
-        onPayStart();
     }
 
 

@@ -1,5 +1,10 @@
 
+import Constant from '../../../constant/config';
 import SessionServer from '../../session/index';
+import TokenServer from '../../token/index';
+
+import ScanCodeServer from './scanCodeModal';
+
 
 
 function urlRestore(){
@@ -61,22 +66,29 @@ class WechatPayServer {
 
 
     //扫码支付
-    scanCodePay(payInfo){
-          
+    scanCodePay(payInfo,callback){ 
+        const token = TokenServer.getToken();
+        var info = {
+            model: payInfo.model,
+            token: token.access_token,
+            qrCode: Constant.host +'/v1/train/qrcode/'+payInfo.orderNo+'?access_token='+token.access_token,
+            orderNo: payInfo.orderNo,
+        } 
+        ScanCodeServer.SacnCodePay(info,callback);
     }
     
 
     //汽车票支付
-    busPay(payInfo){
+    busPay(payInfo,callback){
     }
 
 
     //火车票支付
-    trainPay(payInfo){
+    trainPay(payInfo,callback){
         const { isWechatBrowser } = this;
         if(!isWechatBrowser){
             //非微信环境扫码支付
-            return scanCodePay(payInfo);
+            return this.scanCodePay(payInfo,callback);
         }else{
             //获取用户Code调取H5支付
             var href  = encodeURIComponent(location.href);
@@ -86,12 +98,11 @@ class WechatPayServer {
 
 
     
-
     //支付开始
-    pay(payInfo){
-        switch(payInfo){
+    pay(payInfo,callback){
+        switch(payInfo.model){
             case 'train':
-                this.trainPay(payInfo);
+                this.trainPay(payInfo,callback);
                 break;
             case 'bus':
                 this.busPay(payInfo);
@@ -101,6 +112,7 @@ class WechatPayServer {
 
 
 }
+
 
 
 
