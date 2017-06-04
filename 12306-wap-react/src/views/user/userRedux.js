@@ -7,6 +7,7 @@ import account from './account/accountRedux';
 import passengers from './passengers/passengersRedux';
 import changePassengers from './changePassengers/changePassengersRedux';
 import orderCenter from './orderCenter/orderCenterRedux';
+import changeAccount from './changeAccount/changeAccountRedux';
 
 
 
@@ -20,6 +21,7 @@ export default combineReducers({
     passengers,
     changePassengers,
     orderCenter,
+    changeAccount,
 });
 
 

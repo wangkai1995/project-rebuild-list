@@ -23,7 +23,7 @@ class AccountPhoto extends Component{
         const { photo } = this.props;
         return(
             <div styleName="account-photo">
-                <Link styleName="photo">
+                <Link to="/user/changeAccount" styleName="photo">
                     <img  src={photo? photo :defaultPhoto} alt="photo" />
                     <span>
                         <i styleName="cicon icon-right-icon"></i>

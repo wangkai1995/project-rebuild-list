@@ -23,7 +23,7 @@ class AccountContainer extends Component{
 
     componentDidMount(){
         const { action } = this.props; 
-        let token = TokenServer.queryToken();
+        let token = TokenServer.getToken();
         if( token ){
             action.requestUserInfo(userModel.userInfo,{
                 access_token : token.access_token,

@@ -12,6 +12,7 @@ import UserPassengers from '../views/user/passengers/passengers';
 import UserChangePassengers from '../views/user/changePassengers/changePassengers';
 import UserOrderCenter from '../views/user/orderCenter/orderCenter';
 import UserAddChilder from '../views/user/addChilder/addChilder';
+import UserChangeAccount from '../views/user/changeAccount/changeAccount';
 
 
 
@@ -27,6 +28,7 @@ const UserRoutes =  function(){
             <Route path='/user/changePassenger/:model/:id' component={UserChangePassengers}/>
             <Route path='/user/orderCenter' component={UserOrderCenter}/>
             <Route path='/user/addChilder' component={UserAddChilder}/>
+            <Route path='/user/changeAccount' component={UserChangeAccount} />
         </Route> 
     )      
 };

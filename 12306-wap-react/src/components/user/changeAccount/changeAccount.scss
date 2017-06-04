@@ -1,0 +1,88 @@
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+}
+
+
+.list{
+	composes: list from "../../../styles/common.scss";
+}
+
+
+.button{
+	composes:button from "../../../styles/common.scss";
+	composes:button-block from "../../../styles/common.scss";
+	color:#fff;
+	width: 90%;
+   	margin: 10px auto;
+   	border-radius: 5px;
+   	background-color:#ff8400;
+}
+
+
+.button-disabled{
+	composes:button-disabled from "../../../styles/common.scss";
+}
+
+
+.item{
+	composes:item from "../../../styles/common.scss";
+	composes:item-input from "../../../styles/common.scss";
+	input{
+	    width: 100%
+	}
+}
+
+
+.item-label{
+	composes:input-label from "../../../styles/common.scss";
+}
+
+.sex-select{
+    width: 15%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    color: #333;
+    z-index: 100;
+    &.active{
+    	color: #2ca1f1;    
+    }
+    &.last-child{
+    	border-left: 1px solid #c8c8c8;
+    }
+}
+
+.item-sex{
+	span{
+	    display: inline-block;
+	}
+}
+
+
+.select-popup {
+    position: absolute;
+    width: 14%;
+    left: 39%;
+    top: 0;
+    bottom: 0;
+    border-bottom: 2px solid #2ca1f1;
+    z-index: 100;
+    transition: all .3s linear;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    &.active{
+	    transform: translateX(100%);
+	    -webkit-transform: translateX(100%);
+	    -moz-transform: translateX(100%);
+	    -ms-transform: translateX(100%);
+	    -o-transform: translateX(100%);
+    }
+}
