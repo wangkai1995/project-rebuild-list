@@ -13,7 +13,8 @@ import UserChangePassengers from '../views/user/changePassengers/changePassenger
 import UserOrderCenter from '../views/user/orderCenter/orderCenter';
 import UserAddChilder from '../views/user/addChilder/addChilder';
 import UserChangeAccount from '../views/user/changeAccount/changeAccount';
-
+import UserChangeEmail from '../views/user/changeEmail/changeEmail';
+import UserChangePassword from '../views/user/changePassword/changePassword';
 
 
 const UserRoutes =  function(){
@@ -29,6 +30,8 @@ const UserRoutes =  function(){
             <Route path='/user/orderCenter' component={UserOrderCenter}/>
             <Route path='/user/addChilder' component={UserAddChilder}/>
             <Route path='/user/changeAccount' component={UserChangeAccount} />
+            <Route path='/user/changeEmail/:email' component={UserChangeEmail} />
+            <Route path='/user/changePassword' component={UserChangePassword} />
         </Route> 
     )      
 };

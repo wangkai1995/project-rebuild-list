@@ -22,7 +22,7 @@ class AccountInfo extends Component{
 
 
     render(){
-        const { mobile,email  } = this.props.userInfo
+        const { mobile,email } = this.props.userInfo
         return(
             <div styleName="account-info">
                   <Link styleName="about-item border ">
@@ -32,14 +32,14 @@ class AccountInfo extends Component{
                             {mobile}
                         </span>
                   </Link>
-                  <Link styleName="about-item">
+                  <Link to={`/user/changeEmail/${email?email:0}`} styleName="about-item">
                         <span styleName="fl">邮箱</span>
                         <span styleName="fr">
                             <i styleName="cicon icon-right-icon fr"></i>
                             {email}
                         </span>
                   </Link>
-                  <Link styleName="about-item mt10">
+                  <Link to="/user/changePassword" styleName="about-item mt10">
                         <span styleName="fl">修改密码</span>
                         <span styleName="fr">
                             <i styleName="cicon icon-right-icon fr"></i>

@@ -25,7 +25,6 @@ class UserChangeAccount extends Component {
                 <ChangeAccountContainer 
                         {...changeAccount} 
                         actions={changeAccountAction} 
-                        userInfo={userInfo}
                         push={push} 
                 />
             </div>
@@ -39,7 +38,6 @@ class UserChangeAccount extends Component {
 export default connect( state =>{
     return{
         changeAccount : state.user.changeAccount.changeAccount,
-        userInfo: _.merge({},state.user.account.account.userInfo),
     };
 },dispatch =>{
     return{

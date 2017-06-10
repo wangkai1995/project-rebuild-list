@@ -96,6 +96,14 @@ export default {
         })
     },
 
+    updateUserInfo:function(data){
+        return httpServer.request({
+            method : 'POST',
+            url: '/v1/user?access_token='+data.token,
+            params:data.formData
+        })
+    },
+
 }
 
 
