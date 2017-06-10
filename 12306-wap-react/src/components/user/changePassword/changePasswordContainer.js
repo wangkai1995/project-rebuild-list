@@ -1,6 +1,7 @@
 import React ,{ Component , PropTypes } from 'react';
 import classnames from 'classnames';
 import {immutableRenderDecorator} from 'react-immutable-render-mixin';
+import { Md5 } from 'ts-md5/dist/md5';
 import CSSModules from 'react-css-modules'
 import styles from './changePassword.scss';
 
@@ -51,7 +52,47 @@ class ChangePasswordContainer extends Component{
 
 
     handleSubmit(){
-
+        const { oldPassword ,newPassword ,confirmPassword } = this.state;
+        const { push } = this.props;
+        if(!oldPassword || !newPassword || !confirmPassword){
+            return false;
+        }
+        if(newPassword !== confirmPassword){
+            ModalAlert.show({
+                content: '新密码两次输入不一致',
+                onClick:function(){
+                    ModalAlert.hide();
+                }
+            });
+            return false;
+        }
+        let formData = {};
+        var token = TokenServer.getToken();
+        formData.oldPassword = Md5.hashStr(oldPassword);
+        formData.newPassword = Md5.hashStr(confirmPassword);
+        
+        userModel.userPasswordChange({
+            token: token.access_token,
+            formData:formData
+        }).then(function(result){
+            if(result.code === '00000'){
+                ModalAlert.show({
+                    content: '密码修改成功,请重新登录',
+                    onClick:function(){
+                        ModalAlert.hide();
+                        TokenServer.removeToken();
+                        push('/user/login');
+                    }
+                });
+            }else{
+                ModalAlert.show({
+                    content: result.message,
+                    onClick:function(){
+                        ModalAlert.hide();
+                    }
+                });
+            }
+        })
     }
 
 
@@ -61,13 +102,13 @@ class ChangePasswordContainer extends Component{
             <div styleName='container'>
                 <div styleName="list">
                 	<label styleName="item">
-                		<input type="text" onChange={this.handleInputOldPassword} value={oldPassword} placeholder="请输入原密码"/>
+                		<input type="password" onChange={this.handleInputOldPassword} value={oldPassword} placeholder="请输入原密码"/>
                 	</label>
                     <label styleName="item">
-                        <input type="text" onChange={handleInputNewPassword} value={newPassword} placeholder="请输入新密码"/>
+                        <input type="password" onChange={this.handleInputNewPassword} value={newPassword} placeholder="请输入新密码"/>
                     </label>
                     <label styleName="item">
-                        <input type="text" onChange={this.handleInputConfimPassword} value={confirmPassword} placeholder="请确认新密码"/>
+                        <input type="password" onChange={this.handleInputConfimPassword} value={confirmPassword} placeholder="请确认新密码"/>
                     </label>
                 </div>
                 <div styleName="btn-Submit">

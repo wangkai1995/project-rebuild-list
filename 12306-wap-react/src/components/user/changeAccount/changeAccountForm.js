@@ -21,7 +21,7 @@ class ChangeAccountForm extends Component{
             birthday: '',
             name: '',
             isVisible: false,
-        } 
+        };
         this.hideModalDate = this.hideModalDate.bind(this);
         this.showModaleDate = this.showModaleDate.bind(this);
         this.handleInputName = this.handleInputName.bind(this);
@@ -32,11 +32,11 @@ class ChangeAccountForm extends Component{
     componentWillReceiveProps(nextProps){
         const { userInfo } = nextProps;
         if(userInfo){
-            this.setState ={
+            this.setState({
                 sex: userInfo.sex,
                 birthday: userInfo.birthday,
                 name: userInfo.username,
-            }
+            });
         }
     }
 

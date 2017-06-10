@@ -16,10 +16,11 @@ import ChangePasswordContainer from '../../../components/user/changePassword/cha
 class UserChangePassword extends Component {
 
     render(){
+    	const { push } = this.props;
         return(
             <div styleName='container'>
                 <Header title="修改密码" /> 
-              	<ChangePasswordContainer/>
+              	<ChangePasswordContainer push={push} />
             </div>
         );
     }
@@ -29,7 +30,13 @@ class UserChangePassword extends Component {
 
 
 
-export default UserChangePassword;
+export default connect( state =>{
+    return{};
+},dispatch =>{
+    return{
+        push : bindActionCreators(push , dispatch),
+    }
+})(UserChangePassword);
 
 
 

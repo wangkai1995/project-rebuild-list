@@ -17,6 +17,7 @@ function account( state = initialState , action){
             return{
                 ...state,
                 loading:true,
+                changeFlat : false,
             };
         }
 

@@ -104,6 +104,14 @@ export default {
         })
     },
 
+    userPasswordChange:function(data){
+        return httpServer.request({
+            method : 'POST',
+            url:'/v1/user/updatePassword?access_token='+data.token,
+            params : data.formData
+        })
+   },
+
 }
 
 
