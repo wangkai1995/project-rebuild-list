@@ -112,6 +112,14 @@ export default {
         })
    },
 
+   verifyPhone:function(data){
+        return httpServer.request({
+            method: 'POST',
+            url: '/v1/user/save-mobile/?access_token='+data.token,
+            params:data.formData
+        })
+    },
+
 }
 
 

@@ -70,3 +70,4 @@ class ValidateCode extends Component{
 
 
 export default ValidateCode;
+

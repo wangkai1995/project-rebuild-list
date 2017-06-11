@@ -69,9 +69,13 @@ class httpServer {
 						// body:toQueryString(config.data),
 						body: JSON.stringify(config.data),
 					}).then( result =>{
-						result.json().then( data =>{
-							resolve(data);
-						}); 
+						if(result.status === 400 || result.status === 401){
+							reject('登录失败,账户或密码错误');
+						}else{
+							result.json().then( data =>{
+								resolve(data);
+							});
+						}
 					})
 					.catch( err =>{
 						reject(err);

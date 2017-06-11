@@ -8,6 +8,7 @@ import styles from './login.scss';
 
 import userModel from '../../../http/user/index';
 import TokenServer from '../../../server/token/index';
+import sessionServer from '../../../server/session/index';
 import ModalDialog from '../../../components/modal/Dialog';
 
 
@@ -33,6 +34,8 @@ class UserLoginContainer extends Component{
     componentWillReceiveProps(nextProps){
         const { loginInfo ,error } = nextProps;
         if(loginInfo){
+            loginInfo.name = sessionServer.get('userName');
+            sessionServer.remove('userName');
             TokenServer.setToken(loginInfo,function(){
                 window.history.back();
             });
@@ -90,6 +93,7 @@ class UserLoginContainer extends Component{
         const { action } =this.props;
         let username = data.username;
         let password = Md5.hashStr(data.password);
+        sessionServer.set('userName',data.username);
         action.requestLogin(userModel.login,{
             username: username,
             password: password,
@@ -101,6 +105,7 @@ class UserLoginContainer extends Component{
        const { action } =this.props;
         let username = data.username;
         let password = data.password;
+        sessionServer.set('userName',data.username);
         action.requestLogin(userModel.login,{
             username: username,
             password: password,

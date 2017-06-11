@@ -15,6 +15,8 @@ import UserAddChilder from '../views/user/addChilder/addChilder';
 import UserChangeAccount from '../views/user/changeAccount/changeAccount';
 import UserChangeEmail from '../views/user/changeEmail/changeEmail';
 import UserChangePassword from '../views/user/changePassword/changePassword';
+import UserChangePhone from '../views/user/changePhone/changePhone';
+import UserVaildatePhone from '../views/user/validatePhone/validatePhone';
 
 
 const UserRoutes =  function(){
@@ -32,6 +34,8 @@ const UserRoutes =  function(){
             <Route path='/user/changeAccount' component={UserChangeAccount} />
             <Route path='/user/changeEmail/:email' component={UserChangeEmail} />
             <Route path='/user/changePassword' component={UserChangePassword} />
+            <Route path='/user/changePhone' component={UserChangePhone} />
+            <Route path='/user/validatePhone/:phone' component={UserVaildatePhone} />
         </Route> 
     )      
 };

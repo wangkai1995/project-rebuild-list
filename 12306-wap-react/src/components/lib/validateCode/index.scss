@@ -1,6 +1,6 @@
 .login-validcode{
-    composes: button from "../../../styles/layout.scss";
-    composes: button-small from "../../../styles/layout.scss";
+    composes: button from "../../../styles/common.scss";
+    composes: button-small from "../../../styles/common.scss";
     background-color: #ff8409;
     color:#fff;
     width: 70px;

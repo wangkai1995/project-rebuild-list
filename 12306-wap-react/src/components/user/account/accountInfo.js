@@ -25,7 +25,7 @@ class AccountInfo extends Component{
         const { mobile,email } = this.props.userInfo
         return(
             <div styleName="account-info">
-                  <Link styleName="about-item border ">
+                  <Link to="/user/changePhone" styleName="about-item border ">
                         <span styleName="fl">手机</span>
                         <span styleName="fr">
                             <i styleName="cicon icon-right-icon fr"></i>
