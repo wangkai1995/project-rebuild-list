@@ -45,7 +45,7 @@ class AccountInfo extends Component{
                             <i styleName="cicon icon-right-icon fr"></i>
                         </span>
                   </Link>
-                  <Link styleName="about-item mt10 mb20 login12306">
+                  <Link to="/user/login12306" styleName="about-item mt10 mb20 login12306">
                         <span styleName="fl">
                             <i styleName="cicon icon-train-12306-icon"></i>
                             &nbsp;12306.cn账户登录

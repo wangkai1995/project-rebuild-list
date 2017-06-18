@@ -31,8 +31,10 @@ class BusIndex extends Component {
 
         return(
             <div styleName='index-container'>
-            	<Banner classPrefix="bus"/>
-            	<Search {...search} actions={searchAction} push={push} />
+            	<div styleName="content-container">
+	            	<Banner classPrefix="bus"/>
+	            	<Search {...search} actions={searchAction} push={push} />
+            	</div>
                 <SearchFooter Model='bus' />
             </div>
 

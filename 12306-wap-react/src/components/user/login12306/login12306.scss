@@ -1,0 +1,72 @@
+
+.container{
+    composes: war-container from "../../../styles/common.scss";
+}
+
+.input-12306-content {
+    background-color: #fff;
+    text-align: center;
+}
+
+
+.input-item{
+    display: inline-block;
+    width: 90%;
+    margin: 0 auto;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #d0d0d0;
+    text-align: left;
+    &:last-child{
+    	border-bottom:0px;
+    }
+}
+
+
+.clear-fixed{
+	composes: clear-fixed from "../../../styles/common.scss";
+}
+
+
+
+.label {
+    width: 10%;
+    float: left;
+    line-height: 50px;
+    i {
+	    position: relative;
+	    top: 5px;
+	    margin-right: 10px;
+	}
+}
+
+
+.input {
+    width: 90%;
+    float: left;
+    line-height: 50px;
+    input {
+	    width: 100%;
+	    border: 0;
+	    height: 50px;
+	    position: relative;
+	    top: -3px;
+	    background-color: transparent;
+	}
+}
+
+
+.button{
+    composes:button from "../../../styles/common.scss";
+    composes:button-block from "../../../styles/common.scss";
+    color:#fff;
+    width: 90%;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color:#ff8400;
+}
+
+.button-disabled{
+    composes: button-disabled from "../../../styles/common.scss";
+}
+

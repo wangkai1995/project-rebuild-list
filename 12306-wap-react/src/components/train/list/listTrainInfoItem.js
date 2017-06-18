@@ -18,7 +18,7 @@ class TrainInfoItem extends Component{
 
 	//坐席
 	getSeat(){
-		const { seatList , trainStatus ,reason } = this.props;
+		const { seatList , trainStatus ,reason ,canBuy } = this.props;
 		let count = 0;
 		let seat = seatList.filter(function(item){
 			if(parseInt(item.seatNum) === 0){
@@ -28,7 +28,7 @@ class TrainInfoItem extends Component{
 			return item;
 		});
 
-		if(trainStatus === 0){
+		if(!canBuy){
 			return (<span>{reason}</span>)
 		}
 
@@ -74,10 +74,11 @@ class TrainInfoItem extends Component{
 		return <span>去抢票</span>
 	}
 	
+
 	//选择坐席
 	handleChenckTrain(){
-		const { trainStatus } = this.props;
-		if(trainStatus === 0 || trainStatus !== -2){
+		const { canBuy } = this.props;
+		if(!canBuy){
 			return false;
 		}
 		this.props.onCheckTrain(this.props);
@@ -85,10 +86,10 @@ class TrainInfoItem extends Component{
 
 
 	render(){
-		const { trainStatus } = this.props;
+		const { trainStatus ,canBuy } = this.props;
 		const itemClass = classnames({
 			'trainInfo-item' : true,
-			'trainInfo-item-disabled' : (trainStatus === 0 || trainStatus !== -2)
+			'trainInfo-item-disabled' : !canBuy
 		});
 		return(
 			<li styleName={itemClass} onClick={this.handleChenckTrain} >

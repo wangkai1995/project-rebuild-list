@@ -35,13 +35,14 @@ class RobTrainInfoContainer extends Component{
 
 
     componentDidMount(){
-        const { actions ,params } = this.props; 
+        const { actions ,params ,error } = this.props; 
         const robTrainInfo = SessionServer.get('robTicketTrainInfo');
         actions.requestTrainInfo(trainModel.trainInfoList,{
             arrStationCode: params.toCityCode,
             deptStationCode: params.fromCityCode,
             deptDate: params.detpDate,
         });
+        
         if(robTrainInfo){
             this.setState({
                 firstTrain:robTrainInfo.firstTrain,
@@ -50,6 +51,20 @@ class RobTrainInfoContainer extends Component{
         }
     }
 
+
+    componentWillReceiveProps(nextProps){
+        const { actions ,error } = nextProps;
+        if(error){
+            ModalAlert.show({
+                content:error,
+                onClick:function(){
+                    ModalAlert.hide();
+                    actions.resetError();
+                }
+            });
+        }
+    }
+    
 
     handleFirstSelect(train){
         const { firstTrain } = this.state;

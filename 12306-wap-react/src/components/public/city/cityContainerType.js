@@ -1,12 +1,15 @@
 
 
-
-
-
 export const REQUEST_LOADING = 'REQUEST_LOADING';
 export const REQUEST_ERROR = 'REQUEST_ERROR';
+
+//火车票
 export const REQUEST_TRAIN_CITY = 'REQUEST_TRAIN_CITY';
 export const REQUEST_HOT_CITY = 'REQUEST_HOT_CITY';
 
+//汽车票
+export const REQUEST_BUS_HOT_CITY = 'REQUEST_BUS_HOT_CITY';
+export const REQUEST_BUS_FROM_CITY = 'REQUEST_BUS_FROM_CITY';
+export const REQUEST_BUS_TO_CITY = 'REQUEST_BUS_TO_CITY'; 
 
 

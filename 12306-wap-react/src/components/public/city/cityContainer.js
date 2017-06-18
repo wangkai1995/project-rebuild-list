@@ -49,7 +49,8 @@ class CityContainer extends Component{
 			switch(model){
 				case 'train':
 					return this.initTrainCity();
-
+				case 'bus':
+					return this.initBusCity();
 				default:
 					return console.log('错误的模式');
 			}
@@ -58,6 +59,10 @@ class CityContainer extends Component{
 		initTrainCity(){
 			this.props.requestTrainCity(trainModel.trainCity);
 			this.props.requestHotCity(trainModel.trainHotCity);
+		}
+
+		initBusCity(){
+
 		}
 		
 		//过滤热门城市中的code

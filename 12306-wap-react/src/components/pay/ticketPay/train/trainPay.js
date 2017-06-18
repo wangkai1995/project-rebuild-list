@@ -9,7 +9,7 @@ import icon from '../../../../styles/sprite.css';
 
 import PayModel from '../../../../http/pay/index';
 import WechatPayServer from '../../../../server/pay/weChat/index';
-
+import AliPayServer from '../../../../server/pay/AliPay/index';
 
 import TrainPayInfo from './trainPayInfo';
 import TrainPaySelect from './trainPaySelect';
@@ -34,6 +34,9 @@ class TrainPay extends Component{
 	//初始化支付倒计时
     componentDidMount(){
         const { actions ,payInfo ,payCountDown,token } = this.props;
+        //初始化判断是否支付成功
+        this.initTicketStatus();
+        //初始化判断微信公众号支付URL
         WechatPayServer.initValidCode();
 		actions.requestTrainPayCountDown( PayModel.getTrainPayCountDown,{
 				order: payInfo.orderNo,
@@ -42,8 +45,58 @@ class TrainPay extends Component{
     }
 
     
+    //初始化判断是否支付成功
+    initTicketStatus(){
+        const { payInfo,token } = this.props;
+        const self = this;
+        switch(payInfo.model){
+            case 'train':
+                PayModel.trainState({
+                    order: payInfo.orderNo,
+                    token: token.access_token
+                }).then(function(state){
+                    if(state.code === '00000'){
+                        if( state.data.status === 4 || state.data.status === 14 ){
+                            ModalAlert.show({
+                                content:'支付成功!',
+                                onClick:function(){
+                                    ModalAlert.hide();
+                                    self.onPaySuccess();
+                                }
+                            });
+                        }
+                    }
+                },function(error){
+                    console.log('出错了');
+                });
+                break;
+            case 'bus':
+                PayModel.busState({
+                    order: payInfo.orderNo,
+                    token: token.access_token
+                }).then(function(state){
+                    if(state.code === '00000'){
+                        if(state.data === 1){
+                            ModalAlert.show({
+                                content:'支付成功!',
+                                onClick:function(){
+                                    ModalAlert.hide();
+                                    self.onPaySuccess();
+                                }
+                            });
+                        }
+                    }
+                },function(error){
+                    console.log('出错了');
+                });
+                break;
+        }
+    }
+
+    
     
     //支付成功回调
+    //汽车票未做
     onPaySuccess(){
         const { payInfo ,push } = this.props;
         switch(payInfo.model){
@@ -77,6 +130,7 @@ class TrainPay extends Component{
                 break;
             case 1:
                 //支付宝
+                AliPayServer.pay(payInfo);
                 break;
             default:
                 WechatPayServer.pay(payInfom,this.onPaySuccess);

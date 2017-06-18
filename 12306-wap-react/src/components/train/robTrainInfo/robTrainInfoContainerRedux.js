@@ -31,12 +31,21 @@ function robTrainInfo( state = initialState , action){
             };
         }
 
-        //请求车次成功
+        //请求车次错误
         case actionType.REQUEST_ROB_TRAIN_ERROR : {
             return{
                 ...state,
                 loading:false,
                 error : action.payload,
+                trainInfo:false,
+            }
+        }
+
+        //重置错误
+        case actionType.RESET_ERROR : {
+            return{
+                ...state,
+                error:false,
             }
         }
 

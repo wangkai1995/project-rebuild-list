@@ -62,5 +62,13 @@ export default {
         })
     },
 
+    //火车票支付宝支付
+    mobileTrainAliPay:function(data){
+        return httpServer.request({
+            method: 'GET',
+            url: '/v1/train/alipay-wap/'+data.order+'?access_token='+data.token,
+        })
+    },
+
 
 }

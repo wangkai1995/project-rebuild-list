@@ -4,14 +4,22 @@ import httpServer  from '../../server/http/index';
 
 export default {
 
-	//汽车票城市
-	busCity: function(){
-		return httpServer.request({
-			url:'/v1/bus/stations',
-			method:'GET',
-		})
-	},
+	//汽车票出发城市
+    busFormCity: function(){
+        return httpServer.request({
+            method: 'GET',
+            url: '/v1/bus/stations'
+        })
+    },
 
+	//汽车票到达城市
+    busToCity: function(data){
+        return httpServer.request({
+            method: 'GET',
+            url: '/v1/bus/destinations?dpt='+data.dpt
+        })
+    },
+    
 	//汽车票热门城市
 	busHotCity:function(){
 		return httpServer.request({
